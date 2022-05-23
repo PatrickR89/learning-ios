@@ -1,21 +1,21 @@
 //
-//  ViewController.swift
+//  NavController.swift
 //  Project1CodeOnly
 //
 //  Created by Patrick on 23.05.2022..
 //
 
+import Foundation
 import UIKit
 
-class ViewController: UIViewController {
+class NavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .cyan
+        view.backgroundColor = .yellow
         // Do any additional setup after loading the view.
     }
 
 
 }
-

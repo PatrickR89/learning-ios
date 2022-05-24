@@ -11,6 +11,7 @@ class ViewController: UIViewController {
     
     var pictures = [String]()
     var tableView = UITableView()
+    var detailVC = DetailViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,12 +44,19 @@ class ViewController: UIViewController {
         setTableViewDelegates()
         tableView.rowHeight = 50
         tableView.register(PictureCell.self, forCellReuseIdentifier: "PictureCell")
+    
         tableView.pin(to: view)
     }
     
     func setTableViewDelegates() {
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    func addDetailVC() {
+        addChild(detailVC)
+        view.addSubview(detailVC.view)
+        
     }
     
 }
@@ -63,13 +71,14 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         cell.label.text = pictures[indexPath.row]
         return cell
 }
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-//    {
-//        if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
-//            vc.pictureAmount = pictures.count
-//            vc.selectedImage = pictures[indexPath.row]
-//            vc.selectedImageIndex = pictures.firstIndex(of: pictures[indexPath.row])!
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+         let vc = DetailViewController()
+        self.navigationController?.pushViewController(vc, animated: false)
+            vc.pictureAmount = pictures.count
+            vc.selectedImage = pictures[indexPath.row]
+            vc.selectedImageIndex = pictures.firstIndex(of: pictures[indexPath.row])!
 //            navigationController?.pushViewController(vc, animated: true)
-//        }
-//    }
+//        
+    }
 }

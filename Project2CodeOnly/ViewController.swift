@@ -9,9 +9,9 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let button1 = UIButton(type: .system)
-    let button2 = UIButton(type: .system)
-    let button3 = UIButton(type: .system)
+    let button1 = UIButton(type: .custom)
+    let button2 = UIButton(type: .custom)
+    let button3 = UIButton(type: .custom)
     
     var countries = [String]()
     var score = 0
@@ -23,18 +23,16 @@ class ViewController: UIViewController {
         view.backgroundColor = .cyan
         view.addSubview(button1)
         
-                button1.setTitle("Button", for: .normal)
-                button1.backgroundColor = .lightGray
+        button1.setTitle("", for: .normal)
         button1.layer.borderWidth = 1
         button1.layer.borderColor = UIColor.lightGray.cgColor
         button1.tag = 0
-                
-                button1.translatesAutoresizingMaskIntoConstraints = false
-                button1.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-                button1.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
-                button1.widthAnchor.constraint(equalToConstant: 200).isActive = true
-                button1.heightAnchor.constraint(equalToConstant: 100).isActive = true
-                button1.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        button1.translatesAutoresizingMaskIntoConstraints = false
+        button1.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        button1.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
+        button1.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        button1.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        button1.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         
         view.addSubview(button2)
         
@@ -48,7 +46,6 @@ class ViewController: UIViewController {
         button2.heightAnchor.constraint(equalToConstant: 100).isActive = true
         button2.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         button2.topAnchor.constraint(equalTo: button1.bottomAnchor, constant: 40).isActive = true
-        
         button2.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         
         view.addSubview(button3)
@@ -63,11 +60,15 @@ class ViewController: UIViewController {
         button3.heightAnchor.constraint(equalToConstant: 100).isActive = true
         button3.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         button3.topAnchor.constraint(equalTo: button2.bottomAnchor, constant: 40).isActive = true
-        
         button3.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
                 
         
         countries += ["estonia", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us"]
+        
+        
+        button1.setImage(UIImage(named: countries[0]), for: .normal)
+        button2.setImage(UIImage(named: countries[1]), for: .normal)
+        button3.setImage(UIImage(named: countries[2]), for: .normal)
     }
     
     @objc func buttonAction(_ sender: UIButton!){

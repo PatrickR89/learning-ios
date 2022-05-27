@@ -33,9 +33,7 @@ class ViewController: UIViewController {
 
   }
     
-  @objc func buttonAction(_ sender: UIButton!){
-  print("Tap test \(sender.tag)")
-  }
+
 }
 
 // MARK: Buttons 1 - 3 implementation
@@ -96,5 +94,24 @@ extension ViewController {
     
     title = countries[correctAnswer].uppercased()
   }
+  
+  @objc func buttonAction(_ sender: UIButton!){
+    print("Tap test \(sender.tag)")
+    
+    var title: String
+    
+    if sender.tag == correctAnswer {
+      title = "Correct"
+      score += 1
+    } else {
+      title = "Wrong"
+      score -= 1
+    }
+    
+    print(title, score)
+    
+    askQuestion()
+  }
+  
 }
 

@@ -25,10 +25,13 @@ class DetailViewController: UIViewController {
             imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
             imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         }
-        // Do any additional setup after loading the view.
     }
-    func setTitle () -> String{
-         return "Image \(selectedImageIndex! + 1) of \(pictureAmount!)"
+    func setTitle () -> String {
+      guard let index = selectedImageIndex,
+            let amount = pictureAmount else {
+        return "Nothing!"
+      }
+         return "Image \(index + 1) of \(amount)"
 
     }
 
@@ -41,14 +44,4 @@ class DetailViewController: UIViewController {
         super.viewWillDisappear(animated)
         navigationController?.hidesBarsOnTap = false
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

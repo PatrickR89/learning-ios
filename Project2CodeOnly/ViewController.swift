@@ -9,34 +9,34 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let button1 = UIButton(type: .custom)
-    let button2 = UIButton(type: .custom)
-    let button3 = UIButton(type: .custom)
+  let button1 = UIButton(type: .custom)
+  let button2 = UIButton(type: .custom)
+  let button3 = UIButton(type: .custom)
     
-    var countries = [String]()
-    var score = 0
+  var countries = [String]()
+  var score = 0
 
-    override func viewDidLoad() {
-      super.viewDidLoad()
-      view.backgroundColor = .white
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    view.backgroundColor = .white
         
-        view.addSubview(button1)
-        modifyButton1()
-        view.addSubview(button2)
-        modifyButton2()
-        view.addSubview(button3)
-        modifyButton3()
+    view.addSubview(button1)
+    modifyButton1()
+    view.addSubview(button2)
+    modifyButton2()
+    view.addSubview(button3)
+    modifyButton3()
 
-        countries += ["estonia", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us"]
+    countries += ["estonia", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us"]
         
-        button1.setImage(UIImage(named: countries[0]), for: .normal)
-        button2.setImage(UIImage(named: countries[1]), for: .normal)
-        button3.setImage(UIImage(named: countries[2]), for: .normal)
-    }
+    button1.setImage(UIImage(named: countries[0]), for: .normal)
+    button2.setImage(UIImage(named: countries[1]), for: .normal)
+    button3.setImage(UIImage(named: countries[2]), for: .normal)
+}
     
-    @objc func buttonAction(_ sender: UIButton!){
-        print("Tap test \(sender.tag)")
-    }
+@objc func buttonAction(_ sender: UIButton!){
+  print("Tap test \(sender.tag)")
+}
     
 
 

@@ -84,7 +84,7 @@ extension ViewController {
 // MARK: Implement functionality
 
 extension ViewController {
-  func askQuestion() {
+  func askQuestion(action: UIAlertAction! = nil) {
     countries.shuffle()
     correctAnswer = Int.random(in: 0...2)
     
@@ -96,7 +96,6 @@ extension ViewController {
   }
   
   @objc func buttonAction(_ sender: UIButton!){
-    print("Tap test \(sender.tag)")
     
     var title: String
     
@@ -108,9 +107,10 @@ extension ViewController {
       score -= 1
     }
     
-    print(title, score)
+    let ac = UIAlertController(title: title, message: "Your current score is: \(score)", preferredStyle: .alert)
+    ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
     
-    askQuestion()
+    present(ac, animated: true)
   }
   
 }

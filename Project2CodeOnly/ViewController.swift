@@ -28,18 +28,13 @@ class ViewController: UIViewController {
     modifyButton3()
 
     countries += ["estonia", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us"]
-        
-    button1.setImage(UIImage(named: countries[0]), for: .normal)
-    button2.setImage(UIImage(named: countries[1]), for: .normal)
-    button3.setImage(UIImage(named: countries[2]), for: .normal)
-}
+    askQuestion()
+
+  }
     
-@objc func buttonAction(_ sender: UIButton!){
+  @objc func buttonAction(_ sender: UIButton!){
   print("Tap test \(sender.tag)")
-}
-    
-
-
+  }
 }
 
 // MARK: Buttons 1 - 3 implementation
@@ -84,6 +79,18 @@ extension ViewController {
     button3.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     button3.topAnchor.constraint(equalTo: button2.bottomAnchor, constant: 40).isActive = true
     button3.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+  }
+}
+
+// MARK: Implement functionality
+
+extension ViewController {
+  func askQuestion() {
+    countries.shuffle()
+    
+    button1.setImage(UIImage(named: countries[0]), for: .normal)
+    button2.setImage(UIImage(named: countries[1]), for: .normal)
+    button3.setImage(UIImage(named: countries[2]), for: .normal)
   }
 }
 

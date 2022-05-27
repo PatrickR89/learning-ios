@@ -18,7 +18,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
       super.viewDidLoad()
-        view.backgroundColor = .cyan
+      view.backgroundColor = .white
         
         view.addSubview(button1)
         modifyButton1()
@@ -27,10 +27,7 @@ class ViewController: UIViewController {
         view.addSubview(button3)
         modifyButton3()
 
-                
-        
         countries += ["estonia", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us"]
-        
         
         button1.setImage(UIImage(named: countries[0]), for: .normal)
         button2.setImage(UIImage(named: countries[1]), for: .normal)
@@ -62,7 +59,7 @@ extension ViewController {
   }
   
   func modifyButton2(){
-    button2.setTitle("Button2", for: .normal)
+    button2.setTitle("", for: .normal)
     button2.backgroundColor = .green
     button2.layer.borderWidth = 1
     button2.layer.borderColor = UIColor.lightGray.cgColor
@@ -76,7 +73,7 @@ extension ViewController {
   }
   
   func modifyButton3() {
-    button3.setTitle("Button3", for: .normal)
+    button3.setTitle("", for: .normal)
     button3.backgroundColor = .red
     button3.layer.borderWidth = 1
     button3.layer.borderColor = UIColor.lightGray.cgColor

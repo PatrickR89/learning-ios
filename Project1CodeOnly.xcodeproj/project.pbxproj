@@ -124,6 +124,7 @@
 				CDF0AA0E283C06F50086C99E /* Sources */,
 				CDF0AA0F283C06F50086C99E /* Frameworks */,
 				CDF0AA10283C06F50086C99E /* Resources */,
+				CD21E8A928412E090001C1C0 /* Lint Sources */,
 			);
 			buildRules = (
 			);
@@ -188,6 +189,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CD21E8A928412E090001C1C0 /* Lint Sources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Lint Sources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    # Relative path from the .xcodeproj which contains this script\n    swiftlint lint\nelse\n    echo \"warning: SwiftLint not installed\"\nfi\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CDF0AA0E283C06F50086C99E /* Sources */ = {

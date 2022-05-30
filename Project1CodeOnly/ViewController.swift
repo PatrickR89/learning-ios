@@ -19,13 +19,13 @@ class ViewController: UIViewController {
         title = "Storm view"
         navigationController?.navigationBar.prefersLargeTitles = true
 
-        let fm = FileManager.default
+        let fileManager = FileManager.default
         let path = Bundle.main.resourcePath!
 
-        let items = try! fm.contentsOfDirectory(atPath: path)
+        let items = try! fileManager.contentsOfDirectory(atPath: path)
 
         for item in items {
-            if item.hasPrefix("nssl"){
+            if item.hasPrefix("nssl") {
                 pictures.append(item)
             }
         }
@@ -65,13 +65,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         cell.label.text = pictures[indexPath.row]
         return cell
 }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-    {
-         let vc = DetailViewController()
-        self.navigationController?.pushViewController(vc, animated: false)
-            vc.pictureAmount = pictures.count
-            vc.selectedImage = pictures[indexPath.row]
-            vc.selectedImageIndex = pictures.firstIndex(of: pictures[indexPath.row])!
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+         let viewCtrl = DetailViewController()
+        self.navigationController?.pushViewController(viewCtrl, animated: false)
+      viewCtrl.pictureAmount = pictures.count
+      viewCtrl.selectedImage = pictures[indexPath.row]
+      viewCtrl.selectedImageIndex = pictures.firstIndex(of: pictures[indexPath.row])!
 //            navigationController?.pushViewController(vc, animated: true)
 //        
     }

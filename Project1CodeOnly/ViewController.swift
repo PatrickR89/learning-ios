@@ -22,13 +22,14 @@ class ViewController: UIViewController {
         let fileManager = FileManager.default
         let path = Bundle.main.resourcePath!
 
-        let items = try! fileManager.contentsOfDirectory(atPath: path)
-
+      if let items = try? fileManager.contentsOfDirectory(atPath: path) {
         for item in items {
             if item.hasPrefix("nssl") {
                 pictures.append(item)
             }
         }
+      }
+
         pictures.sort()
         print(pictures)
 
@@ -61,17 +62,17 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PictureCell") as! PictureCell
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: "PictureCell") as? PictureCell else {
+        fatalError("Unexpected index path")
+      }
         cell.label.text = pictures[indexPath.row]
         return cell
-}
+    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
          let viewCtrl = DetailViewController()
         self.navigationController?.pushViewController(viewCtrl, animated: false)
       viewCtrl.pictureAmount = pictures.count
       viewCtrl.selectedImage = pictures[indexPath.row]
       viewCtrl.selectedImageIndex = pictures.firstIndex(of: pictures[indexPath.row])!
-//            navigationController?.pushViewController(vc, animated: true)
-//        
     }
 }

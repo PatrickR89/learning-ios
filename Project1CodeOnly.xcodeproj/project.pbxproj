@@ -25,7 +25,6 @@
 		CDF0AA1A283C06F50086C99E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF0AA19283C06F50086C99E /* ViewController.swift */; };
 		CDF0AA1F283C06F60086C99E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDF0AA1E283C06F60086C99E /* Assets.xcassets */; };
 		CDF0AA22283C06F60086C99E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDF0AA20283C06F60086C99E /* LaunchScreen.storyboard */; };
-		CDF0AA2A283C07460086C99E /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF0AA29283C07460086C99E /* NavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,7 +48,6 @@
 		CDF0AA1E283C06F60086C99E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CDF0AA21283C06F60086C99E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CDF0AA23283C06F60086C99E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CDF0AA29283C07460086C99E /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +103,6 @@
 				CDF0AA1E283C06F60086C99E /* Assets.xcassets */,
 				CDF0AA20283C06F60086C99E /* LaunchScreen.storyboard */,
 				CDF0AA23283C06F60086C99E /* Info.plist */,
-				CDF0AA29283C07460086C99E /* NavigationController.swift */,
 				CD950896283CFFEE00EE9851 /* Content */,
 				CD21E85E283D17AF0001C1C0 /* PictureCell.swift */,
 				CD21E860283D1C2A0001C1C0 /* UIViewExt.swift */,
@@ -221,7 +218,6 @@
 				CDF0AA16283C06F50086C99E /* AppDelegate.swift in Sources */,
 				CD21E85F283D17AF0001C1C0 /* PictureCell.swift in Sources */,
 				CDF0AA18283C06F50086C99E /* SceneDelegate.swift in Sources */,
-				CDF0AA2A283C07460086C99E /* NavigationController.swift in Sources */,
 				CD21E863283D34450001C1C0 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

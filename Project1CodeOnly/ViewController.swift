@@ -52,11 +52,6 @@ class ViewController: UIViewController {
             tableView.delegate = self
             tableView.dataSource = self
         }
-
-        func addDetailVC() {
-            addChild(detailVC)
-            view.addSubview(detailVC.view)
-        }
     }
 }
 
@@ -67,7 +62,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       guard let cell = tableView.dequeueReusableCell(withIdentifier: "PictureCell") as? PictureCell else {
-        fatalError("Unexpected index path")
+        fatalError("Wrong cell type")
       }
         cell.label.text = pictures[indexPath.row]
         return cell

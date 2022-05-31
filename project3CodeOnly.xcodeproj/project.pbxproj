@@ -10,7 +10,6 @@
 		CD21E8B828466E230001C1C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD21E8B728466E230001C1C0 /* AppDelegate.swift */; };
 		CD21E8BA28466E230001C1C0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD21E8B928466E230001C1C0 /* SceneDelegate.swift */; };
 		CD21E8BC28466E230001C1C0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD21E8BB28466E230001C1C0 /* ViewController.swift */; };
-		CD21E8BF28466E230001C1C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD21E8BD28466E230001C1C0 /* Main.storyboard */; };
 		CD21E8C128466E250001C1C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD21E8C028466E250001C1C0 /* Assets.xcassets */; };
 		CD21E8C428466E250001C1C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD21E8C228466E250001C1C0 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -20,7 +19,6 @@
 		CD21E8B728466E230001C1C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD21E8B928466E230001C1C0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CD21E8BB28466E230001C1C0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CD21E8BE28466E230001C1C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CD21E8C028466E250001C1C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD21E8C328466E250001C1C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CD21E8C528466E250001C1C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -59,7 +57,6 @@
 				CD21E8B728466E230001C1C0 /* AppDelegate.swift */,
 				CD21E8B928466E230001C1C0 /* SceneDelegate.swift */,
 				CD21E8BB28466E230001C1C0 /* ViewController.swift */,
-				CD21E8BD28466E230001C1C0 /* Main.storyboard */,
 				CD21E8C028466E250001C1C0 /* Assets.xcassets */,
 				CD21E8C228466E250001C1C0 /* LaunchScreen.storyboard */,
 				CD21E8C528466E250001C1C0 /* Info.plist */,
@@ -77,6 +74,7 @@
 				CD21E8B028466E230001C1C0 /* Sources */,
 				CD21E8B128466E230001C1C0 /* Frameworks */,
 				CD21E8B228466E230001C1C0 /* Resources */,
+				CD21E8CB28466E820001C1C0 /* Lint Source */,
 			);
 			buildRules = (
 			);
@@ -127,11 +125,31 @@
 			files = (
 				CD21E8C428466E250001C1C0 /* LaunchScreen.storyboard in Resources */,
 				CD21E8C128466E250001C1C0 /* Assets.xcassets in Resources */,
-				CD21E8BF28466E230001C1C0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CD21E8CB28466E820001C1C0 /* Lint Source */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Lint Source";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\nif which swiftlint >/dev/null; then\n    swiftlint lint\nelse\n    echo \"warning: SwiftLint not installed\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CD21E8B028466E230001C1C0 /* Sources */ = {
@@ -147,14 +165,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		CD21E8BD28466E230001C1C0 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CD21E8BE28466E230001C1C0 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CD21E8C228466E250001C1C0 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -291,7 +301,6 @@
 				INFOPLIST_FILE = project3CodeOnly/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -318,7 +327,6 @@
 				INFOPLIST_FILE = project3CodeOnly/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

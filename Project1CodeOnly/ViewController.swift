@@ -18,6 +18,10 @@ class ViewController: UIViewController {
         title = "Storm view"
         navigationController?.navigationBar.prefersLargeTitles = true
 
+        let barButtonItemSymbol = UIImage(systemName: "star.circle.fill")
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: barButtonItemSymbol, style: .plain, target: self, action: #selector(recommendApp))
+
         let fileManager = FileManager.default
         guard let path = Bundle.main.resourcePath,
               let items = try? fileManager.contentsOfDirectory(atPath: path),
@@ -72,5 +76,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         viewCtrl.pictureAmount = pictures.count
         viewCtrl.selectedImage = pictures[indexPath.row]
         viewCtrl.selectedImageIndex = pictures.firstIndex(of: pictures[indexPath.row])!
+    }
+}
+
+extension ViewController {
+    @objc func recommendApp() {
+
     }
 }

@@ -53,10 +53,13 @@ extension ViewController {
         button1.layer.borderColor = UIColor.lightGray.cgColor
         button1.tag = 0
         button1.translatesAutoresizingMaskIntoConstraints = false
-        button1.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        button1.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
-        button1.widthAnchor.constraint(equalToConstant: 200).isActive = true
-        button1.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        NSLayoutConstraint.activate([
+            button1.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            button1.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
+            button1.widthAnchor.constraint(equalToConstant: 200),
+            button1.heightAnchor.constraint(equalToConstant: 100)
+        ])
+
         button1.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
     }
 
@@ -67,10 +70,13 @@ extension ViewController {
         button2.layer.borderColor = UIColor.lightGray.cgColor
         button2.tag = 1
         button2.translatesAutoresizingMaskIntoConstraints = false
-        button2.widthAnchor.constraint(equalToConstant: 200).isActive = true
-        button2.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        button2.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        button2.topAnchor.constraint(equalTo: button1.bottomAnchor, constant: 40).isActive = true
+        NSLayoutConstraint.activate([
+            button2.widthAnchor.constraint(equalToConstant: 200),
+            button2.heightAnchor.constraint(equalToConstant: 100),
+            button2.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            button2.topAnchor.constraint(equalTo: button1.bottomAnchor, constant: 40)
+        ])
+
         button2.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
     }
 
@@ -81,10 +87,13 @@ extension ViewController {
         button3.layer.borderColor = UIColor.lightGray.cgColor
         button3.tag = 2
         button3.translatesAutoresizingMaskIntoConstraints = false
-        button3.widthAnchor.constraint(equalToConstant: 200).isActive = true
-        button3.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        button3.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        button3.topAnchor.constraint(equalTo: button2.bottomAnchor, constant: 40).isActive = true
+        NSLayoutConstraint.activate([
+            button3.widthAnchor.constraint(equalToConstant: 200),
+            button3.heightAnchor.constraint(equalToConstant: 100),
+            button3.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            button3.topAnchor.constraint(equalTo: button2.bottomAnchor, constant: 40)
+        ])
+
         button3.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
     }
 }

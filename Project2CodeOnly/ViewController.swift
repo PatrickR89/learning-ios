@@ -28,7 +28,18 @@ class ViewController: UIViewController {
         view.addSubview(button3)
         modifyButton3()
 
-        countries += ["estonia", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us"]
+        countries += ["estonia",
+                      "france",
+                      "germany",
+                      "ireland",
+                      "italy",
+                      "monaco",
+                      "nigeria",
+                      "poland",
+                      "russia",
+                      "spain",
+                      "uk",
+                      "us"]
         askQuestion()
     }
 }
@@ -101,7 +112,9 @@ extension ViewController {
             score -= 1
         }
 
-        let alertController = UIAlertController(title: title, message: "Your current score is: \(score)", preferredStyle: .alert)
+        let alertController = UIAlertController(title: title,
+                                                message: "Your current score is: \(score)",
+                                                preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
 
         present(alertController, animated: true)

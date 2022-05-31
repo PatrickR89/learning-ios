@@ -39,7 +39,6 @@ class DetailViewController: UIViewController {
             return "Nothing!"
         }
         return "Image \(index + 1) of \(amount)"
-
     }
 
     @objc func shareImage() {

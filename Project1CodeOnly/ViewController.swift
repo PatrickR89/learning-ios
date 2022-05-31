@@ -74,6 +74,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         cell.label.text = pictures[indexPath.row]
         return cell
     }
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let viewCtrl = DetailViewController()
         self.navigationController?.pushViewController(viewCtrl, animated: false)

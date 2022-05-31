@@ -18,6 +18,13 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         title = setTitle()
 
+        let rightBarButtonSymbol = UIImage(systemName: "square.and.arrow.up.fill")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: rightBarButtonSymbol,
+            style: .plain,
+            target: self,
+            action: #selector(shareImage))
+
         if let imageToLoad = selectedImage {
             imageView.image = UIImage(named: imageToLoad)
             view.addSubview(imageView)
@@ -32,6 +39,10 @@ class DetailViewController: UIViewController {
             return "Nothing!"
         }
         return "Image \(index + 1) of \(amount)"
+
+    }
+
+    @objc func shareImage() {
 
     }
 

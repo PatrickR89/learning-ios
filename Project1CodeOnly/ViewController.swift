@@ -20,7 +20,11 @@ class ViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
 
         let fileManager = FileManager.default
-        let path = Bundle.main.resourcePath!
+        guard let path = Bundle.main.resourcePath,
+              let items = try? fileManager.contentsOfDirectory(atPath: path),
+              items.count > 0 else {
+            return
+        }
 
         if let items = try? fileManager.contentsOfDirectory(atPath: path) {
             for item in items {

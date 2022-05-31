@@ -30,9 +30,11 @@ class PictureCell: UITableViewCell {
 
     func setLabelConstraints () {
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12).isActive = true
-        label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12).isActive = true
-        label.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        NSLayoutConstraint.activate([
+            label.centerYAnchor.constraint(equalTo: centerYAnchor),
+            label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
+            label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
+            label.heightAnchor.constraint(equalToConstant: 40)
+        ])
     }
 }

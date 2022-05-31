@@ -20,7 +20,11 @@ class ViewController: UIViewController {
 
         let barButtonItemSymbol = UIImage(systemName: "star.circle.fill")
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: barButtonItemSymbol, style: .plain, target: self, action: #selector(recommendApp))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: barButtonItemSymbol,
+            style: .plain,
+            target: self,
+            action: #selector(recommendApp))
 
         let fileManager = FileManager.default
         guard let path = Bundle.main.resourcePath,
@@ -81,6 +85,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension ViewController {
     @objc func recommendApp() {
+        let recommendAppString = "I recommend this application"
+        let activityController = UIActivityViewController(
+            activityItems: [recommendAppString],
+            applicationActivities: [])
 
+        activityController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        present(activityController, animated: true)
     }
 }

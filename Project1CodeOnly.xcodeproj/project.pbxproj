@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CD21E85F283D17AF0001C1C0 /* PictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD21E85E283D17AF0001C1C0 /* PictureCell.swift */; };
-		CD21E861283D1C2A0001C1C0 /* UIViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD21E860283D1C2A0001C1C0 /* UIViewExt.swift */; };
+		CD21E861283D1C2A0001C1C0 /* UIView+Pinning.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD21E860283D1C2A0001C1C0 /* UIView+Pinning.swift */; };
 		CD21E863283D34450001C1C0 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD21E862283D34450001C1C0 /* DetailViewController.swift */; };
 		CD9508A1283CFFEE00EE9851 /* nssl0049.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CD950897283CFFEE00EE9851 /* nssl0049.jpg */; };
 		CD9508A2283CFFEE00EE9851 /* nssl0046.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CD950898283CFFEE00EE9851 /* nssl0046.jpg */; };
@@ -29,7 +29,7 @@
 
 /* Begin PBXFileReference section */
 		CD21E85E283D17AF0001C1C0 /* PictureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCell.swift; sourceTree = "<group>"; };
-		CD21E860283D1C2A0001C1C0 /* UIViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExt.swift; sourceTree = "<group>"; };
+		CD21E860283D1C2A0001C1C0 /* UIView+Pinning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Pinning.swift"; sourceTree = "<group>"; };
 		CD21E862283D34450001C1C0 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		CD950897283CFFEE00EE9851 /* nssl0049.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0049.jpg; sourceTree = "<group>"; };
 		CD950898283CFFEE00EE9851 /* nssl0046.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0046.jpg; sourceTree = "<group>"; };
@@ -105,7 +105,7 @@
 				CDF0AA23283C06F60086C99E /* Info.plist */,
 				CD950896283CFFEE00EE9851 /* Content */,
 				CD21E85E283D17AF0001C1C0 /* PictureCell.swift */,
-				CD21E860283D1C2A0001C1C0 /* UIViewExt.swift */,
+				CD21E860283D1C2A0001C1C0 /* UIView+Pinning.swift */,
 				CD21E862283D34450001C1C0 /* DetailViewController.swift */,
 			);
 			path = Project1CodeOnly;
@@ -213,7 +213,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD21E861283D1C2A0001C1C0 /* UIViewExt.swift in Sources */,
+				CD21E861283D1C2A0001C1C0 /* UIView+Pinning.swift in Sources */,
 				CDF0AA1A283C06F50086C99E /* ViewController.swift in Sources */,
 				CDF0AA16283C06F50086C99E /* AppDelegate.swift in Sources */,
 				CD21E85F283D17AF0001C1C0 /* PictureCell.swift in Sources */,

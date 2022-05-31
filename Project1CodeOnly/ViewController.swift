@@ -10,8 +10,7 @@ import UIKit
 class ViewController: UIViewController {
 
     var pictures = [String]()
-    var detailVC = DetailViewController()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let tableView = UITableView()
@@ -61,17 +60,17 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      guard let cell = tableView.dequeueReusableCell(withIdentifier: "PictureCell") as? PictureCell else {
-        fatalError("Wrong cell type")
-      }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PictureCell") as? PictureCell else {
+            fatalError("Wrong cell type")
+        }
         cell.label.text = pictures[indexPath.row]
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-         let viewCtrl = DetailViewController()
+        let viewCtrl = DetailViewController()
         self.navigationController?.pushViewController(viewCtrl, animated: false)
-      viewCtrl.pictureAmount = pictures.count
-      viewCtrl.selectedImage = pictures[indexPath.row]
-      viewCtrl.selectedImageIndex = pictures.firstIndex(of: pictures[indexPath.row])!
+        viewCtrl.pictureAmount = pictures.count
+        viewCtrl.selectedImage = pictures[indexPath.row]
+        viewCtrl.selectedImageIndex = pictures.firstIndex(of: pictures[indexPath.row])!
     }
 }

@@ -27,11 +27,11 @@ class DetailViewController: UIViewController {
         }
     }
     func setTitle () -> String {
-      guard let index = selectedImageIndex,
-            let amount = pictureAmount else {
-        return "Nothing!"
-      }
-         return "Image \(index + 1) of \(amount)"
+        guard let index = selectedImageIndex,
+              let amount = pictureAmount else {
+            return "Nothing!"
+        }
+        return "Image \(index + 1) of \(amount)"
 
     }
 

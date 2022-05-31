@@ -43,7 +43,19 @@ class DetailViewController: UIViewController {
     }
 
     @objc func shareImage() {
+        guard let imageTitle = selectedImage else {
+            print("No title")
+            return
+        }
 
+        guard let image = imageView.image?.jpegData(compressionQuality: 0.8) else {
+            print("No image")
+            return
+        }
+
+        let activityController = UIActivityViewController(activityItems: [image, imageTitle], applicationActivities: [])
+        activityController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        present(activityController, animated: true)
     }
 
     override func viewWillAppear(_ animated: Bool) {

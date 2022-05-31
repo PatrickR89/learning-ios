@@ -93,7 +93,7 @@ extension ViewController {
         title = countries[correctAnswer].uppercased()
     }
 
-    @objc func buttonAction(_ sender: UIButton!){
+    @objc func buttonAction(_ sender: UIButton!) {
         var title: String
 
         if sender.tag == correctAnswer {
@@ -104,10 +104,10 @@ extension ViewController {
             score -= 1
         }
 
-        let ac = UIAlertController(title: title, message: "Your current score is: \(score)", preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
+        let alertController = UIAlertController(title: title, message: "Your current score is: \(score)", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
 
-        present(ac, animated: true)
+        present(alertController, animated: true)
     }
 
 }

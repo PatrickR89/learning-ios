@@ -10,11 +10,11 @@ import UIKit
 class ViewController: UIViewController {
 
     var pictures = [String]()
-    var tableView = UITableView()
     var detailVC = DetailViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tableView = UITableView()
         configureTableView()
         title = "Storm view"
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -22,37 +22,37 @@ class ViewController: UIViewController {
         let fileManager = FileManager.default
         let path = Bundle.main.resourcePath!
 
-      if let items = try? fileManager.contentsOfDirectory(atPath: path) {
-        for item in items {
-            if item.hasPrefix("nssl") {
-                pictures.append(item)
+        if let items = try? fileManager.contentsOfDirectory(atPath: path) {
+            for item in items {
+                if item.hasPrefix("nssl") {
+                    pictures.append(item)
+                }
             }
         }
-      }
 
         pictures.sort()
         print(pictures)
 
         view.backgroundColor = .cyan
-    }
 
-    func configureTableView() {
-        view.addSubview(tableView)
-        setTableViewDelegates()
-        tableView.rowHeight = 50
-        tableView.register(PictureCell.self, forCellReuseIdentifier: "PictureCell")
+        func configureTableView() {
+            view.addSubview(tableView)
+            setTableViewDelegates()
+            tableView.rowHeight = 50
+            tableView.register(PictureCell.self, forCellReuseIdentifier: "PictureCell")
 
-        tableView.pin(to: view)
-    }
+            tableView.pin(to: view)
+        }
 
-    func setTableViewDelegates() {
-        tableView.delegate = self
-        tableView.dataSource = self
-    }
+        func setTableViewDelegates() {
+            tableView.delegate = self
+            tableView.dataSource = self
+        }
 
-    func addDetailVC() {
-        addChild(detailVC)
-        view.addSubview(detailVC.view)
+        func addDetailVC() {
+            addChild(detailVC)
+            view.addSubview(detailVC.view)
+        }
     }
 }
 

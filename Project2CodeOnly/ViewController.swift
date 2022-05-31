@@ -8,11 +8,11 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
+
     let button1 = UIButton(type: .custom)
     let button2 = UIButton(type: .custom)
     let button3 = UIButton(type: .custom)
-    
+
     var countries = [String]()
     var score = 0
     var correctAnswer = 0
@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
+
         view.addSubview(button1)
         modifyButton1()
         view.addSubview(button2)
@@ -30,16 +30,13 @@ class ViewController: UIViewController {
 
         countries += ["estonia", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us"]
         askQuestion()
-
     }
-    
-
 }
 
 // MARK: Buttons 1 - 3 implementation
 
 extension ViewController {
-    func modifyButton1(){
+    func modifyButton1() {
         button1.setTitle("", for: .normal)
         button1.layer.borderWidth = 1
         button1.layer.borderColor = UIColor.lightGray.cgColor
@@ -52,7 +49,7 @@ extension ViewController {
         button1.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
     }
 
-    func modifyButton2(){
+    func modifyButton2() {
         button2.setTitle("", for: .normal)
         button2.backgroundColor = .green
         button2.layer.borderWidth = 1

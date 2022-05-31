@@ -12,7 +12,6 @@
 		CD21E895283E5D580001C1C0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD21E894283E5D580001C1C0 /* ViewController.swift */; };
 		CD21E89A283E5D5A0001C1C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD21E899283E5D5A0001C1C0 /* Assets.xcassets */; };
 		CD21E89D283E5D5A0001C1C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD21E89B283E5D5A0001C1C0 /* LaunchScreen.storyboard */; };
-		CD21E8A5283E60280001C1C0 /* navController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD21E8A4283E60280001C1C0 /* navController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +22,6 @@
 		CD21E899283E5D5A0001C1C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD21E89C283E5D5A0001C1C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CD21E89E283E5D5A0001C1C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CD21E8A4283E60280001C1C0 /* navController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +60,6 @@
 				CD21E899283E5D5A0001C1C0 /* Assets.xcassets */,
 				CD21E89B283E5D5A0001C1C0 /* LaunchScreen.storyboard */,
 				CD21E89E283E5D5A0001C1C0 /* Info.plist */,
-				CD21E8A4283E60280001C1C0 /* navController.swift */,
 			);
 			path = Project2CodeOnly;
 			sourceTree = "<group>";
@@ -162,7 +159,6 @@
 				CD21E895283E5D580001C1C0 /* ViewController.swift in Sources */,
 				CD21E891283E5D580001C1C0 /* AppDelegate.swift in Sources */,
 				CD21E893283E5D580001C1C0 /* SceneDelegate.swift in Sources */,
-				CD21E8A5283E60280001C1C0 /* navController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

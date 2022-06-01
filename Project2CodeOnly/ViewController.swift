@@ -56,7 +56,6 @@ extension ViewController {
         button.backgroundColor = .white
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.lightGray.cgColor
-        button.tag = 2
         button.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             button.widthAnchor.constraint(equalToConstant: 200),

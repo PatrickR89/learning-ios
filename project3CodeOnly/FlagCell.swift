@@ -42,7 +42,7 @@ class FlagCell: UITableViewCell {
         func setImageConstraints() {
             cellImage.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
-                cellImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 2),
+                cellImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
                 cellImage.centerYAnchor.constraint(equalTo: centerYAnchor),
                 cellImage.widthAnchor.constraint(equalToConstant: 50),
                 cellImage.heightAnchor.constraint(equalToConstant: 25)

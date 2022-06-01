@@ -64,6 +64,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             fatalError("Wrong cell type")
         }
         tableCell.label.text = countries[indexPath.row]
+        tableCell.cellImage.image = UIImage(named: countries[indexPath.row])
         return tableCell
     }
 

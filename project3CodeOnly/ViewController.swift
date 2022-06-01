@@ -71,4 +71,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return countries.count
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let viewSingle = DetailViewController()
+        self.navigationController?.pushViewController(viewSingle, animated: true)
+        viewSingle.selectedImage = countries[indexPath.row]
+    }
 }

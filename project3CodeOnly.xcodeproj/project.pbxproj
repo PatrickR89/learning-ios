@@ -13,6 +13,7 @@
 		CD21E8C128466E250001C1C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD21E8C028466E250001C1C0 /* Assets.xcassets */; };
 		CD21E8C428466E250001C1C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD21E8C228466E250001C1C0 /* LaunchScreen.storyboard */; };
 		CD21E8CF284721510001C1C0 /* FlagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD21E8CE284721510001C1C0 /* FlagCell.swift */; };
+		CD21E8D128472D2F0001C1C0 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD21E8D028472D2F0001C1C0 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		CD21E8C328466E250001C1C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CD21E8C528466E250001C1C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD21E8CE284721510001C1C0 /* FlagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagCell.swift; sourceTree = "<group>"; };
+		CD21E8D028472D2F0001C1C0 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				CD21E8C228466E250001C1C0 /* LaunchScreen.storyboard */,
 				CD21E8C528466E250001C1C0 /* Info.plist */,
 				CD21E8CE284721510001C1C0 /* FlagCell.swift */,
+				CD21E8D028472D2F0001C1C0 /* DetailViewController.swift */,
 			);
 			path = project3CodeOnly;
 			sourceTree = "<group>";
@@ -161,6 +164,7 @@
 			files = (
 				CD21E8BC28466E230001C1C0 /* ViewController.swift in Sources */,
 				CD21E8B828466E230001C1C0 /* AppDelegate.swift in Sources */,
+				CD21E8D128472D2F0001C1C0 /* DetailViewController.swift in Sources */,
 				CD21E8BA28466E230001C1C0 /* SceneDelegate.swift in Sources */,
 				CD21E8CF284721510001C1C0 /* FlagCell.swift in Sources */,
 			);

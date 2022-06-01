@@ -22,6 +22,9 @@ class FlagCell: UITableViewCell {
         setLabelConstraints()
         setImageConstraints()
 
+        cellImage.layer.borderWidth = 0.5
+        cellImage.layer.borderColor = UIColor.black.cgColor
+
         func configureLabel() {
             label.numberOfLines = 0
             label.adjustsFontSizeToFitWidth = true

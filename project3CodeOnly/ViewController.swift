@@ -63,7 +63,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         guard let tableCell = tableView.dequeueReusableCell(withIdentifier: "FlagCell") as? FlagCell else {
             fatalError("Wrong cell type")
         }
-        tableCell.label.text = countries[indexPath.row]
+        tableCell.label.text = countries[indexPath.row].uppercased()
         tableCell.cellImage.image = UIImage(named: countries[indexPath.row])
         return tableCell
     }

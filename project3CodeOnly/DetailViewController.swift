@@ -38,7 +38,16 @@ class DetailViewController: UIViewController {
                 countryName.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 25)
             ])
         }
+
+        let barButtonItemSymbol = UIImage(systemName: "paperplane.fill")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: barButtonItemSymbol,
+            style: .plain,
+            target: self,
+            action: #selector(shareFlag))
     }
+
+    @objc func shareFlag() {}
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

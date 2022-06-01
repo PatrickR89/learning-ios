@@ -16,7 +16,6 @@ class ViewController: UIViewController {
 
         title = "Countries"
         let tableView = UITableView()
-
         countries += [
             "estonia",
             "france",
@@ -41,7 +40,6 @@ class ViewController: UIViewController {
             tableView.register(FlagCell.self, forCellReuseIdentifier: "FlagCell")
 
             tableView.translatesAutoresizingMaskIntoConstraints = false
-
             NSLayoutConstraint.activate([
                 tableView.topAnchor.constraint(equalTo: view.topAnchor),
                 tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -63,6 +61,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         guard let tableCell = tableView.dequeueReusableCell(withIdentifier: "FlagCell") as? FlagCell else {
             fatalError("Wrong cell type")
         }
+
         tableCell.label.text = countries[indexPath.row].uppercased()
         tableCell.cellImage.image = UIImage(named: countries[indexPath.row])
         return tableCell

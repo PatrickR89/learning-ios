@@ -47,7 +47,23 @@ class DetailViewController: UIViewController {
             action: #selector(shareFlag))
     }
 
-    @objc func shareFlag() {}
+    @objc func shareFlag() {
+        guard let flagName = selectedImage else {
+            print("Flag name missing")
+            return
+        }
+
+        guard let flagImage = imageView.image?.jpegData(compressionQuality: 0.8) else {
+            print("Flag image missing")
+            return
+        }
+
+        let activityController = UIActivityViewController(
+            activityItems: [flagImage, flagName],
+            applicationActivities: [])
+        activityController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        present(activityController, animated: true)
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

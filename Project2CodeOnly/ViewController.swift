@@ -30,7 +30,6 @@ class ViewController: UIViewController {
         view.addSubview(button3)
         customizeButton(button3)
 
-
         countries += ["estonia",
                       "france",
                       "germany",

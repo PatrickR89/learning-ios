@@ -38,7 +38,7 @@ class ViewController: UIViewController {
             view.addSubview(tableView)
             setTableViewDelegates()
             tableView.rowHeight = 50
-            tableView.register(UITableViewCell.self, forCellReuseIdentifier: "FlagCell")
+            tableView.register(FlagCell.self, forCellReuseIdentifier: "FlagCell")
 
             tableView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -60,10 +60,10 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let tableCell = tableView.dequeueReusableCell(withIdentifier: "FlagCell") else {
+        guard let tableCell = tableView.dequeueReusableCell(withIdentifier: "FlagCell") as? FlagCell else {
             fatalError("Wrong cell type")
         }
-        tableCell.textLabel?.text = countries[indexPath.row]
+        tableCell.label.text = countries[indexPath.row]
         return tableCell
     }
 

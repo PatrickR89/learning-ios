@@ -20,37 +20,39 @@ class FlagCell: UITableViewCell {
 
         configureLabel()
         setLabelConstraints()
-        setImageConstraints()
-
-        cellImage.layer.borderWidth = 0.5
-        cellImage.layer.borderColor = UIColor.black.cgColor
-
-        func configureLabel() {
-            label.numberOfLines = 0
-            label.adjustsFontSizeToFitWidth = true
-        }
-
-        func setLabelConstraints() {
-            label.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                label.centerYAnchor.constraint(equalTo: centerYAnchor),
-                label.leadingAnchor.constraint(equalTo: cellImage.trailingAnchor, constant: 5),
-                label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -1)
-            ])
-        }
-
-        func setImageConstraints() {
-            cellImage.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                cellImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
-                cellImage.centerYAnchor.constraint(equalTo: centerYAnchor),
-                cellImage.widthAnchor.constraint(equalToConstant: 50),
-                cellImage.heightAnchor.constraint(equalToConstant: 25)
-            ])
-        }
+        configImage()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension FlagCell {
+
+    func configureLabel() {
+        label.numberOfLines = 0
+        label.adjustsFontSizeToFitWidth = true
+    }
+
+    func setLabelConstraints() {
+        label.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            label.centerYAnchor.constraint(equalTo: centerYAnchor),
+            label.leadingAnchor.constraint(equalTo: cellImage.trailingAnchor, constant: 5),
+            label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -1)
+        ])
+    }
+
+    func configImage() {
+        cellImage.layer.borderWidth = 0.5
+        cellImage.layer.borderColor = UIColor.black.cgColor
+        cellImage.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            cellImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
+            cellImage.centerYAnchor.constraint(equalTo: centerYAnchor),
+            cellImage.widthAnchor.constraint(equalToConstant: 50),
+            cellImage.heightAnchor.constraint(equalToConstant: 25)
+        ])
     }
 }

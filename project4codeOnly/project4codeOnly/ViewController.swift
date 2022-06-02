@@ -58,9 +58,9 @@ class ViewController: UIViewController, WKNavigationDelegate {
         }
         webView?.load(URLRequest(url: url))
         webView?.allowsBackForwardNavigationGestures = true
+
         if let webView = webView {
             observe(webView: webView)
-
         }
     }
 

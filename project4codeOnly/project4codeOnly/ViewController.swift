@@ -13,6 +13,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
     var webView: WKWebView?
     var progressView: UIProgressView?
     var progressButton: UIBarButtonItem?
+    var websites = ["www.apple.com", "www.hackingwithswift.com"]
 
     override func loadView() {
         webView = WKWebView()
@@ -49,7 +50,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
         toolbarItems = [progressButton ?? spacer, spacer, refresh]
         navigationController?.isToolbarHidden = false
 
-        guard let url = URL(string: "https://www.hackingwithswift.com") else {
+        guard let url = URL(string: "https://" + websites[1]) else {
             print("Website not available")
             return
         }
@@ -60,8 +61,11 @@ class ViewController: UIViewController, WKNavigationDelegate {
 
     @objc func openLinks() {
         let actionController = UIAlertController(title: "Open page", message: nil, preferredStyle: .actionSheet)
-        actionController.addAction(UIAlertAction(title: "www.apple.com", style: .default, handler: openPage))
-        actionController.addAction(UIAlertAction(title: "www.hackingwithswift.com", style: .default, handler: openPage))
+
+        for website in websites {
+            actionController.addAction(UIAlertAction(title: website, style: .default, handler: openPage))
+        }
+
         actionController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         actionController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
         present(actionController, animated: true)

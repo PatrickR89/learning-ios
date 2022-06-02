@@ -10,12 +10,13 @@ import UIKit
 class ViewController: UIViewController {
 
     var countries = [String]()
+    let tableView = UITableView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         title = "Countries"
-        let tableView = UITableView()
+
         countries += [
             "estonia",
             "france",
@@ -29,21 +30,18 @@ class ViewController: UIViewController {
             "spain",
             "uk",
             "us"]
-
-        configTableView(tableView: tableView)
+        view.addSubview(tableView)
+        configTableView()
         view.backgroundColor = .white
-
     }
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
-    func configTableView(tableView: UITableView) {
-        view.addSubview(tableView)
-        setTableViewDelegates(tableView: tableView)
+    func configTableView() {
+        setTableViewDelegates()
         tableView.rowHeight = 50
         tableView.register(FlagCell.self, forCellReuseIdentifier: "FlagCell")
-
         tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -53,7 +51,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         ])
     }
 
-    func setTableViewDelegates(tableView: UITableView) {
+    func setTableViewDelegates() {
         tableView.delegate = self
         tableView.dataSource = self
     }

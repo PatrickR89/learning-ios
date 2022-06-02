@@ -14,8 +14,13 @@ class ViewController: UIViewController, WKNavigationDelegate {
     var progressView: UIProgressView?
     var progressButton: UIBarButtonItem?
     var websites = ["www.apple.com", "www.hackingwithswift.com"]
-    @objc dynamic var currentProgress: Float = 0.0
     var kvoToken: NSKeyValueObservation?
+
+    var currentProgress: Float = 0.0 {
+      didSet {
+        progressView?.progress = currentProgress
+      }
+    }
 
     override func loadView() {
         webView = WKWebView()
@@ -93,7 +98,6 @@ class ViewController: UIViewController, WKNavigationDelegate {
         kvoToken = webView.observe(\.estimatedProgress, options: .new) { (_, change) in
             guard let newValue = change.newValue else {return}
             self.currentProgress = Float(newValue)
-            self.progressView?.progress = self.currentProgress
             }
     }
 

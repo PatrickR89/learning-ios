@@ -30,32 +30,33 @@ class ViewController: UIViewController {
             "uk",
             "us"]
 
-        configTableView()
+        configTableView(tableView: tableView)
         view.backgroundColor = .white
 
-        func configTableView() {
-            view.addSubview(tableView)
-            setTableViewDelegates()
-            tableView.rowHeight = 50
-            tableView.register(FlagCell.self, forCellReuseIdentifier: "FlagCell")
-
-            tableView.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                tableView.topAnchor.constraint(equalTo: view.topAnchor),
-                tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-                tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-            ])
-        }
-
-        func setTableViewDelegates() {
-            tableView.delegate = self
-            tableView.dataSource = self
-        }
     }
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
+
+    func configTableView(tableView: UITableView) {
+        view.addSubview(tableView)
+        setTableViewDelegates(tableView: tableView)
+        tableView.rowHeight = 50
+        tableView.register(FlagCell.self, forCellReuseIdentifier: "FlagCell")
+
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+    }
+
+    func setTableViewDelegates(tableView: UITableView) {
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let tableCell = tableView.dequeueReusableCell(withIdentifier: "FlagCell") as? FlagCell else {

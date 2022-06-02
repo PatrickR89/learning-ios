@@ -55,6 +55,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
         }
         webView?.load(URLRequest(url: url))
         webView?.allowsBackForwardNavigationGestures = true
+        webView?.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
     }
 
     @objc func openLinks() {
@@ -77,5 +78,16 @@ class ViewController: UIViewController, WKNavigationDelegate {
         }
 
         webView?.load(URLRequest(url: url))
+    }
+
+    override func observeValue(
+        forKeyPath keyPath: String?,
+        of object: Any?,
+        change: [NSKeyValueChangeKey: Any]?,
+        context: UnsafeMutableRawPointer?) {
+
+        if keyPath == "estimatedProgress" {
+            progressView?.progress = Float(webView?.estimatedProgress ?? 0)
+        }
     }
 }

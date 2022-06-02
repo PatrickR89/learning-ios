@@ -14,6 +14,8 @@ class ViewController: UIViewController, WKNavigationDelegate {
     var progressView: UIProgressView?
     var progressButton: UIBarButtonItem?
     var websites = ["www.apple.com", "www.hackingwithswift.com"]
+    @objc dynamic var currentProgress: Float = 0.0
+    var kvoToken: NSKeyValueObservation?
 
     override func loadView() {
         webView = WKWebView()
@@ -56,7 +58,10 @@ class ViewController: UIViewController, WKNavigationDelegate {
         }
         webView?.load(URLRequest(url: url))
         webView?.allowsBackForwardNavigationGestures = true
-        webView?.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
+        if let webView = webView {
+            observe(webView: webView)
+
+        }
     }
 
     @objc func openLinks() {
@@ -84,16 +89,16 @@ class ViewController: UIViewController, WKNavigationDelegate {
         webView?.load(URLRequest(url: url))
     }
 
-    override func observeValue(
-        forKeyPath keyPath: String?,
-        of object: Any?,
-        change: [NSKeyValueChangeKey: Any]?,
-        context: UnsafeMutableRawPointer?) {
-
-        if keyPath == "estimatedProgress" {
-            progressView?.progress = Float(webView?.estimatedProgress ?? 0)
+    func observe(webView: WKWebView) {
+        kvoToken = webView.observe(\.estimatedProgress, options: .new) { (_, change) in
+            self.currentProgress = Float(change.newValue!)
+            self.progressView?.progress = self.currentProgress
+            }
         }
-    }
+
+        deinit {
+            kvoToken?.invalidate()
+        }
 
     func webView(
         _ webView: WKWebView,

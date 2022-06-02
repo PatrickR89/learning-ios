@@ -20,6 +20,12 @@ class ViewController: UIViewController, WKNavigationDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .blue
+
+        guard let url = URL(string: "https://www.hackingwithswift.com") else {
+            print("Website not available")
+            return
+        }
+        webView?.load(URLRequest(url: url))
+        webView?.allowsBackForwardNavigationGestures = true
     }
 }

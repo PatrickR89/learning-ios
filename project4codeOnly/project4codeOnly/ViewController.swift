@@ -91,7 +91,8 @@ class ViewController: UIViewController, WKNavigationDelegate {
 
     func observe(webView: WKWebView) {
         kvoToken = webView.observe(\.estimatedProgress, options: .new) { (_, change) in
-            self.currentProgress = Float(change.newValue!)
+            guard let newValue = change.newValue else {return}
+            self.currentProgress = Float(newValue)
             self.progressView?.progress = self.currentProgress
             }
     }

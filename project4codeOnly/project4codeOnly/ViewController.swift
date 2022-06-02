@@ -94,11 +94,11 @@ class ViewController: UIViewController, WKNavigationDelegate {
             self.currentProgress = Float(change.newValue!)
             self.progressView?.progress = self.currentProgress
             }
-        }
+    }
 
-        deinit {
-            kvoToken?.invalidate()
-        }
+    deinit {
+        kvoToken?.invalidate()
+    }
 
     func webView(
         _ webView: WKWebView,

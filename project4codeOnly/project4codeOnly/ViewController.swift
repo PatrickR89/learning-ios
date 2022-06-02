@@ -27,6 +27,19 @@ class ViewController: UIViewController, WKNavigationDelegate {
             target: self,
             action: #selector(openLinks))
 
+        let spacer = UIBarButtonItem(
+            barButtonSystemItem: .flexibleSpace,
+            target: nil,
+            action: nil)
+
+        let refresh = UIBarButtonItem(
+            barButtonSystemItem: .refresh,
+            target: webView,
+            action: #selector(webView?.reload))
+
+        toolbarItems = [spacer, refresh]
+        navigationController?.isToolbarHidden = false
+
         guard let url = URL(string: "https://www.hackingwithswift.com") else {
             print("Website not available")
             return

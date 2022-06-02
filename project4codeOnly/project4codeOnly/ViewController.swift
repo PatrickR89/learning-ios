@@ -21,7 +21,11 @@ class ViewController: UIViewController, WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Open", style: .plain, target: self, action: #selector(openLinks))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "Open",
+            style: .plain,
+            target: self,
+            action: #selector(openLinks))
 
         guard let url = URL(string: "https://www.hackingwithswift.com") else {
             print("Website not available")

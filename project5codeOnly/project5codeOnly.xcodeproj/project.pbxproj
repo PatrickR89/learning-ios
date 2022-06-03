@@ -74,6 +74,7 @@
 				CD21E97A2849EE6E0001C1C0 /* Sources */,
 				CD21E97B2849EE6E0001C1C0 /* Frameworks */,
 				CD21E97C2849EE6E0001C1C0 /* Resources */,
+				CD21E9952849EF1E0001C1C0 /* Lint Sources */,
 			);
 			buildRules = (
 			);
@@ -128,6 +129,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CD21E9952849EF1E0001C1C0 /* Lint Sources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Lint Sources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint lint\nelse\necho \"warning: SwiftLint not installed\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CD21E97A2849EE6E0001C1C0 /* Sources */ = {

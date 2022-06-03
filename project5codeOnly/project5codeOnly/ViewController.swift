@@ -15,7 +15,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         configTableView()
 
         let inputSymbol = UIImage(systemName: "character.cursor.ibeam")
@@ -26,6 +25,7 @@ class ViewController: UIViewController {
             style: .plain,
             target: self,
             action: #selector(promptForAnswer))
+
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: restartSymbol,
             style: .plain,
@@ -43,8 +43,6 @@ class ViewController: UIViewController {
         }
 
         startGame()
-
-        view.backgroundColor = .gray
     }
 }
 
@@ -96,6 +94,7 @@ extension ViewController {
             guard let answer = alertController?.textFields?[0].text?.lowercased() else {return}
             self?.submit(answer)
         }
+
         alertController.addAction(submitAction)
         present(alertController, animated: true)
     }
@@ -108,29 +107,37 @@ extension ViewController {
                 if isReal(word: tempAnswer) {
                     if isLongEnough(word: tempAnswer) {
                         if isNewWord(word: tempAnswer) {
-                    usedWords.insert(answer, at: 0)
+                            usedWords.insert(answer, at: 0)
 
-                    let indexPath = IndexPath(row: 0, section: 0)
-                    tableView.insertRows(at: [indexPath], with: .automatic)
-                        return
+                            let indexPath = IndexPath(row: 0, section: 0)
+                            tableView.insertRows(at: [indexPath], with: .automatic)
+                            return
                         } else {
-                             errorHandling(errorTitle: "\(tempAnswer) is starter word",
-                                          errorMessage: "Cannot use starter word")
+                             errorHandling(
+                                errorTitle: "\(tempAnswer) is starter word",
+                                errorMessage: "Cannot use starter word")
                         }
                     } else {
-                        errorHandling(errorTitle: "Word too short",
-                                      errorMessage: "Enter a word at least 3 characters long")
+                        errorHandling(
+                            errorTitle: "Word too short",
+                            errorMessage: "Enter a word at least 3 characters long")
                     }
                 } else {
-                    errorHandling(errorTitle: "Word not recognized", errorMessage: "Use real valid word")
+                    errorHandling(
+                        errorTitle: "Word not recognized",
+                        errorMessage: "Use real valid word")
                 }
             } else {
-                errorHandling(errorTitle: "Word already used", errorMessage: "Enter a new original word")
+                errorHandling(
+                    errorTitle: "Word already used",
+                    errorMessage: "Enter a new original word")
             }
         } else {
             guard let title = title else {return}
 
-            errorHandling(errorTitle: "Word not possible", errorMessage: "Cannot spell that from \(title)")
+            errorHandling(
+                errorTitle: "Word not possible",
+                errorMessage: "Cannot spell that from \(title)")
         }
     }
 

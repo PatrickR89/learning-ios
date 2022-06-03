@@ -92,6 +92,28 @@ extension ViewController {
     }
 
     func submit(_ answer: String) {
+        let tempAnswer = answer.lowercased()
+        if isPossible(word: tempAnswer) {
+            if isOriginal(word: tempAnswer) {
+                if isReal(word: tempAnswer) {
+                    usedWords.insert(answer, at: 0)
 
+                    let indexPath = IndexPath(row: 0, section: 0)
+                    tableView.insertRows(at: [indexPath], with: .automatic)
+                }
+            }
+        }
+    }
+
+    func isPossible(word: String) -> Bool {
+        return true
+    }
+
+    func isOriginal(word: String) -> Bool {
+        return true
+    }
+
+    func isReal(word: String) -> Bool {
+        return true
     }
 }

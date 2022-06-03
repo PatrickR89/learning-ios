@@ -11,11 +11,17 @@ class ViewController: UIViewController {
 
     var allWords = [String]()
     var usedWords = [String]()
+    let tableView = UITableView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tableView = UITableView()
+
         configTableView()
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .add,
+            target: self,
+            action: #selector(promptForAnswer))
 
         if let startWordURL = Bundle.main.url(forResource: "start", withExtension: "txt") {
             if let startWords = try? String(contentsOf: startWordURL) {
@@ -30,7 +36,25 @@ class ViewController: UIViewController {
         startGame()
 
         view.backgroundColor = .gray
+    }
+}
 
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return usedWords.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Word") else {
+            fatalError("No cell")
+        }
+        cell.textLabel?.text = usedWords[indexPath.row]
+        return cell
+    }
+}
+
+extension ViewController {
     func startGame() {
         title = allWords.randomElement()
         usedWords.removeAll(keepingCapacity: true)
@@ -49,24 +73,15 @@ class ViewController: UIViewController {
         ])
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Word")
     }
+
     func configTableViewDelegate() {
         tableView.delegate = self
         tableView.dataSource = self
     }
-    }
-}
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return usedWords.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Word") else {
-            fatalError("No cell")
-        }
-        cell.textLabel?.text = usedWords[indexPath.row]
-        return cell
+    @objc func promptForAnswer() {
+        let alertController = UIAlertController(title: "Enter answer", message: nil, preferredStyle: .alert)
+        alertController.addTextField()
+        present(alertController, animated: true)
     }
 }

@@ -18,12 +18,17 @@ class ViewController: UIViewController {
 
         configTableView()
 
+        let inputSymbol = UIImage(systemName: "character.cursor.ibeam")
+        let restartSymbol = UIImage(systemName: "repeat")
+
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .add,
+            image: inputSymbol,
+            style: .plain,
             target: self,
             action: #selector(promptForAnswer))
         navigationItem.leftBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .refresh,
+            image: restartSymbol,
+            style: .plain,
             target: self,
             action: #selector(startGame))
 

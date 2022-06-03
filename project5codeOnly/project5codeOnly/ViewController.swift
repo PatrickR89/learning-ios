@@ -97,11 +97,16 @@ extension ViewController {
         if isPossible(word: tempAnswer) {
             if isOriginal(word: tempAnswer) {
                 if isReal(word: tempAnswer) {
+                    if isLongEnough(word: tempAnswer) {
                     usedWords.insert(answer, at: 0)
 
                     let indexPath = IndexPath(row: 0, section: 0)
                     tableView.insertRows(at: [indexPath], with: .automatic)
-                    return
+                        return
+                    } else {
+                        errorHandling(errorTitle: "Word too short",
+                                      errorMessage: "Enter a word at least 3 characters long")
+                    }
                 } else {
                     errorHandling(errorTitle: "Word not recognized", errorMessage: "Use real valid word")
                 }
@@ -146,6 +151,14 @@ extension ViewController {
             language: "en")
 
         return misspelledRange.location == NSNotFound
+    }
+
+    func isLongEnough(word: String) -> Bool {
+        if word.count < 3 {
+            return false
+        }
+
+        return true
     }
 
     func errorHandling(errorTitle: String, errorMessage: String) {

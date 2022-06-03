@@ -98,11 +98,16 @@ extension ViewController {
             if isOriginal(word: tempAnswer) {
                 if isReal(word: tempAnswer) {
                     if isLongEnough(word: tempAnswer) {
+                        if isNewWord(word: tempAnswer) {
                     usedWords.insert(answer, at: 0)
 
                     let indexPath = IndexPath(row: 0, section: 0)
                     tableView.insertRows(at: [indexPath], with: .automatic)
                         return
+                        } else {
+                             errorHandling(errorTitle: "\(tempAnswer) is starter word",
+                                          errorMessage: "Cannot use starter word")
+                        }
                     } else {
                         errorHandling(errorTitle: "Word too short",
                                       errorMessage: "Enter a word at least 3 characters long")
@@ -159,6 +164,10 @@ extension ViewController {
         }
 
         return true
+    }
+
+    func isNewWord(word: String) -> Bool {
+        return word != title
     }
 
     func errorHandling(errorTitle: String, errorMessage: String) {

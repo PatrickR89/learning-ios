@@ -82,6 +82,16 @@ extension ViewController {
     @objc func promptForAnswer() {
         let alertController = UIAlertController(title: "Enter answer", message: nil, preferredStyle: .alert)
         alertController.addTextField()
+
+        let submitAction = UIAlertAction(title: "Submit", style: .default) { [weak self, weak alertController] _ in
+            guard let answer = alertController?.textFields?[0].text else {return}
+            self?.submit(answer)
+        }
+        alertController.addAction(submitAction)
         present(alertController, animated: true)
+    }
+
+    func submit(_ answer: String) {
+
     }
 }

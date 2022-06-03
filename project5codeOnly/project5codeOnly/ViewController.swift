@@ -93,8 +93,6 @@ extension ViewController {
 
     func submit(_ answer: String) {
         let tempAnswer = answer.lowercased()
-        let errorTitle: String
-        let errorMessage: String
 
         if isPossible(word: tempAnswer) {
             if isOriginal(word: tempAnswer) {
@@ -105,23 +103,16 @@ extension ViewController {
                     tableView.insertRows(at: [indexPath], with: .automatic)
                     return
                 } else {
-                    errorTitle = "Word not recognized"
-                    errorMessage = "Use real valid word"
+                    errorHandling(errorTitle: "Word not recognized", errorMessage: "Use real valid word")
                 }
             } else {
-                errorTitle = "Word already used"
-                errorMessage = "Enter a new original word"
+                errorHandling(errorTitle: "Word already used", errorMessage: "Enter a new original word")
             }
         } else {
             guard let title = title else {return}
 
-            errorTitle = "Word not possible"
-            errorMessage = "Cannot spell that from \(title)"
+            errorHandling(errorTitle: "Word not possible", errorMessage: "Cannot spell that from \(title)")
         }
-
-        let errorController = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .alert)
-        errorController.addAction(UIAlertAction(title: "OK", style: .default))
-        present(errorController, animated: true)
     }
 
     func isPossible(word: String) -> Bool {
@@ -155,5 +146,11 @@ extension ViewController {
             language: "en")
 
         return misspelledRange.location == NSNotFound
+    }
+
+    func errorHandling(errorTitle: String, errorMessage: String) {
+        let errorController = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .alert)
+        errorController.addAction(UIAlertAction(title: "OK", style: .default))
+        present(errorController, animated: true)
     }
 }

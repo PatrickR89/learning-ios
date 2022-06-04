@@ -88,7 +88,7 @@ extension ViewController {
                 button.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
             ])
             button.tag = 2
-            
+
         default:
             print("Missing button id")
         }

@@ -64,22 +64,31 @@ extension ViewController {
 
         switch button {
         case button1:
-            button.topAnchor.constraint(lessThanOrEqualTo: view.topAnchor, constant: 100).isActive = true
-            button.heightAnchor.constraint(lessThanOrEqualToConstant: 100).isActive = true
-            button.widthAnchor.constraint(equalTo: button.heightAnchor, multiplier: 2).isActive = true
-            view.safeAreaLayoutGuide.topAnchor.constraint(lessThanOrEqualTo: button.topAnchor, constant: -20).isActive = true
+            NSLayoutConstraint.activate([
+                button.topAnchor.constraint(lessThanOrEqualTo: view.topAnchor, constant: 100),
+                button.heightAnchor.constraint(lessThanOrEqualToConstant: 100),
+                button.widthAnchor.constraint(equalTo: button.heightAnchor, multiplier: 2),
+                view.safeAreaLayoutGuide.topAnchor.constraint(lessThanOrEqualTo: button.topAnchor, constant: -20)
+            ])
             button.tag = 0
+
         case button2:
-            button.topAnchor.constraint(equalTo: button1.bottomAnchor, constant: 40).isActive = true
-            button.heightAnchor.constraint(equalTo: button1.heightAnchor).isActive = true
-            button.widthAnchor.constraint(equalTo: button.heightAnchor, multiplier: 2).isActive = true
+            NSLayoutConstraint.activate([
+                button.topAnchor.constraint(equalTo: button1.bottomAnchor, constant: 40),
+                button.heightAnchor.constraint(equalTo: button1.heightAnchor),
+                button.widthAnchor.constraint(equalTo: button.heightAnchor, multiplier: 2)
+            ])
             button.tag = 1
+
         case button3:
-            button.topAnchor.constraint(equalTo: button2.bottomAnchor, constant: 40).isActive = true
-            button.heightAnchor.constraint(equalTo: button1.heightAnchor).isActive = true
-            button.widthAnchor.constraint(equalTo: button.heightAnchor, multiplier: 2).isActive = true
-            button.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20).isActive = true
+            NSLayoutConstraint.activate([
+                button.topAnchor.constraint(equalTo: button2.bottomAnchor, constant: 40),
+                button.heightAnchor.constraint(equalTo: button1.heightAnchor),
+                button.widthAnchor.constraint(equalTo: button.heightAnchor, multiplier: 2),
+                button.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
+            ])
             button.tag = 2
+            
         default:
             print("Missing button id")
         }

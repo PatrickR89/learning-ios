@@ -113,29 +113,29 @@ extension ViewController {
                             tableView.insertRows(at: [indexPath], with: .automatic)
                             return
                         } else {
-                             errorHandling(
+                            handleError(
                                 errorTitle: "\(tempAnswer) is starter word",
                                 errorMessage: "Cannot use starter word")
                         }
                     } else {
-                        errorHandling(
+                        handleError(
                             errorTitle: "Word too short",
                             errorMessage: "Enter a word at least 3 characters long")
                     }
                 } else {
-                    errorHandling(
+                    handleError(
                         errorTitle: "Word not recognized",
                         errorMessage: "Use real valid word")
                 }
             } else {
-                errorHandling(
+                handleError(
                     errorTitle: "Word already used",
                     errorMessage: "Enter a new original word")
             }
         } else {
             guard let title = title else {return}
 
-            errorHandling(
+            handleError(
                 errorTitle: "Word not possible",
                 errorMessage: "Cannot spell that from \(title)")
         }
@@ -186,7 +186,7 @@ extension ViewController {
         return word != title
     }
 
-    func errorHandling(errorTitle: String, errorMessage: String) {
+    func handleError(errorTitle: String, errorMessage: String) {
         let errorController = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .alert)
         errorController.addAction(UIAlertAction(title: "OK", style: .default))
         present(errorController, animated: true)

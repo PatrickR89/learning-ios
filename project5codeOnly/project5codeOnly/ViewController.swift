@@ -102,43 +102,47 @@ extension ViewController {
     func submit(_ answer: String) {
         let tempAnswer = answer.lowercased()
 
-        if isPossible(word: tempAnswer) {
-            if isOriginal(word: tempAnswer) {
-                if isReal(word: tempAnswer) {
-                    if isLongEnough(word: tempAnswer) {
-                        if isNewWord(word: tempAnswer) {
-                            usedWords.insert(answer, at: 0)
-
-                            let indexPath = IndexPath(row: 0, section: 0)
-                            tableView.insertRows(at: [indexPath], with: .automatic)
-                            return
-                        } else {
-                            handleError(
-                                errorTitle: "\(tempAnswer) is starter word",
-                                errorMessage: "Cannot use starter word")
-                        }
-                    } else {
-                        handleError(
-                            errorTitle: "Word too short",
-                            errorMessage: "Enter a word at least 3 characters long")
-                    }
-                } else {
-                    handleError(
-                        errorTitle: "Word not recognized",
-                        errorMessage: "Use real valid word")
-                }
-            } else {
-                handleError(
-                    errorTitle: "Word already used",
-                    errorMessage: "Enter a new original word")
-            }
-        } else {
+        guard isPossible(word: tempAnswer) else {
             guard let title = title else {return}
 
             handleError(
                 errorTitle: "Word not possible",
                 errorMessage: "Cannot spell that from \(title)")
+            return
         }
+
+        guard isOriginal(word: tempAnswer) else {
+            handleError(
+                errorTitle: "Word already used",
+                errorMessage: "Enter a new original word")
+            return
+        }
+
+        guard isReal(word: tempAnswer) else {
+            handleError(
+                errorTitle: "Word not recognized",
+                errorMessage: "Use real valid word")
+            return
+        }
+
+        guard isLongEnough(word: tempAnswer) else {
+            handleError(
+                errorTitle: "Word too short",
+                errorMessage: "Enter a word at least 3 characters long")
+            return
+        }
+
+        guard isNewWord(word: tempAnswer) else {
+            handleError(
+                errorTitle: "\(tempAnswer) is starter word",
+                errorMessage: "Cannot use starter word")
+            return
+        }
+
+        usedWords.insert(answer, at: 0)
+        let indexPath = IndexPath(row: 0, section: 0)
+        tableView.insertRows(at: [indexPath], with: .automatic)
+        return
     }
 
     func isPossible(word: String) -> Bool {

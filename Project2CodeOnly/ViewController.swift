@@ -51,27 +51,34 @@ class ViewController: UIViewController {
 extension ViewController {
 
     func customizeButton(_ button: UIButton) {
+
         button.setTitle("", for: .normal)
         button.backgroundColor = .white
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.lightGray.cgColor
         button.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            button.widthAnchor.constraint(equalToConstant: 200),
-            button.heightAnchor.constraint(equalToConstant: 100),
             button.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
 
         switch button {
         case button1:
-            button.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
+            button.topAnchor.constraint(lessThanOrEqualTo: view.topAnchor, constant: 100).isActive = true
+            button.heightAnchor.constraint(lessThanOrEqualToConstant: 100).isActive = true
+            button.widthAnchor.constraint(equalTo: button.heightAnchor, multiplier: 2).isActive = true
+            view.safeAreaLayoutGuide.topAnchor.constraint(lessThanOrEqualTo: button.topAnchor, constant: -20).isActive = true
             button.tag = 0
         case button2:
             button.topAnchor.constraint(equalTo: button1.bottomAnchor, constant: 40).isActive = true
+            button.heightAnchor.constraint(equalTo: button1.heightAnchor).isActive = true
+            button.widthAnchor.constraint(equalTo: button.heightAnchor, multiplier: 2).isActive = true
             button.tag = 1
         case button3:
             button.topAnchor.constraint(equalTo: button2.bottomAnchor, constant: 40).isActive = true
+            button.heightAnchor.constraint(equalTo: button1.heightAnchor).isActive = true
+            button.widthAnchor.constraint(equalTo: button.heightAnchor, multiplier: 2).isActive = true
+            button.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20).isActive = true
             button.tag = 2
         default:
             print("Missing button id")

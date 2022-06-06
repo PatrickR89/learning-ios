@@ -15,6 +15,7 @@
 		CDEC142F284E28CC00F6FBA4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC142E284E28CC00F6FBA4 /* TabBarController.swift */; };
 		CDEC1431284E3C1D00F6FBA4 /* Petition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC1430284E3C1D00F6FBA4 /* Petition.swift */; };
 		CDEC1433284E3C5500F6FBA4 /* Petitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC1432284E3C5500F6FBA4 /* Petitions.swift */; };
+		CDEC1435284E451700F6FBA4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC1434284E451700F6FBA4 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		CDEC142E284E28CC00F6FBA4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		CDEC1430284E3C1D00F6FBA4 /* Petition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Petition.swift; sourceTree = "<group>"; };
 		CDEC1432284E3C5500F6FBA4 /* Petitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Petitions.swift; sourceTree = "<group>"; };
+		CDEC1434284E451700F6FBA4 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				CDEC141D284E276800F6FBA4 /* ViewController.swift */,
 				CDEC1430284E3C1D00F6FBA4 /* Petition.swift */,
 				CDEC1432284E3C5500F6FBA4 /* Petitions.swift */,
+				CDEC1434284E451700F6FBA4 /* DetailViewController.swift */,
 				CDEC1422284E276A00F6FBA4 /* Assets.xcassets */,
 				CDEC1424284E276A00F6FBA4 /* LaunchScreen.storyboard */,
 				CDEC1427284E276A00F6FBA4 /* Info.plist */,
@@ -171,6 +174,7 @@
 				CDEC142F284E28CC00F6FBA4 /* TabBarController.swift in Sources */,
 				CDEC141A284E276800F6FBA4 /* AppDelegate.swift in Sources */,
 				CDEC141C284E276800F6FBA4 /* SceneDelegate.swift in Sources */,
+				CDEC1435284E451700F6FBA4 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

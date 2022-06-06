@@ -54,6 +54,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
         return cell
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailView = DetailViewController()
+        detailView.singleItem = petitions[indexPath.row]
+        navigationController?.pushViewController(detailView, animated: true)
+    }
 }
 
 extension ViewController {

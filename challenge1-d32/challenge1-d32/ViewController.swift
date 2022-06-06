@@ -33,6 +33,7 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Item") else {
             fatalError("No cell")
@@ -40,8 +41,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.text = shoppingItems[indexPath.row]
         return cell
     }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return shoppingItems.count
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        handleRemoveItem(indexPath)
     }
 }
 
@@ -89,5 +95,27 @@ extension ViewController {
     @objc func cleanList() {
         shoppingItems.removeAll(keepingCapacity: true)
         tableView.reloadData()
+    }
+
+    func handleRemoveItem(_ indexPath: IndexPath) {
+
+        let alertController = UIAlertController(
+            title: "Remove",
+            message: "Do you want to remove shopping item?",
+            preferredStyle: .alert)
+
+        let removeItem = UIAlertAction(
+            title: "Remove",
+            style: .default) {[weak self] _ in
+            self?.shoppingItems.remove(at: indexPath[1])
+            self?.tableView.reloadData()
+        }
+
+        let handleCancel = UIAlertAction(title: "Cancel", style: .cancel)
+
+        alertController.addAction(removeItem)
+        alertController.addAction(handleCancel)
+
+        present(alertController, animated: true)
     }
 }

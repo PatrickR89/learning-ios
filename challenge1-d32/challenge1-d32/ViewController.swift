@@ -10,12 +10,19 @@ import UIKit
 class ViewController: UIViewController {
 
     let tableView = UITableView()
+    var shoppingItems = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .red
         title = "Shopping list"
         configTableView()
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "plus"),
+            style: .plain,
+            target: self,
+            action: #selector(addItem))
     }
 }
 
@@ -27,7 +34,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return shoppingItems.count
     }
 }
 
@@ -47,5 +54,8 @@ extension ViewController {
         ])
 
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Item")
+    }
+
+    @objc func addItem() {
     }
 }

@@ -14,7 +14,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
+
         title = "Shopping list"
         configTableView()
 
@@ -35,9 +35,11 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Item") else {
             fatalError("No cell")
         }
+
         cell.textLabel?.text = shoppingItems[indexPath.row]
         return cell
     }
@@ -89,7 +91,6 @@ extension ViewController {
         shoppingItems.insert(item, at: 0)
         let indexPath = IndexPath(row: 0, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
-
     }
 
     @objc func cleanList() {

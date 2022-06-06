@@ -23,6 +23,12 @@ class ViewController: UIViewController {
             style: .plain,
             target: self,
             action: #selector(addItem))
+
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "trash"),
+            style: .plain,
+            target: self,
+            action: #selector(cleanList))
     }
 }
 
@@ -75,5 +81,10 @@ extension ViewController {
         let indexPath = IndexPath(row: 0, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
 
+    }
+
+    @objc func cleanList() {
+        shoppingItems.removeAll(keepingCapacity: true)
+        tableView.reloadData()
     }
 }

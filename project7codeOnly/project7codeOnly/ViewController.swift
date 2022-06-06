@@ -31,7 +31,9 @@ class ViewController: UIViewController {
             if let jsonPetitions = try? decoder.decode(Petitions.self, from: json) {
                 petitions = jsonPetitions.results
                 tableView.reloadData()
+                return
             }
+            showError()
         }
     }
 }
@@ -78,5 +80,12 @@ extension ViewController {
         ])
 
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "SinglePetition")
+    }
+
+    func showError() {
+        let alertController = UIAlertController(title: "Loading error", message: "Unfortunately there was an issue loading the feed. Check your connection and try again", preferredStyle: .alert)
+
+        alertController.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alertController, animated: true)
     }
 }

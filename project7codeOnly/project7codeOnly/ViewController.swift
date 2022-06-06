@@ -22,7 +22,7 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return petitions.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -31,7 +31,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         }
         cell = UITableViewCell(style: .subtitle, reuseIdentifier: "SinglePetition")
         cell.textLabel?.text = "Label"
-        cell.detailTextLabel?.isEnabled = true
         cell.detailTextLabel?.text = "Detail"
 
         return cell

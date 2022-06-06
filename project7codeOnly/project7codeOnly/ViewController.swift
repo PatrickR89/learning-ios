@@ -9,8 +9,50 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    let tableView = UITableView()
+    var petitions = [String]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .blue
+        configTableView()
+        view.backgroundColor = .white
+    }
+}
+
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard var cell = tableView.dequeueReusableCell(withIdentifier: "SinglePetition") else {
+            fatalError("No cell")
+        }
+        cell = UITableViewCell(style: .subtitle, reuseIdentifier: "SinglePetition")
+        cell.textLabel?.text = "Label"
+        cell.detailTextLabel?.isEnabled = true
+        cell.detailTextLabel?.text = "Detail"
+
+        return cell
+    }
+}
+
+extension ViewController {
+    func configTableView () {
+        view.addSubview(tableView)
+        tableView.delegate = self
+        tableView.dataSource = self
+
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "SinglePetition")
     }
 }

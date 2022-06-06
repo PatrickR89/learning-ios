@@ -10,12 +10,29 @@ import UIKit
 class ViewController: UIViewController {
 
     let tableView = UITableView()
-    var petitions = [String]()
+    var petitions = [Petition]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configTableView()
         view.backgroundColor = .white
+
+        let urlString = "https://www.hackingwithswift.com/samples/petitions-1.json"
+
+        if let url = URL(string: urlString) {
+            if let data = try? Data(contentsOf: url) {
+                parse(json: data)
+            }
+        }
+
+        func parse(json: Data) {
+            let decoder = JSONDecoder()
+
+            if let jsonPetitions = try? decoder.decode(Petitions.self, from: json) {
+                petitions = jsonPetitions.results
+                tableView.reloadData()
+            }
+        }
     }
 }
 
@@ -30,8 +47,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             fatalError("No cell")
         }
         cell = UITableViewCell(style: .subtitle, reuseIdentifier: "SinglePetition")
-        cell.textLabel?.text = "Label"
-        cell.detailTextLabel?.text = "Detail"
+
+        let petition = petitions[indexPath.row]
+        cell.textLabel?.text = petition.title
+        cell.detailTextLabel?.text = petition.body
 
         return cell
     }

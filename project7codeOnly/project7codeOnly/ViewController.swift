@@ -18,9 +18,9 @@ class ViewController: UIViewController {
         configTableView()
         view.backgroundColor = .white
 
-        if tabBarController?.tabBarItem.tag == 0 {
+        if self.tabBarItem.tag == 0 {
             urlString = "https://www.hackingwithswift.com/samples/petitions-1.json"
-        } else if tabBarController?.tabBarItem.tag == 1 {
+        } else if self.tabBarItem.tag == 1 {
             urlString = "https://www.hackingwithswift.com/samples/petitions-2.json"
         }
 
@@ -71,10 +71,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.text = petition.title
         cell.detailTextLabel?.text = petition.body
 
-        if tabBarController?.tabBarItem.tag == 0 {
+        if self.tabBarItem.tag == 0 {
             cell.backgroundColor = .gray
-        } else if tabBarController?.tabBarItem.tag == 1 {
-            cell.backgroundColor = .blue
+        } else if self.tabBarItem.tag == 1 {
+            cell.backgroundColor = .lightGray
         }
 
         return cell

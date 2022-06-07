@@ -17,7 +17,13 @@ class ViewController: UIViewController {
         configTableView()
         view.backgroundColor = .white
 
-        let urlString = "https://www.hackingwithswift.com/samples/petitions-1.json"
+        var urlString = "https://www.hackingwithswift.com/samples/petitions-1.json"
+
+        if tabBarController?.tabBarItem.tag == 0 {
+            urlString = "https://www.hackingwithswift.com/samples/petitions-1.json"
+        } else if tabBarController?.tabBarItem.tag == 1 {
+            urlString = "https://www.hackingwithswift.com/samples/petitions-2.json"
+        }
 
         if let url = URL(string: urlString) {
             if let data = try? Data(contentsOf: url) {
@@ -54,6 +60,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.text = petition.title
         cell.detailTextLabel?.text = petition.body
 
+        if tabBarController?.tabBarItem.tag == 0 {
+            cell.backgroundColor = .gray
+        } else if tabBarController?.tabBarItem.tag == 1 {
+            cell.backgroundColor = .blue
+        }
+
         return cell
     }
 
@@ -83,7 +95,10 @@ extension ViewController {
     }
 
     func showError() {
-        let alertController = UIAlertController(title: "Loading error", message: "Unfortunately there was an issue loading the feed. Check your connection and try again", preferredStyle: .alert)
+        let alertController = UIAlertController(
+            title: "Loading error",
+            message: "Unfortunately there was an issue loading the feed. Check your connection and try again",
+            preferredStyle: .alert)
 
         alertController.addAction(UIAlertAction(title: "OK", style: .default))
         present(alertController, animated: true)

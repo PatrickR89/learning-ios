@@ -22,7 +22,7 @@ extension TabBarController: UITabBarControllerDelegate {
     }
 
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        print("test")
+        print("test \(tabBarItem.tag)")
     }
 }
 
@@ -30,15 +30,19 @@ extension TabBarController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        let navController = UINavigationController()
-        let viewController = ViewController()
-        navController.viewControllers = [viewController]
+        let viewController = UINavigationController(rootViewController: ViewController())
+        let viewControllerTwo = UINavigationController(rootViewController: ViewController())
 
-        let tabOne = navController
-        let tabOneBarItem = UITabBarItem(tabBarSystemItem: .topRated, tag: 1)
+        let tabOne = viewController
+        let tabOneBarItem = UITabBarItem(tabBarSystemItem: .topRated, tag: 0)
 
         tabOne.tabBarItem = tabOneBarItem
 
-        self.viewControllers = [tabOne]
+        let tabTwo = viewControllerTwo
+        let tabTwoBarItem = UITabBarItem(tabBarSystemItem: .mostRecent, tag: 1 )
+
+        tabTwo.tabBarItem = tabTwoBarItem
+
+        self.setViewControllers([tabOne, tabTwo], animated: true)
     }
 }

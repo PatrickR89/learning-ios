@@ -36,6 +36,12 @@ class ViewController: UIViewController {
             target: self,
             action: #selector(viewAPI))
 
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "magnifyingglass"),
+            style: .plain,
+            target: self,
+            action: #selector(filterItems))
+
         func parse(json: Data) {
             let decoder = JSONDecoder()
 
@@ -112,6 +118,15 @@ extension ViewController {
     @objc func viewAPI() {
         let alertController = UIAlertController(title: "Source", message: urlString, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default))
+
+        present(alertController, animated: true)
+    }
+
+    @objc func filterItems() {
+        let alertController = UIAlertController(title: "Find", message: nil, preferredStyle: .alert)
+        alertController.addTextField()
+        alertController.addAction(UIAlertAction(title: "Search", style: .default))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
 
         present(alertController, animated: true)
     }

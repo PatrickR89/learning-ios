@@ -41,6 +41,7 @@ class ViewController: UIViewController {
                 tableView.reloadData()
                 return
             }
+
             showError()
         }
     }
@@ -117,6 +118,7 @@ extension ViewController {
     @objc func filterItems() {
         let alertController = UIAlertController(title: "Find", message: nil, preferredStyle: .alert)
         alertController.addTextField()
+
         let handleSearch = UIAlertAction(title: "Search", style: .default) { [weak self, weak alertController] _ in
             guard let searchItem = alertController?.textFields?[0].text?.lowercased() else {return}
             self?.searchString = searchItem
@@ -141,15 +143,13 @@ extension ViewController {
 
     func filterPetitions (_ search: String) {
         filteredPetitions = []
-        if search != "" {
-            for petition in petitions {
-                if petition.title.lowercased().contains(search) {
-                    filteredPetitions.append(petition)
-                }
+
+        if search == "" {filteredPetitions = petitions}
+
+        for petition in petitions {
+            if petition.title.lowercased().contains(search) {
+                filteredPetitions.append(petition)
             }
-            tableView.reloadData()
-        } else {
-            filteredPetitions = petitions
         }
     }
 }

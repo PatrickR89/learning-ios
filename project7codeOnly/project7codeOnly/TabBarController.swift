@@ -35,10 +35,6 @@ extension TabBarController: UITabBarControllerDelegate {
     func configDelegate() {
         self.delegate = self
     }
-
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-
-    }
 }
 
 extension TabBarController {
@@ -47,19 +43,14 @@ extension TabBarController {
 
         let tabOne = viewController
         let tabOneBarItem = UITabBarItem(tabBarSystemItem: .topRated, tag: 0)
-
-        tabOne.tabBarItem = tabOneBarItem
-
         let tabTwo = viewControllerTwo
         let tabTwoBarItem = UITabBarItem(tabBarSystemItem: .mostRecent, tag: 1 )
 
+        tabOne.tabBarItem = tabOneBarItem
         tabTwo.tabBarItem = tabTwoBarItem
 
         self.setViewControllers([tabOne, tabTwo], animated: true)
     }
-}
-
-extension TabBarController {
 
     @objc func viewAPI() {
         if selectedViewController?.tabBarItem.tag == 0 {

@@ -11,13 +11,12 @@ class ViewController: UIViewController {
 
     let tableView = UITableView()
     var petitions = [Petition]()
+    var urlString: String = "https://www.hackingwithswift.com/samples/petitions-1.json"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configTableView()
         view.backgroundColor = .white
-
-        var urlString = "https://www.hackingwithswift.com/samples/petitions-1.json"
 
         if tabBarController?.tabBarItem.tag == 0 {
             urlString = "https://www.hackingwithswift.com/samples/petitions-1.json"
@@ -30,6 +29,12 @@ class ViewController: UIViewController {
                 parse(json: data)
             }
         }
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "a.magnify"),
+            style: .plain,
+            target: self,
+            action: #selector(viewAPI))
 
         func parse(json: Data) {
             let decoder = JSONDecoder()
@@ -101,6 +106,13 @@ extension ViewController {
             preferredStyle: .alert)
 
         alertController.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alertController, animated: true)
+    }
+
+    @objc func viewAPI() {
+        let alertController = UIAlertController(title: "Source", message: urlString, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default))
+
         present(alertController, animated: true)
     }
 }

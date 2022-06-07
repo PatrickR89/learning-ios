@@ -11,7 +11,9 @@ class ViewController: UIViewController {
 
     let tableView = UITableView()
     var petitions = [Petition]()
+    var filteredPetitions = [Petition]()
     var urlString: String = "https://www.hackingwithswift.com/samples/petitions-1.json"
+    var searchString: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,18 +31,6 @@ class ViewController: UIViewController {
                 parse(json: data)
             }
         }
-
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: UIImage(systemName: "a.magnify"),
-            style: .plain,
-            target: self,
-            action: #selector(viewAPI))
-
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
-            image: UIImage(systemName: "magnifyingglass"),
-            style: .plain,
-            target: self,
-            action: #selector(filterItems))
 
         func parse(json: Data) {
             let decoder = JSONDecoder()
@@ -88,6 +78,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension ViewController {
+
     func configTableView () {
         view.addSubview(tableView)
         tableView.delegate = self
@@ -125,7 +116,12 @@ extension ViewController {
     @objc func filterItems() {
         let alertController = UIAlertController(title: "Find", message: nil, preferredStyle: .alert)
         alertController.addTextField()
-        alertController.addAction(UIAlertAction(title: "Search", style: .default))
+        let handleSearch = UIAlertAction(title: "Search", style: .default) { [weak self, weak alertController] _ in
+            guard let searchItem = alertController?.textFields?[0].text?.lowercased() else {return}
+            self?.searchString = searchItem
+        }
+
+        alertController.addAction(handleSearch)
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
 
         present(alertController, animated: true)

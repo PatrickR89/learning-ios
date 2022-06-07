@@ -37,6 +37,7 @@ class ViewController: UIViewController {
 
             if let jsonPetitions = try? decoder.decode(Petitions.self, from: json) {
                 petitions = jsonPetitions.results
+                filteredPetitions = petitions
                 tableView.reloadData()
                 return
             }
@@ -48,7 +49,7 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return petitions.count
+        return filteredPetitions.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -57,7 +58,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         }
         cell = UITableViewCell(style: .subtitle, reuseIdentifier: "SinglePetition")
 
-        let petition = petitions[indexPath.row]
+        let petition = filteredPetitions[indexPath.row]
         cell.textLabel?.text = petition.title
         cell.detailTextLabel?.text = petition.body
 
@@ -72,7 +73,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailView = DetailViewController()
-        detailView.singleItem = petitions[indexPath.row]
+        detailView.singleItem = filteredPetitions[indexPath.row]
         navigationController?.pushViewController(detailView, animated: true)
     }
 }
@@ -119,11 +120,36 @@ extension ViewController {
         let handleSearch = UIAlertAction(title: "Search", style: .default) { [weak self, weak alertController] _ in
             guard let searchItem = alertController?.textFields?[0].text?.lowercased() else {return}
             self?.searchString = searchItem
+            self?.filterPetitions(searchItem)
+            self?.tableView.reloadData()
+        }
+
+        let resetSearch = UIAlertAction(title: "Reset", style: .default) { [weak self] _ in
+            self?.searchString = ""
+            if let petitions = self?.petitions {
+                self?.filteredPetitions = petitions
+            }
+            self?.tableView.reloadData()
         }
 
         alertController.addAction(handleSearch)
+        alertController.addAction(resetSearch)
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
 
         present(alertController, animated: true)
+    }
+
+    func filterPetitions (_ search: String) {
+        filteredPetitions = []
+        if search != "" {
+            for petition in petitions {
+                if petition.title.lowercased().contains(search) {
+                    filteredPetitions.append(petition)
+                }
+            }
+            tableView.reloadData()
+        } else {
+            filteredPetitions = petitions
+        }
     }
 }

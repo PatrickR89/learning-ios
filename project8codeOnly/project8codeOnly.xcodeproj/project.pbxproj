@@ -14,6 +14,8 @@
 		CD7F984F28509D2D00E94C95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD7F984D28509D2D00E94C95 /* LaunchScreen.storyboard */; };
 		CD7F98592850C47800E94C95 /* level2.txt in Resources */ = {isa = PBXBuildFile; fileRef = CD7F98572850C47700E94C95 /* level2.txt */; };
 		CD7F985A2850C47800E94C95 /* level1.txt in Resources */ = {isa = PBXBuildFile; fileRef = CD7F98582850C47800E94C95 /* level1.txt */; };
+		CD7F985C2850DFBC00E94C95 /* ViewController+UILayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7F985B2850DFBB00E94C95 /* ViewController+UILayout.swift */; };
+		CD7F985E2850E01600E94C95 /* ViewController+Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7F985D2850E01600E94C95 /* ViewController+Methods.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		CD7F985028509D2D00E94C95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD7F98572850C47700E94C95 /* level2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level2.txt; sourceTree = "<group>"; };
 		CD7F98582850C47800E94C95 /* level1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level1.txt; sourceTree = "<group>"; };
+		CD7F985B2850DFBB00E94C95 /* ViewController+UILayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+UILayout.swift"; sourceTree = "<group>"; };
+		CD7F985D2850E01600E94C95 /* ViewController+Methods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Methods.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +65,8 @@
 				CD7F984228509D2B00E94C95 /* AppDelegate.swift */,
 				CD7F984428509D2B00E94C95 /* SceneDelegate.swift */,
 				CD7F984628509D2B00E94C95 /* ViewController.swift */,
+				CD7F985B2850DFBB00E94C95 /* ViewController+UILayout.swift */,
+				CD7F985D2850E01600E94C95 /* ViewController+Methods.swift */,
 				CD7F98582850C47800E94C95 /* level1.txt */,
 				CD7F98572850C47700E94C95 /* level2.txt */,
 				CD7F984B28509D2D00E94C95 /* Assets.xcassets */,
@@ -166,6 +172,8 @@
 			files = (
 				CD7F984728509D2B00E94C95 /* ViewController.swift in Sources */,
 				CD7F984328509D2B00E94C95 /* AppDelegate.swift in Sources */,
+				CD7F985C2850DFBC00E94C95 /* ViewController+UILayout.swift in Sources */,
+				CD7F985E2850E01600E94C95 /* ViewController+Methods.swift in Sources */,
 				CD7F984528509D2B00E94C95 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

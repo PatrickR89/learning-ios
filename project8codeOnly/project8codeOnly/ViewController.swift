@@ -193,12 +193,17 @@ extension ViewController {
         sender.isHidden = true
     }
 
-    @objc func submitTapped() {
+    @objc func submitTapped(_ sender: UIButton) {
 
     }
 
-    @objc func clearTapped() {
+    @objc func clearTapped(_ sender: UIButton) {
+        currentAnswer?.text = ""
+        for button in activatedButtons {
+            button.isHidden = false
+        }
 
+        activatedButtons.removeAll()
     }
 
     func loadLevel() {

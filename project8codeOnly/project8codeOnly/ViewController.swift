@@ -205,6 +205,12 @@ extension ViewController {
             activatedButtons.removeAll()
             currentAnswer.text = ""
             score += 1
+
+            if score % 7 == 0 {
+                let alertController = UIAlertController(title: "Well done", message: "Ready for next level?", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Ready!", style: .default, handler: levelUp))
+                present(alertController, animated: true)
+            }
         }
     }
 
@@ -251,6 +257,15 @@ extension ViewController {
             for index in 0..<letterButtons.count {
                 letterButtons[index].setTitle(letterBits[index], for: .normal)
             }
+        }
+    }
+
+    func levelUp(action: UIAlertAction) {
+        level += 1
+        solutions.removeAll(keepingCapacity: true)
+        loadLevel()
+        for button in letterButtons{
+            button.isHidden = false
         }
     }
 }

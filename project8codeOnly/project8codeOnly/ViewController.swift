@@ -44,6 +44,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        loadLevel()
     }
 }
 
@@ -197,5 +199,20 @@ extension ViewController {
 
     @objc func clearTapped() {
 
+    }
+
+    func loadLevel() {
+        var clueString = ""
+        var solutionString = ""
+        var letterBits = [String]()
+
+        if let levelFileURL = Bundle.main.url(forResource: "level\(level)", withExtension: ".txt") {
+            if let levelContents = try? String(contentsOf: levelFileURL) {
+                var lines = levelContents.components(separatedBy: "\n")
+                lines.shuffle()
+
+                print(lines)
+            }
+        }
     }
 }

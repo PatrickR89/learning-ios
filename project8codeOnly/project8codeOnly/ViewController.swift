@@ -250,24 +250,26 @@ extension ViewController {
         var solutionString = ""
         var letterBits = [String]()
 
-        if let levelFileURL = Bundle.main.url(forResource: "level\(level)", withExtension: ".txt") {
-            if let levelContents = try? String(contentsOf: levelFileURL) {
-                var lines = levelContents.components(separatedBy: "\n")
-                lines.shuffle()
+        guard let levelFileURL = Bundle.main.url(
+            forResource: "level\(level)",
+            withExtension: ".txt") else {fatalError("No source found")}
+        
+        if let levelContents = try? String(contentsOf: levelFileURL) {
+            var lines = levelContents.components(separatedBy: "\n")
+            lines.shuffle()
 
-                for (index, line) in lines.enumerated() {
-                    let parts = line.components(separatedBy: ": ")
-                    let answers = parts[0]
-                    let clue = parts[1]
+            for (index, line) in lines.enumerated() {
+                let parts = line.components(separatedBy: ": ")
+                let answers = parts[0]
+                let clue = parts[1]
 
-                    clueString += "\(index + 1). \(clue)\n"
-                    let solutionWord = answers.replacingOccurrences(of: "|", with: "")
-                    solutionString += "\(solutionWord.count) letters\n"
-                    solutions.append(solutionWord)
+                clueString += "\(index + 1). \(clue)\n"
+                let solutionWord = answers.replacingOccurrences(of: "|", with: "")
+                solutionString += "\(solutionWord.count) letters\n"
+                solutions.append(solutionWord)
 
-                    let bits = answers.components(separatedBy: "|")
-                    letterBits += bits
-                }
+                let bits = answers.components(separatedBy: "|")
+                letterBits += bits
             }
         }
 

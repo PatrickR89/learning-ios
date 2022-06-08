@@ -175,6 +175,8 @@ extension ViewController {
                 letterBtn.titleLabel?.font = UIFont.systemFont(ofSize: 36)
                 letterBtn.setTitle("WWW", for: .normal)
                 letterBtn.addTarget(self, action: #selector(letterTapped), for: .touchUpInside)
+                letterBtn.layer.borderWidth = 0.3
+                letterBtn.layer.borderColor = UIColor.lightGray.cgColor
 
                 let frame = CGRect(x: col * width, y: row * height, width: width, height: height)
                 letterBtn.frame = frame

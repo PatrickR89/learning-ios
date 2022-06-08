@@ -14,14 +14,19 @@ class ViewController: UIViewController {
     var currentAnswer: UITextField?
     var scoreLabel: UILabel?
     var letterButtons = [UIButton]()
+    let submitBtn = UIButton(type: .system)
+    let clearBtn = UIButton(type: .system)
+    let buttonsView = UIView()
 
     override func loadView() {
         view = UIView()
         view.backgroundColor = .white
+
         setScoreLabel()
         setCluesLabel()
         setAnswersLabel()
         setCurrentAnswerLayout()
+        setButtons()
 
     }
 
@@ -110,5 +115,29 @@ extension ViewController {
             ])
         }
 
+    }
+
+    func setButtons() {
+        submitBtn.translatesAutoresizingMaskIntoConstraints = false
+        submitBtn.setTitle("SUBMIT", for: .normal)
+        view.addSubview(submitBtn)
+
+        clearBtn.translatesAutoresizingMaskIntoConstraints = false
+        clearBtn.setTitle("CLEAR", for: .normal)
+        view.addSubview(clearBtn)
+
+        buttonsView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(buttonsView)
+
+        if let currentAnswer = currentAnswer {
+            NSLayoutConstraint.activate([
+                submitBtn.topAnchor.constraint(equalTo: currentAnswer.bottomAnchor),
+                submitBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -100),
+                submitBtn.heightAnchor.constraint(equalToConstant: 44),
+                clearBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 100),
+                clearBtn.heightAnchor.constraint(equalToConstant: 44),
+                clearBtn.centerYAnchor.constraint(equalTo: submitBtn.centerYAnchor)
+            ])
+        }
     }
 }

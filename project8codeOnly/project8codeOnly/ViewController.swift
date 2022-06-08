@@ -185,8 +185,12 @@ extension ViewController {
 
 extension ViewController {
 
-    @objc func letterTapped() {
-
+    @objc func letterTapped(_ sender: UIButton) {
+        guard let buttonTitle = sender.titleLabel?.text else {return}
+        guard let currentAnswer = currentAnswer else {return}
+        currentAnswer.text = currentAnswer.text?.appending(buttonTitle)
+        activatedButtons.append(sender)
+        sender.isHidden = true
     }
 
     @objc func submitTapped() {

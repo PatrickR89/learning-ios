@@ -13,10 +13,19 @@ class ViewController: UIViewController {
     var answersLabel: UILabel?
     var currentAnswer: UITextField?
     var scoreLabel: UILabel?
+
+    let buttonsView = UIView()
+
     var letterButtons = [UIButton]()
+    var activatedButtons = [UIButton]()
+
     let submitBtn = UIButton(type: .system)
     let clearBtn = UIButton(type: .system)
-    let buttonsView = UIView()
+
+    var solutions = [String]()
+
+    var score = 0
+    var level = 1
 
     override func loadView() {
         view = UIView()
@@ -37,6 +46,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
     }
 }
+
+// MARK: Setup View layout
 
 extension ViewController {
     func setScoreLabel() {
@@ -126,10 +137,12 @@ extension ViewController {
     func setButtons() {
         submitBtn.translatesAutoresizingMaskIntoConstraints = false
         submitBtn.setTitle("SUBMIT", for: .normal)
+        submitBtn.addTarget(self, action: #selector(submitTapped), for: .touchUpInside)
         view.addSubview(submitBtn)
 
         clearBtn.translatesAutoresizingMaskIntoConstraints = false
         clearBtn.setTitle("CLEAR", for: .normal)
+        clearBtn.addTarget(self, action: #selector(clearTapped), for: .touchUpInside)
         view.addSubview(clearBtn)
 
         buttonsView.translatesAutoresizingMaskIntoConstraints = false
@@ -159,6 +172,7 @@ extension ViewController {
                 let letterBtn = UIButton(type: .system)
                 letterBtn.titleLabel?.font = UIFont.systemFont(ofSize: 36)
                 letterBtn.setTitle("WWW", for: .normal)
+                letterBtn.addTarget(self, action: #selector(letterTapped), for: .touchUpInside)
 
                 let frame = CGRect(x: col * width, y: row * height, width: width, height: height)
                 letterBtn.frame = frame
@@ -166,5 +180,22 @@ extension ViewController {
                 letterButtons.append(letterBtn)
             }
         }
+    }
+}
+
+// MARK: Methods
+
+extension ViewController {
+
+    @objc func letterTapped() {
+
+    }
+
+    @objc func submitTapped() {
+
+    }
+
+    @objc func clearTapped() {
+
     }
 }

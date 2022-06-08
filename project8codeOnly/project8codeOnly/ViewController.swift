@@ -211,7 +211,12 @@ extension ViewController {
                 var lines = levelContents.components(separatedBy: "\n")
                 lines.shuffle()
 
-                print(lines)
+                for (index, line) in lines.enumerated() {
+                    let parts = line.components(separatedBy: ": ")
+                    let answers = parts[0]
+                    let clues = parts [1]
+
+                }
             }
         }
     }

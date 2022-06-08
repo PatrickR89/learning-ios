@@ -31,7 +31,6 @@ class ViewController: UIViewController {
         cluesLabel?.backgroundColor = .lightGray
         answersLabel?.backgroundColor = .lightGray
         buttonsView.backgroundColor = .lightGray
-
     }
 
     override func viewDidLoad() {
@@ -150,6 +149,22 @@ extension ViewController {
                 buttonsView.topAnchor.constraint(equalTo: submitBtn.bottomAnchor, constant: 20),
                 buttonsView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -20)
             ])
+        }
+
+        let width = 150
+        let height = 80
+
+        for row in 0..<4 {
+            for col in 0..<5 {
+                let letterBtn = UIButton(type: .system)
+                letterBtn.titleLabel?.font = UIFont.systemFont(ofSize: 36)
+                letterBtn.setTitle("WWW", for: .normal)
+
+                let frame = CGRect(x: col * width, y: row * height, width: width, height: height)
+                letterBtn.frame = frame
+                buttonsView.addSubview(letterBtn)
+                letterButtons.append(letterBtn)
+            }
         }
     }
 }

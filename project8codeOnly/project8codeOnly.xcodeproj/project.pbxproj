@@ -12,6 +12,8 @@
 		CD7F984728509D2B00E94C95 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7F984628509D2B00E94C95 /* ViewController.swift */; };
 		CD7F984C28509D2D00E94C95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD7F984B28509D2D00E94C95 /* Assets.xcassets */; };
 		CD7F984F28509D2D00E94C95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD7F984D28509D2D00E94C95 /* LaunchScreen.storyboard */; };
+		CD7F98592850C47800E94C95 /* level2.txt in Resources */ = {isa = PBXBuildFile; fileRef = CD7F98572850C47700E94C95 /* level2.txt */; };
+		CD7F985A2850C47800E94C95 /* level1.txt in Resources */ = {isa = PBXBuildFile; fileRef = CD7F98582850C47800E94C95 /* level1.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		CD7F984B28509D2D00E94C95 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD7F984E28509D2D00E94C95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CD7F985028509D2D00E94C95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD7F98572850C47700E94C95 /* level2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level2.txt; sourceTree = "<group>"; };
+		CD7F98582850C47800E94C95 /* level1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level1.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,8 @@
 				CD7F984228509D2B00E94C95 /* AppDelegate.swift */,
 				CD7F984428509D2B00E94C95 /* SceneDelegate.swift */,
 				CD7F984628509D2B00E94C95 /* ViewController.swift */,
+				CD7F98582850C47800E94C95 /* level1.txt */,
+				CD7F98572850C47700E94C95 /* level2.txt */,
 				CD7F984B28509D2D00E94C95 /* Assets.xcassets */,
 				CD7F984D28509D2D00E94C95 /* LaunchScreen.storyboard */,
 				CD7F985028509D2D00E94C95 /* Info.plist */,
@@ -124,7 +130,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD7F984F28509D2D00E94C95 /* LaunchScreen.storyboard in Resources */,
+				CD7F985A2850C47800E94C95 /* level1.txt in Resources */,
 				CD7F984C28509D2D00E94C95 /* Assets.xcassets in Resources */,
+				CD7F98592850C47800E94C95 /* level2.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

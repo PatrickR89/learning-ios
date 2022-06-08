@@ -221,9 +221,9 @@ extension ViewController {
                     solutionString += "\(solutionWord.count) letters\n"
                     solutions.append(solutionWord)
 
-                    print(clueString)
-                    print(solutions)
-
+                    let bits = answers.components(separatedBy: "|")
+                    letterBits += bits
+                    print(letterBits)
                 }
             }
         }

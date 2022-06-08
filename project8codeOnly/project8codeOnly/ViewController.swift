@@ -228,8 +228,13 @@ extension ViewController {
                 title: "Wrong answer!",
                 message: nil,
                 preferredStyle: .alert)
-            alertController.addAction(
-                UIAlertAction(title: "Try again", style: .default))
+            let continueGame = UIAlertAction(title: "Try again", style: .default) { [weak self] _ in
+                if let clear = self?.clearBtn {
+                    self?.clearTapped(clear)
+                }
+
+            }
+            alertController.addAction(continueGame)
             score -= 1
             present(alertController, animated: true)
         }
@@ -285,7 +290,7 @@ extension ViewController {
         level += 1
         solutions.removeAll(keepingCapacity: true)
         loadLevel()
-        for button in letterButtons{
+        for button in letterButtons {
             button.isHidden = false
         }
     }

@@ -20,6 +20,7 @@ class ViewController: UIViewController {
         view.backgroundColor = .white
         setScoreLabel()
         setCluesLabel()
+        setAnswersLabel()
 
     }
 
@@ -50,6 +51,18 @@ extension ViewController {
             cluesLabel.text = "CLUES"
             cluesLabel.numberOfLines = 0
             view.addSubview(cluesLabel)
+        }
+    }
+
+    func setAnswersLabel() {
+        answersLabel = UILabel()
+
+        if let answersLabel = answersLabel {
+            answersLabel.translatesAutoresizingMaskIntoConstraints = false
+            answersLabel.font = UIFont.systemFont(ofSize: 24)
+            answersLabel.text = "ANSWERS"
+            answersLabel.numberOfLines = 0
+            view.addSubview(answersLabel)
         }
     }
 }

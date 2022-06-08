@@ -214,7 +214,15 @@ extension ViewController {
                 for (index, line) in lines.enumerated() {
                     let parts = line.components(separatedBy: ": ")
                     let answers = parts[0]
-                    let clues = parts [1]
+                    let clue = parts [1]
+
+                    clueString += "\(index + 1). \(clue)\n"
+                    let solutionWord = answers.replacingOccurrences(of: "|", with: "")
+                    solutionString += "\(solutionWord.count) letters\n"
+                    solutions.append(solutionWord)
+
+                    print(clueString)
+                    print(solutions)
 
                 }
             }

@@ -26,6 +26,9 @@ class ViewController: UIViewController {
 
     var score = 0 {
         didSet {
+            if score < 0 {
+                score = 0
+            }
             scoreLabel?.text = "Score: \(score)"
         }
     }
@@ -213,10 +216,22 @@ extension ViewController {
             score += 1
 
             if score % 7 == 0 {
-                let alertController = UIAlertController(title: "Well done", message: "Ready for next level?", preferredStyle: .alert)
+                let alertController = UIAlertController(
+                    title: "Well done",
+                    message: "Ready for next level?",
+                    preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "Ready!", style: .default, handler: levelUp))
                 present(alertController, animated: true)
             }
+        } else {
+            let alertController = UIAlertController(
+                title: "Wrong answer!",
+                message: nil,
+                preferredStyle: .alert)
+            alertController.addAction(
+                UIAlertAction(title: "Try again", style: .default))
+            score -= 1
+            present(alertController, animated: true)
         }
     }
 

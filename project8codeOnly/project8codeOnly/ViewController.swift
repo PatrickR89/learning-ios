@@ -21,6 +21,7 @@ class ViewController: UIViewController {
         setScoreLabel()
         setCluesLabel()
         setAnswersLabel()
+        setCurrentAnswerLayout()
 
     }
 
@@ -89,5 +90,25 @@ extension ViewController {
                 answersLabel.heightAnchor.constraint(equalTo: cluesLabel.heightAnchor)
             ])
         }
+    }
+
+    func setCurrentAnswerLayout() {
+        currentAnswer = UITextField()
+
+        if let currentAnswer = currentAnswer, let cluesLabel = cluesLabel {
+            currentAnswer.translatesAutoresizingMaskIntoConstraints = false
+            currentAnswer.placeholder = "Tap letters to guess"
+            currentAnswer.textAlignment = .center
+            currentAnswer.font = UIFont.systemFont(ofSize: 44)
+            currentAnswer.isUserInteractionEnabled = false
+            view.addSubview(currentAnswer)
+
+            NSLayoutConstraint.activate([
+                currentAnswer.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                currentAnswer.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5),
+                currentAnswer.topAnchor.constraint(equalTo: cluesLabel.bottomAnchor, constant: 20)
+            ])
+        }
+
     }
 }

@@ -194,7 +194,18 @@ extension ViewController {
     }
 
     @objc func submitTapped(_ sender: UIButton) {
+        guard let currentAnswer = currentAnswer,
+              let answersLabel = answersLabel,
+              let answerText = currentAnswer.text else {return}
+        if let solutionPosition = solutions.firstIndex(of: answerText) {
+            var splitAnswers = answersLabel.text?.components(separatedBy: "\n")
+            splitAnswers?[solutionPosition] = answerText
+            answersLabel.text = splitAnswers?.joined(separator: "\n")
 
+            activatedButtons.removeAll()
+            currentAnswer.text = ""
+            score += 1
+        }
     }
 
     @objc func clearTapped(_ sender: UIButton) {

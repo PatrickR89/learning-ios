@@ -28,6 +28,10 @@ class ViewController: UIViewController {
         setCurrentAnswerLayout()
         setButtons()
 
+        cluesLabel?.backgroundColor = .lightGray
+        answersLabel?.backgroundColor = .lightGray
+        buttonsView.backgroundColor = .lightGray
+
     }
 
     override func viewDidLoad() {
@@ -62,6 +66,7 @@ extension ViewController {
             cluesLabel.font = UIFont.systemFont(ofSize: 24)
             cluesLabel.text = "CLUES"
             cluesLabel.numberOfLines = 0
+            cluesLabel.setContentHuggingPriority(UILayoutPriority(1), for: .vertical)
             view.addSubview(cluesLabel)
 
             NSLayoutConstraint.activate([
@@ -82,7 +87,9 @@ extension ViewController {
             answersLabel.translatesAutoresizingMaskIntoConstraints = false
             answersLabel.font = UIFont.systemFont(ofSize: 24)
             answersLabel.text = "ANSWERS"
+            answersLabel.textAlignment = .right
             answersLabel.numberOfLines = 0
+            answersLabel.setContentHuggingPriority(UILayoutPriority(1), for: .vertical)
             view.addSubview(answersLabel)
 
             NSLayoutConstraint.activate([
@@ -136,7 +143,12 @@ extension ViewController {
                 submitBtn.heightAnchor.constraint(equalToConstant: 44),
                 clearBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 100),
                 clearBtn.heightAnchor.constraint(equalToConstant: 44),
-                clearBtn.centerYAnchor.constraint(equalTo: submitBtn.centerYAnchor)
+                clearBtn.centerYAnchor.constraint(equalTo: submitBtn.centerYAnchor),
+                buttonsView.widthAnchor.constraint(equalToConstant: 750),
+                buttonsView.heightAnchor.constraint(equalToConstant: 320),
+                buttonsView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                buttonsView.topAnchor.constraint(equalTo: submitBtn.bottomAnchor, constant: 20),
+                buttonsView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -20)
             ])
         }
     }

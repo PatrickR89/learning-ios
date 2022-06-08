@@ -67,9 +67,7 @@ extension ViewController {
             NSLayoutConstraint.activate([
                 scoreLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
                 scoreLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
-
             ])
-
         }
     }
 
@@ -136,7 +134,6 @@ extension ViewController {
                 currentAnswer.topAnchor.constraint(equalTo: cluesLabel.bottomAnchor, constant: 20)
             ])
         }
-
     }
 
     func setButtons() {
@@ -232,8 +229,8 @@ extension ViewController {
                 if let clear = self?.clearBtn {
                     self?.clearTapped(clear)
                 }
-
             }
+
             alertController.addAction(continueGame)
             score -= 1
             present(alertController, animated: true)
@@ -245,7 +242,6 @@ extension ViewController {
         for button in activatedButtons {
             button.isHidden = false
         }
-
         activatedButtons.removeAll()
     }
 

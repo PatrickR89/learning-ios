@@ -215,7 +215,7 @@ extension ViewController {
             currentAnswer.text = ""
             score += 1
 
-            if score % 7 == 0 {
+            if letterButtons.allSatisfy({$0.isHidden == true}) {
                 let alertController = UIAlertController(
                     title: "Well done",
                     message: "Ready for next level?",

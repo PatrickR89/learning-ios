@@ -145,13 +145,11 @@ extension ListViewController: BarActionProvider {
     func parse(json: Data) {
         let decoder = JSONDecoder()
 
-        if let jsonPetitions = try? decoder.decode(Petitions.self, from: json) {
+        guard let jsonPetitions = try? decoder.decode(Petitions.self, from: json) else {return}
             petitions = jsonPetitions.results
             filteredPetitions = petitions
             tableView.reloadData()
             return
-        }
-
         showError()
     }
 }

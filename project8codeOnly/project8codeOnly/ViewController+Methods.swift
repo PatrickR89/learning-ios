@@ -24,37 +24,52 @@ extension ViewController {
               let answersLabel = answersLabel,
               let answerText = currentAnswer.text else {return}
         if let solutionPosition = solutions.firstIndex(of: answerText) {
-            var splitAnswers = answersLabel.text?.components(separatedBy: "\n")
-            splitAnswers?[solutionPosition] = answerText
-            answersLabel.text = splitAnswers?.joined(separator: "\n")
-
-            activatedButtons.removeAll()
-            currentAnswer.text = ""
-            score += 1
-
-            if letterButtons.allSatisfy({$0.isHidden == true}) {
-                let alertController = UIAlertController(
-                    title: "Well done",
-                    message: "Ready for next level?",
-                    preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: "Ready!", style: .default, handler: levelUp))
-                present(alertController, animated: true)
-            }
+            checkAnswer(solutionPosition: solutionPosition, answersLabel: answersLabel, answerText: answerText)
+            resetCurrentAnswer()
+            setNewLevel()
         } else {
-            let alertController = UIAlertController(
-                title: "Wrong answer!",
-                message: nil,
-                preferredStyle: .alert)
-            let continueGame = UIAlertAction(title: "Try again", style: .default) { [weak self] _ in
-                if let clear = self?.clearBtn {
-                    self?.clearTapped(clear)
-                }
-            }
+            handleWrongAnswer()
+        }
+    }
 
-            alertController.addAction(continueGame)
-            score -= 1
+    func checkAnswer(solutionPosition: Int, answersLabel: UILabel, answerText: String) {
+        var splitAnswers = answersLabel.text?.components(separatedBy: "\n")
+        splitAnswers?[solutionPosition] = answerText
+        answersLabel.text = splitAnswers?.joined(separator: "\n")
+    }
+
+    func resetCurrentAnswer() {
+        guard let currentAnswer = currentAnswer else {return}
+        activatedButtons.removeAll()
+        currentAnswer.text = ""
+        score += 1
+    }
+
+    func setNewLevel() {
+        if letterButtons.allSatisfy({$0.isHidden == true}) {
+            let alertController = UIAlertController(
+                title: "Well done",
+                message: "Ready for next level?",
+                preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Ready!", style: .default, handler: levelUp))
             present(alertController, animated: true)
         }
+    }
+
+    func handleWrongAnswer() {
+        let alertController = UIAlertController(
+            title: "Wrong answer!",
+            message: nil,
+            preferredStyle: .alert)
+        let continueGame = UIAlertAction(title: "Try again", style: .default) { [weak self] _ in
+            if let clear = self?.clearBtn {
+                self?.clearTapped(clear)
+            }
+        }
+
+        alertController.addAction(continueGame)
+        score -= 1
+        present(alertController, animated: true)
     }
 
     @objc func clearTapped(_ sender: UIButton) {

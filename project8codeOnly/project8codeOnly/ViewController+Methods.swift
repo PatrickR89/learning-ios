@@ -92,25 +92,39 @@ extension ViewController {
         if let levelContents = try? String(contentsOf: levelFileURL) {
             var lines = levelContents.components(separatedBy: "\n")
             lines.shuffle()
-
             for (index, line) in lines.enumerated() {
                 let parts = line.components(separatedBy: ": ")
                 let answers = parts[0]
                 let clue = parts[1]
 
-                clueString += "\(index + 1). \(clue)\n"
-                let solutionWord = answers.replacingOccurrences(of: "|", with: "")
-                solutionString += "\(solutionWord.count) letters\n"
-                solutions.append(solutionWord)
-
-                let bits = answers.components(separatedBy: "|")
-                letterBits += bits
+                setClueString(clueString: &clueString, index: index, clue: clue)
+                setSolutions(answers: answers, solutionString: &solutionString)
+                setBits(answers: answers, letterBits: &letterBits)
             }
         }
 
         cluesLabel?.text = clueString.trimmingCharacters(in: .whitespacesAndNewlines)
         answersLabel?.text = solutionString.trimmingCharacters(in: .whitespacesAndNewlines)
 
+        assignLetterBtns(letterBits)
+    }
+
+    func setBits(answers: String, letterBits: inout [String]) {
+        let bits = answers.components(separatedBy: "|")
+        letterBits += bits
+    }
+
+    func setSolutions(answers: String, solutionString: inout String) {
+        let solutionWord = answers.replacingOccurrences(of: "|", with: "")
+        solutionString += "\(solutionWord.count) letters\n"
+        solutions.append(solutionWord)
+    }
+
+    func setClueString(clueString: inout String, index: Int, clue: String) {
+        clueString.append("\(index + 1). \(clue)\n")
+    }
+
+    func assignLetterBtns(_ letterBits: [String]) {
         letterButtons.shuffle()
         if letterButtons.count == letterBits.count {
             for index in 0..<letterButtons.count {

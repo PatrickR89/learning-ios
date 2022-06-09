@@ -56,7 +56,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
 
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailView = DetailViewController(singleItem: petitions[0])
         detailView.singleItem = filteredPetitions[indexPath.row]
@@ -91,6 +91,17 @@ extension ListViewController {
 
         alertController.addAction(UIAlertAction(title: "OK", style: .default))
         present(alertController, animated: true)
+    }
+
+
+    func parse(json: Data) {
+        let decoder = JSONDecoder()
+
+        guard let jsonPetitions = try? decoder.decode(Petitions.self, from: json) else {return}
+            petitions = jsonPetitions.results
+            filteredPetitions = petitions
+            tableView.reloadData()
+            return
     }
 }
 
@@ -138,16 +149,5 @@ extension ListViewController: BarActionProvider {
                 filteredPetitions.append(petition)
             }
         }
-    }
-
-    func parse(json: Data) {
-        let decoder = JSONDecoder()
-
-        guard let jsonPetitions = try? decoder.decode(Petitions.self, from: json) else {return}
-            petitions = jsonPetitions.results
-            filteredPetitions = petitions
-            tableView.reloadData()
-            return
-        showError()
     }
 }

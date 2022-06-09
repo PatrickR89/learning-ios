@@ -35,19 +35,6 @@ class ListViewController: UIViewController {
                 parse(json: data)
             }
         }
-
-        func parse(json: Data) {
-            let decoder = JSONDecoder()
-
-            if let jsonPetitions = try? decoder.decode(Petitions.self, from: json) {
-                petitions = jsonPetitions.results
-                filteredPetitions = petitions
-                tableView.reloadData()
-                return
-            }
-
-            showError()
-        }
     }
 }
 
@@ -153,5 +140,18 @@ extension ListViewController: BarActionProvider {
                 filteredPetitions.append(petition)
             }
         }
+    }
+
+    func parse(json: Data) {
+        let decoder = JSONDecoder()
+
+        if let jsonPetitions = try? decoder.decode(Petitions.self, from: json) {
+            petitions = jsonPetitions.results
+            filteredPetitions = petitions
+            tableView.reloadData()
+            return
+        }
+
+        showError()
     }
 }

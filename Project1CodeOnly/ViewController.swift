@@ -26,25 +26,8 @@ class ViewController: UIViewController {
             target: self,
             action: #selector(recommendApp))
 
-        let fileManager = FileManager.default
-        guard let path = Bundle.main.resourcePath,
-              let items = try? fileManager.contentsOfDirectory(atPath: path),
-              items.count > 0 else {
-            return
-        }
-
-        if let items = try? fileManager.contentsOfDirectory(atPath: path) {
-            for item in items {
-                if item.hasPrefix("nssl") {
-                    pictures.append(item)
-                }
-            }
-        }
-
-        pictures.sort()
-        print(pictures)
-
-        view.backgroundColor = .cyan
+        performSelector(inBackground: #selector(fetchImages), with: nil)
+        tableView.performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: false)
 
         func configureTableView() {
             view.addSubview(tableView)
@@ -93,5 +76,24 @@ extension ViewController {
 
         activityController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
         present(activityController, animated: true)
+    }
+
+    @objc func fetchImages() {
+        let fileManager = FileManager.default
+        guard let path = Bundle.main.resourcePath,
+              let items = try? fileManager.contentsOfDirectory(atPath: path),
+              items.count > 0 else {
+            return
+        }
+
+        if let items = try? fileManager.contentsOfDirectory(atPath: path) {
+            for item in items {
+                if item.hasPrefix("nssl") {
+                    pictures.append(item)
+                }
+            }
+        }
+
+        pictures.sort()
     }
 }

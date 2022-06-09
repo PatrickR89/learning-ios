@@ -88,7 +88,7 @@ extension ViewController {
         self.currentAnswer = currentAnswer
     }
 
-    func setButtons() {
+    func setButtonsLayout() {
         submitBtn.translatesAutoresizingMaskIntoConstraints = false
         submitBtn.setTitle("SUBMIT", for: .normal)
         submitBtn.addTarget(self, action: #selector(submitTapped), for: .touchUpInside)
@@ -101,6 +101,9 @@ extension ViewController {
 
         buttonsView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(buttonsView)
+    }
+
+    func setButtonsConstraints() {
 
         if let currentAnswer = currentAnswer {
             NSLayoutConstraint.activate([
@@ -117,6 +120,8 @@ extension ViewController {
                 buttonsView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -20)
             ])
         }
+    }
+    func createBtnsInBtnView() {
 
         let width = 150
         let height = 80

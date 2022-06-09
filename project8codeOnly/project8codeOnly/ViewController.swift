@@ -42,7 +42,9 @@ class ViewController: UIViewController {
         setCluesLabel()
         setAnswersLabel()
         setCurrentAnswerLayout()
-        setButtons()
+        setButtonsLayout()
+        setButtonsConstraints()
+        createBtnsInBtnView()
     }
 
     override func viewDidLoad() {

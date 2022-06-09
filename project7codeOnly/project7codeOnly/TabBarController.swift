@@ -9,8 +9,8 @@ import UIKit
 
 class TabBarController: UITabBarController {
 
-    let viewController = ListViewController()
-    let viewControllerTwo = ListViewController()
+    let viewController = ListViewController(configuration: config1)
+    let viewControllerTwo = ListViewController(configuration: config2)
 
     override func viewDidLoad() {
         super.viewDidLoad()

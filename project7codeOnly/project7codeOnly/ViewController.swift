@@ -9,24 +9,28 @@ import UIKit
 
 class ListViewController: UIViewController {
 
+    private let configuration: ListViewControllerConfig
     let tableView = UITableView()
     var petitions = [Petition]()
     var filteredPetitions = [Petition]()
     var urlString: String = "https://www.hackingwithswift.com/samples/petitions-1.json"
     var searchString: String = ""
 
+    required init(configuration: ListViewControllerConfig) {
+        self.configuration = configuration
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configTableView()
         view.backgroundColor = .white
 
-        if self.tabBarItem.tag == 0 {
-            urlString = "https://www.hackingwithswift.com/samples/petitions-1.json"
-        } else if self.tabBarItem.tag == 1 {
-            urlString = "https://www.hackingwithswift.com/samples/petitions-2.json"
-        }
-
-        if let url = URL(string: urlString) {
+        if let url = URL(string: configuration.url) {
             if let data = try? Data(contentsOf: url) {
                 parse(json: data)
             }
@@ -63,11 +67,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.text = petition.title
         cell.detailTextLabel?.text = petition.body
 
-        if self.tabBarItem.tag == 0 {
-            cell.backgroundColor = .gray
-        } else if self.tabBarItem.tag == 1 {
-            cell.backgroundColor = .lightGray
-        }
+        cell.backgroundColor = configuration.cellBackgroundColor
 
         return cell
     }

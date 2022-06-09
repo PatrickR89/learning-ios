@@ -32,7 +32,7 @@ class ListViewController: UIViewController {
 
         guard let url = URL(string: configuration.url),
               let data = try? Data(contentsOf: url) else { return }
-                parse(json: data)
+        parse(json: data)
     }
 }
 

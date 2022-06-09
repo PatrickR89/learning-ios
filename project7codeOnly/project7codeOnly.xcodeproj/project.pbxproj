@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CD7F986228521F5800E94C95 /* ListViewControllerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7F986128521F5800E94C95 /* ListViewControllerConfig.swift */; };
+		CD7F98642852230D00E94C95 /* BarActionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7F98632852230D00E94C95 /* BarActionProvider.swift */; };
 		CDEC141A284E276800F6FBA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC1419284E276800F6FBA4 /* AppDelegate.swift */; };
 		CDEC141C284E276800F6FBA4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC141B284E276800F6FBA4 /* SceneDelegate.swift */; };
 		CDEC141E284E276800F6FBA4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC141D284E276800F6FBA4 /* ViewController.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		CD7F986128521F5800E94C95 /* ListViewControllerConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewControllerConfig.swift; sourceTree = "<group>"; };
+		CD7F98632852230D00E94C95 /* BarActionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarActionProvider.swift; sourceTree = "<group>"; };
 		CDEC1416284E276800F6FBA4 /* project7codeOnly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = project7codeOnly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDEC1419284E276800F6FBA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDEC141B284E276800F6FBA4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				CDEC1419284E276800F6FBA4 /* AppDelegate.swift */,
 				CDEC141B284E276800F6FBA4 /* SceneDelegate.swift */,
 				CDEC142E284E28CC00F6FBA4 /* TabBarController.swift */,
+				CD7F98632852230D00E94C95 /* BarActionProvider.swift */,
 				CD7F986128521F5800E94C95 /* ListViewControllerConfig.swift */,
 				CDEC141D284E276800F6FBA4 /* ViewController.swift */,
 				CDEC1430284E3C1D00F6FBA4 /* Petition.swift */,
@@ -173,6 +176,7 @@
 			files = (
 				CDEC1431284E3C1D00F6FBA4 /* Petition.swift in Sources */,
 				CDEC1433284E3C5500F6FBA4 /* Petitions.swift in Sources */,
+				CD7F98642852230D00E94C95 /* BarActionProvider.swift in Sources */,
 				CD7F986228521F5800E94C95 /* ListViewControllerConfig.swift in Sources */,
 				CDEC141E284E276800F6FBA4 /* ViewController.swift in Sources */,
 				CDEC142F284E28CC00F6FBA4 /* TabBarController.swift in Sources */,

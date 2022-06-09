@@ -108,14 +108,61 @@ extension ListViewController {
         present(alertController, animated: true)
     }
 
-    @objc func viewAPI() {
+//    @objc func viewAPI() {
+//        let alertController = UIAlertController(title: "Source", message: urlString, preferredStyle: .alert)
+//        alertController.addAction(UIAlertAction(title: "OK", style: .default))
+//
+//        present(alertController, animated: true)
+//    }
+//
+//    @objc func filterItems() {
+//        let alertController = UIAlertController(title: "Find", message: nil, preferredStyle: .alert)
+//        alertController.addTextField()
+//
+//        let handleSearch = UIAlertAction(title: "Search", style: .default) { [weak self, weak alertController] _ in
+//            guard let searchItem = alertController?.textFields?[0].text?.lowercased() else {return}
+//            self?.searchString = searchItem
+//            self?.filterPetitions(searchItem)
+//            self?.tableView.reloadData()
+//        }
+//
+//        let resetSearch = UIAlertAction(title: "Reset", style: .default) { [weak self] _ in
+//            self?.searchString = ""
+//            if let petitions = self?.petitions {
+//                self?.filteredPetitions = petitions
+//            }
+//            self?.tableView.reloadData()
+//        }
+//
+//        alertController.addAction(handleSearch)
+//        alertController.addAction(resetSearch)
+//        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+//
+//        present(alertController, animated: true)
+//    }
+//
+//    func filterPetitions (_ search: String) {
+//        filteredPetitions = []
+//
+//        if search == "" {filteredPetitions = petitions}
+//
+//        for petition in petitions {
+//            if petition.title.lowercased().contains(search) {
+//                filteredPetitions.append(petition)
+//            }
+//        }
+//    }
+}
+
+extension ListViewController: BarActionProvider {
+    func viewAPI() {
         let alertController = UIAlertController(title: "Source", message: urlString, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default))
 
         present(alertController, animated: true)
     }
 
-    @objc func filterItems() {
+    func filterItems() {
         let alertController = UIAlertController(title: "Find", message: nil, preferredStyle: .alert)
         alertController.addTextField()
 

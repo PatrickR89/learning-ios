@@ -50,18 +50,14 @@ extension TabBarController: UITabBarControllerDelegate {
 extension TabBarController {
 
     @objc func viewAPI() {
-        if selectedViewController?.tabBarItem.tag == 0 {
-            viewController.viewAPI()
-        } else {
-            viewControllerTwo.viewAPI()
-        }
+
+        let actionProvider = selectedViewController as? BarActionProvider
+            actionProvider?.viewAPI()
     }
 
     @objc func filterItems() {
-        if selectedViewController?.tabBarItem.tag == 0 {
-            viewController.filterItems()
-        } else {
-            viewControllerTwo.filterItems()
-        }
+
+        let actionProvider = selectedViewController as? BarActionProvider
+            actionProvider?.filterItems()
     }
 }

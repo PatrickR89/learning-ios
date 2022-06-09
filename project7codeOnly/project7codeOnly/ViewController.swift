@@ -30,11 +30,9 @@ class ListViewController: UIViewController {
         configTableView()
         view.backgroundColor = .white
 
-        if let url = URL(string: configuration.url) {
-            if let data = try? Data(contentsOf: url) {
+        guard let url = URL(string: configuration.url),
+              let data = try? Data(contentsOf: url) else { return }
                 parse(json: data)
-            }
-        }
     }
 }
 

@@ -11,84 +11,81 @@ import UIKit
 
 extension ViewController {
     func setScoreLabel() {
-        scoreLabel = UILabel()
+        let scoreLabel = UILabel()
+        scoreLabel.text = "Score: 0"
+        scoreLabel.translatesAutoresizingMaskIntoConstraints = false
+        scoreLabel.textAlignment = .right
 
-        if let scoreLabel = scoreLabel {
-            scoreLabel.translatesAutoresizingMaskIntoConstraints = false
-            scoreLabel.textAlignment = .right
-            scoreLabel.text = "Score: 0"
-            view.addSubview(scoreLabel)
+        view.addSubview(scoreLabel)
 
-            NSLayoutConstraint.activate([
-                scoreLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
-                scoreLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
-            ])
-        }
+        NSLayoutConstraint.activate([
+            scoreLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
+            scoreLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
+        ])
+        self.scoreLabel = scoreLabel
     }
 
     func setCluesLabel() {
-        cluesLabel = UILabel()
+        let cluesLabel = UILabel()
 
-        if let cluesLabel = cluesLabel, let scoreLabel = scoreLabel {
-            cluesLabel.translatesAutoresizingMaskIntoConstraints = false
-            cluesLabel.font = UIFont.systemFont(ofSize: 24)
-            cluesLabel.text = "CLUES"
-            cluesLabel.numberOfLines = 0
-            cluesLabel.setContentHuggingPriority(UILayoutPriority(1), for: .vertical)
-            view.addSubview(cluesLabel)
+        cluesLabel.translatesAutoresizingMaskIntoConstraints = false
+        cluesLabel.font = UIFont.systemFont(ofSize: 24)
+        cluesLabel.text = "CLUES"
+        cluesLabel.numberOfLines = 0
+        cluesLabel.setContentHuggingPriority(UILayoutPriority(1), for: .vertical)
+        view.addSubview(cluesLabel)
 
-            NSLayoutConstraint.activate([
-                cluesLabel.topAnchor.constraint(equalTo: scoreLabel.bottomAnchor),
-                cluesLabel.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: 100),
-                cluesLabel.widthAnchor.constraint(
-                    equalTo: view.layoutMarginsGuide.widthAnchor,
-                    multiplier: 0.6,
-                    constant: -100)
-            ])
-        }
+        NSLayoutConstraint.activate([
+            cluesLabel.topAnchor.constraint(equalTo: scoreLabel!.bottomAnchor),
+            cluesLabel.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: 100),
+            cluesLabel.widthAnchor.constraint(
+                equalTo: view.layoutMarginsGuide.widthAnchor,
+                multiplier: 0.6,
+                constant: -100)
+        ])
+        self.cluesLabel = cluesLabel
     }
 
     func setAnswersLabel() {
-        answersLabel = UILabel()
+        let answersLabel = UILabel()
 
-        if let answersLabel = answersLabel, let scoreLabel = scoreLabel, let cluesLabel = cluesLabel {
-            answersLabel.translatesAutoresizingMaskIntoConstraints = false
-            answersLabel.font = UIFont.systemFont(ofSize: 24)
-            answersLabel.text = "ANSWERS"
-            answersLabel.textAlignment = .right
-            answersLabel.numberOfLines = 0
-            answersLabel.setContentHuggingPriority(UILayoutPriority(1), for: .vertical)
-            view.addSubview(answersLabel)
+        answersLabel.translatesAutoresizingMaskIntoConstraints = false
+        answersLabel.font = UIFont.systemFont(ofSize: 24)
+        answersLabel.text = "ANSWERS"
+        answersLabel.textAlignment = .right
+        answersLabel.numberOfLines = 0
+        answersLabel.setContentHuggingPriority(UILayoutPriority(1), for: .vertical)
+        view.addSubview(answersLabel)
 
-            NSLayoutConstraint.activate([
-                answersLabel.topAnchor.constraint(equalTo: scoreLabel.bottomAnchor),
-                answersLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -100),
-                answersLabel.widthAnchor.constraint(
-                    equalTo: view.layoutMarginsGuide.widthAnchor,
-                    multiplier: 0.4,
-                    constant: -100),
-                answersLabel.heightAnchor.constraint(equalTo: cluesLabel.heightAnchor)
-            ])
-        }
+        NSLayoutConstraint.activate([
+            answersLabel.topAnchor.constraint(equalTo: scoreLabel!.bottomAnchor),
+            answersLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -100),
+            answersLabel.widthAnchor.constraint(
+                equalTo: view.layoutMarginsGuide.widthAnchor,
+                multiplier: 0.4,
+                constant: -100),
+            answersLabel.heightAnchor.constraint(equalTo: cluesLabel!.heightAnchor)
+        ])
+        self.answersLabel = answersLabel
+
     }
 
     func setCurrentAnswerLayout() {
-        currentAnswer = UITextField()
+        let currentAnswer = UITextField()
 
-        if let currentAnswer = currentAnswer, let cluesLabel = cluesLabel {
-            currentAnswer.translatesAutoresizingMaskIntoConstraints = false
-            currentAnswer.placeholder = "Tap letters to guess"
-            currentAnswer.textAlignment = .center
-            currentAnswer.font = UIFont.systemFont(ofSize: 44)
-            currentAnswer.isUserInteractionEnabled = false
-            view.addSubview(currentAnswer)
+        currentAnswer.translatesAutoresizingMaskIntoConstraints = false
+        currentAnswer.placeholder = "Tap letters to guess"
+        currentAnswer.textAlignment = .center
+        currentAnswer.font = UIFont.systemFont(ofSize: 44)
+        currentAnswer.isUserInteractionEnabled = false
+        view.addSubview(currentAnswer)
 
-            NSLayoutConstraint.activate([
-                currentAnswer.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                currentAnswer.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5),
-                currentAnswer.topAnchor.constraint(equalTo: cluesLabel.bottomAnchor, constant: 20)
-            ])
-        }
+        NSLayoutConstraint.activate([
+            currentAnswer.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            currentAnswer.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5),
+            currentAnswer.topAnchor.constraint(equalTo: cluesLabel!.bottomAnchor, constant: 20)
+        ])
+        self.currentAnswer = currentAnswer
     }
 
     func setButtons() {

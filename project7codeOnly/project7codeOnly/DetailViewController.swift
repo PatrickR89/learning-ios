@@ -13,7 +13,7 @@ class DetailViewController: UIViewController {
     var webView: WKWebView?
     var singleItem: Petition
 
-    required init?(singleItem: Petition) {
+    required init(singleItem: Petition) {
         self.singleItem = singleItem
         super.init(nibName: nil, bundle: nil)
     }

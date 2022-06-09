@@ -17,6 +17,16 @@ class TabBarController: UITabBarController {
 
         configDelegate()
 
+        let tabOne = viewController
+        let tabOneBarItem = UITabBarItem(tabBarSystemItem: .topRated, tag: 0)
+        let tabTwo = viewControllerTwo
+        let tabTwoBarItem = UITabBarItem(tabBarSystemItem: .mostRecent, tag: 1 )
+
+        tabOne.tabBarItem = tabOneBarItem
+        tabTwo.tabBarItem = tabTwoBarItem
+
+        self.setViewControllers([tabOne, tabTwo], animated: true)
+
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "a.magnify"),
             style: .plain,
@@ -38,19 +48,6 @@ extension TabBarController: UITabBarControllerDelegate {
 }
 
 extension TabBarController {
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        let tabOne = viewController
-        let tabOneBarItem = UITabBarItem(tabBarSystemItem: .topRated, tag: 0)
-        let tabTwo = viewControllerTwo
-        let tabTwoBarItem = UITabBarItem(tabBarSystemItem: .mostRecent, tag: 1 )
-
-        tabOne.tabBarItem = tabOneBarItem
-        tabTwo.tabBarItem = tabTwoBarItem
-
-        self.setViewControllers([tabOne, tabTwo], animated: true)
-    }
 
     @objc func viewAPI() {
         if selectedViewController?.tabBarItem.tag == 0 {

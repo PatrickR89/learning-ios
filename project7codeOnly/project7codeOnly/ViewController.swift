@@ -56,13 +56,13 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
 
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailView = DetailViewController(singleItem: petitions[0])
         detailView.singleItem = filteredPetitions[indexPath.row]
         navigationController?.pushViewController(detailView, animated: true)
-        }
     }
+}
 
 extension ListViewController {
 

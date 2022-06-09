@@ -11,7 +11,16 @@ import WebKit
 class DetailViewController: UIViewController {
 
     var webView: WKWebView?
-    var singleItem: Petition?
+    var singleItem: Petition
+
+    required init?(singleItem: Petition) {
+        self.singleItem = singleItem
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init has not been implemented")
+    }
 
     override func loadView() {
         webView = WKWebView()
@@ -20,10 +29,6 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        guard let singleItem = singleItem else {
-            return
-        }
 
         let html = """
         <html>

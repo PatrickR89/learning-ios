@@ -26,8 +26,13 @@ class ViewController: UIViewController {
             target: self,
             action: #selector(recommendApp))
 
-        performSelector(inBackground: #selector(fetchImages), with: nil)
-        tableView.performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: false)
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            self?.fetchImages()
+        }
+
+        DispatchQueue.main.async { [weak tableView] in
+            tableView?.reloadData()
+        }
 
         func configureTableView() {
             view.addSubview(tableView)

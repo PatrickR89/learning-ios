@@ -14,13 +14,17 @@ class ViewController: UIViewController {
     var score = 0
     var scoreLabel: UILabel?
     var answer: UILabel?
-    var letterInput: UITextField?
+    var characterInput: UITextField?
     var wrongAnswers = [String]()
+    var wrongAnswersLabel: UILabel?
 
     override func loadView() {
         view = UIView()
         setScoreLabel()
         setTriesLabel()
+        setAnswerLabel()
+        setCharacterInput()
+        setWrongAnswerLayout()
     }
 
     override func viewDidLoad() {

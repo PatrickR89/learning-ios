@@ -36,6 +36,7 @@ class ViewController: UIViewController {
             charEnter(char: currentCharacter)
         }
     }
+    var allWords = [String]()
 
     override func loadView() {
         view = UIView()
@@ -49,6 +50,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+
+        loadSource()
+        startGame()
 
     }
 }
@@ -76,7 +80,7 @@ extension ViewController: UITextFieldDelegate {
 extension ViewController {
     func charEnter(char: String) {
         usedLetters.append(char.uppercased())
-        setCorrectAnswer()
+        submitAnswer()
         answer?.text = promptWord
     }
 
@@ -86,7 +90,7 @@ extension ViewController {
         wrongAnswersLabel?.text = "Wrong tries: \(answersString)"
     }
 
-    func setCorrectAnswer() {
+    func submitAnswer() {
         var tempWord = ""
         for char in correctAnswer {
             let charString = String(char)
@@ -104,7 +108,26 @@ extension ViewController {
 
         if !promptWord.contains("_") {
             score += 1
+            tries = 7
+            startGame()
         }
+    }
+
+    func loadSource() {
+        if let startURL = Bundle.main.url(forResource: "start", withExtension: "txt") {
+            if let startWords = try? String(contentsOf: startURL) {
+                allWords = startWords.components(separatedBy: "\n")
+            }
+        }
+
+        if allWords.isEmpty {
+            allWords = ["Error loading"]
+        }
+    }
+
+    func startGame() {
+        guard let word = allWords.randomElement() else {return}
+        correctAnswer = word.uppercased()
     }
 }
 

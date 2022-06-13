@@ -12,6 +12,7 @@
 		CD7F9876285725BE00E94C95 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7F9875285725BE00E94C95 /* ViewController.swift */; };
 		CD7F987B285725BF00E94C95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD7F987A285725BF00E94C95 /* Assets.xcassets */; };
 		CD7F987E285725BF00E94C95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD7F987C285725BF00E94C95 /* LaunchScreen.storyboard */; };
+		CD7F988728573E9F00E94C95 /* ViewController+UILayouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7F988628573E9F00E94C95 /* ViewController+UILayouts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		CD7F987A285725BF00E94C95 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD7F987D285725BF00E94C95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CD7F987F285725BF00E94C95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD7F988628573E9F00E94C95 /* ViewController+UILayouts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+UILayouts.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				CD7F9871285725BD00E94C95 /* AppDelegate.swift */,
 				CD7F9873285725BE00E94C95 /* SceneDelegate.swift */,
 				CD7F9875285725BE00E94C95 /* ViewController.swift */,
+				CD7F988628573E9F00E94C95 /* ViewController+UILayouts.swift */,
 				CD7F987A285725BF00E94C95 /* Assets.xcassets */,
 				CD7F987C285725BF00E94C95 /* LaunchScreen.storyboard */,
 				CD7F987F285725BF00E94C95 /* Info.plist */,
@@ -158,6 +161,7 @@
 			files = (
 				CD7F9876285725BE00E94C95 /* ViewController.swift in Sources */,
 				CD7F9872285725BD00E94C95 /* AppDelegate.swift in Sources */,
+				CD7F988728573E9F00E94C95 /* ViewController+UILayouts.swift in Sources */,
 				CD7F9874285725BE00E94C95 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

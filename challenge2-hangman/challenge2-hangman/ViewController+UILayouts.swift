@@ -41,7 +41,7 @@ extension ViewController {
 
     func setAnswerLabel() {
         let answer = UILabel()
-        answer.text = "_ _ _ _ _ _ _"
+        answer.text = "_______"
         answer.translatesAutoresizingMaskIntoConstraints = false
         answer.textAlignment = .center
         view.addSubview(answer)
@@ -59,7 +59,8 @@ extension ViewController {
         characterInput.translatesAutoresizingMaskIntoConstraints = false
         characterInput.textAlignment = .center
         characterInput.font = UIFont.systemFont(ofSize: 44)
-        characterInput.backgroundColor = .lightGray
+        characterInput.layer.borderWidth = 1
+        characterInput.layer.borderColor = UIColor.lightGray.cgColor
         characterInput.delegate = self
         view.addSubview(characterInput)
 
@@ -76,7 +77,6 @@ extension ViewController {
         wrongAnswersLabel.text = "Wrong tries:"
         wrongAnswersLabel.translatesAutoresizingMaskIntoConstraints = false
         wrongAnswersLabel.numberOfLines = 1
-        wrongAnswersLabel.backgroundColor = .lightGray
         view.addSubview(wrongAnswersLabel)
 
         NSLayoutConstraint.activate([

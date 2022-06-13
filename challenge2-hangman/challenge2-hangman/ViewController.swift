@@ -51,7 +51,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
 
-        loadSource()
-        startGame()
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.loadSource()
+            DispatchQueue.main.async {
+                self.startGame()
+            }
+        }
     }
 }

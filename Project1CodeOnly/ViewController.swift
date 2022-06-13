@@ -26,9 +26,9 @@ class ViewController: UIViewController {
             target: self,
             action: #selector(recommendApp))
 
-        DispatchQueue.global(qos: .userInitiated).async { [self] in
+        DispatchQueue.global(qos: .userInitiated).async {
             self.fetchImages()
-            DispatchQueue.main.async { [tableView] in
+            DispatchQueue.main.async {
                 tableView.reloadData()
             }
         }

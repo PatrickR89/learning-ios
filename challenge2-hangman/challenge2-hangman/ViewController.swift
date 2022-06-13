@@ -9,9 +9,20 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    var tries = 7
+    var tries = 7 {
+        didSet {
+            triesLabel?.text = "Tries: \(tries)"
+        }
+    }
     var triesLabel: UILabel?
-    var score = 0
+    var score = 0 {
+        didSet {
+            if score < 0 {
+                score = 0
+            }
+            scoreLabel?.text = "Score: \(score)"
+        }
+    }
     var scoreLabel: UILabel?
     var answer: UILabel?
     var characterInput: UITextField?
@@ -33,10 +44,22 @@ class ViewController: UIViewController {
     }
 }
 
+extension ViewController: UITextFieldDelegate {
+    func textField(
+        _ textField: UITextField,
+        shouldChangeCharactersIn range: NSRange,
+        replacementString string: String) -> Bool {
+        let currentText = characterInput?.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else {return false}
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+        return updatedText.count <= 1
+    }
+}
+
 // MARK: Structure and planning
 
 // place number of tries out of 7
-// place score
+// place score *done*
 // answer with characters hidden Answer: _______
 // correct chosen letter reveals in answer
 // wrong answer removes 1 from tries
@@ -46,9 +69,9 @@ class ViewController: UIViewController {
 
 // MARK: UI plan
 
-// Upper left corner - Tries: 7
-// Upper right corner - Score: 0
-// Centered - anwer - _______
-// Under answer - input for characters
-// Under input - wrong characters array
-// Free place for keyboard
+// Upper left corner - Tries: 7 *done*
+// Upper right corner - Score: 0 *done*
+// Centered - anwer - _______   *done*
+// Under answer - input for characters  *done*
+// Under input - wrong characters array *done*
+// Free place for keyboard *done*

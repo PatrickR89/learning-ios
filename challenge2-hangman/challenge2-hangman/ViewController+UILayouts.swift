@@ -60,7 +60,7 @@ extension ViewController {
         characterInput.textAlignment = .center
         characterInput.font = UIFont.systemFont(ofSize: 44)
         characterInput.backgroundColor = .lightGray
-        
+        characterInput.delegate = self
         view.addSubview(characterInput)
 
         NSLayoutConstraint.activate([

@@ -96,10 +96,9 @@ extension ListViewController {
         let decoder = JSONDecoder()
 
         guard let jsonPetitions = try? decoder.decode(Petitions.self, from: json) else {return}
-            petitions = jsonPetitions.results
-            filteredPetitions = petitions
-            tableView.reloadData()
-            return
+        petitions = jsonPetitions.results
+        filteredPetitions = petitions
+        tableView.reloadData()
     }
 }
 

@@ -101,6 +101,10 @@ extension ViewController {
             tries -= 1
         }
         promptWord = tempWord
+
+        if !promptWord.contains("_") {
+            score += 1
+        }
     }
 }
 

@@ -12,11 +12,11 @@ extension ViewController: UITextFieldDelegate {
         _ textField: UITextField,
         shouldChangeCharactersIn range: NSRange,
         replacementString string: String) -> Bool {
-        let currentText = characterInput?.text ?? ""
-        guard let stringRange = Range(range, in: currentText) else {return false}
-        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
-        return updatedText.count <= 1
-    }
+            let currentText = characterInput?.text ?? ""
+            guard let stringRange = Range(range, in: currentText) else {return false}
+            let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+            return updatedText.count <= 1
+        }
 
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let text = textField.text else {return}
@@ -50,6 +50,7 @@ extension ViewController {
                 tempWord += "_"
             }
         }
+
         if !correctAnswer.contains(currentCharacter) && !wrongAnswers.contains(currentCharacter) {
             handleWrongAnswer(char: currentCharacter)
             tries -= 1

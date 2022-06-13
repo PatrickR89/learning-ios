@@ -9,6 +9,9 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var correctAnswer = "button".uppercased()
+    var usedLetters = [String]()
+    var promptWord = ""
     var tries = 7 {
         didSet {
             triesLabel?.text = "Tries: \(tries)"
@@ -46,6 +49,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+
     }
 }
 
@@ -63,7 +67,7 @@ extension ViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let text = textField.text else {return}
         if text != "" {
-            currentCharacter = text
+            currentCharacter = text.uppercased()
         }
         textField.text = ""
     }
@@ -71,9 +75,32 @@ extension ViewController: UITextFieldDelegate {
 
 extension ViewController {
     func charEnter(char: String) {
+        usedLetters.append(char.uppercased())
+        setCorrectAnswer()
+        answer?.text = promptWord
+    }
+
+    func handleWrongAnswer(char: String) {
         wrongAnswers.append(char.uppercased())
         let answersString = wrongAnswers.joined(separator: ", ")
         wrongAnswersLabel?.text = "Wrong tries: \(answersString)"
+    }
+
+    func setCorrectAnswer() {
+        var tempWord = ""
+        for char in correctAnswer {
+            let charString = String(char)
+            if usedLetters.contains(charString) {
+                tempWord += charString
+            } else {
+                tempWord += "_"
+            }
+        }
+        if !correctAnswer.contains(currentCharacter) && !wrongAnswers.contains(currentCharacter) {
+            handleWrongAnswer(char: currentCharacter)
+            tries -= 1
+        }
+        promptWord = tempWord
     }
 }
 

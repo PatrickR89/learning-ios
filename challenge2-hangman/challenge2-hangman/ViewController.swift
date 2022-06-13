@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     var wrongAnswersLabel: UILabel?
     var currentCharacter = "" {
         didSet {
-            wrongAnswers.append(currentCharacter)
+            charEnter(char: currentCharacter)
         }
     }
 
@@ -66,6 +66,14 @@ extension ViewController: UITextFieldDelegate {
             currentCharacter = text
         }
         textField.text = ""
+    }
+}
+
+extension ViewController {
+    func charEnter(char: String) {
+        wrongAnswers.append(char.uppercased())
+        let answersString = wrongAnswers.joined(separator: ", ")
+        wrongAnswersLabel?.text = "Wrong tries: \(answersString)"
     }
 }
 

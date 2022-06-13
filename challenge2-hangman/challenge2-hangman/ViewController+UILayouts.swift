@@ -84,5 +84,7 @@ extension ViewController {
             wrongAnswersLabel.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.9),
             wrongAnswersLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
+
+        self.wrongAnswersLabel = wrongAnswersLabel
     }
 }

@@ -28,6 +28,11 @@ class ViewController: UIViewController {
     var characterInput: UITextField?
     var wrongAnswers = [String]()
     var wrongAnswersLabel: UILabel?
+    var currentCharacter = "" {
+        didSet {
+            wrongAnswers.append(currentCharacter)
+        }
+    }
 
     override func loadView() {
         view = UIView()
@@ -53,6 +58,14 @@ extension ViewController: UITextFieldDelegate {
         guard let stringRange = Range(range, in: currentText) else {return false}
         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
         return updatedText.count <= 1
+    }
+
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        guard let text = textField.text else {return}
+        if text != "" {
+            currentCharacter = text
+        }
+        textField.text = ""
     }
 }
 

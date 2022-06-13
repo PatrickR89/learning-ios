@@ -58,8 +58,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailView = DetailViewController(singleItem: petitions[0])
-        detailView.singleItem = filteredPetitions[indexPath.row]
+        let detailView = DetailViewController(singleItem: filteredPetitions[indexPath.row])
         navigationController?.pushViewController(detailView, animated: true)
     }
 }
@@ -92,7 +91,6 @@ extension ListViewController {
         alertController.addAction(UIAlertAction(title: "OK", style: .default))
         present(alertController, animated: true)
     }
-
 
     func parse(json: Data) {
         let decoder = JSONDecoder()

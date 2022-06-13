@@ -11,7 +11,7 @@ import WebKit
 class DetailViewController: UIViewController {
 
     var webView: WKWebView?
-    var singleItem: Petition
+    let singleItem: Petition
 
     required init(singleItem: Petition) {
         self.singleItem = singleItem

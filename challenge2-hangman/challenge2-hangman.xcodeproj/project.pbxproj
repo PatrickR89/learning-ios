@@ -14,6 +14,7 @@
 		CD7F987E285725BF00E94C95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD7F987C285725BF00E94C95 /* LaunchScreen.storyboard */; };
 		CD7F988728573E9F00E94C95 /* ViewController+UILayouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7F988628573E9F00E94C95 /* ViewController+UILayouts.swift */; };
 		CD7F98892857ACF500E94C95 /* start.txt in Resources */ = {isa = PBXBuildFile; fileRef = CD7F98882857ACF500E94C95 /* start.txt */; };
+		CD7F988B2857C73800E94C95 /* ViewController+Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7F988A2857C73800E94C95 /* ViewController+Methods.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		CD7F987F285725BF00E94C95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD7F988628573E9F00E94C95 /* ViewController+UILayouts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+UILayouts.swift"; sourceTree = "<group>"; };
 		CD7F98882857ACF500E94C95 /* start.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = start.txt; sourceTree = "<group>"; };
+		CD7F988A2857C73800E94C95 /* ViewController+Methods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Methods.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				CD7F9871285725BD00E94C95 /* AppDelegate.swift */,
 				CD7F9873285725BE00E94C95 /* SceneDelegate.swift */,
 				CD7F9875285725BE00E94C95 /* ViewController.swift */,
+				CD7F988A2857C73800E94C95 /* ViewController+Methods.swift */,
 				CD7F988628573E9F00E94C95 /* ViewController+UILayouts.swift */,
 				CD7F98882857ACF500E94C95 /* start.txt */,
 				CD7F987A285725BF00E94C95 /* Assets.xcassets */,
@@ -166,6 +169,7 @@
 				CD7F9876285725BE00E94C95 /* ViewController.swift in Sources */,
 				CD7F9872285725BD00E94C95 /* AppDelegate.swift in Sources */,
 				CD7F988728573E9F00E94C95 /* ViewController+UILayouts.swift in Sources */,
+				CD7F988B2857C73800E94C95 /* ViewController+Methods.swift in Sources */,
 				CD7F9874285725BE00E94C95 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

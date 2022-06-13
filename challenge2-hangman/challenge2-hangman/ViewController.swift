@@ -107,9 +107,11 @@ extension ViewController {
         promptWord = tempWord
 
         if !promptWord.contains("_") {
-            score += 1
-            tries = 7
-            startGame()
+            winGame()
+        }
+
+        if tries == 0 {
+            looseGame()
         }
     }
 
@@ -126,8 +128,38 @@ extension ViewController {
     }
 
     func startGame() {
+        correctAnswer = ""
         guard let word = allWords.randomElement() else {return}
         correctAnswer = word.uppercased()
+        usedLetters.removeAll()
+        wrongAnswers.removeAll()
+        answer?.text = "_______"
+        wrongAnswersLabel?.text = "Wrong tries:"
+    }
+
+    func looseGame() {
+        let alertController = UIAlertController(title: "You lost", message: "You have 7 wrong attempts", preferredStyle: .alert)
+        let continueGame = UIAlertAction(title: "Continue", style: .default, handler: handleLoose)
+        alertController.addAction(continueGame)
+        present(alertController, animated: true)
+    }
+
+    func winGame() {
+        let alertController = UIAlertController(title: "Congratulations", message: "You win!", preferredStyle: .alert)
+        let continueGame = UIAlertAction(title: "Continue", style: .default, handler: handleWin)
+        alertController.addAction(continueGame)
+        present(alertController, animated: true)
+    }
+
+    func handleWin(action: UIAlertAction) {
+        score += 1
+        tries = 7
+        startGame()
+    }
+
+    func handleLoose(action: UIAlertAction) {
+        tries = 7
+        startGame()
     }
 }
 

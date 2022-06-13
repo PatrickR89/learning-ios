@@ -26,12 +26,11 @@ class ViewController: UIViewController {
             target: self,
             action: #selector(recommendApp))
 
-        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            self?.fetchImages()
-        }
-
-        DispatchQueue.main.async { [weak tableView] in
-            tableView?.reloadData()
+        DispatchQueue.global(qos: .userInitiated).async { [self] in
+            self.fetchImages()
+            DispatchQueue.main.async { [tableView] in
+                tableView.reloadData()
+            }
         }
 
         func configureTableView() {

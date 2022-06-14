@@ -12,7 +12,7 @@ extension ViewController: UITextFieldDelegate {
         _ textField: UITextField,
         shouldChangeCharactersIn range: NSRange,
         replacementString string: String) -> Bool {
-            let currentText = characterInput?.text ?? ""
+            guard let currentText = characterInput?.text else {return false}
             guard let stringRange = Range(range, in: currentText) else {return false}
             let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
             return updatedText.count <= 1

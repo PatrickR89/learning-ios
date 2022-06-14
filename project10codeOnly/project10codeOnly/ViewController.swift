@@ -35,8 +35,14 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
             }
             cell.backgroundColor = .lightGray
             cell.layer.cornerRadius = 7
-        return cell
-    }
+
+            let person = people[indexPath.item]
+            cell.label.text = person.name
+            let path = getDocumentsDirectory().appendingPathComponent(person.image)
+            cell.image.image = UIImage(contentsOfFile: path.path)
+
+            return cell
+        }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return people.count

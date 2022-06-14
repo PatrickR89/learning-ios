@@ -38,18 +38,15 @@ class ViewController: UIViewController {
     }
     var allWords = [String]()
 
-    override func loadView() {
-        view = UIView()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+
         setScoreLabel()
         setTriesLabel()
         setAnswerLabel()
         setCharacterInput()
         setWrongAnswerLayout()
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
 
         DispatchQueue.global(qos: .userInitiated).async {
             self.loadSource()

@@ -13,7 +13,7 @@
 		CD7F987B285725BF00E94C95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD7F987A285725BF00E94C95 /* Assets.xcassets */; };
 		CD7F987E285725BF00E94C95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD7F987C285725BF00E94C95 /* LaunchScreen.storyboard */; };
 		CD7F988728573E9F00E94C95 /* ViewController+UILayouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7F988628573E9F00E94C95 /* ViewController+UILayouts.swift */; };
-		CD7F98892857ACF500E94C95 /* start.txt in Resources */ = {isa = PBXBuildFile; fileRef = CD7F98882857ACF500E94C95 /* start.txt */; };
+		CD7F98892857ACF500E94C95 /* hangmanWords.txt in Resources */ = {isa = PBXBuildFile; fileRef = CD7F98882857ACF500E94C95 /* hangmanWords.txt */; };
 		CD7F988B2857C73800E94C95 /* ViewController+Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7F988A2857C73800E94C95 /* ViewController+Methods.swift */; };
 /* End PBXBuildFile section */
 
@@ -26,7 +26,7 @@
 		CD7F987D285725BF00E94C95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CD7F987F285725BF00E94C95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD7F988628573E9F00E94C95 /* ViewController+UILayouts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+UILayouts.swift"; sourceTree = "<group>"; };
-		CD7F98882857ACF500E94C95 /* start.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = start.txt; sourceTree = "<group>"; };
+		CD7F98882857ACF500E94C95 /* hangmanWords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hangmanWords.txt; sourceTree = "<group>"; };
 		CD7F988A2857C73800E94C95 /* ViewController+Methods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Methods.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,7 +65,7 @@
 				CD7F9875285725BE00E94C95 /* ViewController.swift */,
 				CD7F988A2857C73800E94C95 /* ViewController+Methods.swift */,
 				CD7F988628573E9F00E94C95 /* ViewController+UILayouts.swift */,
-				CD7F98882857ACF500E94C95 /* start.txt */,
+				CD7F98882857ACF500E94C95 /* hangmanWords.txt */,
 				CD7F987A285725BF00E94C95 /* Assets.xcassets */,
 				CD7F987C285725BF00E94C95 /* LaunchScreen.storyboard */,
 				CD7F987F285725BF00E94C95 /* Info.plist */,
@@ -133,7 +133,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD7F987E285725BF00E94C95 /* LaunchScreen.storyboard in Resources */,
-				CD7F98892857ACF500E94C95 /* start.txt in Resources */,
+				CD7F98892857ACF500E94C95 /* hangmanWords.txt in Resources */,
 				CD7F987B285725BF00E94C95 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

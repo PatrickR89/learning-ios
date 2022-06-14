@@ -67,7 +67,7 @@ extension ViewController {
     }
 
     func loadSource() {
-        if let startURL = Bundle.main.url(forResource: "start", withExtension: "txt") {
+        if let startURL = Bundle.main.url(forResource: "hangmanWords", withExtension: "txt") {
             if let startWords = try? String(contentsOf: startURL) {
                 allWords = startWords.components(separatedBy: "\n")
             }

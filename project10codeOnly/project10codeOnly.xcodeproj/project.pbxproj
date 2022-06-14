@@ -12,6 +12,7 @@
 		CD7F98C3285887D400E94C95 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7F98C2285887D400E94C95 /* ViewController.swift */; };
 		CD7F98C8285887D600E94C95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD7F98C7285887D600E94C95 /* Assets.xcassets */; };
 		CD7F98CB285887D600E94C95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD7F98C9285887D600E94C95 /* LaunchScreen.storyboard */; };
+		CD7F98D428588FA800E94C95 /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7F98D328588FA800E94C95 /* PersonCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		CD7F98C7285887D600E94C95 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD7F98CA285887D600E94C95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CD7F98CC285887D600E94C95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD7F98D328588FA800E94C95 /* PersonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				CD7F98BE285887D400E94C95 /* AppDelegate.swift */,
 				CD7F98C0285887D400E94C95 /* SceneDelegate.swift */,
 				CD7F98C2285887D400E94C95 /* ViewController.swift */,
+				CD7F98D328588FA800E94C95 /* PersonCell.swift */,
 				CD7F98C7285887D600E94C95 /* Assets.xcassets */,
 				CD7F98C9285887D600E94C95 /* LaunchScreen.storyboard */,
 				CD7F98CC285887D600E94C95 /* Info.plist */,
@@ -158,6 +161,7 @@
 			files = (
 				CD7F98C3285887D400E94C95 /* ViewController.swift in Sources */,
 				CD7F98BF285887D400E94C95 /* AppDelegate.swift in Sources */,
+				CD7F98D428588FA800E94C95 /* PersonCell.swift in Sources */,
 				CD7F98C1285887D400E94C95 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

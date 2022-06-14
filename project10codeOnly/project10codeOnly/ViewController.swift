@@ -10,13 +10,17 @@ import UIKit
 class ViewController: UIViewController {
 
     let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout.init())
+    var people = [Person]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setCollectionView()
 
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNew))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .add,
+            target: self,
+            action: #selector(addNew))
     }
 }
 
@@ -35,7 +39,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return people.count
     }
 
     func collectionView(
@@ -79,16 +83,20 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     func imagePickerController(
         _ picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        guard let image = info[.editedImage] as? UIImage else {return}
-        let imageName = UUID().uuidString
-        let imagePath = getDocumentsDirectory().appendingPathComponent(imageName)
+            guard let image = info[.editedImage] as? UIImage else {return}
+            let imageName = UUID().uuidString
+            let imagePath = getDocumentsDirectory().appendingPathComponent(imageName)
 
-        if let jpegData = image.jpegData(compressionQuality: 0.8) {
-            try? jpegData.write(to: imagePath)
+            if let jpegData = image.jpegData(compressionQuality: 0.8) {
+                try? jpegData.write(to: imagePath)
+            }
+
+            let person = Person(name: "Unknown", image: imageName)
+            people.append(person)
+            collectionView.reloadData()
+
+            dismiss(animated: true)
         }
-
-        dismiss(animated: true)
-    }
 
     func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)

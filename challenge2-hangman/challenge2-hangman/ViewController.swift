@@ -10,33 +10,64 @@ import UIKit
 class ViewController: UIViewController {
 
     var correctAnswer = "button".uppercased()
-    var usedLetters = [String]()
     var promptWord = ""
+
     var tries = 7 {
         didSet {
-            triesLabel?.text = "Tries: \(tries)"
+            triesLabel.text = "Tries: \(tries)"
         }
     }
-    var triesLabel: UILabel?
+
     var score = 0 {
         didSet {
             if score < 0 {
                 score = 0
             }
-            scoreLabel?.text = "Score: \(score)"
+            scoreLabel.text = "Score: \(score)"
         }
     }
-    var scoreLabel: UILabel?
-    var answer: UILabel?
-    var characterInput: UITextField?
-    var wrongAnswers = [String]()
-    var wrongAnswersLabel: UILabel?
+
     var currentCharacter = "" {
         didSet {
             charEnter(char: currentCharacter)
         }
     }
+
+    var usedLetters = [String]()
+    var wrongAnswers = [String]()
     var allWords = [String]()
+
+    lazy var triesLabel: UILabel = {
+        let triesLabel = UILabel()
+        triesLabel.translatesAutoresizingMaskIntoConstraints = false
+        triesLabel.textAlignment = .left
+        return triesLabel
+    }()
+
+    lazy var scoreLabel: UILabel = {
+        let scoreLabel = UILabel()
+        scoreLabel.translatesAutoresizingMaskIntoConstraints = false
+        return scoreLabel
+    }()
+
+    lazy var answer: UILabel = {
+        let answer = UILabel()
+        answer.translatesAutoresizingMaskIntoConstraints = false
+        answer.textAlignment = .center
+        return answer
+    }()
+
+    lazy var wrongAnswersLabel: UILabel = {
+        let wrongAnswerLabel = UILabel()
+        wrongAnswerLabel.translatesAutoresizingMaskIntoConstraints = false
+        return wrongAnswerLabel
+    }()
+
+    lazy var characterInput: UITextField = {
+        let characterInput = UITextField()
+
+        return characterInput
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()

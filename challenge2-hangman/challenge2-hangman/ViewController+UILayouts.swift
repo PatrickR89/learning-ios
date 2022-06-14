@@ -47,7 +47,7 @@ extension ViewController {
         view.addSubview(answer)
 
         NSLayoutConstraint.activate([
-            answer.topAnchor.constraint(equalTo: scoreLabel!.bottomAnchor, constant: 30),
+            answer.topAnchor.constraint(equalTo: scoreLabel.bottomAnchor, constant: 30),
             answer.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
 
@@ -65,7 +65,7 @@ extension ViewController {
         view.addSubview(characterInput)
 
         NSLayoutConstraint.activate([
-            characterInput.topAnchor.constraint(equalTo: answer!.bottomAnchor, constant: 10),
+            characterInput.topAnchor.constraint(equalTo: answer.bottomAnchor, constant: 10),
             characterInput.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             characterInput.widthAnchor.constraint(equalToConstant: 40)
         ])
@@ -80,7 +80,7 @@ extension ViewController {
         view.addSubview(wrongAnswersLabel)
 
         NSLayoutConstraint.activate([
-            wrongAnswersLabel.topAnchor.constraint(equalTo: characterInput!.bottomAnchor, constant: 40),
+            wrongAnswersLabel.topAnchor.constraint(equalTo: characterInput.bottomAnchor, constant: 40),
             wrongAnswersLabel.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.9),
             wrongAnswersLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])

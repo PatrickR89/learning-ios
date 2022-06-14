@@ -12,7 +12,7 @@ extension ViewController: UITextFieldDelegate {
         _ textField: UITextField,
         shouldChangeCharactersIn range: NSRange,
         replacementString string: String) -> Bool {
-            guard let currentText = characterInput?.text else {return false}
+            guard let currentText = characterInput.text else {return false}
             guard let stringRange = Range(range, in: currentText) else {return false}
             let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
             return updatedText.count <= 1
@@ -31,13 +31,13 @@ extension ViewController {
     func charEnter(char: String) {
         usedLetters.append(char.uppercased())
         submitAnswer()
-        answer?.text = promptWord
+        answer.text = promptWord
     }
 
     func handleWrongAnswer(char: String) {
         wrongAnswers.append(char.uppercased())
         let answersString = wrongAnswers.joined(separator: ", ")
-        wrongAnswersLabel?.text = "Wrong tries: \(answersString)"
+        wrongAnswersLabel.text = "Wrong tries: \(answersString)"
     }
 
     func submitAnswer() {
@@ -91,8 +91,8 @@ extension ViewController {
         correctAnswer = word.uppercased()
         usedLetters.removeAll()
         wrongAnswers.removeAll()
-        answer?.text = "_______"
-        wrongAnswersLabel?.text = "Wrong tries:"
+        answer.text = "_______"
+        wrongAnswersLabel.text = "Wrong tries:"
     }
 
     func looseGame() {

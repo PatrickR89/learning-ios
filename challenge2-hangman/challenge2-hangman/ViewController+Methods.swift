@@ -74,7 +74,10 @@ extension ViewController {
         }
 
         if allWords.isEmpty {
-            let alertController = UIAlertController(title: "Error", message: "Error occured. Source file was not found", preferredStyle: .alert)
+            let alertController = UIAlertController(
+                title: "Error",
+                message: "Error occured. Source file was not found",
+                preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "OK", style: .default))
 
             present(alertController, animated: true)

@@ -9,7 +9,7 @@ import UIKit
 
 extension ViewController {
 
-    func setScoreLabel() {
+    func setupScoreLabel() {
         let scoreLabel = UILabel()
         scoreLabel.text = "Score: 0"
         scoreLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -24,7 +24,7 @@ extension ViewController {
         self.scoreLabel = scoreLabel
     }
 
-    func setTriesLabel() {
+    func setupTriesLabel() {
         let triesLabel = UILabel()
         triesLabel.text = "Tries: 7"
         triesLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -39,7 +39,7 @@ extension ViewController {
         self.triesLabel = triesLabel
     }
 
-    func setAnswerLabel() {
+    func setupAnswerLabel() {
         let answer = UILabel()
         answer.text = "_______"
         answer.translatesAutoresizingMaskIntoConstraints = false
@@ -54,7 +54,7 @@ extension ViewController {
         self.answer = answer
     }
 
-    func setCharacterInput() {
+    func setupCharacterInput() {
         let characterInput = UITextField()
         characterInput.translatesAutoresizingMaskIntoConstraints = false
         characterInput.textAlignment = .center
@@ -72,7 +72,7 @@ extension ViewController {
         self.characterInput = characterInput
     }
 
-    func setWrongAnswerLayout() {
+    func setupWrongAnswerLayout() {
         let wrongAnswersLabel = UILabel()
         wrongAnswersLabel.text = "Wrong tries:"
         wrongAnswersLabel.translatesAutoresizingMaskIntoConstraints = false

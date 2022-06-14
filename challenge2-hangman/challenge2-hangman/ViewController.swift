@@ -42,11 +42,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
 
-        setScoreLabel()
-        setTriesLabel()
-        setAnswerLabel()
-        setCharacterInput()
-        setWrongAnswerLayout()
+        setupScoreLabel()
+        setupTriesLabel()
+        setupAnswerLabel()
+        setupCharacterInput()
+        setupWrongAnswerLayout()
 
         DispatchQueue.global(qos: .userInitiated).async {
             self.loadSource()

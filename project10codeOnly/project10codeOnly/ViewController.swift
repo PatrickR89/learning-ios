@@ -24,8 +24,13 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Person", for: indexPath)
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: "Person",
+                for: indexPath) as? PersonCell else {
+                fatalError("No cell!")
+            }
             cell.backgroundColor = .blue
+            cell.layer.cornerRadius = 7
         return cell
     }
 
@@ -46,7 +51,7 @@ extension ViewController {
         if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.scrollDirection = .vertical
         }
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Person")
+        collectionView.register(PersonCell.self, forCellWithReuseIdentifier: "Person")
         view.addSubview(collectionView)
         collectionView.delegate = self
         collectionView.dataSource = self

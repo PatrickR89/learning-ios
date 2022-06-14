@@ -29,7 +29,6 @@ extension PersonCell {
         contentView.addSubview(image)
 
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.backgroundColor = .red
         image.layer.borderWidth = 2
         image.layer.borderColor = UIColor(white: 0, alpha: 0.3).cgColor
         image.layer.cornerRadius = 3

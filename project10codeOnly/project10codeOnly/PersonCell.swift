@@ -28,7 +28,6 @@ class PersonCell: UICollectionViewCell {
 extension PersonCell {
 
     func setupContentView() {
-
         contentView.backgroundColor = .lightGray
         contentView.layer.cornerRadius = 7
     }

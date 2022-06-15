@@ -12,8 +12,8 @@ class ViewController: UIViewController {
     lazy var collectionLayout: UICollectionViewFlowLayout = {
         let collectionLayout = UICollectionViewFlowLayout()
         collectionLayout.scrollDirection = .vertical
-        collectionLayout.itemSize.height = 180
-        collectionLayout.itemSize.width = 140
+        collectionLayout.estimatedItemSize.height = 180
+        collectionLayout.estimatedItemSize.width = 140
         return collectionLayout
     }()
 

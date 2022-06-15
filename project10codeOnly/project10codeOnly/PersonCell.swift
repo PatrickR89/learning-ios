@@ -14,8 +14,8 @@ class PersonCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: .zero)
 
-        setImageView()
-        setLabelView()
+        setupImageView()
+        setupLabelView()
     }
 
     required init?(coder: NSCoder) {
@@ -25,7 +25,7 @@ class PersonCell: UICollectionViewCell {
 }
 
 extension PersonCell {
-    func setImageView() {
+    func setupImageView() {
         contentView.addSubview(image)
 
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -41,7 +41,7 @@ extension PersonCell {
         ])
     }
 
-    func setLabelView() {
+    func setupLabelView() {
         contentView.addSubview(label)
         label.numberOfLines = 2
         label.text = "label"

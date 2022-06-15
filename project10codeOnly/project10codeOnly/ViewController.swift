@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setCollectionView()
+        setupCollectionView()
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .add,

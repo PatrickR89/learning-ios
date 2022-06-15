@@ -16,6 +16,13 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         present(picker, animated: true)
     }
 
+    func getLastIndexPath () {
+        let lastSection = collectionView.numberOfSections - 1
+        let lastIndex = collectionView.numberOfItems(inSection: lastSection) - 1
+
+        lastIndexPath = IndexPath(item: lastIndex, section: lastSection)
+    }
+
     func imagePickerController(
         _ picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
@@ -29,7 +36,9 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
 
             let person = Person(name: "Unknown", image: imageName)
             people.append(person)
-            collectionView.reloadData()
+
+            let newIndexPath = IndexPath(item: lastIndexPath.item + 1, section: lastIndexPath.section)
+            collectionView.reloadItems(at: [newIndexPath])
 
             dismiss(animated: true)
         }

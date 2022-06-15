@@ -24,10 +24,13 @@ class ViewController: UIViewController {
 
     var people = [Person]()
 
+    var lastIndexPath = IndexPath()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupCollectionView()
+        getLastIndexPath()
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .add,

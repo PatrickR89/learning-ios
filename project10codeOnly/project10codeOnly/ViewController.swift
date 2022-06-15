@@ -9,13 +9,19 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    let collectionLayout = UICollectionViewFlowLayout()
+    lazy var collectionLayout: UICollectionViewFlowLayout = {
+        let collectionLayout = UICollectionViewFlowLayout()
+        collectionLayout.scrollDirection = .vertical
+        return collectionLayout
+    }()
+
     lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(
             frame: CGRect.zero,
             collectionViewLayout: type(of: collectionLayout).init())
         return collectionView
     }()
+
     var people = [Person]()
 
     override func viewDidLoad() {

@@ -10,9 +10,7 @@ import UIKit
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     func setupCollectionView() {
-        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            flowLayout.scrollDirection = .vertical
-        }
+        
         collectionView.register(PersonCell.self, forCellWithReuseIdentifier: "Person")
         view.addSubview(collectionView)
         collectionView.delegate = self

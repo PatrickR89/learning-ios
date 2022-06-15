@@ -16,6 +16,7 @@
 		CD7F98D62858AFE800E94C95 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7F98D52858AFE800E94C95 /* Person.swift */; };
 		CD7F98D82858B3FB00E94C95 /* ViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7F98D72858B3FB00E94C95 /* ViewController+CollectionView.swift */; };
 		CD7F98DA2858B46A00E94C95 /* ViewController+ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7F98D92858B46A00E94C95 /* ViewController+ImagePicker.swift */; };
+		CD7F98DC285A159100E94C95 /* ViewController+Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7F98DB285A159100E94C95 /* ViewController+Methods.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		CD7F98D52858AFE800E94C95 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		CD7F98D72858B3FB00E94C95 /* ViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+CollectionView.swift"; sourceTree = "<group>"; };
 		CD7F98D92858B46A00E94C95 /* ViewController+ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+ImagePicker.swift"; sourceTree = "<group>"; };
+		CD7F98DB285A159100E94C95 /* ViewController+Methods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Methods.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				CD7F98C0285887D400E94C95 /* SceneDelegate.swift */,
 				CD7F98C2285887D400E94C95 /* ViewController.swift */,
 				CD7F98D92858B46A00E94C95 /* ViewController+ImagePicker.swift */,
+				CD7F98DB285A159100E94C95 /* ViewController+Methods.swift */,
 				CD7F98D72858B3FB00E94C95 /* ViewController+CollectionView.swift */,
 				CD7F98D52858AFE800E94C95 /* Person.swift */,
 				CD7F98D328588FA800E94C95 /* PersonCell.swift */,
@@ -173,6 +176,7 @@
 				CD7F98DA2858B46A00E94C95 /* ViewController+ImagePicker.swift in Sources */,
 				CD7F98C3285887D400E94C95 /* ViewController.swift in Sources */,
 				CD7F98BF285887D400E94C95 /* AppDelegate.swift in Sources */,
+				CD7F98DC285A159100E94C95 /* ViewController+Methods.swift in Sources */,
 				CD7F98D428588FA800E94C95 /* PersonCell.swift in Sources */,
 				CD7F98C1285887D400E94C95 /* SceneDelegate.swift in Sources */,
 			);

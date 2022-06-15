@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(
             frame: CGRect.zero,
-            collectionViewLayout: type(of: collectionLayout).init())
+            collectionViewLayout: collectionLayout)
         return collectionView
     }()
 

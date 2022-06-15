@@ -10,7 +10,6 @@ import UIKit
 extension ViewController {
 
     func setupScoreLabel() {
-        let scoreLabel = UILabel()
         scoreLabel.text = "Score: 0"
         scoreLabel.translatesAutoresizingMaskIntoConstraints = false
         scoreLabel.textAlignment = .right
@@ -20,12 +19,9 @@ extension ViewController {
             scoreLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
             scoreLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
         ])
-
-        self.scoreLabel = scoreLabel
     }
 
     func setupTriesLabel() {
-        let triesLabel = UILabel()
         triesLabel.text = "Tries: 7"
         triesLabel.translatesAutoresizingMaskIntoConstraints = false
         triesLabel.textAlignment = .left
@@ -35,12 +31,9 @@ extension ViewController {
             triesLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
             triesLabel.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor)
         ])
-
-        self.triesLabel = triesLabel
     }
 
     func setupAnswerLabel() {
-        let answer = UILabel()
         answer.text = "_______"
         answer.translatesAutoresizingMaskIntoConstraints = false
         answer.textAlignment = .center
@@ -50,12 +43,9 @@ extension ViewController {
             answer.topAnchor.constraint(equalTo: scoreLabel.bottomAnchor, constant: 30),
             answer.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
-
-        self.answer = answer
     }
 
     func setupCharacterInput() {
-        let characterInput = UITextField()
         characterInput.translatesAutoresizingMaskIntoConstraints = false
         characterInput.textAlignment = .center
         characterInput.font = UIFont.systemFont(ofSize: 44)
@@ -69,11 +59,9 @@ extension ViewController {
             characterInput.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             characterInput.widthAnchor.constraint(equalToConstant: 40)
         ])
-        self.characterInput = characterInput
     }
 
     func setupWrongAnswerLayout() {
-        let wrongAnswersLabel = UILabel()
         wrongAnswersLabel.text = "Wrong tries:"
         wrongAnswersLabel.translatesAutoresizingMaskIntoConstraints = false
         wrongAnswersLabel.numberOfLines = 1
@@ -84,7 +72,5 @@ extension ViewController {
             wrongAnswersLabel.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.9),
             wrongAnswersLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
-
-        self.wrongAnswersLabel = wrongAnswersLabel
     }
 }

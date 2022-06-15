@@ -31,10 +31,6 @@ extension PersonCell {
 
         contentView.backgroundColor = .lightGray
         contentView.layer.cornerRadius = 7
-
-        translatesAutoresizingMaskIntoConstraints = false
-        contentView.widthAnchor.constraint(equalToConstant: 140).isActive = true
-        contentView.heightAnchor.constraint(equalToConstant: 180).isActive = true
     }
 
     func setupImageView() {

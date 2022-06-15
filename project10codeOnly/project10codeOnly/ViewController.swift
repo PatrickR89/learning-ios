@@ -9,17 +9,17 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    lazy var collectionLayout: UICollectionViewFlowLayout = {
-        let collectionLayout = UICollectionViewFlowLayout()
-        collectionLayout.scrollDirection = .vertical
-        collectionLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        return collectionLayout
-    }()
+//    lazy var collectionLayout: UICollectionViewFlowLayout = {
+//        let collectionLayout = UICollectionViewFlowLayout()
+//        collectionLayout.scrollDirection = .vertical
+//        collectionLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+//        return collectionLayout
+//    }()
 
     lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(
-            frame: CGRect.zero,
-            collectionViewLayout: collectionLayout)
+            frame: view.bounds,
+            collectionViewLayout: createLayout())
         return collectionView
     }()
 
@@ -30,7 +30,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupCollectionView()
+//        setupCollectionView()
+        configureHierarchy()
         getLastIndexPath()
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(

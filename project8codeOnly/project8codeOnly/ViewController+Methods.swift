@@ -103,10 +103,12 @@ extension ViewController {
             }
         }
 
-        cluesLabel?.text = clueString.trimmingCharacters(in: .whitespacesAndNewlines)
-        answersLabel?.text = solutionString.trimmingCharacters(in: .whitespacesAndNewlines)
+        DispatchQueue.main.async { [weak self] in
+            self?.cluesLabel?.text = clueString.trimmingCharacters(in: .whitespacesAndNewlines)
+            self?.answersLabel?.text = solutionString.trimmingCharacters(in: .whitespacesAndNewlines)
 
-        assignLetterBtns(letterBits)
+            self?.assignLetterBtns(letterBits)
+        }
     }
 
     func setBits(answers: String, letterBits: inout [String]) {

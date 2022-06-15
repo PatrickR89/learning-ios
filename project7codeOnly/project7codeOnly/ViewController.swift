@@ -30,9 +30,17 @@ class ListViewController: UIViewController {
         configTableView()
         view.backgroundColor = .white
 
-        guard let url = URL(string: configuration.url),
-              let data = try? Data(contentsOf: url) else { return }
-        parse(json: data)
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            guard let configUrl = self?.configuration.url,
+                  let url = URL(string: configUrl),
+                  let data = try? Data(contentsOf: url) else {
+                self?.showError()
+                return
+            }
+            self?.parse(json: data)
+
+            return
+        }
     }
 }
 
@@ -83,13 +91,15 @@ extension ListViewController {
     }
 
     func showError() {
-        let alertController = UIAlertController(
-            title: "Loading error",
-            message: "Unfortunately there was an issue loading the feed. Check your connection and try again",
-            preferredStyle: .alert)
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(
+                title: "Loading error",
+                message: "Unfortunately there was an issue loading the feed. Check your connection and try again",
+                preferredStyle: .alert)
 
-        alertController.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alertController, animated: true)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(alertController, animated: true)
+        }
     }
 
     func parse(json: Data) {
@@ -98,7 +108,9 @@ extension ListViewController {
         guard let jsonPetitions = try? decoder.decode(Petitions.self, from: json) else {return}
         petitions = jsonPetitions.results
         filteredPetitions = petitions
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 }
 

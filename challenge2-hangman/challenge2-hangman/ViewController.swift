@@ -47,6 +47,7 @@ class ViewController: UIViewController {
     lazy var scoreLabel: UILabel = {
         let scoreLabel = UILabel()
         scoreLabel.translatesAutoresizingMaskIntoConstraints = false
+        scoreLabel.textAlignment = .right
         return scoreLabel
     }()
 
@@ -60,11 +61,18 @@ class ViewController: UIViewController {
     lazy var wrongAnswersLabel: UILabel = {
         let wrongAnswerLabel = UILabel()
         wrongAnswerLabel.translatesAutoresizingMaskIntoConstraints = false
+        wrongAnswerLabel.numberOfLines = 1
         return wrongAnswerLabel
     }()
 
     lazy var characterInput: UITextField = {
         let characterInput = UITextField()
+        characterInput.translatesAutoresizingMaskIntoConstraints = false
+        characterInput.textAlignment = .center
+        characterInput.font = UIFont.systemFont(ofSize: 44)
+        characterInput.layer.borderWidth = 1
+        characterInput.layer.borderColor = UIColor.lightGray.cgColor
+        characterInput.delegate = self
 
         return characterInput
     }()

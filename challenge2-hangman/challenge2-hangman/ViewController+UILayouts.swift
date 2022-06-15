@@ -11,8 +11,6 @@ extension ViewController {
 
     func setupScoreLabel() {
         scoreLabel.text = "Score: 0"
-        scoreLabel.translatesAutoresizingMaskIntoConstraints = false
-        scoreLabel.textAlignment = .right
         view.addSubview(scoreLabel)
 
         NSLayoutConstraint.activate([
@@ -23,8 +21,6 @@ extension ViewController {
 
     func setupTriesLabel() {
         triesLabel.text = "Tries: 7"
-        triesLabel.translatesAutoresizingMaskIntoConstraints = false
-        triesLabel.textAlignment = .left
         view.addSubview(triesLabel)
 
         NSLayoutConstraint.activate([
@@ -35,8 +31,6 @@ extension ViewController {
 
     func setupAnswerLabel() {
         answer.text = "_______"
-        answer.translatesAutoresizingMaskIntoConstraints = false
-        answer.textAlignment = .center
         view.addSubview(answer)
 
         NSLayoutConstraint.activate([
@@ -46,12 +40,6 @@ extension ViewController {
     }
 
     func setupCharacterInput() {
-        characterInput.translatesAutoresizingMaskIntoConstraints = false
-        characterInput.textAlignment = .center
-        characterInput.font = UIFont.systemFont(ofSize: 44)
-        characterInput.layer.borderWidth = 1
-        characterInput.layer.borderColor = UIColor.lightGray.cgColor
-        characterInput.delegate = self
         view.addSubview(characterInput)
 
         NSLayoutConstraint.activate([
@@ -63,8 +51,6 @@ extension ViewController {
 
     func setupWrongAnswerLayout() {
         wrongAnswersLabel.text = "Wrong tries:"
-        wrongAnswersLabel.translatesAutoresizingMaskIntoConstraints = false
-        wrongAnswersLabel.numberOfLines = 1
         view.addSubview(wrongAnswersLabel)
 
         NSLayoutConstraint.activate([

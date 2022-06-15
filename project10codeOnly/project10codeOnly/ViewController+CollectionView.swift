@@ -59,7 +59,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
         let rename = UIAlertAction(title: "OK", style: .default) { [weak self, weak alertController] _ in
             guard let newName = alertController?.textFields?[0].text else {return}
             person.name = newName
-            self?.collectionView.reloadData()
+            self?.collectionView.reloadItems(at: [indexPath])
         }
         alertController.addAction(rename)
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))

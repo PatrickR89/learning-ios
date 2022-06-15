@@ -7,14 +7,7 @@
 
 import UIKit
 
-extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
-    @objc func addNew() {
-        let picker = UIImagePickerController()
-        picker.allowsEditing = true
-        picker.delegate = self
-        present(picker, animated: true)
-    }
+extension ViewController: UIImagePickerControllerDelegate {
 
     func getLastIndexPath () {
         let lastSection = collectionView.numberOfSections - 1
@@ -47,5 +40,15 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
 
         return paths[0]
+    }
+}
+
+extension ViewController: UINavigationControllerDelegate {
+
+    @objc func addPerson() {
+        let picker = UIImagePickerController()
+        picker.allowsEditing = true
+        picker.delegate = self
+        present(picker, animated: true)
     }
 }

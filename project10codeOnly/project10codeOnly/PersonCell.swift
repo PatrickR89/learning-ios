@@ -14,9 +14,7 @@ class PersonCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: .zero)
 
-        contentView.backgroundColor = .lightGray
-        contentView.layer.cornerRadius = 7
-
+        setupContentView()
         setupImageView()
         setupLabelView()
     }
@@ -28,6 +26,17 @@ class PersonCell: UICollectionViewCell {
 }
 
 extension PersonCell {
+
+    func setupContentView() {
+
+        contentView.backgroundColor = .lightGray
+        contentView.layer.cornerRadius = 7
+
+        translatesAutoresizingMaskIntoConstraints = false
+        contentView.widthAnchor.constraint(equalToConstant: 140).isActive = true
+        contentView.heightAnchor.constraint(equalToConstant: 180).isActive = true
+    }
+
     func setupImageView() {
         contentView.addSubview(image)
 

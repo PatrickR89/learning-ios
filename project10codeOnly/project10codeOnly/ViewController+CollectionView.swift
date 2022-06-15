@@ -44,12 +44,12 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
         return people.count
     }
 
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAt indexPath: IndexPath) -> CGSize {
-            return CGSize(width: 140, height: 180)
-        }
+//    func collectionView(
+//        _ collectionView: UICollectionView,
+//        layout collectionViewLayout: UICollectionViewLayout,
+//        sizeForItemAt indexPath: IndexPath) -> CGSize {
+//            return CGSize(width: 140, height: 180)
+//        }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let person = people[indexPath.item]

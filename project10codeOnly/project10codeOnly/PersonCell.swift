@@ -14,6 +14,9 @@ class PersonCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: .zero)
 
+        contentView.backgroundColor = .lightGray
+        contentView.layer.cornerRadius = 7
+
         setupImageView()
         setupLabelView()
     }
@@ -54,5 +57,16 @@ extension PersonCell {
             label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             label.widthAnchor.constraint(equalToConstant: 120)
         ])
+    }
+    func setup(with person: Person) {
+        label.text = person.name
+        let path = getDocumentsDirectory().appendingPathComponent(person.image)
+        image.image = UIImage(contentsOfFile: path.path)
+    }
+
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+
+        return paths[0]
     }
 }

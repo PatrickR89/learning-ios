@@ -10,7 +10,7 @@ import UIKit
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     func setupCollectionView() {
-        
+
         collectionView.register(PersonCell.self, forCellWithReuseIdentifier: "Person")
         view.addSubview(collectionView)
         collectionView.delegate = self
@@ -35,14 +35,8 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
                 for: indexPath) as? PersonCell else {
                 fatalError("No cell!")
             }
-            cell.backgroundColor = .lightGray
-            cell.layer.cornerRadius = 7
 
-            let person = people[indexPath.item]
-            cell.label.text = person.name
-            let path = getDocumentsDirectory().appendingPathComponent(person.image)
-            cell.image.image = UIImage(contentsOfFile: path.path)
-
+            cell.setup(with: people[indexPath.item])
             return cell
         }
 

@@ -32,7 +32,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         setupCollectionView()
-        getLastIndexPath()
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .add,

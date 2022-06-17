@@ -9,12 +9,6 @@ import UIKit
 
 extension ViewController {
 
-    func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-
-        return paths[0]
-    }
-
     func setupCollectionView() {
 
         collectionView.register(PersonCell.self, forCellWithReuseIdentifier: "Person")
@@ -38,5 +32,19 @@ extension ViewController {
         picker.allowsEditing = true
         picker.delegate = self
         present(picker, animated: true)
+    }
+}
+
+extension FileManager {
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+
+        return paths[0]
+    }
+
+    func getImagePath(_ name: String) -> URL {
+        let imagePath = getDocumentsDirectory().appendingPathComponent(name)
+
+        return imagePath
     }
 }

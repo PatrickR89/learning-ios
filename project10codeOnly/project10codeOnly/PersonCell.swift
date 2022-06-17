@@ -64,13 +64,7 @@ extension PersonCell {
     }
     func setup(with person: Person) {
         label.text = person.name
-        let path = getDocumentsDirectory().appendingPathComponent(person.image)
+        let path = FileManager.default.getImagePath(person.image)
         image.image = UIImage(contentsOfFile: path.path)
-    }
-
-    func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-
-        return paths[0]
     }
 }

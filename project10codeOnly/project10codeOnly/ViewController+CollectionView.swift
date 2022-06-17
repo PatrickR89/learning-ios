@@ -8,7 +8,7 @@
 import UIKit
 
 extension ViewController: UICollectionViewDataSource {
-
+    
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -17,20 +17,21 @@ extension ViewController: UICollectionViewDataSource {
                 for: indexPath) as? PersonCell else {
                 fatalError("No cell!")
             }
-
+            
             cell.setup(with: people[indexPath.item])
             return cell
         }
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return people.count
     }
 }
-extension ViewController: UICollectionViewDelegate {
 
+extension ViewController: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let person = people[indexPath.item]
-
+        
         let alertController = UIAlertController(title: "Rename", message: nil, preferredStyle: .alert)
         alertController.addTextField()
         let rename = UIAlertAction(title: "OK", style: .default) { [weak self, weak alertController] _ in
@@ -40,7 +41,7 @@ extension ViewController: UICollectionViewDelegate {
         }
         alertController.addAction(rename)
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-
+        
         present(alertController, animated: true)
     }
 }

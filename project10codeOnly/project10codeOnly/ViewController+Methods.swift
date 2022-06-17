@@ -9,13 +9,6 @@ import UIKit
 
 extension ViewController {
 
-    func getLastIndexPath () {
-        let lastSection = collectionView.numberOfSections - 1
-        let lastIndex = collectionView.numberOfItems(inSection: lastSection) - 1
-
-        lastIndexPath = IndexPath(item: lastIndex, section: lastSection)
-    }
-
     func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
 

@@ -23,9 +23,7 @@ extension ViewController: UIImagePickerControllerDelegate {
             let person = Person(name: "Unknown", image: imageName)
             people.append(person)
 
-            getLastIndexPath()
-
-            let newIndexPath = IndexPath(item: lastIndexPath.item + 1, section: lastIndexPath.section)
+            let newIndexPath = IndexPath(item: people.count - 1, section: collectionView.numberOfSections - 1)
             collectionView.insertItems(at: [newIndexPath])
 
             dismiss(animated: true)

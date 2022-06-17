@@ -34,17 +34,3 @@ extension ViewController {
         present(picker, animated: true)
     }
 }
-
-extension FileManager {
-    func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-
-        return paths[0]
-    }
-
-    func getImagePath(_ name: String) -> URL {
-        let imagePath = getDocumentsDirectory().appendingPathComponent(name)
-
-        return imagePath
-    }
-}

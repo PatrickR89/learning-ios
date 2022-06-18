@@ -9,9 +9,11 @@ import UIKit
 
 class SinglePersonView: UIViewController {
 
+    var singlePerson = Person(name: "", image: "")
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print(singlePerson)
         // Do any additional setup after loading the view.
     }
 }

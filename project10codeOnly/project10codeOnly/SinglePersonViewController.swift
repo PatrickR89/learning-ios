@@ -13,11 +13,23 @@ protocol SinglePersonViewDelegate: AnyObject {
 
 class SinglePersonViewController: UIViewController {
 
-    var singlePerson = Person(name: "", image: "")
+    var singlePerson: Person
+    var indexPath: IndexPath
+    
+    weak var delegate: SinglePersonViewDelegate?
+
+    required init (singlePerson: Person, indexPath: IndexPath) {
+        self.singlePerson = singlePerson
+        self.indexPath = indexPath
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     var imageView = UIImageView()
     var textField = UITextField()
-    var indexPath = IndexPath()
-    weak var delegate: SinglePersonViewDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()

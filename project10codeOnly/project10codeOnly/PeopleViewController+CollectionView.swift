@@ -31,11 +31,8 @@ extension PeopleViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        let personView = SinglePersonViewController()
+        let personView = SinglePersonViewController(singlePerson: people[indexPath.item], indexPath: indexPath)
         personView.delegate = self
-
-        personView.singlePerson = people[indexPath.item]
-        personView.indexPath = indexPath
 
         navigationController?.pushViewController(personView, animated: true)
     }

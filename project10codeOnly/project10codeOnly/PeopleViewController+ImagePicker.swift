@@ -19,12 +19,14 @@ extension PeopleViewController: UIImagePickerControllerDelegate {
             if let jpegData = image.jpegData(compressionQuality: 0.8) {
                 try? jpegData.write(to: imagePath)
             }
+            people[tempIndex.item].image = imageName
+            collectionView.reloadItems(at: [tempIndex])
 
-            let person = Person(name: "Unknown", image: imageName)
-            people.append(person)
-
-            let newIndexPath = IndexPath(item: people.count - 1, section: collectionView.numberOfSections - 1)
-            collectionView.insertItems(at: [newIndexPath])
+//            let person = Person(name: "Unknown", image: imageName)
+//            people.append(person)
+//
+//            let newIndexPath = IndexPath(item: people.count - 1, section: collectionView.numberOfSections - 1)
+//            collectionView.insertItems(at: [newIndexPath])
 
             dismiss(animated: true)
         }

@@ -50,4 +50,13 @@ extension PeopleViewController: SinglePersonViewDelegate {
         people[indexPath.item].name = name
         collectionView.reloadItems(at: [indexPath])
     }
+
+    func changeImage(indexPath: IndexPath) {
+        let picker = UIImagePickerController()
+        picker.allowsEditing = true
+        picker.delegate = self
+        present(picker, animated: true)
+        tempIndex = indexPath
+        collectionView.reloadItems(at: [indexPath])
+    }
 }

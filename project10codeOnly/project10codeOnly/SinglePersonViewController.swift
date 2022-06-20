@@ -9,6 +9,7 @@ import UIKit
 
 protocol SinglePersonViewDelegate: AnyObject {
     func changeSingleName(name: String, indexPath: IndexPath)
+    func changeImage(indexPath: IndexPath)
 }
 
 class SinglePersonViewController: UIViewController {
@@ -34,6 +35,7 @@ class SinglePersonViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
+
         setupImageView()
         setupText()
         // Do any additional setup after loading the view.
@@ -42,6 +44,7 @@ class SinglePersonViewController: UIViewController {
     func setupImageView() {
 
         view.addSubview(imageView)
+        var tapImage = UITapGestureRecognizer(target: self, action: #selector(newImage))
 
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.borderWidth = 2
@@ -50,6 +53,9 @@ class SinglePersonViewController: UIViewController {
 
         let path = FileManager.default.getImagePath(singlePerson.image)
         imageView.image = UIImage(contentsOfFile: path.path)
+
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(tapImage)
 
         NSLayoutConstraint.activate([
             imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -77,6 +83,10 @@ class SinglePersonViewController: UIViewController {
             textField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             textField.widthAnchor.constraint(equalTo: imageView.widthAnchor)
         ])
+    }
+
+    @objc func newImage() {
+        delegate?.changeImage(indexPath: indexPath)
     }
 }
 

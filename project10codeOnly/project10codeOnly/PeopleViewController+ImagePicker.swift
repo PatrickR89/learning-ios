@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension ViewController: UIImagePickerControllerDelegate {
+extension PeopleViewController: UIImagePickerControllerDelegate {
 
     func imagePickerController(
         _ picker: UIImagePickerController,
@@ -30,5 +30,5 @@ extension ViewController: UIImagePickerControllerDelegate {
         }
 }
 
-extension ViewController: UINavigationControllerDelegate {
+extension PeopleViewController: UINavigationControllerDelegate {
 }

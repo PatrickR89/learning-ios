@@ -7,11 +7,17 @@
 
 import UIKit
 
-class SinglePersonView: UIViewController {
+protocol SinglePersonViewDelegate: AnyObject {
+    func changeSingleName(name: String, indexPath: IndexPath)
+}
+
+class SinglePersonViewController: UIViewController {
 
     var singlePerson = Person(name: "", image: "")
     var imageView = UIImageView()
     var textField = UITextField()
+    var indexPath = IndexPath()
+    weak var delegate: SinglePersonViewDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,9 +68,10 @@ class SinglePersonView: UIViewController {
     }
 }
 
-extension SinglePersonView: UITextFieldDelegate {
+extension SinglePersonViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let text = textField.text else {return}
         singlePerson.name = text
+        delegate?.changeSingleName(name: text, indexPath: indexPath)
     }
 }

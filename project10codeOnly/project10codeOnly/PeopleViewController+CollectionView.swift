@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension ViewController: UICollectionViewDataSource {
+extension PeopleViewController: UICollectionViewDataSource {
 
     func collectionView(
         _ collectionView: UICollectionView,
@@ -27,26 +27,16 @@ extension ViewController: UICollectionViewDataSource {
     }
 }
 
-extension ViewController: UICollectionViewDelegate {
+extension PeopleViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        let personView = SinglePersonView()
+        let personView = SinglePersonViewController()
+        personView.delegate = self
 
         personView.singlePerson = people[indexPath.item]
+        personView.indexPath = indexPath
 
         navigationController?.pushViewController(personView, animated: true)
-        
-//        let alertController = UIAlertController(title: "Rename", message: nil, preferredStyle: .alert)
-//        alertController.addTextField()
-//        let rename = UIAlertAction(title: "OK", style: .default) { [weak self, weak alertController] _ in
-//            guard let newName = alertController?.textFields?[0].text else {return}
-//            person.name = newName
-//            self?.collectionView.reloadItems(at: [indexPath])
-//        }
-//        alertController.addAction(rename)
-//        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-//
-//        present(alertController, animated: true)
     }
 }

@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         options connectionOptions: UIScene.ConnectionOptions) {
             guard let windowScene: UIWindowScene = (scene as? UIWindowScene) else {return}
             let navController = UINavigationController()
-            let viewController = ViewController()
+            let viewController = PeopleViewController()
 
             navController.viewControllers = [viewController]
 

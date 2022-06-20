@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class PeopleViewController: UIViewController {
 
     lazy var collectionLayout: UICollectionViewFlowLayout = {
         let collectionLayout = UICollectionViewFlowLayout()

@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension ViewController {
+extension PeopleViewController {
 
     func setupCollectionView() {
 
@@ -32,5 +32,12 @@ extension ViewController {
         picker.allowsEditing = true
         picker.delegate = self
         present(picker, animated: true)
+    }
+}
+
+extension PeopleViewController: SinglePersonViewDelegate {
+    func changeSingleName(name: String, indexPath: IndexPath) {
+        people[indexPath.item].name = name
+        collectionView.reloadItems(at: [indexPath])
     }
 }

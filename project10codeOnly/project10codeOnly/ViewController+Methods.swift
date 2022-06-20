@@ -34,9 +34,3 @@ extension ViewController {
         present(picker, animated: true)
     }
 }
-
-extension ViewController: SinglePersonViewDelegate {
-    func changeSingleName(name: String, indexPath: IndexPath) {
-        people[indexPath.item].name = name
-    }
-}

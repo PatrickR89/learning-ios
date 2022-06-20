@@ -7,23 +7,18 @@
 
 import UIKit
 
-protocol SinglePersonViewDelegate: AnyObject {
-    func changeSingleName(name: String, indexPath: IndexPath)
-}
-
 class SinglePersonView: UIViewController {
 
     var singlePerson = Person(name: "", image: "")
     var imageView = UIImageView()
     var textField = UITextField()
-    var indexPath = IndexPath()
-    var delegate: SinglePersonViewDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
         setupImageView()
         setupText()
+        // Do any additional setup after loading the view.
     }
 
     func setupImageView() {
@@ -57,20 +52,11 @@ class SinglePersonView: UIViewController {
         textField.textColor = .white
         textField.layer.borderWidth = 0.5
         textField.layer.cornerRadius = 5
-        textField.delegate = self
 
         NSLayoutConstraint.activate([
             textField.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20),
             textField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             textField.widthAnchor.constraint(equalTo: imageView.widthAnchor)
         ])
-    }
-}
-
-extension SinglePersonView: UITextFieldDelegate {
-    func textFieldDidChangeSelection (_ textField: UITextField) {
-        guard let text = textField.text else {return}
-        singlePerson.name = text
-        delegate?.changeSingleName(name: text, indexPath: indexPath)
     }
 }

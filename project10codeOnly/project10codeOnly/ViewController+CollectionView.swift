@@ -17,10 +17,8 @@ extension ViewController: UICollectionViewDataSource {
                 for: indexPath) as? PersonCell else {
                 fatalError("No cell!")
             }
-            collectionView.reloadItems(at: [indexPath])
 
             cell.setup(with: people[indexPath.item])
-
             return cell
         }
 
@@ -36,12 +34,8 @@ extension ViewController: UICollectionViewDelegate {
         let personView = SinglePersonView()
 
         personView.singlePerson = people[indexPath.item]
-        personView.indexPath = indexPath
-        navigationController?.pushViewController(personView, animated: true)
-        collectionView.reloadItems(at: [indexPath])
 
-//        personView.changeName(people: people)
-//        collectionView.reloadItems(at: [indexPath])
+        navigationController?.pushViewController(personView, animated: true)
 //        let alertController = UIAlertController(title: "Rename", message: nil, preferredStyle: .alert)
 //        alertController.addTextField()
 //        let rename = UIAlertAction(title: "OK", style: .default) { [weak self, weak alertController] _ in

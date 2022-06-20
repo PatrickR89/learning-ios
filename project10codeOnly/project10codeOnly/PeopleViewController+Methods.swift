@@ -33,6 +33,16 @@ extension PeopleViewController {
         picker.delegate = self
         present(picker, animated: true)
     }
+
+    @objc func addNewPerson() {
+        let person = Person(name: "", image: "")
+        people.append(person)
+        let newIndexPath = IndexPath(item: people.count - 1, section: collectionView.numberOfSections - 1)
+        collectionView.insertItems(at: [newIndexPath])
+        let singlePersonView = SinglePersonViewController(singlePerson: person, indexPath: newIndexPath)
+        singlePersonView.delegate = self
+        navigationController?.pushViewController(singlePersonView, animated: true)
+    }
 }
 
 extension PeopleViewController: SinglePersonViewDelegate {

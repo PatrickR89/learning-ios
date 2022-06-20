@@ -15,7 +15,7 @@ class SinglePersonViewController: UIViewController {
 
     var singlePerson: Person
     var indexPath: IndexPath
-    
+
     weak var delegate: SinglePersonViewDelegate?
 
     required init (singlePerson: Person, indexPath: IndexPath) {

@@ -36,6 +36,6 @@ class PeopleViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .add,
             target: self,
-            action: #selector(addPerson))
+            action: #selector(addNewPerson))
     }
 }

@@ -27,13 +27,6 @@ extension PeopleViewController {
         ])
     }
 
-    @objc func addPerson() {
-        let picker = UIImagePickerController()
-        picker.allowsEditing = true
-        picker.delegate = self
-        present(picker, animated: true)
-    }
-
     @objc func addNewPerson() {
         let person = Person(name: "", image: "")
         people.append(person)

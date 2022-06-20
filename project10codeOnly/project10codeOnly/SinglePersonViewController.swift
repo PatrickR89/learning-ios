@@ -38,6 +38,7 @@ class SinglePersonViewController: UIViewController {
 
         setupImageView()
         setupText()
+
     }
 
     func setupImageView() {
@@ -55,7 +56,6 @@ class SinglePersonViewController: UIViewController {
 
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(tapImage)
-        imageView.reloadInputViews()
 
         NSLayoutConstraint.activate([
             imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),

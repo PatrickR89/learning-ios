@@ -52,11 +52,19 @@ class SinglePersonView: UIViewController {
         textField.textColor = .white
         textField.layer.borderWidth = 0.5
         textField.layer.cornerRadius = 5
+        textField.delegate = self
 
         NSLayoutConstraint.activate([
             textField.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20),
             textField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             textField.widthAnchor.constraint(equalTo: imageView.widthAnchor)
         ])
+    }
+}
+
+extension SinglePersonView: UITextFieldDelegate {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        guard let text = textField.text else {return}
+        singlePerson.name = text
     }
 }

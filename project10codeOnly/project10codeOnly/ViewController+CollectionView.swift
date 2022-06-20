@@ -36,6 +36,7 @@ extension ViewController: UICollectionViewDelegate {
         personView.singlePerson = people[indexPath.item]
 
         navigationController?.pushViewController(personView, animated: true)
+        
 //        let alertController = UIAlertController(title: "Rename", message: nil, preferredStyle: .alert)
 //        alertController.addTextField()
 //        let rename = UIAlertAction(title: "OK", style: .default) { [weak self, weak alertController] _ in

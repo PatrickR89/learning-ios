@@ -38,13 +38,12 @@ class SinglePersonViewController: UIViewController {
 
         setupImageView()
         setupText()
-        // Do any additional setup after loading the view.
     }
 
     func setupImageView() {
 
         view.addSubview(imageView)
-        var tapImage = UITapGestureRecognizer(target: self, action: #selector(newImage))
+        let tapImage = UITapGestureRecognizer(target: self, action: #selector(newImage))
 
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.borderWidth = 2
@@ -56,6 +55,7 @@ class SinglePersonViewController: UIViewController {
 
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(tapImage)
+        imageView.reloadInputViews()
 
         NSLayoutConstraint.activate([
             imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),

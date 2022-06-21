@@ -90,7 +90,6 @@ class SinglePersonViewController: UIViewController {
         picker.allowsEditing = true
         picker.delegate = self
         present(picker, animated: true)
-        delegate?.changeImage(image: singlePerson.image, indexPath: indexPath)
     }
 }
 

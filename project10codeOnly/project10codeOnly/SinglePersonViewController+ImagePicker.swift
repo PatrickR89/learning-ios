@@ -19,7 +19,9 @@ extension SinglePersonViewController: UIImagePickerControllerDelegate {
             if let jpegData = image.jpegData(compressionQuality: 0.8) {
                 try? jpegData.write(to: imagePath)
             }
+
             singlePerson.image = imageName
+            delegate?.changeImage(image: imageName, indexPath: indexPath)
 
             dismiss(animated: true)
         }

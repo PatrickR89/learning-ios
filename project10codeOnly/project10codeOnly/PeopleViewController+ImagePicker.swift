@@ -1,5 +1,5 @@
 //
-//  ViewController+ImagePicker.swift
+//  PeopleViewController+ImagePicker.swift
 //  project10codeOnly
 //
 //  Created by Patrick on 14.06.2022..

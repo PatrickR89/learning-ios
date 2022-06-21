@@ -1,5 +1,5 @@
 //
-//  SinglePersonView.swift
+//  SinglePersonViewController.swift
 //  project10codeOnly
 //
 //  Created by Patrick on 18.06.2022..

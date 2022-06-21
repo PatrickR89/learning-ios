@@ -1,5 +1,5 @@
 //
-//  ViewController+Methods.swift
+//  PeopleViewController+Methods.swift
 //  project10codeOnly
 //
 //  Created by Patrick on 15.06.2022..

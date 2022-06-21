@@ -14,11 +14,12 @@ extension SinglePersonViewController: UIImagePickerControllerDelegate {
         didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
             guard let image = info[.editedImage] as? UIImage else {return}
             let imageName = UUID().uuidString
-            let imagePath = FileManager.default.getImagePath(imageName)
+            let imagePath = FileManager.default.getFilePath(imageName)
 
             if let jpegData = image.jpegData(compressionQuality: 0.8) {
                 try? jpegData.write(to: imagePath)
             }
+            print(imagePath)
 
             singlePerson.image = imageName
             delegate?.changeImage(image: imageName, indexPath: indexPath)

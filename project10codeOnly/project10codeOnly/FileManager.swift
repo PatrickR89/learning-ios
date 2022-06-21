@@ -14,9 +14,9 @@ extension FileManager {
         return paths[0]
     }
 
-    func getImagePath(_ name: String) -> URL {
-        let imagePath = getDocumentsDirectory().appendingPathComponent(name)
+    func getFilePath(_ name: String) -> URL {
+        let filePath = getDocumentsDirectory().appendingPathComponent(name)
 
-        return imagePath
+        return filePath
     }
 }

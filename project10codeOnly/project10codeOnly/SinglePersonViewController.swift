@@ -65,7 +65,7 @@ class SinglePersonViewController: UIViewController {
     }
 
     func setupImageInImageView() {
-        let path = FileManager.default.getImagePath(singlePerson.image)
+        let path = FileManager.default.getFilePath(singlePerson.image)
         imageView.image = UIImage(contentsOfFile: path.path)
     }
 

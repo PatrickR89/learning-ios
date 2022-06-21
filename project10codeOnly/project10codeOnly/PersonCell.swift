@@ -64,7 +64,7 @@ extension PersonCell {
     }
     func setup(with person: Person) {
         label.text = person.name
-        let path = FileManager.default.getImagePath(person.image)
+        let path = FileManager.default.getFilePath(person.image)
         image.image = UIImage(contentsOfFile: path.path)
     }
 }

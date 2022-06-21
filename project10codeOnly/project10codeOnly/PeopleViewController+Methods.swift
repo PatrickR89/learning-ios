@@ -36,6 +36,29 @@ extension PeopleViewController {
         singlePersonView.delegate = self
         navigationController?.pushViewController(singlePersonView, animated: true)
     }
+
+    @objc func encodeAndSavePeople() {
+        do {
+            let encodeToJSON = JSONEncoder()
+            let peopleJSON = try encodeToJSON.encode(people)
+            print(peopleJSON)
+            try peopleJSON.write(to: peopleFile, options: .atomic)
+        } catch {
+            print("an error occured \(error)")
+        }
+
+    }
+
+    func loadAndDecodePeople() {
+        do {
+            let decodeFromJSON = JSONDecoder()
+            let response = try String(contentsOf: peopleFile)
+            let data = Data(response.utf8)
+            people = try decodeFromJSON.decode([Person].self, from: data)
+        } catch {
+            print("Error \(error)")
+        }
+    }
 }
 
 extension PeopleViewController: SinglePersonViewDelegate {

@@ -34,7 +34,7 @@ class PeopleViewController: UIViewController {
         super.viewDidLoad()
 
         setupCollectionView()
-        decodePeople()
+        loadAndDecodePeople()
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .add,
@@ -44,30 +44,7 @@ class PeopleViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .save,
             target: self,
-            action: #selector(encodePeople))
+            action: #selector(encodeAndSavePeople))
 
-    }
-
-    @objc func encodePeople() {
-        do {
-            let encodeToJSON = JSONEncoder()
-            let peopleJSON = try encodeToJSON.encode(people)
-            print(peopleJSON)
-            try peopleJSON.write(to: peopleFile, options: .atomic)
-        } catch {
-            print("an error occured \(error)")
-        }
-
-    }
-
-    func decodePeople() {
-        do {
-            let decodeFromJSON = JSONDecoder()
-            let response = try String(contentsOf: peopleFile)
-            let data = Data(response.utf8)
-            people = try decodeFromJSON.decode([Person].self, from: data)
-        } catch {
-            print("Error \(error)")
-        }
     }
 }

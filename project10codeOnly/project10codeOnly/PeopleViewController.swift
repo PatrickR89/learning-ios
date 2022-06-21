@@ -26,8 +26,7 @@ class PeopleViewController: UIViewController {
 
     var people = [Person]()
 
-    var lastIndexPath = IndexPath()
-    var tempIndex = IndexPath()
+    var imageInsertIndex = IndexPath()
 
     override func viewDidLoad() {
         super.viewDidLoad()

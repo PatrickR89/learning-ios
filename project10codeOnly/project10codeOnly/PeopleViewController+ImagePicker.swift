@@ -19,8 +19,8 @@ extension PeopleViewController: UIImagePickerControllerDelegate {
             if let jpegData = image.jpegData(compressionQuality: 0.8) {
                 try? jpegData.write(to: imagePath)
             }
-            people[tempIndex.item].image = imageName
-            collectionView.reloadItems(at: [tempIndex])
+            people[imageInsertIndex.item].image = imageName
+            collectionView.reloadItems(at: [imageInsertIndex])
 
             dismiss(animated: true)
         }

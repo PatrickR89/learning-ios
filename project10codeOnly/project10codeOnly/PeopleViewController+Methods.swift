@@ -49,7 +49,7 @@ extension PeopleViewController: SinglePersonViewDelegate {
         picker.allowsEditing = true
         picker.delegate = self
         present(picker, animated: true)
-        tempIndex = indexPath
+        imageInsertIndex = indexPath
         collectionView.reloadItems(at: [indexPath])
     }
 }

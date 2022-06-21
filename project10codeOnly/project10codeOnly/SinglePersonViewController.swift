@@ -44,7 +44,7 @@ class SinglePersonViewController: UIViewController {
     func setupImageView() {
 
         view.addSubview(imageView)
-        let tapImage = UITapGestureRecognizer(target: self, action: #selector(newImage))
+        let tapImage = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
 
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.borderWidth = 2
@@ -85,7 +85,7 @@ class SinglePersonViewController: UIViewController {
         ])
     }
 
-    @objc func newImage() {
+    @objc func imageTapped() {
         delegate?.changeImage(indexPath: indexPath)
     }
 }

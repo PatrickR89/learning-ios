@@ -22,6 +22,7 @@ extension SinglePersonViewController: UIImagePickerControllerDelegate {
 
             singlePerson.image = imageName
             delegate?.changeImage(image: imageName, indexPath: indexPath)
+            setupImageInImageView()
 
             dismiss(animated: true)
         }

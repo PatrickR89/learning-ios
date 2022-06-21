@@ -51,8 +51,7 @@ class SinglePersonViewController: UIViewController {
         imageView.layer.borderColor = UIColor(white: 1, alpha: 0.5).cgColor
         imageView.layer.cornerRadius = 5
 
-        let path = FileManager.default.getImagePath(singlePerson.image)
-        imageView.image = UIImage(contentsOfFile: path.path)
+        setupImageInImageView()
 
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(tapImage)
@@ -63,6 +62,11 @@ class SinglePersonViewController: UIViewController {
             imageView.widthAnchor.constraint(equalToConstant: 180),
             imageView.heightAnchor.constraint(equalToConstant: 180)
         ])
+    }
+
+    func setupImageInImageView() {
+        let path = FileManager.default.getImagePath(singlePerson.image)
+        imageView.image = UIImage(contentsOfFile: path.path)
     }
 
     func setupText() {

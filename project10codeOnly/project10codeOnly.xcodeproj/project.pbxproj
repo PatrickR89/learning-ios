@@ -15,7 +15,7 @@
 		CD7F98D428588FA800E94C95 /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7F98D328588FA800E94C95 /* PersonCell.swift */; };
 		CD7F98D62858AFE800E94C95 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7F98D52858AFE800E94C95 /* Person.swift */; };
 		CD7F98D82858B3FB00E94C95 /* PeopleViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7F98D72858B3FB00E94C95 /* PeopleViewController+CollectionView.swift */; };
-		CD7F98DA2858B46A00E94C95 /* PeopleViewController+ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7F98D92858B46A00E94C95 /* PeopleViewController+ImagePicker.swift */; };
+		CD7F98DA2858B46A00E94C95 /* SinglePersonViewController+ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7F98D92858B46A00E94C95 /* SinglePersonViewController+ImagePicker.swift */; };
 		CD7F98DC285A159100E94C95 /* PeopleViewController+Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7F98DB285A159100E94C95 /* PeopleViewController+Methods.swift */; };
 		CD7F98DE285C877500E94C95 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7F98DD285C877500E94C95 /* FileManager.swift */; };
 		CD7F98E0285DC0D600E94C95 /* SinglePersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7F98DF285DC0D600E94C95 /* SinglePersonViewController.swift */; };
@@ -32,7 +32,7 @@
 		CD7F98D328588FA800E94C95 /* PersonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCell.swift; sourceTree = "<group>"; };
 		CD7F98D52858AFE800E94C95 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		CD7F98D72858B3FB00E94C95 /* PeopleViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PeopleViewController+CollectionView.swift"; sourceTree = "<group>"; };
-		CD7F98D92858B46A00E94C95 /* PeopleViewController+ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PeopleViewController+ImagePicker.swift"; sourceTree = "<group>"; };
+		CD7F98D92858B46A00E94C95 /* SinglePersonViewController+ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SinglePersonViewController+ImagePicker.swift"; sourceTree = "<group>"; };
 		CD7F98DB285A159100E94C95 /* PeopleViewController+Methods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PeopleViewController+Methods.swift"; sourceTree = "<group>"; };
 		CD7F98DD285C877500E94C95 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		CD7F98DF285DC0D600E94C95 /* SinglePersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePersonViewController.swift; sourceTree = "<group>"; };
@@ -71,7 +71,7 @@
 				CD7F98BE285887D400E94C95 /* AppDelegate.swift */,
 				CD7F98C0285887D400E94C95 /* SceneDelegate.swift */,
 				CD7F98C2285887D400E94C95 /* PeopleViewController.swift */,
-				CD7F98D92858B46A00E94C95 /* PeopleViewController+ImagePicker.swift */,
+				CD7F98D92858B46A00E94C95 /* SinglePersonViewController+ImagePicker.swift */,
 				CD7F98DB285A159100E94C95 /* PeopleViewController+Methods.swift */,
 				CD7F98D72858B3FB00E94C95 /* PeopleViewController+CollectionView.swift */,
 				CD7F98D52858AFE800E94C95 /* Person.swift */,
@@ -180,7 +180,7 @@
 				CD7F98D62858AFE800E94C95 /* Person.swift in Sources */,
 				CD7F98E0285DC0D600E94C95 /* SinglePersonViewController.swift in Sources */,
 				CD7F98D82858B3FB00E94C95 /* PeopleViewController+CollectionView.swift in Sources */,
-				CD7F98DA2858B46A00E94C95 /* PeopleViewController+ImagePicker.swift in Sources */,
+				CD7F98DA2858B46A00E94C95 /* SinglePersonViewController+ImagePicker.swift in Sources */,
 				CD7F98C3285887D400E94C95 /* PeopleViewController.swift in Sources */,
 				CD7F98BF285887D400E94C95 /* AppDelegate.swift in Sources */,
 				CD7F98DC285A159100E94C95 /* PeopleViewController+Methods.swift in Sources */,

@@ -9,7 +9,7 @@ import UIKit
 
 protocol SinglePersonViewDelegate: AnyObject {
     func changeSingleName(name: String, indexPath: IndexPath)
-    func changeImage(indexPath: IndexPath)
+    func changeImage(image: String, indexPath: IndexPath)
 }
 
 class SinglePersonViewController: UIViewController {
@@ -86,7 +86,11 @@ class SinglePersonViewController: UIViewController {
     }
 
     @objc func imageTapped() {
-        delegate?.changeImage(indexPath: indexPath)
+        let picker = UIImagePickerController()
+        picker.allowsEditing = true
+        picker.delegate = self
+        present(picker, animated: true)
+        delegate?.changeImage(image: singlePerson.image, indexPath: indexPath)
     }
 }
 

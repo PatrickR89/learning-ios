@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension PeopleViewController: UIImagePickerControllerDelegate {
+extension SinglePersonViewController: UIImagePickerControllerDelegate {
 
     func imagePickerController(
         _ picker: UIImagePickerController,
@@ -19,12 +19,11 @@ extension PeopleViewController: UIImagePickerControllerDelegate {
             if let jpegData = image.jpegData(compressionQuality: 0.8) {
                 try? jpegData.write(to: imagePath)
             }
-            people[imageInsertIndex.item].image = imageName
-            collectionView.reloadItems(at: [imageInsertIndex])
+            singlePerson.image = imageName
 
             dismiss(animated: true)
         }
 }
 
-extension PeopleViewController: UINavigationControllerDelegate {
+extension SinglePersonViewController: UINavigationControllerDelegate {
 }

@@ -45,6 +45,5 @@ class PeopleViewController: UIViewController {
             barButtonSystemItem: .save,
             target: self,
             action: #selector(encodeAndSavePeople))
-
     }
 }

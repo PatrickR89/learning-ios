@@ -41,12 +41,10 @@ extension PeopleViewController {
         do {
             let encodeToJSON = JSONEncoder()
             let peopleJSON = try encodeToJSON.encode(people)
-            print(peopleJSON)
             try peopleJSON.write(to: peopleFile, options: .atomic)
         } catch {
             print("an error occured \(error)")
         }
-
     }
 
     func loadAndDecodePeople() {

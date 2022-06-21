@@ -38,7 +38,6 @@ class SinglePersonViewController: UIViewController {
 
         setupImageView()
         setupText()
-
     }
 
     func setupImageView() {

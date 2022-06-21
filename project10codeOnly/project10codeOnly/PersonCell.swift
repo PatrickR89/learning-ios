@@ -22,7 +22,6 @@ class PersonCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
 }
 
 extension PersonCell {
@@ -62,6 +61,7 @@ extension PersonCell {
             label.widthAnchor.constraint(equalToConstant: 120)
         ])
     }
+    
     func setup(with person: Person) {
         label.text = person.name
         let path = FileManager.default.getFilePath(person.image)

@@ -13,6 +13,8 @@
 		CD87B41C28B4DA1C00550E64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD87B41B28B4DA1C00550E64 /* Assets.xcassets */; };
 		CD87B41F28B4DA1C00550E64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD87B41D28B4DA1C00550E64 /* LaunchScreen.storyboard */; };
 		CD87B42828B4DF2D00550E64 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD87B42728B4DF2D00550E64 /* NoteTableViewCell.swift */; };
+		CD87B42A28B4E73900550E64 /* NewNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD87B42928B4E73900550E64 /* NewNoteViewController.swift */; };
+		CD87B42C28B4EA3900550E64 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD87B42B28B4EA3900550E64 /* NoteView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		CD87B41E28B4DA1C00550E64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CD87B42028B4DA1C00550E64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD87B42728B4DF2D00550E64 /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
+		CD87B42928B4E73900550E64 /* NewNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteViewController.swift; sourceTree = "<group>"; };
+		CD87B42B28B4EA3900550E64 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,8 @@
 				CD87B41228B4DA1A00550E64 /* AppDelegate.swift */,
 				CD87B41428B4DA1A00550E64 /* SceneDelegate.swift */,
 				CD87B41628B4DA1A00550E64 /* NotesListViewController.swift */,
+				CD87B42B28B4EA3900550E64 /* NoteView.swift */,
+				CD87B42928B4E73900550E64 /* NewNoteViewController.swift */,
 				CD87B42728B4DF2D00550E64 /* NoteTableViewCell.swift */,
 				CD87B41B28B4DA1C00550E64 /* Assets.xcassets */,
 				CD87B41D28B4DA1C00550E64 /* LaunchScreen.storyboard */,
@@ -159,7 +165,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD87B42A28B4E73900550E64 /* NewNoteViewController.swift in Sources */,
 				CD87B41728B4DA1A00550E64 /* NotesListViewController.swift in Sources */,
+				CD87B42C28B4EA3900550E64 /* NoteView.swift in Sources */,
 				CD87B41328B4DA1A00550E64 /* AppDelegate.swift in Sources */,
 				CD87B41528B4DA1A00550E64 /* SceneDelegate.swift in Sources */,
 				CD87B42828B4DF2D00550E64 /* NoteTableViewCell.swift in Sources */,

@@ -12,6 +12,11 @@ class NotesListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .add,
+            target: self,
+            action: #selector(openNewNoteViewController))
     }
 }
 
@@ -34,5 +39,13 @@ private extension NotesListViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.frame = view.bounds
         tableView.register(NoteTableViewCell.self, forCellReuseIdentifier: "NoteCell")
+    }
+
+    @objc func openNewNoteViewController() {
+        let navController = UINavigationController()
+        let viewController = NewNoteViewController()
+        navController.modalPresentationStyle = .fullScreen
+        navController.viewControllers = [viewController]
+        present(navController, animated: true)
     }
 }

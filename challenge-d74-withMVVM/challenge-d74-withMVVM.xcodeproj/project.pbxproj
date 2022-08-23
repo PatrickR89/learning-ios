@@ -10,7 +10,6 @@
 		CD87B41328B4DA1A00550E64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD87B41228B4DA1A00550E64 /* AppDelegate.swift */; };
 		CD87B41528B4DA1A00550E64 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD87B41428B4DA1A00550E64 /* SceneDelegate.swift */; };
 		CD87B41728B4DA1A00550E64 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD87B41628B4DA1A00550E64 /* ViewController.swift */; };
-		CD87B41A28B4DA1A00550E64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD87B41828B4DA1A00550E64 /* Main.storyboard */; };
 		CD87B41C28B4DA1C00550E64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD87B41B28B4DA1C00550E64 /* Assets.xcassets */; };
 		CD87B41F28B4DA1C00550E64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD87B41D28B4DA1C00550E64 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -20,7 +19,6 @@
 		CD87B41228B4DA1A00550E64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD87B41428B4DA1A00550E64 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CD87B41628B4DA1A00550E64 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CD87B41928B4DA1A00550E64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CD87B41B28B4DA1C00550E64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD87B41E28B4DA1C00550E64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CD87B42028B4DA1C00550E64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -59,7 +57,6 @@
 				CD87B41228B4DA1A00550E64 /* AppDelegate.swift */,
 				CD87B41428B4DA1A00550E64 /* SceneDelegate.swift */,
 				CD87B41628B4DA1A00550E64 /* ViewController.swift */,
-				CD87B41828B4DA1A00550E64 /* Main.storyboard */,
 				CD87B41B28B4DA1C00550E64 /* Assets.xcassets */,
 				CD87B41D28B4DA1C00550E64 /* LaunchScreen.storyboard */,
 				CD87B42028B4DA1C00550E64 /* Info.plist */,
@@ -77,6 +74,7 @@
 				CD87B40B28B4DA1A00550E64 /* Sources */,
 				CD87B40C28B4DA1A00550E64 /* Frameworks */,
 				CD87B40D28B4DA1A00550E64 /* Resources */,
+				CD87B42628B4DB4300550E64 /* Lint Source */,
 			);
 			buildRules = (
 			);
@@ -127,11 +125,31 @@
 			files = (
 				CD87B41F28B4DA1C00550E64 /* LaunchScreen.storyboard in Resources */,
 				CD87B41C28B4DA1C00550E64 /* Assets.xcassets in Resources */,
-				CD87B41A28B4DA1A00550E64 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CD87B42628B4DB4300550E64 /* Lint Source */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Lint Source";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint lint\nelse\n   echo \"warning: SwiftLint not installed\"\nfi \n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CD87B40B28B4DA1A00550E64 /* Sources */ = {
@@ -147,14 +165,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		CD87B41828B4DA1A00550E64 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CD87B41928B4DA1A00550E64 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CD87B41D28B4DA1C00550E64 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

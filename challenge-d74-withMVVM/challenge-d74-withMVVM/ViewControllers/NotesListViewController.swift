@@ -9,9 +9,12 @@ import UIKit
 
 class NotesListViewController: UITableViewController {
 
+    var viewModel = NotesViewModel()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupBindings()
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .add,
@@ -22,14 +25,15 @@ class NotesListViewController: UITableViewController {
 
 extension NotesListViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return viewModel.notes.value?.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: "NoteCell",
             for: indexPath) as? NoteTableViewCell else {fatalError("No cell found")}
-        cell.setupCell("this is a cell")
+        let title = viewModel.notes.value?[indexPath.row].title ?? "No note"
+        cell.setupCell(title)
         return cell
     }
 }
@@ -39,6 +43,12 @@ private extension NotesListViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.frame = view.bounds
         tableView.register(NoteTableViewCell.self, forCellReuseIdentifier: "NoteCell")
+    }
+
+    func setupBindings() {
+        viewModel.notes.bind { [weak self] _ in
+            self?.tableView.reloadData()
+        }
     }
 
     @objc func openNewNoteViewController() {

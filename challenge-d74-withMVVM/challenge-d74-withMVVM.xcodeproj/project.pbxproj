@@ -19,6 +19,8 @@
 		CD87B43428B4F63800550E64 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD87B43328B4F63800550E64 /* Note.swift */; };
 		CD87B43728B4F69C00550E64 /* ObservableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD87B43628B4F69C00550E64 /* ObservableObject.swift */; };
 		CD87B43A28B4F84100550E64 /* NoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD87B43928B4F84100550E64 /* NoteViewModel.swift */; };
+		CD87B43C28B4FDD700550E64 /* NotesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD87B43B28B4FDD700550E64 /* NotesViewModel.swift */; };
+		CD87B43F28B4FF5A00550E64 /* NoteViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD87B43E28B4FF5A00550E64 /* NoteViewModelDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		CD87B43328B4F63800550E64 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		CD87B43628B4F69C00550E64 /* ObservableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableObject.swift; sourceTree = "<group>"; };
 		CD87B43928B4F84100550E64 /* NoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewModel.swift; sourceTree = "<group>"; };
+		CD87B43B28B4FDD700550E64 /* NotesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewModel.swift; sourceTree = "<group>"; };
+		CD87B43E28B4FF5A00550E64 /* NoteViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewModelDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,9 +132,19 @@
 		CD87B43828B4F82900550E64 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				CD87B43D28B4FF4800550E64 /* Delegates */,
 				CD87B43928B4F84100550E64 /* NoteViewModel.swift */,
+				CD87B43B28B4FDD700550E64 /* NotesViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		CD87B43D28B4FF4800550E64 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				CD87B43E28B4FF5A00550E64 /* NoteViewModelDelegate.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,6 +242,8 @@
 				CD87B43A28B4F84100550E64 /* NoteViewModel.swift in Sources */,
 				CD87B42A28B4E73900550E64 /* NewNoteViewController.swift in Sources */,
 				CD87B41728B4DA1A00550E64 /* NotesListViewController.swift in Sources */,
+				CD87B43F28B4FF5A00550E64 /* NoteViewModelDelegate.swift in Sources */,
+				CD87B43C28B4FDD700550E64 /* NotesViewModel.swift in Sources */,
 				CD87B42C28B4EA3900550E64 /* NoteView.swift in Sources */,
 				CD87B43428B4F63800550E64 /* Note.swift in Sources */,
 				CD87B41328B4DA1A00550E64 /* AppDelegate.swift in Sources */,

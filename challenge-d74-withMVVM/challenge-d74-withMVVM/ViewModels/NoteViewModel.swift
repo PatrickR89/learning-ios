@@ -12,9 +12,9 @@ class NoteViewModel {
         didSet {
             if let note = note {
                 if newNote {
-                    print("add note \(note)")
+                    NoteViewModel.delegate?.noteDidSet(note: note)
                 } else {
-                    print("edit note \(note)")
+                    NoteViewModel.delegate?.noteDidChange(note: note, index: index)
                 }
             }
         }
@@ -33,6 +33,8 @@ class NoteViewModel {
             isButtonEnabled.value = enableButton()
         }
     }
+
+    static weak var delegate: NoteViewModelDelegate?
 
     init(note: Note, newNote: Bool, index: Int) {
         self.note = note

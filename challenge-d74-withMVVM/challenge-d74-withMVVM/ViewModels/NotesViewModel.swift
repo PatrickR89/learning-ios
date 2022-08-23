@@ -13,6 +13,10 @@ class NotesViewModel {
     init() {
         NoteViewModel.delegate = self
     }
+
+    func deleteNote (_ index: Int) {
+        notes.value?.remove(at: index)
+    }
 }
 
 extension NotesViewModel: NoteViewModelDelegate {

@@ -10,6 +10,7 @@ import UIKit
 class NewNoteViewController: UIViewController {
 
     var noteView = NoteView(title: "", content: "", btnTitle: "ADD")
+    var viewModel = NoteViewModel(note: Note(title: "", content: ""), newNote: true, index: 0)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,7 @@ class NewNoteViewController: UIViewController {
             action: #selector(closeSelf))
 
         setupUI()
+        setupBindings()
     }
 }
 
@@ -33,17 +35,30 @@ private extension NewNoteViewController {
         noteView.delegate = self
         noteView.frame = view.bounds
     }
+
+    func setupBindings() {
+        viewModel.isButtonEnabled.bind { [weak self] isEnabled in
+            guard let isEnabled = isEnabled else {return}
+            if isEnabled {
+                self?.noteView.button.backgroundColor = .systemBlue
+            } else {
+                self?.noteView.button.backgroundColor = .lightGray
+            }
+            self?.noteView.button.isEnabled = isEnabled
+        }
+    }
 }
 extension NewNoteViewController: NoteViewDelegate {
     func titleUpdate(_ title: String) {
-        print(title)
+        viewModel.noteTitle = title
     }
 
     func contentUpdated(_ content: String) {
-        print(content)
+        viewModel.noteContent = content
     }
 
     func buttonClicked() {
-        print("click")
+        viewModel.applyChanges()
+        self.dismiss(animated: true)
     }
 }

@@ -55,6 +55,16 @@ extension NotesListViewController {
 
         return swipeConfig
     }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let navController = UINavigationController()
+        guard let notes = viewModel.notes.value else {return}
+        let viewController = EditNoteViewController(note: notes[indexPath.row], index: indexPath.row)
+
+        navController.viewControllers = [viewController]
+        navController.modalPresentationStyle = .fullScreen
+        present(navController, animated: true)
+    }
 }
 
 private extension NotesListViewController {

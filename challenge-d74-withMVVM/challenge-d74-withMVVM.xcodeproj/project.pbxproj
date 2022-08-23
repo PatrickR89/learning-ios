@@ -21,6 +21,7 @@
 		CD87B43A28B4F84100550E64 /* NoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD87B43928B4F84100550E64 /* NoteViewModel.swift */; };
 		CD87B43C28B4FDD700550E64 /* NotesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD87B43B28B4FDD700550E64 /* NotesViewModel.swift */; };
 		CD87B43F28B4FF5A00550E64 /* NoteViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD87B43E28B4FF5A00550E64 /* NoteViewModelDelegate.swift */; };
+		CD87B44128B506B100550E64 /* EditNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD87B44028B506B100550E64 /* EditNoteViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		CD87B43928B4F84100550E64 /* NoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewModel.swift; sourceTree = "<group>"; };
 		CD87B43B28B4FDD700550E64 /* NotesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewModel.swift; sourceTree = "<group>"; };
 		CD87B43E28B4FF5A00550E64 /* NoteViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewModelDelegate.swift; sourceTree = "<group>"; };
+		CD87B44028B506B100550E64 /* EditNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 			children = (
 				CD87B42928B4E73900550E64 /* NewNoteViewController.swift */,
 				CD87B41628B4DA1A00550E64 /* NotesListViewController.swift */,
+				CD87B44028B506B100550E64 /* EditNoteViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD87B44128B506B100550E64 /* EditNoteViewController.swift in Sources */,
 				CD87B43A28B4F84100550E64 /* NoteViewModel.swift in Sources */,
 				CD87B42A28B4E73900550E64 /* NewNoteViewController.swift in Sources */,
 				CD87B41728B4DA1A00550E64 /* NotesListViewController.swift in Sources */,

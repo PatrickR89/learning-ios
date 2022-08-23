@@ -75,8 +75,10 @@ private extension NotesListViewController {
     }
 
     func setupBindings() {
-        viewModel.notes.bind { [weak self] _ in
+        viewModel.notes.bind { [weak self] notes in
             self?.tableView.reloadData()
+            guard let notes = notes else {return}
+            DataStorage.shared.encodeAndSave(notes)
         }
     }
 

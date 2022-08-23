@@ -51,6 +51,7 @@ private extension EditNoteViewController {
     func setupBindings() {
         viewModel.isButtonEnabled.bind { [weak self] isEnabled in
             guard let isEnabled = isEnabled else {return}
+            print(isEnabled)
             self?.noteView.toggleButton(isEnabled)
         }
     }
@@ -67,5 +68,6 @@ extension EditNoteViewController: NoteViewDelegate {
 
     func buttonClicked() {
         viewModel.applyChanges()
+        self.dismiss(animated: true)
     }
 }

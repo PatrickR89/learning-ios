@@ -8,7 +8,7 @@
 import UIKit
 
 class NotesViewModel {
-    var notes: ObservableObject<[Note]> = ObservableObject([])
+    var notes: ObservableObject<[Note]> = ObservableObject(DataStorage.shared.loadAndDecode())
 
     init() {
         NoteViewModel.delegate = self

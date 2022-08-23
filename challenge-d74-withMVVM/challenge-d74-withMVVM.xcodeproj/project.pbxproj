@@ -23,6 +23,7 @@
 		CD87B43F28B4FF5A00550E64 /* NoteViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD87B43E28B4FF5A00550E64 /* NoteViewModelDelegate.swift */; };
 		CD87B44128B506B100550E64 /* EditNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD87B44028B506B100550E64 /* EditNoteViewController.swift */; };
 		CD87B44328B50AEF00550E64 /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD87B44228B50AEF00550E64 /* FileManager+Extension.swift */; };
+		CD87B44628B50BF700550E64 /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD87B44528B50BF700550E64 /* DataStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		CD87B43E28B4FF5A00550E64 /* NoteViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewModelDelegate.swift; sourceTree = "<group>"; };
 		CD87B44028B506B100550E64 /* EditNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteViewController.swift; sourceTree = "<group>"; };
 		CD87B44228B50AEF00550E64 /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
+		CD87B44528B50BF700550E64 /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 		CD87B41128B4DA1A00550E64 /* challenge-d74-withMVVM */ = {
 			isa = PBXGroup;
 			children = (
+				CD87B44428B50BE200550E64 /* Services */,
 				CD87B43828B4F82900550E64 /* ViewModels */,
 				CD87B43528B4F67400550E64 /* Middleware */,
 				CD87B43228B4F62D00550E64 /* Models */,
@@ -151,6 +154,14 @@
 				CD87B43E28B4FF5A00550E64 /* NoteViewModelDelegate.swift */,
 			);
 			path = Delegates;
+			sourceTree = "<group>";
+		};
+		CD87B44428B50BE200550E64 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CD87B44528B50BF700550E64 /* DataStorage.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,6 +268,7 @@
 				CD87B41328B4DA1A00550E64 /* AppDelegate.swift in Sources */,
 				CD87B43128B4F4A000550E64 /* NoteViewDelegate.swift in Sources */,
 				CD87B41528B4DA1A00550E64 /* SceneDelegate.swift in Sources */,
+				CD87B44628B50BF700550E64 /* DataStorage.swift in Sources */,
 				CD87B42828B4DF2D00550E64 /* NoteTableViewCell.swift in Sources */,
 				CD87B43728B4F69C00550E64 /* ObservableObject.swift in Sources */,
 			);

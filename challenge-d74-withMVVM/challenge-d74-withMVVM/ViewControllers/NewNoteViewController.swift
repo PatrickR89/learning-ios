@@ -39,12 +39,7 @@ private extension NewNoteViewController {
     func setupBindings() {
         viewModel.isButtonEnabled.bind { [weak self] isEnabled in
             guard let isEnabled = isEnabled else {return}
-            if isEnabled {
-                self?.noteView.button.backgroundColor = .systemBlue
-            } else {
-                self?.noteView.button.backgroundColor = .lightGray
-            }
-            self?.noteView.button.isEnabled = isEnabled
+            self?.noteView.toggleButton(isEnabled)
         }
     }
 }

@@ -75,6 +75,17 @@ private extension NoteView {
     }
 }
 
+extension NoteView {
+    func toggleButton(_ isEnabled: Bool) {
+        if isEnabled {
+            button.backgroundColor = .systemBlue
+        } else {
+            button.backgroundColor = .lightGray
+        }
+        button.isEnabled = isEnabled
+    }
+}
+
 extension NoteView: UITextViewDelegate {
     func textViewDidChangeSelection(_ textView: UITextView) {
         guard let text = textView.text else {return}

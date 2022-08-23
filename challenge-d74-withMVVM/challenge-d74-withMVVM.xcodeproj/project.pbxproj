@@ -60,17 +60,33 @@
 		CD87B41128B4DA1A00550E64 /* challenge-d74-withMVVM */ = {
 			isa = PBXGroup;
 			children = (
+				CD87B42E28B4F40D00550E64 /* Views */,
+				CD87B42D28B4F3F700550E64 /* ViewControllers */,
 				CD87B41228B4DA1A00550E64 /* AppDelegate.swift */,
 				CD87B41428B4DA1A00550E64 /* SceneDelegate.swift */,
-				CD87B41628B4DA1A00550E64 /* NotesListViewController.swift */,
-				CD87B42B28B4EA3900550E64 /* NoteView.swift */,
-				CD87B42928B4E73900550E64 /* NewNoteViewController.swift */,
-				CD87B42728B4DF2D00550E64 /* NoteTableViewCell.swift */,
 				CD87B41B28B4DA1C00550E64 /* Assets.xcassets */,
 				CD87B41D28B4DA1C00550E64 /* LaunchScreen.storyboard */,
 				CD87B42028B4DA1C00550E64 /* Info.plist */,
 			);
 			path = "challenge-d74-withMVVM";
+			sourceTree = "<group>";
+		};
+		CD87B42D28B4F3F700550E64 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CD87B42928B4E73900550E64 /* NewNoteViewController.swift */,
+				CD87B41628B4DA1A00550E64 /* NotesListViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		CD87B42E28B4F40D00550E64 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CD87B42728B4DF2D00550E64 /* NoteTableViewCell.swift */,
+				CD87B42B28B4EA3900550E64 /* NoteView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

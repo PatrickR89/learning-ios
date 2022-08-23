@@ -37,9 +37,12 @@ class NoteViewModel {
     static weak var delegate: NoteViewModelDelegate?
 
     init(note: Note, newNote: Bool, index: Int) {
-        self.note = note
+        self.noteTitle = note.title
+        self.noteContent = note.content
         self.newNote = newNote
         self.index = index
+
+        isButtonEnabled.value = enableButton()
     }
 
     func applyChanges() {
@@ -47,7 +50,6 @@ class NoteViewModel {
               let noteContent = noteContent else {return}
         note = Note(title: noteTitle, content: noteContent)
     }
-
 }
 
 private extension NoteViewModel {

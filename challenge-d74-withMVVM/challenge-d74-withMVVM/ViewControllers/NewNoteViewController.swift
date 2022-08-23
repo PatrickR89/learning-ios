@@ -9,7 +9,7 @@ import UIKit
 
 class NewNoteViewController: UIViewController {
 
-    var newView = NoteView(title: "", content: "", btnTitle: "ADD")
+    var noteView = NoteView(title: "", content: "", btnTitle: "ADD")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,21 @@ private extension NewNoteViewController {
     }
 
     func setupUI() {
-        view.addSubview(newView)
-        newView.frame = view.bounds
+        view.addSubview(noteView)
+        noteView.delegate = self
+        noteView.frame = view.bounds
+    }
+}
+extension NewNoteViewController: NoteViewDelegate {
+    func titleUpdate(_ title: String) {
+        print(title)
+    }
+
+    func contentUpdated(_ content: String) {
+        print(content)
+    }
+
+    func buttonClicked() {
+        print("click")
     }
 }

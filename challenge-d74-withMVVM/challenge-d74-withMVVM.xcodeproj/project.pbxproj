@@ -15,6 +15,7 @@
 		CD87B42828B4DF2D00550E64 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD87B42728B4DF2D00550E64 /* NoteTableViewCell.swift */; };
 		CD87B42A28B4E73900550E64 /* NewNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD87B42928B4E73900550E64 /* NewNoteViewController.swift */; };
 		CD87B42C28B4EA3900550E64 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD87B42B28B4EA3900550E64 /* NoteView.swift */; };
+		CD87B43128B4F4A000550E64 /* NoteViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD87B43028B4F4A000550E64 /* NoteViewDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		CD87B42728B4DF2D00550E64 /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
 		CD87B42928B4E73900550E64 /* NewNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteViewController.swift; sourceTree = "<group>"; };
 		CD87B42B28B4EA3900550E64 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
+		CD87B43028B4F4A000550E64 /* NoteViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,10 +85,19 @@
 		CD87B42E28B4F40D00550E64 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CD87B42F28B4F48E00550E64 /* Delegates */,
 				CD87B42728B4DF2D00550E64 /* NoteTableViewCell.swift */,
 				CD87B42B28B4EA3900550E64 /* NoteView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		CD87B42F28B4F48E00550E64 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				CD87B43028B4F4A000550E64 /* NoteViewDelegate.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,6 +196,7 @@
 				CD87B41728B4DA1A00550E64 /* NotesListViewController.swift in Sources */,
 				CD87B42C28B4EA3900550E64 /* NoteView.swift in Sources */,
 				CD87B41328B4DA1A00550E64 /* AppDelegate.swift in Sources */,
+				CD87B43128B4F4A000550E64 /* NoteViewDelegate.swift in Sources */,
 				CD87B41528B4DA1A00550E64 /* SceneDelegate.swift in Sources */,
 				CD87B42828B4DF2D00550E64 /* NoteTableViewCell.swift in Sources */,
 			);

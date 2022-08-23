@@ -13,6 +13,8 @@ class NoteView: UIView {
     var contentView: UITextView
     var button: UIButton
 
+    weak var delegate: NoteViewDelegate?
+
     init(title: String, content: String, btnTitle: String) {
         self.titleView = UITextField()
         self.contentView = UITextView()
@@ -69,20 +71,20 @@ private extension NoteView {
     }
 
     @objc func buttonTouched() {
-        print("save")
+        delegate?.buttonClicked()
     }
 }
 
 extension NoteView: UITextViewDelegate {
     func textViewDidChangeSelection(_ textView: UITextView) {
         guard let text = textView.text else {return}
-        print(text)
+        delegate?.contentUpdated(text)
     }
 }
 
 extension NoteView: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let text = textField.text else {return}
-        print(text)
+        delegate?.titleUpdate(text)
     }
 }

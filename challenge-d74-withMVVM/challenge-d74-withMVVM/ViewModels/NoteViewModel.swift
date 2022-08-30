@@ -36,9 +36,15 @@ class NoteViewModel {
 
     static weak var delegate: NoteViewModelDelegate?
 
-    init(note: Note, index: Int?) {
-        self.noteTitle = note.title
-        self.noteContent = note.content
+    init(note: Note?, index: Int?) {
+        if let note = note {
+            self.noteTitle = note.title
+            self.noteContent = note.content
+        } else {
+            self.noteTitle = ""
+            self.noteContent = ""
+        }
+
         self.index = index
 
         isButtonEnabled.value = enableButton()

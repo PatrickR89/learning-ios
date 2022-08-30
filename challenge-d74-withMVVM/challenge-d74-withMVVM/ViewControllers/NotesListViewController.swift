@@ -84,7 +84,7 @@ private extension NotesListViewController {
 
     @objc func openNewNoteViewController() {
         let navController = UINavigationController()
-        let viewController = NoteViewController(note: Note(title: "", content: ""), index: nil)
+        let viewController = NoteViewController(note: nil, index: nil)
         navController.modalPresentationStyle = .fullScreen
         navController.viewControllers = [viewController]
         present(navController, animated: true)

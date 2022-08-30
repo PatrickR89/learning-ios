@@ -15,9 +15,9 @@ class NoteView: UIView {
 
     weak var delegate: NoteViewDelegate?
 
-    init(title: String, content: String, btnTitle: String) {
-        self.titleView.text = title
-        self.contentView.text = content
+    init(with viewModel: NoteViewModel, btnTitle: String) {
+        self.titleView.text = viewModel.noteTitle
+        self.contentView.text = viewModel.noteContent
         self.button.setTitle(btnTitle, for: .normal)
 
         super.init(frame: .zero)

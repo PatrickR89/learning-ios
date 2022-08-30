@@ -29,9 +29,7 @@ class DataStorage {
             return notes
         } catch {
             print("Error occurred during file load: \(error)")
-
-            let notes: [Note] = []
-            return notes
+            return []
         }
     }
 }

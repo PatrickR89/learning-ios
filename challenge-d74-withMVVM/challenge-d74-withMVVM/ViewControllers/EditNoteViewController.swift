@@ -13,7 +13,7 @@ class EditNoteViewController: UIViewController {
     let viewModel: NoteViewModel
 
     init(note: Note, index: Int) {
-        self.noteView = NoteView(title: note.title, content: note.content, btnTitle: "EDIT")
+        self.noteView = NoteView(title: note.title, content: note.content, btnTitle: "APPLY")
         self.viewModel = NoteViewModel(note: note, newNote: false, index: index)
 
         super.init(nibName: nil, bundle: nil)

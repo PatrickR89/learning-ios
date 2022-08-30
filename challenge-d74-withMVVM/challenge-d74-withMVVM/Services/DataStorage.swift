@@ -10,7 +10,7 @@ import UIKit
 class DataStorage {
     static let shared = DataStorage()
 
-    private let fileLocation = FileManager().getFilePath("notesJSON.json")
+    private let fileLocation = FileManager().getFilePath("notes.json")
 
     func encodeAndSave(_ data: [Note]) {
         do {

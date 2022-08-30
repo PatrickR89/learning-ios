@@ -46,8 +46,8 @@ private extension NoteView {
         contentView.translatesAutoresizingMaskIntoConstraints = false
         button.translatesAutoresizingMaskIntoConstraints = false
 
-        titleView.font = UIFont.systemFont(ofSize: 30)
-        contentView.font = UIFont.systemFont(ofSize: 20)
+        titleView.font = .preferredFont(forTextStyle: .title2)
+        contentView.font = .preferredFont(forTextStyle: .body)
 
         titleView.layer.borderColor = UIColor.lightGray.cgColor
         titleView.layer.borderWidth = 1

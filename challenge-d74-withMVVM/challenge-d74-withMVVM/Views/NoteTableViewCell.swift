@@ -30,7 +30,7 @@ private extension NoteTableViewCell {
     func setupUI() {
         self.addSubview(titleView)
         titleView.translatesAutoresizingMaskIntoConstraints = false
-        titleView.font = UIFont.systemFont(ofSize: 25)
+        titleView.font = .preferredFont(forTextStyle: .title1)
 
         NSLayoutConstraint.activate([
             titleView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),

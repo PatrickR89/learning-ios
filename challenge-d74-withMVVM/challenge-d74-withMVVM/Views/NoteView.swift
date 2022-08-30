@@ -9,16 +9,13 @@ import UIKit
 
 class NoteView: UIView {
 
-    var titleView: UITextField
-    var contentView: UITextView
-    var button: UIButton
+    private let titleView = UITextField()
+    private let contentView = UITextView()
+    private let button = UIButton()
 
     weak var delegate: NoteViewDelegate?
 
     init(title: String, content: String, btnTitle: String) {
-        self.titleView = UITextField()
-        self.contentView = UITextView()
-        self.button = UIButton()
         self.titleView.text = title
         self.contentView.text = content
         self.button.setTitle(btnTitle, for: .normal)

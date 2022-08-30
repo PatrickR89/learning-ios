@@ -9,7 +9,7 @@ import UIKit
 
 class NoteTableViewCell: UITableViewCell {
 
-    var titleView = UILabel()
+    private let titleView = UILabel()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

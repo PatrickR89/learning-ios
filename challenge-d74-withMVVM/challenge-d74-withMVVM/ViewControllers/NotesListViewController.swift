@@ -9,7 +9,7 @@ import UIKit
 
 class NotesListViewController: UITableViewController {
 
-    var viewModel = NotesViewModel()
+    private let viewModel = NotesViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()

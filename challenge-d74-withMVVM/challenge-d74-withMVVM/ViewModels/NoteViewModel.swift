@@ -8,7 +8,7 @@
 import UIKit
 
 class NoteViewModel {
-    var note: Note? {
+    private var note: Note? {
         didSet {
             if let note = note {
                 if let index = index {
@@ -20,7 +20,7 @@ class NoteViewModel {
         }
     }
 
-    var index: Int?
+    private var index: Int?
     var isButtonEnabled: ObservableObject<Bool> = ObservableObject(false)
 
     var noteTitle: String? {

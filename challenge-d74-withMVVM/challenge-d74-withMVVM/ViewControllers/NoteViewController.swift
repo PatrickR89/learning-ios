@@ -9,9 +9,9 @@ import UIKit
 
 class NoteViewController: UIViewController {
 
-    let noteView: NoteView
-    let viewModel: NoteViewModel
-    var btnTitle: String
+    private let noteView: NoteView
+    private let viewModel: NoteViewModel
+    private var btnTitle: String
 
     init(note: Note, index: Int?) {
         if index != nil {

@@ -1,31 +1,49 @@
 //
-//  NewNoteViewController.swift
+//  NoteViewController.swift
 //  challenge-d74-withMVVM
 //
-//  Created by Patrick on 23.08.2022..
+//  Created by Patrick on 30.08.2022..
 //
 
 import UIKit
 
-class NewNoteViewController: UIViewController {
+class NoteViewController: UIViewController {
 
-    var noteView = NoteView(title: "", content: "", btnTitle: "ADD")
-    var viewModel = NoteViewModel(note: Note(title: "", content: ""), newNote: true, index: 0)
+    let noteView: NoteView
+    let viewModel: NoteViewModel
+    var btnTitle: String
+
+    init(note: Note, index: Int?) {
+        if let _ = index {
+             btnTitle = "APPLY"
+        } else {
+             btnTitle = "ADD"
+        }
+        self.noteView = NoteView(title: note.title, content: note.content, btnTitle: btnTitle)
+        self.viewModel = NoteViewModel(note: note, index: index)
+
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+        setupBindings()
+        view.backgroundColor = .white
+
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "CLOSE",
             style: .plain,
             target: self,
             action: #selector(closeSelf))
-
-        setupUI()
-        setupBindings()
     }
 }
 
-private extension NewNoteViewController {
+private extension NoteViewController {
     @objc func closeSelf() {
         self.dismiss(animated: true)
     }
@@ -43,7 +61,8 @@ private extension NewNoteViewController {
         }
     }
 }
-extension NewNoteViewController: NoteViewDelegate {
+
+extension NoteViewController: NoteViewDelegate {
     func titleUpdate(_ title: String) {
         viewModel.noteTitle = title
     }

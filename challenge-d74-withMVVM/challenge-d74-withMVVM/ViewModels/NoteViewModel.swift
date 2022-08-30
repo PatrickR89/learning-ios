@@ -11,16 +11,16 @@ class NoteViewModel {
     var note: Note? {
         didSet {
             if let note = note {
-                if newNote {
-                    NoteViewModel.delegate?.noteDidSet(note: note)
-                } else {
+                if let index = index {
                     NoteViewModel.delegate?.noteDidChange(note: note, index: index)
+                } else {
+                    NoteViewModel.delegate?.noteDidSet(note: note)
                 }
             }
         }
     }
-    var newNote: Bool
-    var index: Int
+    
+    var index: Int?
     var isButtonEnabled: ObservableObject<Bool> = ObservableObject(false)
 
     var noteTitle: String? {
@@ -36,10 +36,9 @@ class NoteViewModel {
 
     static weak var delegate: NoteViewModelDelegate?
 
-    init(note: Note, newNote: Bool, index: Int) {
+    init(note: Note, index: Int?) {
         self.noteTitle = note.title
         self.noteContent = note.content
-        self.newNote = newNote
         self.index = index
 
         isButtonEnabled.value = enableButton()

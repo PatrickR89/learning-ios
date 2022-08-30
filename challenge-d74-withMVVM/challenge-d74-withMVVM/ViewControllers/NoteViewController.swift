@@ -14,7 +14,7 @@ class NoteViewController: UIViewController {
     var btnTitle: String
 
     init(note: Note, index: Int?) {
-        if let _ = index {
+        if index != nil {
              btnTitle = "APPLY"
         } else {
              btnTitle = "ADD"
@@ -63,15 +63,15 @@ private extension NoteViewController {
 }
 
 extension NoteViewController: NoteViewDelegate {
-    func titleUpdate(_ title: String) {
+    func noteView(_ view: NoteView, didUpdateTitle title: String) {
         viewModel.noteTitle = title
     }
 
-    func contentUpdated(_ content: String) {
+    func noteView(_ view: NoteView, didUpdateContent content: String) {
         viewModel.noteContent = content
     }
 
-    func buttonClicked() {
+    func noteViewDidTapButton() {
         viewModel.applyChanges()
         self.dismiss(animated: true)
     }

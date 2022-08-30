@@ -8,6 +8,6 @@
 import UIKit
 
 protocol NoteViewModelDelegate: AnyObject {
-    func noteDidSet(note: Note)
-    func noteDidChange(note: Note, index: Int)
+    func noteViewModel(_ viewModel: NoteViewModel, didAddNote note: Note)
+    func noteViewModel(_ viewModel: NoteViewModel, didChangeNote note: Note, at index: Int)
 }

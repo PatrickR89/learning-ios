@@ -8,7 +8,7 @@
 import UIKit
 
 protocol NoteViewDelegate: AnyObject {
-    func titleUpdate(_ title: String)
-    func contentUpdated(_ content: String)
-    func buttonClicked()
+    func noteView(_ view: NoteView, didUpdateTitle title: String)
+    func noteView(_ view: NoteView, didUpdateContent content: String)
+    func noteViewDidTapButton()
 }

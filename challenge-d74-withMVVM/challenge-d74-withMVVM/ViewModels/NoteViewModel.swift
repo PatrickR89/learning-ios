@@ -12,14 +12,14 @@ class NoteViewModel {
         didSet {
             if let note = note {
                 if let index = index {
-                    NoteViewModel.delegate?.noteDidChange(note: note, index: index)
+                    NoteViewModel.delegate?.noteViewModel(self, didChangeNote: note, at: index)
                 } else {
-                    NoteViewModel.delegate?.noteDidSet(note: note)
+                    NoteViewModel.delegate?.noteViewModel(self, didAddNote: note)
                 }
             }
         }
     }
-    
+
     var index: Int?
     var isButtonEnabled: ObservableObject<Bool> = ObservableObject(false)
 

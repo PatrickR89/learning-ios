@@ -71,7 +71,7 @@ private extension NoteView {
     }
 
     @objc func buttonTouched() {
-        delegate?.buttonClicked()
+        delegate?.noteViewDidTapButton()
     }
 }
 
@@ -89,13 +89,13 @@ extension NoteView {
 extension NoteView: UITextViewDelegate {
     func textViewDidChangeSelection(_ textView: UITextView) {
         guard let text = textView.text else {return}
-        delegate?.contentUpdated(text)
+        delegate?.noteView(self, didUpdateContent: text)
     }
 }
 
 extension NoteView: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let text = textField.text else {return}
-        delegate?.titleUpdate(text)
+        delegate?.noteView(self, didUpdateTitle: text)
     }
 }

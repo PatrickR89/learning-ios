@@ -20,11 +20,11 @@ class NotesViewModel {
 }
 
 extension NotesViewModel: NoteViewModelDelegate {
-    func noteDidSet(note: Note) {
+    func noteViewModel(_ viewModel: NoteViewModel, didAddNote note: Note) {
         notes.value?.append(note)
     }
 
-    func noteDidChange(note: Note, index: Int) {
+    func noteViewModel(_ viewModel: NoteViewModel, didChangeNote note: Note, at index: Int) {
         notes.value?[index] = note
     }
 }

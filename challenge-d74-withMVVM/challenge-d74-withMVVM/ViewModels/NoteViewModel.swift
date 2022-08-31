@@ -20,7 +20,12 @@ class NoteViewModel {
         }
     }
 
-    private var index: Int?
+    var index: Int? {
+        didSet {
+            buttonTitle.value = setButtonTitle()
+        }
+    }
+    var buttonTitle: ObservableObject<String> = ObservableObject("ADD")
     var isButtonEnabled: ObservableObject<Bool> = ObservableObject(false)
 
     var noteTitle: String? {
@@ -64,5 +69,13 @@ private extension NoteViewModel {
         guard let noteTitle = noteTitle,
               let noteContent = noteContent else {return false}
         return noteTitle.count >= 1 && noteContent.count >= 1
+    }
+
+    func setButtonTitle() -> String {
+        if index != nil {
+            return "APPLY"
+        } else {
+            return "ADD"
+        }
     }
 }

@@ -11,18 +11,11 @@ class NoteViewController: UIViewController {
 
     private let noteView: NoteView
     private let viewModel: NoteViewModel
-    private var btnTitle: String
 
-    init(viewModel: NoteViewModel, note: Note?, index: Int?) {
-        if index != nil {
-             btnTitle = "APPLY"
-        } else {
-             btnTitle = "ADD"
-        }
+    init(with viewModel: NoteViewModel) {
 
         self.viewModel = viewModel
-        self.viewModel.setupSelf(note: note, index: index)
-        self.noteView = NoteView(with: viewModel, btnTitle: btnTitle)
+        self.noteView = NoteView(with: viewModel)
 
         super.init(nibName: nil, bundle: nil)
     }
@@ -60,6 +53,11 @@ private extension NoteViewController {
         viewModel.isButtonEnabled.bind { [weak self] isEnabled in
             guard let isEnabled = isEnabled else {return}
             self?.noteView.toggleButton(isEnabled)
+        }
+
+        viewModel.buttonTitle.bind { [weak self] title in
+            guard let title = title else {return}
+            self?.noteView.setupButtonTitle(title: title)
         }
     }
 }

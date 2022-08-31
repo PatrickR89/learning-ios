@@ -18,6 +18,15 @@ class NotesViewModel {
     func deleteNote (_ index: Int) {
         notes.value?.remove(at: index)
     }
+
+    func loadNote(index: Int?) {
+        var note: Note?
+        if let index = index {
+            note = notes.value?[index]
+        }
+        noteViewModel.setupSelf(note: note, index: index)
+
+    }
 }
 
 extension NotesViewModel: NoteViewModelDelegate {

@@ -15,10 +15,9 @@ class NoteView: UIView {
 
     weak var delegate: NoteViewDelegate?
 
-    init(with viewModel: NoteViewModel, btnTitle: String) {
+    init(with viewModel: NoteViewModel) {
         self.titleView.text = viewModel.noteTitle
         self.contentView.text = viewModel.noteContent
-        self.button.setTitle(btnTitle, for: .normal)
 
         super.init(frame: .zero)
         setupUI()
@@ -26,6 +25,10 @@ class NoteView: UIView {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func setupButtonTitle(title: String) {
+        button.setTitle(title, for: .normal)
     }
 }
 

@@ -58,11 +58,10 @@ extension NotesListViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let navController = UINavigationController()
-        guard let notes = viewModel.notes.value else {return}
+
+        viewModel.loadNote(index: indexPath.row)
         let viewController = NoteViewController(
-            viewModel: viewModel.noteViewModel,
-            note: notes[indexPath.row],
-            index: indexPath.row)
+            with: viewModel.noteViewModel)
 
         navController.viewControllers = [viewController]
         navController.modalPresentationStyle = .fullScreen
@@ -87,7 +86,8 @@ private extension NotesListViewController {
 
     @objc func openNewNoteViewController() {
         let navController = UINavigationController()
-        let viewController = NoteViewController(viewModel: viewModel.noteViewModel, note: nil, index: nil)
+        viewModel.loadNote(index: nil)
+        let viewController = NoteViewController(with: viewModel.noteViewModel)
         navController.modalPresentationStyle = .fullScreen
         navController.viewControllers = [viewController]
         present(navController, animated: true)

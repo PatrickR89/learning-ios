@@ -26,10 +26,6 @@ class NoteView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    func setupButtonTitle(title: String) {
-        button.setTitle(title, for: .normal)
-    }
 }
 
 private extension NoteView {
@@ -83,6 +79,10 @@ extension NoteView {
             button.backgroundColor = .lightGray
         }
         button.isEnabled = isEnabled
+    }
+
+    func setupButtonTitle(title: String) {
+        button.setTitle(title, for: .normal)
     }
 }
 

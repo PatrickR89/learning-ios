@@ -27,34 +27,34 @@ extension NotesListViewController {
     override func tableView(
         _ tableView: UITableView,
         numberOfRowsInSection section: Int) -> Int {
-        return viewModel.notes.value?.count ?? 0
-    }
+            return viewModel.notes.value?.count ?? 0
+        }
 
     override func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: "NoteCell",
-            for: indexPath) as? NoteTableViewCell else {fatalError("No cell found")}
-        let title = viewModel.notes.value?[indexPath.row].title ?? "No note"
-        cell.setupCell(title)
-        return cell
-    }
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: "NoteCell",
+                for: indexPath) as? NoteTableViewCell else {fatalError("No cell found")}
+            let title = viewModel.notes.value?[indexPath.row].title ?? "No note"
+            cell.setupCell(title)
+            return cell
+        }
 
     override func tableView(
         _ tableView: UITableView,
         trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        var actions = [UIContextualAction]()
-        let deleteNote = UIContextualAction(style: .normal, title: "DELETE") { [weak self] _, _, completitionHandler in
-            self?.viewModel.deleteNote(indexPath.row)
-            completitionHandler(true)
-        }
-        actions.append(deleteNote)
-        let swipeConfig = UISwipeActionsConfiguration(actions: actions)
-        swipeConfig.performsFirstActionWithFullSwipe = false
+            var actions = [UIContextualAction]()
+            let deleteNote = UIContextualAction(style: .normal, title: "DELETE") { [weak self] _, _, completitionHandler in
+                self?.viewModel.deleteNote(indexPath.row)
+                completitionHandler(true)
+            }
+            actions.append(deleteNote)
+            let swipeConfig = UISwipeActionsConfiguration(actions: actions)
+            swipeConfig.performsFirstActionWithFullSwipe = false
 
-        return swipeConfig
-    }
+            return swipeConfig
+        }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let navController = UINavigationController()

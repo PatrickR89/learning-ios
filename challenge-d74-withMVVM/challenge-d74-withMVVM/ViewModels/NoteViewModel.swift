@@ -12,9 +12,9 @@ class NoteViewModel {
         didSet {
             if let note = note {
                 if let index = index {
-                    NoteViewModel.delegate?.noteViewModel(self, didChangeNote: note, at: index)
+                    delegate?.noteViewModel(self, didChangeNote: note, at: index)
                 } else {
-                    NoteViewModel.delegate?.noteViewModel(self, didAddNote: note)
+                    delegate?.noteViewModel(self, didAddNote: note)
                 }
             }
         }
@@ -34,9 +34,13 @@ class NoteViewModel {
         }
     }
 
-    static weak var delegate: NoteViewModelDelegate?
+    weak var delegate: NoteViewModelDelegate?
 
-    init(note: Note?, index: Int?) {
+    init() {
+        isButtonEnabled.value = enableButton()
+    }
+
+    func setupSelf(note: Note?, index: Int?) {
         if let note = note {
             self.noteTitle = note.title
             self.noteContent = note.content
@@ -46,8 +50,6 @@ class NoteViewModel {
         }
 
         self.index = index
-
-        isButtonEnabled.value = enableButton()
     }
 
     func applyChanges() {

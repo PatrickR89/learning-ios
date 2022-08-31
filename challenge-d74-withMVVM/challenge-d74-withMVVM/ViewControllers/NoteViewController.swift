@@ -13,14 +13,15 @@ class NoteViewController: UIViewController {
     private let viewModel: NoteViewModel
     private var btnTitle: String
 
-    init(note: Note?, index: Int?) {
+    init(viewModel: NoteViewModel, note: Note?, index: Int?) {
         if index != nil {
              btnTitle = "APPLY"
         } else {
              btnTitle = "ADD"
         }
 
-        self.viewModel = NoteViewModel(note: note, index: index)
+        self.viewModel = viewModel
+        self.viewModel.setupSelf(note: note, index: index)
         self.noteView = NoteView(with: viewModel, btnTitle: btnTitle)
 
         super.init(nibName: nil, bundle: nil)

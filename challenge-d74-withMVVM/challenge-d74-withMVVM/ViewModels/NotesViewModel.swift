@@ -9,9 +9,10 @@ import UIKit
 
 class NotesViewModel {
     var notes: ObservableObject<[Note]> = ObservableObject(DataStorage.shared.loadAndDecode())
+    let noteViewModel = NoteViewModel()
 
     init() {
-        NoteViewModel.delegate = self
+        noteViewModel.delegate = self
     }
 
     func deleteNote (_ index: Int) {

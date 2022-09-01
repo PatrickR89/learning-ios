@@ -21,6 +21,8 @@
 		CDA22A9C28C0A60700D80622 /* MemesCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22A9B28C0A60700D80622 /* MemesCollectionViewDelegate.swift */; };
 		CDA22A9E28C0A7C300D80622 /* MemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22A9D28C0A7C300D80622 /* MemeView.swift */; };
 		CDA22AA028C0AA5F00D80622 /* MemeViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22A9F28C0AA5F00D80622 /* MemeViewDelegate.swift */; };
+		CDA22AA228C0AC4C00D80622 /* MemeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22AA128C0AC4C00D80622 /* MemeViewModel.swift */; };
+		CDA22AA428C0AE0D00D80622 /* MemesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22AA328C0AE0D00D80622 /* MemesViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		CDA22A9B28C0A60700D80622 /* MemesCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemesCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		CDA22A9D28C0A7C300D80622 /* MemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeView.swift; sourceTree = "<group>"; };
 		CDA22A9F28C0AA5F00D80622 /* MemeViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeViewDelegate.swift; sourceTree = "<group>"; };
+		CDA22AA128C0AC4C00D80622 /* MemeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeViewModel.swift; sourceTree = "<group>"; };
+		CDA22AA328C0AE0D00D80622 /* MemesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemesViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +114,8 @@
 		CDA22A8A28C0988D00D80622 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				CDA22AA128C0AC4C00D80622 /* MemeViewModel.swift */,
+				CDA22AA328C0AE0D00D80622 /* MemesViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -247,10 +253,12 @@
 				CDA22A9928C0A4DB00D80622 /* MemeViewController.swift in Sources */,
 				CD8A477628C0951900AA49ED /* SceneDelegate.swift in Sources */,
 				CDA22AA028C0AA5F00D80622 /* MemeViewDelegate.swift in Sources */,
+				CDA22AA428C0AE0D00D80622 /* MemesViewModel.swift in Sources */,
 				CDA22A9328C09D4B00D80622 /* MemesCollectionViewCell.swift in Sources */,
 				CDA22A9528C0A1D200D80622 /* FileManager+Extension.swift in Sources */,
 				CDA22A9128C0996E00D80622 /* MemesCollectionView.swift in Sources */,
 				CDA22A9C28C0A60700D80622 /* MemesCollectionViewDelegate.swift in Sources */,
+				CDA22AA228C0AC4C00D80622 /* MemeViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

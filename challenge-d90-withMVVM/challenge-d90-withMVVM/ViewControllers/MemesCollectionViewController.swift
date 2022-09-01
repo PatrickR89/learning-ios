@@ -10,9 +10,10 @@ import UIKit
 class MemesCollectionViewController: UIViewController {
 
     let memesCollectionView: MemesCollectionView
+    let memesViewModel = MemesViewModel()
 
     init() {
-        self.memesCollectionView = MemesCollectionView()
+        self.memesCollectionView = MemesCollectionView(with: memesViewModel)
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -37,7 +38,7 @@ private extension MemesCollectionViewController {
 extension MemesCollectionViewController: MemesCollectionViewDelegate {
     func memesCollectionView(_ view: MemesCollectionView, didSelectCellWith meme: Meme, at index: Int) {
         let navController = UINavigationController()
-        let viewController = MemeViewController()
+        let viewController = MemeViewController(memeViewModel: memesViewModel.memeViewModel)
 
         navController.viewControllers = [viewController]
         present(navController, animated: true)

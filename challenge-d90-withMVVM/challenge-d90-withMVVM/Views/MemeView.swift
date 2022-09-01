@@ -10,10 +10,11 @@ import UIKit
 class MemeView: UIView {
 
     private let imageView = UIImageView()
+    var viewModel: MemeViewModel
     weak var delegate: MemeViewDelegate?
 
-    init() {
-
+    init(with viewModel: MemeViewModel) {
+        self.viewModel = viewModel
         super.init(frame: .zero)
         setupUI()
     }

@@ -23,7 +23,10 @@ class MemesCollectionView: UIView {
 
     weak var delegate: MemesCollectionViewDelegate?
 
-    init() {
+    private var viewModel: MemesViewModel
+
+    init(with viewModel: MemesViewModel) {
+        self.viewModel = viewModel
         super.init(frame: .zero)
         setupUI()
     }

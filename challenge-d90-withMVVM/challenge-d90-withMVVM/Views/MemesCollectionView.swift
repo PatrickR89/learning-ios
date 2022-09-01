@@ -69,6 +69,8 @@ extension MemesCollectionView: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: "MemeCell",
             for: indexPath) as? MemesCollectionViewCell else {fatalError("ERROR: Cell not found")}
+            let meme = viewModel.findMeme(at: indexPath.item)
+            cell.setupData(load: meme)
         return cell
     }
 

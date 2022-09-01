@@ -33,8 +33,10 @@ class MemesCollectionView: UIView {
 
 private extension MemesCollectionView {
     func setupUI() {
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "MemeCell")
+        collectionView.register(MemesCollectionViewCell.self, forCellWithReuseIdentifier: "MemeCell")
         self.addSubview(collectionView)
+        collectionView.dataSource = self
+        collectionView.delegate = self
 
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -51,7 +53,7 @@ extension MemesCollectionView: UICollectionViewDataSource {
         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: "MemeCell",
-            for: indexPath) as? UICollectionViewCell else {fatalError("ERROR: Cell not found")}
+            for: indexPath) as? MemesCollectionViewCell else {fatalError("ERROR: Cell not found")}
         return cell
     }
 

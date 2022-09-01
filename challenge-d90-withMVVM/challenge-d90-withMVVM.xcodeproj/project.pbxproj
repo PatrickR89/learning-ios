@@ -14,6 +14,7 @@
 		CD8A478028C0951A00AA49ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD8A477E28C0951A00AA49ED /* LaunchScreen.storyboard */; };
 		CDA22A8F28C0990400D80622 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22A8E28C0990400D80622 /* Meme.swift */; };
 		CDA22A9128C0996E00D80622 /* MemesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22A9028C0996E00D80622 /* MemesCollectionView.swift */; };
+		CDA22A9328C09D4B00D80622 /* MemesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22A9228C09D4B00D80622 /* MemesCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		CD8A478128C0951A00AA49ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDA22A8E28C0990400D80622 /* Meme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 		CDA22A9028C0996E00D80622 /* MemesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemesCollectionView.swift; sourceTree = "<group>"; };
+		CDA22A9228C09D4B00D80622 /* MemesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemesCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				CDA22A9028C0996E00D80622 /* MemesCollectionView.swift */,
+				CDA22A9228C09D4B00D80622 /* MemesCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 				CDA22A8F28C0990400D80622 /* Meme.swift in Sources */,
 				CD8A477428C0951900AA49ED /* AppDelegate.swift in Sources */,
 				CD8A477628C0951900AA49ED /* SceneDelegate.swift in Sources */,
+				CDA22A9328C09D4B00D80622 /* MemesCollectionViewCell.swift in Sources */,
 				CDA22A9128C0996E00D80622 /* MemesCollectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

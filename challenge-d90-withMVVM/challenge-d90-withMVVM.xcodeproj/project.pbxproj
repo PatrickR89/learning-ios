@@ -28,6 +28,8 @@
 		CDA22AAB28C0C3FE00D80622 /* ImageSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22AAA28C0C3FE00D80622 /* ImageSelectorViewController.swift */; };
 		CDA22AAD28C0C53300D80622 /* ImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22AAC28C0C53300D80622 /* ImageViewModel.swift */; };
 		CDA22AAF28C0C75D00D80622 /* ImageViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22AAE28C0C75D00D80622 /* ImageViewModelDelegate.swift */; };
+		CDA22AB228C0D59700D80622 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22AB128C0D59700D80622 /* Position.swift */; };
+		CDA22AB428C0DBAA00D80622 /* MemeVCViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22AB328C0DBAA00D80622 /* MemeVCViewModelDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,8 @@
 		CDA22AAA28C0C3FE00D80622 /* ImageSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectorViewController.swift; sourceTree = "<group>"; };
 		CDA22AAC28C0C53300D80622 /* ImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewModel.swift; sourceTree = "<group>"; };
 		CDA22AAE28C0C75D00D80622 /* ImageViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewModelDelegate.swift; sourceTree = "<group>"; };
+		CDA22AB128C0D59700D80622 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
+		CDA22AB328C0DBAA00D80622 /* MemeVCViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeVCViewModelDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +90,7 @@
 		CD8A477228C0951900AA49ED /* challenge-d90-withMVVM */ = {
 			isa = PBXGroup;
 			children = (
+				CDA22AB028C0D58800D80622 /* Enums */,
 				CDA22A8D28C098AE00D80622 /* Middleware */,
 				CDA22A8C28C098A600D80622 /* Models */,
 				CDA22A8B28C0989500D80622 /* Services */,
@@ -172,8 +177,17 @@
 			children = (
 				CDA22AA628C0B66A00D80622 /* MemeViewModelDelegate.swift */,
 				CDA22AAE28C0C75D00D80622 /* ImageViewModelDelegate.swift */,
+				CDA22AB328C0DBAA00D80622 /* MemeVCViewModelDelegate.swift */,
 			);
 			path = Delegates;
+			sourceTree = "<group>";
+		};
+		CDA22AB028C0D58800D80622 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				CDA22AB128C0D59700D80622 /* Position.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,6 +293,7 @@
 				CD8A477628C0951900AA49ED /* SceneDelegate.swift in Sources */,
 				CDA22AA028C0AA5F00D80622 /* MemeViewDelegate.swift in Sources */,
 				CDA22AA928C0BB0000D80622 /* MemeVCViewModel.swift in Sources */,
+				CDA22AB428C0DBAA00D80622 /* MemeVCViewModelDelegate.swift in Sources */,
 				CDA22AA428C0AE0D00D80622 /* MemesViewModel.swift in Sources */,
 				CDA22AAD28C0C53300D80622 /* ImageViewModel.swift in Sources */,
 				CDA22A9328C09D4B00D80622 /* MemesCollectionViewCell.swift in Sources */,
@@ -286,6 +301,7 @@
 				CDA22A9528C0A1D200D80622 /* FileManager+Extension.swift in Sources */,
 				CDA22A9128C0996E00D80622 /* MemesCollectionView.swift in Sources */,
 				CDA22A9C28C0A60700D80622 /* MemesCollectionViewDelegate.swift in Sources */,
+				CDA22AB228C0D59700D80622 /* Position.swift in Sources */,
 				CDA22AA228C0AC4C00D80622 /* MemeViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

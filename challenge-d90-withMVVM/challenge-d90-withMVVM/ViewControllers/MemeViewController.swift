@@ -26,6 +26,7 @@ class MemeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        bindNavigationItem()
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "CLOSE",
             style: .plain,
@@ -43,6 +44,30 @@ private extension MemeViewController {
         view.addSubview(memeView)
         memeView.frame = view.bounds
         memeView.delegate = self
+    }
+
+    func bindNavigationItem() {
+        viewModel.observeImageState { imageState in
+            DispatchQueue.main.async { [weak self] in
+                self?.toggleBarButton(imageState)
+            }
+        }
+    }
+
+    func toggleBarButton(_ imageState: Bool) {
+        if imageState {
+            let editBarButton = UIBarButtonItem(
+                title: "EDIT",
+                style: .plain,
+                target: self,
+                action: #selector(openActionController))
+            self.navigationItem.leftBarButtonItem = editBarButton
+        }
+    }
+
+    @objc func openActionController() {
+        let alertController = viewModel.createAlertController(in: self)
+        present(alertController, animated: true)
     }
 }
 

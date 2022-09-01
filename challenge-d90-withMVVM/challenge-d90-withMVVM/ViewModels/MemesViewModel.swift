@@ -23,6 +23,7 @@ class MemesViewModel {
 
     init() {
         memeViewModel.delegate = self
+        memeViewModel.appendMemeVCViewModel(memeVCViewModel)
     }
 }
 

@@ -17,6 +17,7 @@ class MemeViewModel {
 
     weak var delegate: MemeViewModelDelegate?
     private var imageViewModel: ImageViewModel?
+    private var memeVCViewModel: MemeVCViewModel?
 
     private var observer: ((UIImage) -> Void)?
 
@@ -33,12 +34,32 @@ class MemeViewModel {
         self.imageViewModel = imageViewModel
         imageViewModel.delegate = self
     }
+
+    func appendMemeVCViewModel(_ memeVCViewModel: MemeVCViewModel) {
+        self.memeVCViewModel = memeVCViewModel
+        memeVCViewModel.delegate = self
+    }
 }
 
 extension MemeViewModel: ImageViewModelDelegate {
     func imageViewModel(_ viewModel: ImageViewModel, didSaveImageWithName imageName: String) {
         let meme = Meme(image: imageName, topText: false, bottomText: false)
         updateMeme(meme)
+    }
+}
+
+extension MemeViewModel: MemeVCViewModelDelegate {
+    func memeVCViewModel(_ viewModel: MemeVCViewModel, didEditMeme meme: Meme) {
+        updateMeme(meme)
+    }
+
+    func memeVCViewModel(_ viewModel: MemeVCViewModel, didDeleteMeme meme: Meme) {
+        deleteMeme(meme)
+    }
+
+    func memeVCViewModelDidRequestMeme(_ viewModel: MemeVCViewModel) -> Meme {
+        guard let meme = returnMeme() else {return Meme(image: "", topText: false, bottomText: false)}
+        return meme
     }
 }
 
@@ -61,11 +82,11 @@ extension MemeViewModel {
         }
     }
 
-    func deleteMeme() {
+    func deleteMeme(_ meme: Meme) {
         delegate?.memeViewModel(self, didDeleteMeme: meme)
     }
 
-    func returnMeme() -> Meme {
+    func returnMeme() -> Meme? {
         return meme
     }
 

@@ -81,7 +81,8 @@ extension MemesCollectionView: UICollectionViewDataSource {
 
 extension MemesCollectionView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let meme = viewModel.findMeme(at: indexPath.item)
-        delegate?.memesCollectionView(self, didSelectCellWith: meme, at: indexPath.item)
+        let index = indexPath.item
+        let meme = viewModel.findMeme(at: index)
+        delegate?.memesCollectionView(self, didSelectCellWith: meme, at: index)
     }
 }

@@ -14,6 +14,8 @@ class MemeViewModel {
         }
     }
 
+    weak var delegate: MemeViewModelDelegate?
+
     private var observer: ((UIImage) -> Void)?
 
     private func valueDidChange() {
@@ -30,5 +32,26 @@ extension MemeViewModel {
     func observeImage(_ closure: @escaping (UIImage) -> Void) {
         self.observer = closure
         valueDidChange()
+    }
+
+    func updateMeme(_ meme: Meme) {
+        self.meme = meme
+        delegate?.memeViewModel(self, didChangeMeme: meme)
+    }
+
+    func loadMeme(_ meme: Meme?) {
+        if let meme = meme {
+            self.meme = meme
+        } else {
+            self.meme = Meme(image: "", topText: false, bottomText: false)
+        }
+    }
+
+    func deleteMeme() {
+        delegate?.memeViewModel(self, didDeleteMeme: meme)
+    }
+
+    func returnMeme() -> Meme {
+        return meme
     }
 }

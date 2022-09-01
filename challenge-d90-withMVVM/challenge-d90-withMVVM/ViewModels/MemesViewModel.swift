@@ -52,6 +52,10 @@ extension MemesViewModel {
     func findMeme(at index: Int) -> Meme {
         return memes[index]
     }
+
+    func loadMeme(_ meme: Meme?) {
+        memeViewModel.loadMeme(meme)
+    }
 }
 
 extension MemesViewModel: MemeViewModelDelegate {

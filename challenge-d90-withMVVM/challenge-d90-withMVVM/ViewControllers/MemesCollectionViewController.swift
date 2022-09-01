@@ -24,6 +24,11 @@ class MemesCollectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .add,
+            target: self,
+            action: #selector(addNewMeme))
     }
 }
 
@@ -33,10 +38,21 @@ private extension MemesCollectionViewController {
         memesCollectionView.frame = view.bounds
         memesCollectionView.delegate = self
     }
+
+    @objc func addNewMeme() {
+        memesViewModel.loadMeme(nil)
+        let viewController = MemeViewController(
+            memeViewModel: memesViewModel.memeViewModel,
+            with: memesViewModel.memeVCViewModel)
+        let navController = UINavigationController()
+        navController.viewControllers = [viewController]
+        present(navController, animated: true)
+    }
 }
 
 extension MemesCollectionViewController: MemesCollectionViewDelegate {
     func memesCollectionView(_ view: MemesCollectionView, didSelectCellWith meme: Meme, at index: Int) {
+        memesViewModel.loadMeme(meme)
         let navController = UINavigationController()
         let viewController = MemeViewController(
             memeViewModel: memesViewModel.memeViewModel,

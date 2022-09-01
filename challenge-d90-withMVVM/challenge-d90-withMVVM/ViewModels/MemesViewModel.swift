@@ -19,6 +19,7 @@ class MemesViewModel {
 
     let memeViewModel = MemeViewModel()
     let memeVCViewModel = MemeVCViewModel()
+    let imageViewModel = ImageViewModel()
 
     init() {
         memeViewModel.delegate = self

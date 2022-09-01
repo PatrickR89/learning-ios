@@ -25,6 +25,9 @@
 		CDA22AA428C0AE0D00D80622 /* MemesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22AA328C0AE0D00D80622 /* MemesViewModel.swift */; };
 		CDA22AA728C0B66A00D80622 /* MemeViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22AA628C0B66A00D80622 /* MemeViewModelDelegate.swift */; };
 		CDA22AA928C0BB0000D80622 /* MemeVCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22AA828C0BB0000D80622 /* MemeVCViewModel.swift */; };
+		CDA22AAB28C0C3FE00D80622 /* ImageSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22AAA28C0C3FE00D80622 /* ImageSelectorViewController.swift */; };
+		CDA22AAD28C0C53300D80622 /* ImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22AAC28C0C53300D80622 /* ImageViewModel.swift */; };
+		CDA22AAF28C0C75D00D80622 /* ImageViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22AAE28C0C75D00D80622 /* ImageViewModelDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +51,9 @@
 		CDA22AA328C0AE0D00D80622 /* MemesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemesViewModel.swift; sourceTree = "<group>"; };
 		CDA22AA628C0B66A00D80622 /* MemeViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeViewModelDelegate.swift; sourceTree = "<group>"; };
 		CDA22AA828C0BB0000D80622 /* MemeVCViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeVCViewModel.swift; sourceTree = "<group>"; };
+		CDA22AAA28C0C3FE00D80622 /* ImageSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectorViewController.swift; sourceTree = "<group>"; };
+		CDA22AAC28C0C53300D80622 /* ImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewModel.swift; sourceTree = "<group>"; };
+		CDA22AAE28C0C75D00D80622 /* ImageViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewModelDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +106,7 @@
 			children = (
 				CD8A477728C0951900AA49ED /* MemesCollectionViewController.swift */,
 				CDA22A9828C0A4DB00D80622 /* MemeViewController.swift */,
+				CDA22AAA28C0C3FE00D80622 /* ImageSelectorViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -122,6 +129,7 @@
 				CDA22AA128C0AC4C00D80622 /* MemeViewModel.swift */,
 				CDA22AA328C0AE0D00D80622 /* MemesViewModel.swift */,
 				CDA22AA828C0BB0000D80622 /* MemeVCViewModel.swift */,
+				CDA22AAC28C0C53300D80622 /* ImageViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -163,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				CDA22AA628C0B66A00D80622 /* MemeViewModelDelegate.swift */,
+				CDA22AAE28C0C75D00D80622 /* ImageViewModelDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -260,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDA22A9E28C0A7C300D80622 /* MemeView.swift in Sources */,
+				CDA22AAB28C0C3FE00D80622 /* ImageSelectorViewController.swift in Sources */,
 				CD8A477828C0951900AA49ED /* MemesCollectionViewController.swift in Sources */,
 				CDA22A8F28C0990400D80622 /* Meme.swift in Sources */,
 				CD8A477428C0951900AA49ED /* AppDelegate.swift in Sources */,
@@ -270,7 +280,9 @@
 				CDA22AA028C0AA5F00D80622 /* MemeViewDelegate.swift in Sources */,
 				CDA22AA928C0BB0000D80622 /* MemeVCViewModel.swift in Sources */,
 				CDA22AA428C0AE0D00D80622 /* MemesViewModel.swift in Sources */,
+				CDA22AAD28C0C53300D80622 /* ImageViewModel.swift in Sources */,
 				CDA22A9328C09D4B00D80622 /* MemesCollectionViewCell.swift in Sources */,
+				CDA22AAF28C0C75D00D80622 /* ImageViewModelDelegate.swift in Sources */,
 				CDA22A9528C0A1D200D80622 /* FileManager+Extension.swift in Sources */,
 				CDA22A9128C0996E00D80622 /* MemesCollectionView.swift in Sources */,
 				CDA22A9C28C0A60700D80622 /* MemesCollectionViewDelegate.swift in Sources */,

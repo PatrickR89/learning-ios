@@ -16,6 +16,7 @@ class MemeViewModel {
     }
 
     weak var delegate: MemeViewModelDelegate?
+    private var imageViewModel: ImageViewModel?
 
     private var observer: ((UIImage) -> Void)?
 
@@ -26,6 +27,19 @@ class MemeViewModel {
             return
         }
         observer(image)
+    }
+
+    func appendImageViewModel(_ imageViewModel: ImageViewModel) {
+        self.imageViewModel = imageViewModel
+        imageViewModel.delegate = self
+    }
+}
+
+extension MemeViewModel: ImageViewModelDelegate {
+    func imageViewModel(_ viewModel: ImageViewModel, didSaveImageWithName imageName: String) {
+        let meme = Meme(image: imageName, topText: false, bottomText: false)
+        print("something")
+        self.updateMeme(meme)
     }
 }
 

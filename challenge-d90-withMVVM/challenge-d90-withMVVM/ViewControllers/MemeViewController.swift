@@ -11,10 +11,11 @@ class MemeViewController: UIViewController {
 
     private var memeView: MemeView
     private var viewModel: MemeVCViewModel
+    private var imageViewModel = ImageViewModel()
 
     init(memeViewModel: MemeViewModel, with viewModel: MemeVCViewModel) {
         self.viewModel = viewModel
-        self.memeView = MemeView(with: memeViewModel)
+        self.memeView = MemeView(with: memeViewModel, imageViewModel: imageViewModel)
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -47,6 +48,7 @@ private extension MemeViewController {
 
 extension MemeViewController: MemeViewDelegate {
     func memeViewDidTapImage(_ view: MemeView) {
-        print("tapped!")
+        let viewController = ImageSelectorViewController(with: imageViewModel)
+        present(viewController, animated: true)
     }
 }

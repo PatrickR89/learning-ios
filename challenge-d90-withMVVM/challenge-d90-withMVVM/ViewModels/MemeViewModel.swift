@@ -38,8 +38,7 @@ class MemeViewModel {
 extension MemeViewModel: ImageViewModelDelegate {
     func imageViewModel(_ viewModel: ImageViewModel, didSaveImageWithName imageName: String) {
         let meme = Meme(image: imageName, topText: false, bottomText: false)
-        print("something")
-        self.updateMeme(meme)
+        updateMeme(meme)
     }
 }
 

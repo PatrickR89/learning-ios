@@ -29,6 +29,7 @@ class MemesCollectionView: UIView {
         self.viewModel = viewModel
         super.init(frame: .zero)
         setupUI()
+        setupBindings()
     }
 
     required init?(coder: NSCoder) {

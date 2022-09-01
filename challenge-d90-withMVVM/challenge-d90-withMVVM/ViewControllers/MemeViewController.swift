@@ -30,5 +30,12 @@ private extension MemeViewController {
     func setupUI() {
         view.addSubview(memeView)
         memeView.frame = view.bounds
+        memeView.delegate = self
+    }
+}
+
+extension MemeViewController: MemeViewDelegate {
+    func memeViewDidTapImage(_ view: MemeView) {
+        print("tapped!")
     }
 }

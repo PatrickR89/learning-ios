@@ -10,6 +10,7 @@ import UIKit
 class MemeView: UIView {
 
     private let imageView = UIImageView()
+    weak var delegate: MemeViewDelegate?
 
     init() {
 
@@ -44,6 +45,6 @@ private extension MemeView {
     }
 
     @objc func imageTapped() {
-        print("tapped!")
+        delegate?.memeViewDidTapImage(self)
     }
 }

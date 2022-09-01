@@ -30,5 +30,16 @@ private extension MemesCollectionViewController {
     func setupUI() {
         view.addSubview(memesCollectionView)
         memesCollectionView.frame = view.bounds
+        memesCollectionView.delegate = self
+    }
+}
+
+extension MemesCollectionViewController: MemesCollectionViewDelegate {
+    func memesCollectionView(_ view: MemesCollectionView, didSelectCellWith meme: Meme, at index: Int) {
+        let navController = UINavigationController()
+        let viewController = MemeViewController()
+
+        navController.viewControllers = [viewController]
+        present(navController, animated: true)
     }
 }

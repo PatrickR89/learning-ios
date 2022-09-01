@@ -21,6 +21,8 @@ class MemesCollectionView: UIView {
         return collectionView
     }()
 
+    weak var delegate: MemesCollectionViewDelegate?
+
     init() {
         super.init(frame: .zero)
         setupUI()
@@ -61,4 +63,9 @@ extension MemesCollectionView: UICollectionViewDataSource {
         return 10
     }
 }
-extension MemesCollectionView: UICollectionViewDelegate {}
+extension MemesCollectionView: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let meme = Meme(image: "", topText: false, bottomText: false)
+        delegate?.memesCollectionView(self, didSelectCellWith: meme, at: indexPath.item)
+    }
+}

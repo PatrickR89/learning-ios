@@ -101,14 +101,14 @@ private extension MemeVCViewModel {
                     let addText = UIAlertAction(
                         title: "ADD",
                         style: .default) { [weak textAlertController, weak self] _ in
-                        guard let self = self,
-                              let textAlertController = textAlertController,
-                              let meme = self.delegate?.memeVCViewModelDidRequestMeme(self),
-                              let text = textAlertController.textFields?[0].text else {return}
-                        DispatchQueue.global(qos: .userInitiated).async {
-                            self.editImage(meme: meme, text: text, at: position)
+                            guard let self = self,
+                                  let textAlertController = textAlertController,
+                                  let meme = self.delegate?.memeVCViewModelDidRequestMeme(self),
+                                  let text = textAlertController.textFields?[0].text else {return}
+                            DispatchQueue.global(qos: .userInitiated).async {
+                                self.editImage(meme: meme, text: text, at: position)
+                            }
                         }
-                    }
 
                     let cancel = UIAlertAction(title: "Cancel", style: .cancel)
                     textAlertController.addAction(addText)

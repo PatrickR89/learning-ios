@@ -15,6 +15,8 @@
 		CDA22A8F28C0990400D80622 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22A8E28C0990400D80622 /* Meme.swift */; };
 		CDA22A9128C0996E00D80622 /* MemesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22A9028C0996E00D80622 /* MemesCollectionView.swift */; };
 		CDA22A9328C09D4B00D80622 /* MemesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22A9228C09D4B00D80622 /* MemesCollectionViewCell.swift */; };
+		CDA22A9528C0A1D200D80622 /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22A9428C0A1D200D80622 /* FileManager+Extension.swift */; };
+		CDA22A9728C0A27C00D80622 /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22A9628C0A27C00D80622 /* DataStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		CDA22A8E28C0990400D80622 /* Meme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 		CDA22A9028C0996E00D80622 /* MemesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemesCollectionView.swift; sourceTree = "<group>"; };
 		CDA22A9228C09D4B00D80622 /* MemesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemesCollectionViewCell.swift; sourceTree = "<group>"; };
+		CDA22A9428C0A1D200D80622 /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
+		CDA22A9628C0A27C00D80622 /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,7 @@
 		CDA22A8B28C0989500D80622 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				CDA22A9628C0A27C00D80622 /* DataStorage.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -117,6 +122,7 @@
 		CDA22A8D28C098AE00D80622 /* Middleware */ = {
 			isa = PBXGroup;
 			children = (
+				CDA22A9428C0A1D200D80622 /* FileManager+Extension.swift */,
 			);
 			path = Middleware;
 			sourceTree = "<group>";
@@ -216,8 +222,10 @@
 				CD8A477828C0951900AA49ED /* MemesCollectionViewController.swift in Sources */,
 				CDA22A8F28C0990400D80622 /* Meme.swift in Sources */,
 				CD8A477428C0951900AA49ED /* AppDelegate.swift in Sources */,
+				CDA22A9728C0A27C00D80622 /* DataStorage.swift in Sources */,
 				CD8A477628C0951900AA49ED /* SceneDelegate.swift in Sources */,
 				CDA22A9328C09D4B00D80622 /* MemesCollectionViewCell.swift in Sources */,
+				CDA22A9528C0A1D200D80622 /* FileManager+Extension.swift in Sources */,
 				CDA22A9128C0996E00D80622 /* MemesCollectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

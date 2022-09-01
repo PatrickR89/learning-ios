@@ -10,4 +10,5 @@ import UIKit
 protocol MemeViewModelDelegate: AnyObject {
     func memeViewModel(_ viewModel: MemeViewModel, didChangeMeme meme: Meme)
     func memeViewModel(_ viewModel: MemeViewModel, didDeleteMeme meme: Meme)
+    func memeViewModel(_ viewModel: MemeViewModel, didLoadMeme state: Bool)
 }

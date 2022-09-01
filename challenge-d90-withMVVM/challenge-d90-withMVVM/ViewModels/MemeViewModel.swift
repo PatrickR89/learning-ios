@@ -11,6 +11,7 @@ class MemeViewModel {
     private var meme: Meme = Meme(image: "", topText: false, bottomText: false) {
         didSet {
             valueDidChange()
+            imageDidLoad(image: meme.image)
         }
     }
 
@@ -53,5 +54,10 @@ extension MemeViewModel {
 
     func returnMeme() -> Meme {
         return meme
+    }
+
+    func imageDidLoad(image: String) {
+        let state = image != ""
+        delegate?.memeViewModel(self, didLoadMeme: state)
     }
 }

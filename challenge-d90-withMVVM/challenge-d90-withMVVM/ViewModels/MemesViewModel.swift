@@ -8,6 +8,7 @@
 import UIKit
 
 class MemesViewModel {
+
     private var memes = [Meme](DataStorage.shared.loadFile()) {
         didSet {
             valueDidChange()
@@ -17,6 +18,7 @@ class MemesViewModel {
     private var observer: (([Meme]) -> Void)?
 
     let memeViewModel = MemeViewModel()
+    let memeVCViewModel = MemeVCViewModel()
 
     init() {
         memeViewModel.delegate = self
@@ -37,6 +39,7 @@ private extension MemesViewModel {
 }
 
 extension MemesViewModel {
+
     func observeMemesState(_ closure: @escaping ([Meme]) -> Void) {
         self.observer = closure
         valueDidChange()
@@ -52,6 +55,11 @@ extension MemesViewModel {
 }
 
 extension MemesViewModel: MemeViewModelDelegate {
+
+    func memeViewModel(_ viewModel: MemeViewModel, didLoadMeme state: Bool) {
+        memeVCViewModel.updateIsImageLoaded(imageDidLoad: state)
+    }
+
     func memeViewModel(_ viewModel: MemeViewModel, didChangeMeme meme: Meme) {
         if let index = findMemeInSelf(meme) {
             memes[index] = meme

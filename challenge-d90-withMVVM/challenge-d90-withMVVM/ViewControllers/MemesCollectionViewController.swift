@@ -38,7 +38,9 @@ private extension MemesCollectionViewController {
 extension MemesCollectionViewController: MemesCollectionViewDelegate {
     func memesCollectionView(_ view: MemesCollectionView, didSelectCellWith meme: Meme, at index: Int) {
         let navController = UINavigationController()
-        let viewController = MemeViewController(memeViewModel: memesViewModel.memeViewModel)
+        let viewController = MemeViewController(
+            memeViewModel: memesViewModel.memeViewModel,
+            with: memesViewModel.memeVCViewModel)
 
         navController.viewControllers = [viewController]
         present(navController, animated: true)

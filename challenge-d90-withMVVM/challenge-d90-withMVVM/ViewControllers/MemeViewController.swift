@@ -10,8 +10,10 @@ import UIKit
 class MemeViewController: UIViewController {
 
     private var memeView: MemeView
+    private var viewModel: MemeVCViewModel
 
-    init(memeViewModel: MemeViewModel) {
+    init(memeViewModel: MemeViewModel, with viewModel: MemeVCViewModel) {
+        self.viewModel = viewModel
         self.memeView = MemeView(with: memeViewModel)
         super.init(nibName: nil, bundle: nil)
     }

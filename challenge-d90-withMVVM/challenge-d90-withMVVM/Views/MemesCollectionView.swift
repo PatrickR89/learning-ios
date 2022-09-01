@@ -51,7 +51,17 @@ private extension MemesCollectionView {
             collectionView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor)
         ])
     }
+
+    func setupBindings() {
+        viewModel.observeMemesState { memes in
+            DispatchQueue.main.async { [weak self] in
+                self?.collectionView.reloadData()
+                DataStorage.shared.saveFile(save: memes)
+            }
+        }
+    }
 }
+
 extension MemesCollectionView: UICollectionViewDataSource {
     func collectionView(
         _ collectionView: UICollectionView,
@@ -63,12 +73,13 @@ extension MemesCollectionView: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return viewModel.returnMemesCount()
     }
 }
+
 extension MemesCollectionView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let meme = Meme(image: "", topText: false, bottomText: false)
+        let meme = viewModel.findMeme(at: indexPath.item)
         delegate?.memesCollectionView(self, didSelectCellWith: meme, at: indexPath.item)
     }
 }

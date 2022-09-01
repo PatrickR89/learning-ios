@@ -31,4 +31,12 @@ extension MemesViewModel {
         self.observer = closure
         valueDidChange()
     }
+
+    func returnMemesCount() -> Int {
+        return memes.count
+    }
+
+    func findMeme(at index: Int) -> Meme {
+        return memes[index]
+    }
 }

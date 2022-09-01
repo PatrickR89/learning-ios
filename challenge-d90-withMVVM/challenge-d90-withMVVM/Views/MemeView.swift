@@ -17,6 +17,7 @@ class MemeView: UIView {
         self.viewModel = viewModel
         super.init(frame: .zero)
         setupUI()
+        setupBindings()
     }
 
     required init?(coder: NSCoder) {
@@ -43,6 +44,14 @@ private extension MemeView {
             imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             imageView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -100)
         ])
+    }
+
+    func setupBindings() {
+        viewModel.observeImage { image in
+            DispatchQueue.main.async { [weak self] in
+                self?.imageView.image = image
+            }
+        }
     }
 
     @objc func imageTapped() {

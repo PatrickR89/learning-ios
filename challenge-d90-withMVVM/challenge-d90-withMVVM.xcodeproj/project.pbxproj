@@ -30,6 +30,7 @@
 		CDA22AAF28C0C75D00D80622 /* ImageViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22AAE28C0C75D00D80622 /* ImageViewModelDelegate.swift */; };
 		CDA22AB228C0D59700D80622 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22AB128C0D59700D80622 /* Position.swift */; };
 		CDA22AB428C0DBAA00D80622 /* MemeVCViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22AB328C0DBAA00D80622 /* MemeVCViewModelDelegate.swift */; };
+		CDA22AB628C0E5DE00D80622 /* MemeViewModel+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22AB528C0E5DE00D80622 /* MemeViewModel+Delegates.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		CDA22AAE28C0C75D00D80622 /* ImageViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewModelDelegate.swift; sourceTree = "<group>"; };
 		CDA22AB128C0D59700D80622 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		CDA22AB328C0DBAA00D80622 /* MemeVCViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeVCViewModelDelegate.swift; sourceTree = "<group>"; };
+		CDA22AB528C0E5DE00D80622 /* MemeViewModel+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MemeViewModel+Delegates.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 		CDA22A8A28C0988D00D80622 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				CDA22AB728C0E5E900D80622 /* Extensions */,
 				CDA22AA528C0B65C00D80622 /* Delegates */,
 				CDA22AA128C0AC4C00D80622 /* MemeViewModel.swift */,
 				CDA22AA328C0AE0D00D80622 /* MemesViewModel.swift */,
@@ -188,6 +191,14 @@
 				CDA22AB128C0D59700D80622 /* Position.swift */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		CDA22AB728C0E5E900D80622 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CDA22AB528C0E5DE00D80622 /* MemeViewModel+Delegates.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,6 +300,7 @@
 				CD8A477428C0951900AA49ED /* AppDelegate.swift in Sources */,
 				CDA22A9728C0A27C00D80622 /* DataStorage.swift in Sources */,
 				CDA22AA728C0B66A00D80622 /* MemeViewModelDelegate.swift in Sources */,
+				CDA22AB628C0E5DE00D80622 /* MemeViewModel+Delegates.swift in Sources */,
 				CDA22A9928C0A4DB00D80622 /* MemeViewController.swift in Sources */,
 				CD8A477628C0951900AA49ED /* SceneDelegate.swift in Sources */,
 				CDA22AA028C0AA5F00D80622 /* MemeViewDelegate.swift in Sources */,

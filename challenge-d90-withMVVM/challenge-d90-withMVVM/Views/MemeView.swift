@@ -38,6 +38,7 @@ private extension MemeView {
 
         imageView.layer.borderColor = UIColor.gray.cgColor
         imageView.layer.borderWidth = 1
+        imageView.contentMode = .scaleAspectFit
 
         NSLayoutConstraint.activate([
             imageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.75),

@@ -34,7 +34,7 @@ extension MemeVCViewModel {
     func updateIsImageLoaded(imageDidLoad isImageLoaded: Bool) {
         self.isImageLoaded = isImageLoaded
     }
-
+    // MARK: create alert controller
     func createAlertController(in viewController: UIViewController) -> UIAlertController {
         let alertController = UIAlertController(
             title: "Edit or delete image",
@@ -77,6 +77,8 @@ extension MemeVCViewModel {
 
 private extension MemeVCViewModel {
 
+    // MARK: create alert action
+
     func createAlertAction(
         position: Position,
         to alertController: UIAlertController,
@@ -96,7 +98,9 @@ private extension MemeVCViewModel {
                 style: .default) { [weak alertController, weak viewController] _ in
                     let textAlertController = UIAlertController(title: title, message: nil, preferredStyle: .alert)
                     textAlertController.addTextField()
-                    let addText = UIAlertAction(title: "ADD", style: .default) { [weak textAlertController, weak self] _ in
+                    let addText = UIAlertAction(
+                        title: "ADD",
+                        style: .default) { [weak textAlertController, weak self] _ in
                         guard let self = self,
                               let textAlertController = textAlertController,
                               let meme = self.delegate?.memeVCViewModelDidRequestMeme(self),
@@ -128,6 +132,8 @@ private extension MemeVCViewModel {
                 }
             }
         }
+
+    // MARK: edit image
 
     private func editImage(meme: Meme, text: String, at textPosition: Position) {
         let imagePath = FileManager.default.getFilePath(meme.image)
@@ -175,6 +181,8 @@ private extension MemeVCViewModel {
             }
         }
     }
+
+    // MARK: create textFrame for editImage
 
     private func createTextFrame(size: CGSize, position: Position) -> CGRect {
         let width = size.width * 0.9

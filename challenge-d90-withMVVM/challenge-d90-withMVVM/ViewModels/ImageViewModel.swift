@@ -22,11 +22,11 @@ class ImageViewModel {
         UIViewController &
         UIImagePickerControllerDelegate &
         UINavigationControllerDelegate) -> UIImagePickerController {
-        let imagePicker = UIImagePickerController()
-        imagePicker.allowsEditing = true
-        imagePicker.delegate = viewController
-        return imagePicker
-    }
+            let imagePicker = UIImagePickerController()
+            imagePicker.allowsEditing = true
+            imagePicker.delegate = viewController
+            return imagePicker
+        }
 
     func createNewImage(image: UIImage) {
         let newImageName = UUID().uuidString

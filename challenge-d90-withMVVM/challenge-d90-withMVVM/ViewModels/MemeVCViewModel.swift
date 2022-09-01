@@ -45,18 +45,18 @@ extension MemeVCViewModel {
         let deleteImage = UIAlertAction(
             title: "DELETE MEME",
             style: .destructive) { [weak viewController, weak self] _ in
-            guard let self = self,
-                  let meme = self.delegate?.memeVCViewModelDidRequestMeme(self) else {return}
-            let imageName = meme.image
-            let path = FileManager.default.getFilePath(imageName)
-            do {
-                try FileManager.default.removeItem(at: path)
-            } catch {
-                print("Error in deleting")
+                guard let self = self,
+                      let meme = self.delegate?.memeVCViewModelDidRequestMeme(self) else {return}
+                let imageName = meme.image
+                let path = FileManager.default.getFilePath(imageName)
+                do {
+                    try FileManager.default.removeItem(at: path)
+                } catch {
+                    print("Error in deleting")
+                }
+                self.delegate?.memeVCViewModel(self, didDeleteMeme: meme)
+                viewController?.dismiss(animated: true)
             }
-            self.delegate?.memeVCViewModel(self, didDeleteMeme: meme)
-            viewController?.dismiss(animated: true)
-        }
 
         let cancelAction = UIAlertAction(title: "CANCEL", style: .cancel)
 
@@ -82,52 +82,52 @@ private extension MemeVCViewModel {
         to alertController: UIAlertController,
         in viewController: UIViewController) -> UIAlertAction? {
 
-        var title: String
-        guard let meme = self.delegate?.memeVCViewModelDidRequestMeme(self) else {return nil}
-        switch position {
-        case .top:
-            title = "Add text on top"
-        case .bottom:
-            title = "Add text on bottom"
-        }
+            var title: String
+            guard let meme = self.delegate?.memeVCViewModelDidRequestMeme(self) else {return nil}
+            switch position {
+            case .top:
+                title = "Add text on top"
+            case .bottom:
+                title = "Add text on bottom"
+            }
 
-        let alertAction = UIAlertAction(
-            title: title,
-            style: .default) { [weak alertController, weak viewController] _ in
-            let textAlertController = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-            textAlertController.addTextField()
-            let addText = UIAlertAction(title: "ADD", style: .default) { [weak textAlertController, weak self] _ in
-                guard let self = self,
-                      let textAlertController = textAlertController,
-                      let meme = self.delegate?.memeVCViewModelDidRequestMeme(self),
-                      let text = textAlertController.textFields?[0].text else {return}
-                DispatchQueue.global(qos: .userInitiated).async {
-                    self.editImage(meme: meme, text: text, at: position)
+            let alertAction = UIAlertAction(
+                title: title,
+                style: .default) { [weak alertController, weak viewController] _ in
+                    let textAlertController = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+                    textAlertController.addTextField()
+                    let addText = UIAlertAction(title: "ADD", style: .default) { [weak textAlertController, weak self] _ in
+                        guard let self = self,
+                              let textAlertController = textAlertController,
+                              let meme = self.delegate?.memeVCViewModelDidRequestMeme(self),
+                              let text = textAlertController.textFields?[0].text else {return}
+                        DispatchQueue.global(qos: .userInitiated).async {
+                            self.editImage(meme: meme, text: text, at: position)
+                        }
+                    }
+
+                    let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+                    textAlertController.addAction(addText)
+                    textAlertController.addAction(cancel)
+                    alertController?.dismiss(animated: true)
+                    viewController?.present(textAlertController, animated: true)
+                }
+
+            switch position {
+            case .top:
+                if !meme.topText {
+                    return alertAction
+                } else {
+                    return nil
+                }
+            case .bottom:
+                if !meme.bottomText {
+                    return alertAction
+                } else {
+                    return nil
                 }
             }
-
-            let cancel = UIAlertAction(title: "Cancel", style: .cancel)
-            textAlertController.addAction(addText)
-            textAlertController.addAction(cancel)
-            alertController?.dismiss(animated: true)
-            viewController?.present(textAlertController, animated: true)
         }
-
-        switch position {
-        case .top:
-            if !meme.topText {
-                return alertAction
-            } else {
-                return nil
-            }
-        case .bottom:
-            if !meme.bottomText {
-                return alertAction
-            } else {
-                return nil
-            }
-        }
-    }
 
     private func editImage(meme: Meme, text: String, at textPosition: Position) {
         let imagePath = FileManager.default.getFilePath(meme.image)

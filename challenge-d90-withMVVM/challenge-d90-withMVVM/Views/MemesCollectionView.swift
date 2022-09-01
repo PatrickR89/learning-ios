@@ -67,13 +67,13 @@ extension MemesCollectionView: UICollectionViewDataSource {
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: "MemeCell",
-            for: indexPath) as? MemesCollectionViewCell else {fatalError("ERROR: Cell not found")}
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: "MemeCell",
+                for: indexPath) as? MemesCollectionViewCell else {fatalError("ERROR: Cell not found")}
             let meme = viewModel.findMeme(at: indexPath.item)
             cell.setupData(load: meme)
-        return cell
-    }
+            return cell
+        }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.returnMemesCount()

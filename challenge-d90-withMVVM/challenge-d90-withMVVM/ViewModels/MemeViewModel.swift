@@ -16,7 +16,6 @@ class MemeViewModel {
     }
 
     weak var delegate: MemeViewModelDelegate?
-    private var imageViewModel: ImageViewModel?
     private var memeVCViewModel: MemeVCViewModel?
 
     private var observer: ((UIImage) -> Void)?
@@ -61,11 +60,6 @@ extension MemeViewModel {
     func imageDidLoad(image: String) {
         let state = image != ""
         delegate?.memeViewModel(self, didLoadMeme: state)
-    }
-
-    func appendImageViewModel(_ imageViewModel: ImageViewModel) {
-        self.imageViewModel = imageViewModel
-        imageViewModel.delegate = self
     }
 
     func appendMemeVCViewModel(_ memeVCViewModel: MemeVCViewModel) {

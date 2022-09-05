@@ -13,10 +13,9 @@ class MemeView: UIView {
     var viewModel: MemeViewModel
     weak var delegate: MemeViewDelegate?
 
-    init(with viewModel: MemeViewModel, imageViewModel: ImageViewModel) {
+    init(with viewModel: MemeViewModel) {
         self.viewModel = viewModel
         super.init(frame: .zero)
-        viewModel.appendImageViewModel(imageViewModel)
         setupUI()
         setupBindings()
     }

@@ -8,9 +8,16 @@
 import UIKit
 
 class MemeVCViewModel {
+
     private var isImageLoaded: Bool = false {
         didSet {
             valueDidChange()
+        }
+    }
+
+    private var imageName: String = "" {
+        didSet {
+            delegate?.memeVCViewModel(self, didSaveImageWithName: imageName)
         }
     }
 
@@ -38,6 +45,28 @@ extension MemeVCViewModel {
     func addAlertController(in viewController: UIViewController) -> UIAlertController {
         let alertController = UIAlertController().createAlertController(in: viewController, with: self)
         return alertController
+    }
+
+    func createImagePickerController(
+        in viewController:
+        UIViewController &
+        UIImagePickerControllerDelegate &
+        UINavigationControllerDelegate) -> UIImagePickerController {
+            let imagePicker = UIImagePickerController()
+            imagePicker.allowsEditing = true
+            imagePicker.delegate = viewController
+            return imagePicker
+        }
+
+    func createNewImage(image: UIImage) {
+        let newImageName = UUID().uuidString
+        let newImagePath = FileManager.default.getFilePath(newImageName)
+
+        if let jpegData = image.jpegData(compressionQuality: 0.5) {
+            try? jpegData.write(to: newImagePath)
+        }
+
+        imageName = newImageName
     }
 
     func editImage(meme: Meme, text: String, at textPosition: Position) {

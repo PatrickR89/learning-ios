@@ -7,14 +7,12 @@
 
 import UIKit
 
-extension MemeViewModel: ImageViewModelDelegate {
-    func imageViewModel(_ viewModel: ImageViewModel, didSaveImageWithName imageName: String) {
+extension MemeViewModel: MemeVCViewModelDelegate {
+    func memeVCViewModel(_ viewModel: MemeVCViewModel, didSaveImageWithName imageName: String) {
         let meme = Meme(imageName: imageName, hasTopText: false, hasBottomText: false)
         updateMeme(meme)
     }
-}
 
-extension MemeViewModel: MemeVCViewModelDelegate {
     func memeVCViewModel(_ viewModel: MemeVCViewModel, didEditMeme meme: Meme) {
         updateMeme(meme)
     }

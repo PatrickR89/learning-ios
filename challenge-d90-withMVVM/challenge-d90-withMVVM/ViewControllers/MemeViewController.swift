@@ -11,11 +11,10 @@ class MemeViewController: UIViewController {
 
     private var memeView: MemeView
     private var viewModel: MemeVCViewModel
-    private var imageViewModel = ImageViewModel()
 
     init(memeViewModel: MemeViewModel, with viewModel: MemeVCViewModel) {
         self.viewModel = viewModel
-        self.memeView = MemeView(with: memeViewModel, imageViewModel: imageViewModel)
+        self.memeView = MemeView(with: memeViewModel)
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -73,7 +72,20 @@ private extension MemeViewController {
 
 extension MemeViewController: MemeViewDelegate {
     func memeViewDidTapImage(_ view: MemeView) {
-        let viewController = ImageSelectorViewController(with: imageViewModel)
-        present(viewController, animated: true)
+        let picker = viewModel.createImagePickerController(in: self)
+        present(picker, animated: true)
     }
 }
+
+extension MemeViewController: UIImagePickerControllerDelegate {
+
+    func imagePickerController(
+        _ picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+            guard let image = info[.editedImage] as? UIImage else {return}
+            viewModel.createNewImage(image: image)
+            self.dismiss(animated: true)
+        }
+}
+
+extension MemeViewController: UINavigationControllerDelegate {}

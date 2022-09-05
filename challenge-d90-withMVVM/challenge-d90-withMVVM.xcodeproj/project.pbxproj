@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CD01C0FC28C5C30C0007CDB3 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD01C0FB28C5C30C0007CDB3 /* UIImage+Extension.swift */; };
 		CD01C0FE28C5C9060007CDB3 /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD01C0FD28C5C9060007CDB3 /* UIAlertController+Extension.swift */; };
+		CD01C10228C600460007CDB3 /* NotificationAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD01C10128C600460007CDB3 /* NotificationAlerts.swift */; };
 		CD8A477428C0951900AA49ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A477328C0951900AA49ED /* AppDelegate.swift */; };
 		CD8A477628C0951900AA49ED /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A477528C0951900AA49ED /* SceneDelegate.swift */; };
 		CD8A477828C0951900AA49ED /* MemesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A477728C0951900AA49ED /* MemesCollectionViewController.swift */; };
@@ -35,6 +36,7 @@
 /* Begin PBXFileReference section */
 		CD01C0FB28C5C30C0007CDB3 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		CD01C0FD28C5C9060007CDB3 /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
+		CD01C10128C600460007CDB3 /* NotificationAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAlerts.swift; sourceTree = "<group>"; };
 		CD8A477028C0951900AA49ED /* challenge-d90-withMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "challenge-d90-withMVVM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8A477328C0951900AA49ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD8A477528C0951900AA49ED /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				CDA22A9628C0A27C00D80622 /* DataStorage.swift */,
+				CD01C10128C600460007CDB3 /* NotificationAlerts.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				CDA22A9728C0A27C00D80622 /* DataStorage.swift in Sources */,
 				CDA22AA728C0B66A00D80622 /* MemeViewModelDelegate.swift in Sources */,
 				CDA22AB628C0E5DE00D80622 /* MemeViewModel+Delegates.swift in Sources */,
+				CD01C10228C600460007CDB3 /* NotificationAlerts.swift in Sources */,
 				CDA22A9928C0A4DB00D80622 /* MemeViewController.swift in Sources */,
 				CD01C0FC28C5C30C0007CDB3 /* UIImage+Extension.swift in Sources */,
 				CD8A477628C0951900AA49ED /* SceneDelegate.swift in Sources */,

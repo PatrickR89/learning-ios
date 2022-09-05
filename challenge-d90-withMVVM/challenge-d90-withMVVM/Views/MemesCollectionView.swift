@@ -60,6 +60,10 @@ private extension MemesCollectionView {
                 DataStorage.shared.saveFile(save: memes)
             }
         }
+
+        viewModel.observeSingleMeme { meme in
+            self.delegate?.memesCollectionView(self, didRegisterUpdate: meme)
+        }
     }
 }
 

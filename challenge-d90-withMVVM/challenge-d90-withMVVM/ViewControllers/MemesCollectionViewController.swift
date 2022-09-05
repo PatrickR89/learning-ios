@@ -14,6 +14,7 @@ class MemesCollectionViewController: UIViewController {
 
     init() {
         self.memesCollectionView = MemesCollectionView(with: memesViewModel)
+        NotificationAlerts.shared.registerApp()
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -51,6 +52,10 @@ private extension MemesCollectionViewController {
 }
 
 extension MemesCollectionViewController: MemesCollectionViewDelegate {
+    func memesCollectionView(_ view: MemesCollectionView, didRegisterUpdate meme: Meme) {
+        NotificationAlerts.shared.scheduleNotification(in: self, for: meme)
+    }
+
     func memesCollectionView(_ view: MemesCollectionView, didSelectCellWith meme: Meme, at index: Int) {
         memesViewModel.loadMeme(meme)
         let navController = UINavigationController()
@@ -60,5 +65,34 @@ extension MemesCollectionViewController: MemesCollectionViewDelegate {
 
         navController.viewControllers = [viewController]
         present(navController, animated: true)
+    }
+}
+
+extension MemesCollectionViewController: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        didReceive response: UNNotificationResponse,
+        withCompletionHandler completionHandler: @escaping () -> Void) {
+
+        let userInfo = response.notification.request.content.userInfo
+
+        if let customData = userInfo["customData"] as? String {
+
+            switch response.actionIdentifier {
+            case UNNotificationDefaultActionIdentifier:
+                // swipe to unlock
+                memesViewModel.findAndOpenMemeByName(customData)
+                let navController = UINavigationController()
+                let viewController = MemeViewController(
+                    memeViewModel: memesViewModel.memeViewModel,
+                    with: memesViewModel.memeVCViewModel)
+
+                navController.viewControllers = [viewController]
+                present(navController, animated: true)
+            default:
+                break
+            }
+        }
+        completionHandler()
     }
 }

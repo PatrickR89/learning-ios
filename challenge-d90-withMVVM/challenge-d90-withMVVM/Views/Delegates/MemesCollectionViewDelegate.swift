@@ -9,4 +9,5 @@ import UIKit
 
 protocol MemesCollectionViewDelegate: AnyObject {
     func memesCollectionView(_ view: MemesCollectionView, didSelectCellWith meme: Meme, at index: Int)
+    func memesCollectionView(_ view: MemesCollectionView, didRegisterUpdate meme: Meme)
 }

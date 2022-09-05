@@ -15,7 +15,14 @@ class MemesViewModel {
         }
     }
 
+    private var index: Int? {
+        didSet {
+            memeValueDidChange()
+        }
+    }
+
     private var observer: (([Meme]) -> Void)?
+    private var memeObserver: ((Meme) -> Void)?
 
     let memeViewModel = MemeViewModel()
     let memeVCViewModel = MemeVCViewModel()
@@ -34,6 +41,12 @@ private extension MemesViewModel {
         observer(memes)
     }
 
+    func memeValueDidChange() {
+        guard let observer = memeObserver,
+            let index = index else {return}
+        observer(memes[index])
+    }
+
     func findMemeIndex(_ meme: Meme) -> Int? {
         return memes.firstIndex(where: {$0.imageName == meme.imageName})
     }
@@ -41,9 +54,19 @@ private extension MemesViewModel {
 
 extension MemesViewModel {
 
+    func findAndOpenMemeByName(_ imageName: String) {
+        guard let memeIndex = memes.firstIndex(where: {$0.imageName == imageName}) else { return }
+        memeViewModel.loadMeme(memes[memeIndex])
+    }
+
     func observeMemesState(_ closure: @escaping ([Meme]) -> Void) {
         self.observer = closure
         valueDidChange()
+    }
+
+    func observeSingleMeme(_ closure: @escaping (Meme) -> Void) {
+        self.memeObserver = closure
+        memeValueDidChange()
     }
 
     func returnMemesCount() -> Int {
@@ -68,8 +91,10 @@ extension MemesViewModel: MemeViewModelDelegate {
     func memeViewModel(_ viewModel: MemeViewModel, didChangeMeme meme: Meme) {
         if let index = findMemeIndex(meme) {
             memes[index] = meme
+            self.index = index
         } else {
             memes.append(meme)
+            self.index = memes.count - 1
         }
     }
 

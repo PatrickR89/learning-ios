@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CD01C0FC28C5C30C0007CDB3 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD01C0FB28C5C30C0007CDB3 /* UIImage+Extension.swift */; };
+		CD01C0FE28C5C9060007CDB3 /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD01C0FD28C5C9060007CDB3 /* UIAlertController+Extension.swift */; };
 		CD8A477428C0951900AA49ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A477328C0951900AA49ED /* AppDelegate.swift */; };
 		CD8A477628C0951900AA49ED /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A477528C0951900AA49ED /* SceneDelegate.swift */; };
 		CD8A477828C0951900AA49ED /* MemesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A477728C0951900AA49ED /* MemesCollectionViewController.swift */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		CD01C0FB28C5C30C0007CDB3 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		CD01C0FD28C5C9060007CDB3 /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
 		CD8A477028C0951900AA49ED /* challenge-d90-withMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "challenge-d90-withMVVM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8A477328C0951900AA49ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD8A477528C0951900AA49ED /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 			children = (
 				CDA22A9428C0A1D200D80622 /* FileManager+Extension.swift */,
 				CD01C0FB28C5C30C0007CDB3 /* UIImage+Extension.swift */,
+				CD01C0FD28C5C9060007CDB3 /* UIAlertController+Extension.swift */,
 			);
 			path = Middleware;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				CDA22AAD28C0C53300D80622 /* ImageViewModel.swift in Sources */,
 				CDA22A9328C09D4B00D80622 /* MemesCollectionViewCell.swift in Sources */,
 				CDA22AAF28C0C75D00D80622 /* ImageViewModelDelegate.swift in Sources */,
+				CD01C0FE28C5C9060007CDB3 /* UIAlertController+Extension.swift in Sources */,
 				CDA22A9528C0A1D200D80622 /* FileManager+Extension.swift in Sources */,
 				CDA22A9128C0996E00D80622 /* MemesCollectionView.swift in Sources */,
 				CDA22A9C28C0A60700D80622 /* MemesCollectionViewDelegate.swift in Sources */,

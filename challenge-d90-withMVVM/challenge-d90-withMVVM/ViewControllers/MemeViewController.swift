@@ -66,7 +66,7 @@ private extension MemeViewController {
     }
 
     @objc func openActionController() {
-        let alertController = viewModel.createAlertController(in: self)
+        let alertController = viewModel.addAlertController(in: self)
         present(alertController, animated: true)
     }
 }

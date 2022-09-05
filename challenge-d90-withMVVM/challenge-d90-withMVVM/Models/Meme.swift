@@ -9,6 +9,6 @@ import UIKit
 
 struct Meme: Codable {
     var image: String
-    var topText: Bool
-    var bottomText: Bool
+    var hasTopText: Bool
+    var hasBottomText: Bool
 }

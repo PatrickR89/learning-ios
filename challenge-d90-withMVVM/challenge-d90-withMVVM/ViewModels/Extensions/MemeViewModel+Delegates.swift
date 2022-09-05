@@ -9,7 +9,7 @@ import UIKit
 
 extension MemeViewModel: ImageViewModelDelegate {
     func imageViewModel(_ viewModel: ImageViewModel, didSaveImageWithName imageName: String) {
-        let meme = Meme(image: imageName, topText: false, bottomText: false)
+        let meme = Meme(image: imageName, hasTopText: false, hasBottomText: false)
         updateMeme(meme)
     }
 }
@@ -24,7 +24,7 @@ extension MemeViewModel: MemeVCViewModelDelegate {
     }
 
     func memeVCViewModelDidRequestMeme(_ viewModel: MemeVCViewModel) -> Meme {
-        guard let meme = returnMeme() else {return Meme(image: "", topText: false, bottomText: false)}
+        guard let meme = returnMeme() else {return Meme(image: "", hasTopText: false, hasBottomText: false)}
         return meme
     }
 }

@@ -119,13 +119,13 @@ private extension MemeVCViewModel {
 
             switch position {
             case .top:
-                if !meme.topText {
+                if !meme.hasTopText {
                     return alertAction
                 } else {
                     return nil
                 }
             case .bottom:
-                if !meme.bottomText {
+                if !meme.hasBottomText {
                     return alertAction
                 } else {
                     return nil
@@ -173,10 +173,10 @@ private extension MemeVCViewModel {
             guard let self = self else {return}
             switch textPosition {
             case .top:
-                let tempMeme = Meme(image: meme.image, topText: true, bottomText: meme.bottomText)
+                let tempMeme = Meme(image: meme.image, hasTopText: true, hasBottomText: meme.hasBottomText)
                 self.delegate?.memeVCViewModel(self, didEditMeme: tempMeme)
             case .bottom:
-                let tempMeme = Meme(image: meme.image, topText: meme.topText, bottomText: true)
+                let tempMeme = Meme(image: meme.image, hasTopText: meme.hasTopText, hasBottomText: true)
                 self.delegate?.memeVCViewModel(self, didEditMeme: tempMeme)
             }
         }

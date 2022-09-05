@@ -139,33 +139,8 @@ private extension MemeVCViewModel {
         let imagePath = FileManager.default.getFilePath(meme.image)
         guard let image = UIImage(contentsOfFile: imagePath.path) else {return}
 
-        let format = UIGraphicsImageRendererFormat()
-        format.scale = 1
-        format.preferredRange = .standard
-
-        let renderer = UIGraphicsImageRenderer(
-            size: CGSize(
-                width: image.size.width,
-                height: image.size.height),
-            format: format)
-        let newImage = renderer.image { ctx in
-            let paragraphStyle = NSMutableParagraphStyle()
-            paragraphStyle.alignment = .center
-            let paragraphAttributes: [NSAttributedString.Key: Any] = [
-                .font: UIFont.preferredFont(forTextStyle: .largeTitle),
-                .foregroundColor: UIColor.white,
-                .backgroundColor: UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.3),
-                .paragraphStyle: paragraphStyle
-            ]
-            let attributedString = NSAttributedString(string: text, attributes: paragraphAttributes)
-
-            image.draw(at: CGPoint(x: 0, y: 0))
-
-            let textFrame = createTextFrame(size: image.size, position: textPosition)
-            attributedString.draw(with: textFrame, options: .usesLineFragmentOrigin, context: nil)
-        }
-
-        if let jpegData = newImage.jpegData(compressionQuality: 0.5) {
+        let imageWithText = image.addMemeText(text: text, at: textPosition)
+        if let jpegData = imageWithText.jpegData(compressionQuality: 0.5) {
             try? jpegData.write(to: imagePath)
         }
 
@@ -180,22 +155,5 @@ private extension MemeVCViewModel {
                 self.delegate?.memeVCViewModel(self, didEditMeme: tempMeme)
             }
         }
-    }
-
-    // MARK: create textFrame for editImage
-
-    private func createTextFrame(size: CGSize, position: Position) -> CGRect {
-        let width = size.width * 0.9
-        let height = size.height * 0.2
-        let xPos = size.width * 0.05
-        var yPos: CGFloat = 0
-        switch position {
-        case .top:
-            yPos = size.height * 0.1
-        case .bottom:
-            yPos = size.height - height
-        }
-
-        return CGRect(x: xPos, y: yPos, width: width, height: height)
     }
 }

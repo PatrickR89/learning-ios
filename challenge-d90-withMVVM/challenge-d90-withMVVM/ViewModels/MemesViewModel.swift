@@ -35,7 +35,7 @@ private extension MemesViewModel {
         observer(memes)
     }
 
-    func findMemeInSelf(_ meme: Meme) -> Int? {
+    func findMemeIndex(_ meme: Meme) -> Int? {
         return memes.firstIndex(where: {$0.image == meme.image})
     }
 }
@@ -67,7 +67,7 @@ extension MemesViewModel: MemeViewModelDelegate {
     }
 
     func memeViewModel(_ viewModel: MemeViewModel, didChangeMeme meme: Meme) {
-        if let index = findMemeInSelf(meme) {
+        if let index = findMemeIndex(meme) {
             memes[index] = meme
         } else {
             memes.append(meme)
@@ -75,7 +75,7 @@ extension MemesViewModel: MemeViewModelDelegate {
     }
 
     func memeViewModel(_ viewModel: MemeViewModel, didDeleteMeme meme: Meme) {
-        guard let index = findMemeInSelf(meme) else {return}
+        guard let index = findMemeIndex(meme) else {return}
         memes.remove(at: index)
     }
 }

@@ -8,7 +8,7 @@
 import UIKit
 
 struct Meme: Codable {
-    var image: String
+    var imageName: String
     var hasTopText: Bool
     var hasBottomText: Bool
 }

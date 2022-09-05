@@ -45,7 +45,7 @@ private extension MemesCollectionViewCell {
 
 extension MemesCollectionViewCell {
     func setupData(load meme: Meme) {
-        let path = FileManager.default.getFilePath(meme.image)
+        let path = FileManager.default.getFilePath(meme.imageName)
         let image = UIImage(contentsOfFile: path.path)
         imageView.image = image
     }

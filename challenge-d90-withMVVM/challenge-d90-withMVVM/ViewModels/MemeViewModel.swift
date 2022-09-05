@@ -8,10 +8,10 @@
 import UIKit
 
 class MemeViewModel {
-    private var meme: Meme = Meme(image: "", hasTopText: false, hasBottomText: false) {
+    private var meme: Meme = Meme(imageName: "", hasTopText: false, hasBottomText: false) {
         didSet {
             valueDidChange()
-            imageDidLoad(image: meme.image)
+            imageDidLoad(image: meme.imageName)
         }
     }
 
@@ -22,7 +22,7 @@ class MemeViewModel {
     private var observer: ((UIImage) -> Void)?
 
     private func valueDidChange() {
-        let path = FileManager.default.getFilePath(meme.image)
+        let path = FileManager.default.getFilePath(meme.imageName)
         guard let observer = observer,
               let image = UIImage(contentsOfFile: path.path) else {
             return
@@ -46,7 +46,7 @@ extension MemeViewModel {
         if let meme = meme {
             self.meme = meme
         } else {
-            self.meme = Meme(image: "", hasTopText: false, hasBottomText: false)
+            self.meme = Meme(imageName: "", hasTopText: false, hasBottomText: false)
         }
     }
 

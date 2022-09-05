@@ -31,7 +31,7 @@ extension UIAlertController {
             style: .destructive) { [weak viewController, weak viewModel] _ in
                 guard let viewModel = viewModel,
                       let meme = viewModel.delegate?.memeVCViewModelDidRequestMeme(viewModel) else {return}
-                let imageName = meme.image
+                let imageName = meme.imageName
                 let path = FileManager.default.getFilePath(imageName)
                 do {
                     try FileManager.default.removeItem(at: path)

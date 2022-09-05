@@ -36,7 +36,7 @@ private extension MemesViewModel {
     }
 
     func findMemeIndex(_ meme: Meme) -> Int? {
-        return memes.firstIndex(where: {$0.image == meme.image})
+        return memes.firstIndex(where: {$0.imageName == meme.imageName})
     }
 }
 

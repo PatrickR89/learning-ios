@@ -92,7 +92,6 @@
 				495ABE84EC6FFB7A6E105DE4 /* Pods-challenge-d90-withMVVM.debug.xcconfig */,
 				82FA796986B81E42D2555D2E /* Pods-challenge-d90-withMVVM.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

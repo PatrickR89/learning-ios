@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D5E113F134788EB0040B078 /* Pods_challenge_d90_withMVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A09941C6299F9A653DEF4BE5 /* Pods_challenge_d90_withMVVM.framework */; };
 		CD01C0FC28C5C30C0007CDB3 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD01C0FB28C5C30C0007CDB3 /* UIImage+Extension.swift */; };
 		CD01C0FE28C5C9060007CDB3 /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD01C0FD28C5C9060007CDB3 /* UIAlertController+Extension.swift */; };
 		CD01C10228C600460007CDB3 /* NotificationAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD01C10128C600460007CDB3 /* NotificationAlerts.swift */; };
@@ -34,6 +35,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		495ABE84EC6FFB7A6E105DE4 /* Pods-challenge-d90-withMVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-challenge-d90-withMVVM.debug.xcconfig"; path = "Target Support Files/Pods-challenge-d90-withMVVM/Pods-challenge-d90-withMVVM.debug.xcconfig"; sourceTree = "<group>"; };
+		82FA796986B81E42D2555D2E /* Pods-challenge-d90-withMVVM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-challenge-d90-withMVVM.release.xcconfig"; path = "Target Support Files/Pods-challenge-d90-withMVVM/Pods-challenge-d90-withMVVM.release.xcconfig"; sourceTree = "<group>"; };
+		A09941C6299F9A653DEF4BE5 /* Pods_challenge_d90_withMVVM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_challenge_d90_withMVVM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD01C0FB28C5C30C0007CDB3 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		CD01C0FD28C5C9060007CDB3 /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
 		CD01C10128C600460007CDB3 /* NotificationAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAlerts.swift; sourceTree = "<group>"; };
@@ -67,17 +71,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D5E113F134788EB0040B078 /* Pods_challenge_d90_withMVVM.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1BF597526F85B6C25BD88F2C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A09941C6299F9A653DEF4BE5 /* Pods_challenge_d90_withMVVM.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5F560D7ADBDECF7A2F32A387 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				495ABE84EC6FFB7A6E105DE4 /* Pods-challenge-d90-withMVVM.debug.xcconfig */,
+				82FA796986B81E42D2555D2E /* Pods-challenge-d90-withMVVM.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		CD8A476728C0951900AA49ED = {
 			isa = PBXGroup;
 			children = (
 				CD8A477228C0951900AA49ED /* challenge-d90-withMVVM */,
 				CD8A477128C0951900AA49ED /* Products */,
+				5F560D7ADBDECF7A2F32A387 /* Pods */,
+				1BF597526F85B6C25BD88F2C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -208,10 +233,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD8A478428C0951A00AA49ED /* Build configuration list for PBXNativeTarget "challenge-d90-withMVVM" */;
 			buildPhases = (
+				93F23A524C64142F5E6DB0B7 /* [CP] Check Pods Manifest.lock */,
 				CD8A476C28C0951900AA49ED /* Sources */,
 				CD8A476D28C0951900AA49ED /* Frameworks */,
 				CD8A476E28C0951900AA49ED /* Resources */,
 				CD8A478728C096A000AA49ED /* Lint Source */,
+				86C4B6CA9679C1CF6A339305 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -268,6 +295,45 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		86C4B6CA9679C1CF6A339305 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-challenge-d90-withMVVM/Pods-challenge-d90-withMVVM-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-challenge-d90-withMVVM/Pods-challenge-d90-withMVVM-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-challenge-d90-withMVVM/Pods-challenge-d90-withMVVM-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		93F23A524C64142F5E6DB0B7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-challenge-d90-withMVVM-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		CD8A478728C096A000AA49ED /* Lint Source */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -448,6 +514,7 @@
 		};
 		CD8A478528C0951A00AA49ED /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 495ABE84EC6FFB7A6E105DE4 /* Pods-challenge-d90-withMVVM.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -474,6 +541,7 @@
 		};
 		CD8A478628C0951A00AA49ED /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 82FA796986B81E42D2555D2E /* Pods-challenge-d90-withMVVM.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

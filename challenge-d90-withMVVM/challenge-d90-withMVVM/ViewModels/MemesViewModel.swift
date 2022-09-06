@@ -6,14 +6,12 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MemesViewModel {
 
-    private var memes = [Meme](DataStorage.shared.loadFile()) {
-        didSet {
-            valueDidChange()
-        }
-    }
+    var realm: Realm
+    var memes: Results<Meme>
 
     private var index: Int? {
         didSet {
@@ -27,19 +25,15 @@ class MemesViewModel {
     let memeViewModel = MemeViewModel()
     let memeVCViewModel = MemeVCViewModel()
 
-    init() {
+    init(realm: Realm) {
+        self.realm = realm
+        self.memes = realm.objects(Meme.self).sorted(byKeyPath: "imageName")
         memeViewModel.delegate = self
         memeViewModel.appendMemeVCViewModel(memeVCViewModel)
     }
 }
 
 private extension MemesViewModel {
-    func valueDidChange() {
-        guard let observer = observer else {
-            return
-        }
-        observer(memes)
-    }
 
     func memeValueDidChange() {
         guard let observer = memeObserver,
@@ -57,11 +51,6 @@ extension MemesViewModel {
     func findAndOpenMemeByName(_ imageName: String) {
         guard let memeIndex = memes.firstIndex(where: {$0.imageName == imageName}) else { return }
         memeViewModel.loadMeme(memes[memeIndex])
-    }
-
-    func observeMemesState(_ closure: @escaping ([Meme]) -> Void) {
-        self.observer = closure
-        valueDidChange()
     }
 
     func observeSingleMeme(_ closure: @escaping (Meme) -> Void) {
@@ -88,18 +77,28 @@ extension MemesViewModel: MemeViewModelDelegate {
         memeVCViewModel.updateIsImageLoaded(imageDidLoad: state)
     }
 
-    func memeViewModel(_ viewModel: MemeViewModel, didChangeMeme meme: Meme) {
-        if let index = findMemeIndex(meme) {
-            memes[index] = meme
+    func memeViewModel(_ viewModel: MemeViewModel, didChangeMeme inputMeme: Meme) {
+        if let index = findMemeIndex(inputMeme) {
+            var meme = memes[index]
+
+            try? self.realm.write {
+                meme.hasTopText = inputMeme.hasTopText
+                meme.hasBottomText = inputMeme.hasBottomText
+            }
             self.index = index
         } else {
-            memes.append(meme)
+            try? self.realm.write {
+                self.realm.add(inputMeme)
+            }
             self.index = memes.count - 1
         }
     }
 
     func memeViewModel(_ viewModel: MemeViewModel, didDeleteMeme meme: Meme) {
         guard let index = findMemeIndex(meme) else {return}
-        memes.remove(at: index)
+        let meme = memes[index]
+        try? realm.write {
+            realm.delete(meme)
+        }
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MemesCollectionView: UIView {
     lazy var collectionLayout: UICollectionViewFlowLayout = {
@@ -25,6 +26,8 @@ class MemesCollectionView: UIView {
 
     private var viewModel: MemesViewModel
 
+    private var notificationToken: NotificationToken?
+
     init(with viewModel: MemesViewModel) {
         self.viewModel = viewModel
         super.init(frame: .zero)
@@ -34,6 +37,10 @@ class MemesCollectionView: UIView {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    deinit {
+        notificationToken?.invalidate()
     }
 }
 
@@ -54,15 +61,29 @@ private extension MemesCollectionView {
     }
 
     func setupBindings() {
-        viewModel.observeMemesState { memes in
-            DispatchQueue.main.async { [weak self] in
-                self?.collectionView.reloadData()
-                DataStorage.shared.saveFile(save: memes)
-            }
-        }
 
         viewModel.observeSingleMeme { meme in
             self.delegate?.memesCollectionView(self, didRegisterUpdate: meme)
+        }
+
+        notificationToken = viewModel.memes.observe { [weak self] (changes) in
+            DispatchQueue.main.async {
+                guard let collectionView = self?.collectionView else {return}
+
+                switch changes {
+
+                case .initial(_):
+                    collectionView.reloadData()
+                case .update(_, deletions: let deletions, insertions: let insertions, modifications: let modifications):
+                    collectionView.performBatchUpdates {
+                        collectionView.deleteItems(at: deletions.map({IndexPath(item: $0, section: 0)}))
+                        collectionView.insertItems(at: insertions.map({IndexPath(item: $0, section: 0)}))
+                        collectionView.reloadItems(at: modifications.map({IndexPath(item: $0, section: 0)}))
+                    }
+                case .error(_):
+                    print("error")
+                }
+            }
         }
     }
 }

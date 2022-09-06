@@ -6,13 +6,18 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MemesCollectionViewController: UIViewController {
 
     let memesCollectionView: MemesCollectionView
-    let memesViewModel = MemesViewModel()
+    let memesViewModel: MemesViewModel
+    let realm: Realm
 
     init() {
+        guard let realm = try? Realm(configuration: Realm.Configuration.defaultConfiguration) else {fatalError()}
+        self.realm = realm
+        self.memesViewModel = MemesViewModel(realm: realm)
         self.memesCollectionView = MemesCollectionView(with: memesViewModel)
         NotificationAlerts.shared.registerApp()
         super.init(nibName: nil, bundle: nil)

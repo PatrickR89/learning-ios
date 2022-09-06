@@ -78,8 +78,8 @@ extension MemeVCViewModel {
            try? jpegData.write(to: imagePath)
        }
 
-       DispatchQueue.main.async { [weak self] in
-           guard let self = self else {return}
+//       DispatchQueue.main.async { [weak self] in
+//           guard let self = self else {return}
            switch textPosition {
            case .top:
                let tempMeme = Meme(imageName: meme.imageName, hasTopText: true, hasBottomText: meme.hasBottomText)
@@ -88,6 +88,6 @@ extension MemeVCViewModel {
                let tempMeme = Meme(imageName: meme.imageName, hasTopText: meme.hasTopText, hasBottomText: true)
                self.delegate?.memeVCViewModel(self, didEditMeme: tempMeme)
            }
-       }
+//       }
    }
 }

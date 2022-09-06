@@ -12,51 +12,51 @@ extension UIAlertController {
     func createAlertController(
         in viewController: UIViewController,
         with viewModel: MemeVCViewModel) -> UIAlertController {
-        let alertController = UIAlertController(
-            title: "Edit or delete image",
-            message: nil, preferredStyle: .actionSheet)
-        let addTextToTop = createAlertAction(
-            position: .top,
-            to: alertController,
-            in: viewController,
-            with: viewModel )
-        let addBottomText = createAlertAction(
-            position: .bottom,
-            to: alertController,
-            in: viewController,
-            with: viewModel )
+            let alertController = UIAlertController(
+                title: "Edit or delete image",
+                message: nil, preferredStyle: .actionSheet)
+            let addTextToTop = createAlertAction(
+                position: .top,
+                to: alertController,
+                in: viewController,
+                with: viewModel )
+            let addBottomText = createAlertAction(
+                position: .bottom,
+                to: alertController,
+                in: viewController,
+                with: viewModel )
 
-        let deleteImage = UIAlertAction(
-            title: "DELETE MEME",
-            style: .destructive) { [weak viewController, weak viewModel] _ in
-                guard let viewModel = viewModel,
-                      let meme = viewModel.delegate?.memeVCViewModelDidRequestMeme(viewModel) else {return}
-                let imageName = meme.imageName
-                let path = FileManager.default.getFilePath(imageName)
-                do {
-                    try FileManager.default.removeItem(at: path)
-                } catch {
-                    print("Error in deleting")
+            let deleteImage = UIAlertAction(
+                title: "DELETE MEME",
+                style: .destructive) { [weak viewController, weak viewModel] _ in
+                    guard let viewModel = viewModel,
+                          let meme = viewModel.delegate?.memeVCViewModelDidRequestMeme(viewModel) else {return}
+                    let imageName = meme.imageName
+                    let path = FileManager.default.getFilePath(imageName)
+                    do {
+                        try FileManager.default.removeItem(at: path)
+                    } catch {
+                        print("Error in deleting")
+                    }
+                    viewModel.delegate?.memeVCViewModel(viewModel, didDeleteMeme: meme)
+                    viewController?.dismiss(animated: true)
                 }
-                viewModel.delegate?.memeVCViewModel(viewModel, didDeleteMeme: meme)
-                viewController?.dismiss(animated: true)
+
+            let cancelAction = UIAlertAction(title: "CANCEL", style: .cancel)
+
+            if let addTextToTop = addTextToTop {
+                alertController.addAction(addTextToTop)
             }
 
-        let cancelAction = UIAlertAction(title: "CANCEL", style: .cancel)
+            if let addBottomText = addBottomText {
+                alertController.addAction(addBottomText)
+            }
 
-        if let addTextToTop = addTextToTop {
-            alertController.addAction(addTextToTop)
+            alertController.addAction(deleteImage)
+            alertController.addAction(cancelAction)
+
+            return alertController
         }
-
-        if let addBottomText = addBottomText {
-            alertController.addAction(addBottomText)
-        }
-
-        alertController.addAction(deleteImage)
-        alertController.addAction(cancelAction)
-
-        return alertController
-    }
 
     private func createAlertAction(
         position: Position,
@@ -85,9 +85,9 @@ extension UIAlertController {
                                   let textAlertController = textAlertController,
                                   let meme = viewModel.delegate?.memeVCViewModelDidRequestMeme(viewModel),
                                   let text = textAlertController.textFields?[0].text else {return}
-                            DispatchQueue.global(qos: .userInitiated).async {
-                                viewModel.editImage(meme: meme, text: text, at: position)
-                            }
+
+                            viewModel.editImage(meme: meme, text: text, at: position)
+
                         }
 
                     let cancel = UIAlertAction(title: "Cancel", style: .cancel)

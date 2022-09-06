@@ -36,6 +36,7 @@ extension UIImage {
             let textFrame = createTextFrame(size: image.size, position: textPosition)
             attributedString.draw(with: textFrame, options: .usesLineFragmentOrigin, context: nil)
         }
+
         return newImage
     }
 

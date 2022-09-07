@@ -11,7 +11,6 @@ import RealmSwift
 class RealmDataService {
     static let shared = RealmDataService()
 
-
     func initiateRealm() -> Realm {
         guard let defaultRealm = Realm.Configuration.defaultConfiguration.fileURL else {fatalError("unable to create default realm")}
         let realmURL = FileManager.default.getRealmFilePath("default.realm")

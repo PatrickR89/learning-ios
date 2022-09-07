@@ -45,12 +45,14 @@ class ShareViewController: UIViewController {
                                 try? realm.write {
                                     realm.add(meme)
                                     print(meme)
+                                    self.extensionContext?.completeRequest(returningItems: nil)
                                 }
                             }
                         }
 
                     } else {
                         fatalError("Unable to save!")
+                        self.extensionContext?.cancelRequest(withError: error!)
                     }
                 }
             }

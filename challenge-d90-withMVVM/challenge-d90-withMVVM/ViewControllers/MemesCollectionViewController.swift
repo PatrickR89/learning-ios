@@ -15,8 +15,7 @@ class MemesCollectionViewController: UIViewController {
     let realm: Realm
 
     init() {
-        guard let realm = try? Realm(configuration: Realm.Configuration.defaultConfiguration) else {fatalError()}
-        self.realm = realm
+        self.realm = RealmDataService.shared.initiateRealm()
         self.memesViewModel = MemesViewModel(realm: realm)
         self.memesCollectionView = MemesCollectionView(with: memesViewModel)
         NotificationAlerts.shared.registerApp()

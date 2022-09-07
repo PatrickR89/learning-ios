@@ -9,10 +9,19 @@ import UIKit
 import MobileCoreServices
 import RealmSwift
 
-
 @objc (ShareExtensionViewController)
 
 class ShareViewController: UIViewController {
+    let realm: Realm
+
+    init () {
+        self.realm = RealmDataService.shared.initiateRealm()
+        super.init()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

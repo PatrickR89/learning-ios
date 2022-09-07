@@ -70,24 +70,21 @@ extension MemeVCViewModel {
     }
 
     func editImage(meme: Meme, text: String, at textPosition: Position) {
-       let imagePath = FileManager.default.getFilePath(meme.imageName)
-       guard let image = UIImage(contentsOfFile: imagePath.path) else {return}
+        let imagePath = FileManager.default.getFilePath(meme.imageName)
+        guard let image = UIImage(contentsOfFile: imagePath.path) else {return}
 
-       let imageWithText = image.addMemeText(text: text, at: textPosition)
-       if let jpegData = imageWithText.jpegData(compressionQuality: 0.5) {
-           try? jpegData.write(to: imagePath)
-       }
+        let imageWithText = image.addMemeText(text: text, at: textPosition)
+        if let jpegData = imageWithText.jpegData(compressionQuality: 0.5) {
+            try? jpegData.write(to: imagePath)
+        }
 
-//       DispatchQueue.main.async { [weak self] in
-//           guard let self = self else {return}
-           switch textPosition {
-           case .top:
-               let tempMeme = Meme(imageName: meme.imageName, hasTopText: true, hasBottomText: meme.hasBottomText)
-               self.delegate?.memeVCViewModel(self, didEditMeme: tempMeme)
-           case .bottom:
-               let tempMeme = Meme(imageName: meme.imageName, hasTopText: meme.hasTopText, hasBottomText: true)
-               self.delegate?.memeVCViewModel(self, didEditMeme: tempMeme)
-           }
-//       }
-   }
+        switch textPosition {
+        case .top:
+            let tempMeme = Meme(imageName: meme.imageName, hasTopText: true, hasBottomText: meme.hasBottomText)
+            self.delegate?.memeVCViewModel(self, didEditMeme: tempMeme)
+        case .bottom:
+            let tempMeme = Meme(imageName: meme.imageName, hasTopText: meme.hasTopText, hasBottomText: true)
+            self.delegate?.memeVCViewModel(self, didEditMeme: tempMeme)
+        }
+    }
 }

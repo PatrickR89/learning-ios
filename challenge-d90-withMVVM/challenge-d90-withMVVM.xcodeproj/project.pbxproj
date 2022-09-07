@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7901709950D7B47DEC0DABC7 /* Pods_ShareMemeImages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52501017D3B9D952A0087789 /* Pods_ShareMemeImages.framework */; };
+		1D064785F6C58968D56B1409 /* Pods_challenge_d90_withMVVM_framework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B14CB55EEAB2CCF78310A1D /* Pods_challenge_d90_withMVVM_framework.framework */; };
+		2C4BE4F4BCB7F823AE656B06 /* Pods_challenge_d90_withMVVM_share.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B716C0598064B3371B1AEF9 /* Pods_challenge_d90_withMVVM_share.framework */; };
 		9D5E113F134788EB0040B078 /* Pods_challenge_d90_withMVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A09941C6299F9A653DEF4BE5 /* Pods_challenge_d90_withMVVM.framework */; };
 		CD01C0FC28C5C30C0007CDB3 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD01C0FB28C5C30C0007CDB3 /* UIImage+Extension.swift */; };
 		CD01C0FE28C5C9060007CDB3 /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD01C0FD28C5C9060007CDB3 /* UIAlertController+Extension.swift */; };
@@ -23,6 +24,13 @@
 		CD88AF0F28C8846700EFCBBB /* challenge_d90_withMVVM_framework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CD88AEF928C8846700EFCBBB /* challenge_d90_withMVVM_framework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CD88AF1728C8852B00EFCBBB /* challenge_d90_withMVVM_framework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD88AEF928C8846700EFCBBB /* challenge_d90_withMVVM_framework.framework */; };
 		CD88AF1828C8852B00EFCBBB /* challenge_d90_withMVVM_framework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CD88AEF928C8846700EFCBBB /* challenge_d90_withMVVM_framework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CD88AF2028C8884A00EFCBBB /* RealmDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF1F28C8884A00EFCBBB /* RealmDataService.swift */; };
+		CD88AF2328C88AAE00EFCBBB /* Pods_challenge_d90_withMVVM_framework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD88AF2228C88AAD00EFCBBB /* Pods_challenge_d90_withMVVM_framework.framework */; };
+		CD88AF2428C88AAE00EFCBBB /* Pods_challenge_d90_withMVVM_framework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CD88AF2228C88AAD00EFCBBB /* Pods_challenge_d90_withMVVM_framework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CD88AF2628C88D8400EFCBBB /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22A9428C0A1D200D80622 /* FileManager+Extension.swift */; };
+		CD88AF2728C88D8800EFCBBB /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA22A8E28C0990400D80622 /* Meme.swift */; };
+		CD88AF2828C88D8B00EFCBBB /* RealmDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF1F28C8884A00EFCBBB /* RealmDataService.swift */; };
+		CD88AF2928C88D8F00EFCBBB /* RealmDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF1F28C8884A00EFCBBB /* RealmDataService.swift */; };
 		CD8A477428C0951900AA49ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A477328C0951900AA49ED /* AppDelegate.swift */; };
 		CD8A477628C0951900AA49ED /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A477528C0951900AA49ED /* SceneDelegate.swift */; };
 		CD8A477828C0951900AA49ED /* MemesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A477728C0951900AA49ED /* MemesCollectionViewController.swift */; };
@@ -117,14 +125,30 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CD88AF2528C88AAE00EFCBBB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CD88AF2428C88AAE00EFCBBB /* Pods_challenge_d90_withMVVM_framework.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1B716C0598064B3371B1AEF9 /* Pods_challenge_d90_withMVVM_share.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_challenge_d90_withMVVM_share.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B14CB55EEAB2CCF78310A1D /* Pods_challenge_d90_withMVVM_framework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_challenge_d90_withMVVM_framework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DBD9A280FC676D17556374B /* Pods-challenge-d90-withMVVM-share.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-challenge-d90-withMVVM-share.release.xcconfig"; path = "Target Support Files/Pods-challenge-d90-withMVVM-share/Pods-challenge-d90-withMVVM-share.release.xcconfig"; sourceTree = "<group>"; };
 		495ABE84EC6FFB7A6E105DE4 /* Pods-challenge-d90-withMVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-challenge-d90-withMVVM.debug.xcconfig"; path = "Target Support Files/Pods-challenge-d90-withMVVM/Pods-challenge-d90-withMVVM.debug.xcconfig"; sourceTree = "<group>"; };
-		52501017D3B9D952A0087789 /* Pods_ShareMemeImages.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareMemeImages.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		82FA796986B81E42D2555D2E /* Pods-challenge-d90-withMVVM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-challenge-d90-withMVVM.release.xcconfig"; path = "Target Support Files/Pods-challenge-d90-withMVVM/Pods-challenge-d90-withMVVM.release.xcconfig"; sourceTree = "<group>"; };
+		9EA250C259C1CE53207C573B /* Pods-challenge-d90-withMVVM-framework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-challenge-d90-withMVVM-framework.debug.xcconfig"; path = "Target Support Files/Pods-challenge-d90-withMVVM-framework/Pods-challenge-d90-withMVVM-framework.debug.xcconfig"; sourceTree = "<group>"; };
 		A09941C6299F9A653DEF4BE5 /* Pods_challenge_d90_withMVVM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_challenge_d90_withMVVM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC6F565DB7DB5838E14824AA /* Pods-ShareMemeImages.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareMemeImages.release.xcconfig"; path = "Target Support Files/Pods-ShareMemeImages/Pods-ShareMemeImages.release.xcconfig"; sourceTree = "<group>"; };
+		C00AA62F0E4EDC2DF78EEE46 /* Pods-challenge-d90-withMVVM-framework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-challenge-d90-withMVVM-framework.release.xcconfig"; path = "Target Support Files/Pods-challenge-d90-withMVVM-framework/Pods-challenge-d90-withMVVM-framework.release.xcconfig"; sourceTree = "<group>"; };
+		C8F7432819276ABF74177729 /* Pods-challenge-d90-withMVVM-share.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-challenge-d90-withMVVM-share.debug.xcconfig"; path = "Target Support Files/Pods-challenge-d90-withMVVM-share/Pods-challenge-d90-withMVVM-share.debug.xcconfig"; sourceTree = "<group>"; };
 		CD01C0FB28C5C30C0007CDB3 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		CD01C0FD28C5C9060007CDB3 /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
 		CD01C10128C600460007CDB3 /* NotificationAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAlerts.swift; sourceTree = "<group>"; };
@@ -139,6 +163,9 @@
 		CD88AEFC28C8846700EFCBBB /* challenge_d90_withMVVM_framework.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = challenge_d90_withMVVM_framework.docc; sourceTree = "<group>"; };
 		CD88AF0228C8846700EFCBBB /* challenge-d90-withMVVM-frameworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "challenge-d90-withMVVM-frameworkTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD88AF0928C8846700EFCBBB /* challenge_d90_withMVVM_frameworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = challenge_d90_withMVVM_frameworkTests.swift; sourceTree = "<group>"; };
+		CD88AF1F28C8884A00EFCBBB /* RealmDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataService.swift; sourceTree = "<group>"; };
+		CD88AF2128C88A9900EFCBBB /* Pods_challenge_d90_withMVVM_framework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_challenge_d90_withMVVM_framework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD88AF2228C88AAD00EFCBBB /* Pods_challenge_d90_withMVVM_framework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_challenge_d90_withMVVM_framework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8A477028C0951900AA49ED /* challenge-d90-withMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "challenge-d90-withMVVM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8A477328C0951900AA49ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD8A477528C0951900AA49ED /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -169,8 +196,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7901709950D7B47DEC0DABC7 /* Pods_ShareMemeImages.framework in Frameworks */,
 				CD88AF1728C8852B00EFCBBB /* challenge_d90_withMVVM_framework.framework in Frameworks */,
+				2C4BE4F4BCB7F823AE656B06 /* Pods_challenge_d90_withMVVM_share.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,6 +205,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D064785F6C58968D56B1409 /* Pods_challenge_d90_withMVVM_framework.framework in Frameworks */,
+				CD88AF2328C88AAE00EFCBBB /* Pods_challenge_d90_withMVVM_framework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,8 +233,11 @@
 		1BF597526F85B6C25BD88F2C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CD88AF2228C88AAD00EFCBBB /* Pods_challenge_d90_withMVVM_framework.framework */,
+				CD88AF2128C88A9900EFCBBB /* Pods_challenge_d90_withMVVM_framework.framework */,
 				A09941C6299F9A653DEF4BE5 /* Pods_challenge_d90_withMVVM.framework */,
-				52501017D3B9D952A0087789 /* Pods_ShareMemeImages.framework */,
+				2B14CB55EEAB2CCF78310A1D /* Pods_challenge_d90_withMVVM_framework.framework */,
+				1B716C0598064B3371B1AEF9 /* Pods_challenge_d90_withMVVM_share.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -217,6 +249,10 @@
 				82FA796986B81E42D2555D2E /* Pods-challenge-d90-withMVVM.release.xcconfig */,
 				FF196EABA164D163546A739B /* Pods-ShareMemeImages.debug.xcconfig */,
 				AC6F565DB7DB5838E14824AA /* Pods-ShareMemeImages.release.xcconfig */,
+				9EA250C259C1CE53207C573B /* Pods-challenge-d90-withMVVM-framework.debug.xcconfig */,
+				C00AA62F0E4EDC2DF78EEE46 /* Pods-challenge-d90-withMVVM-framework.release.xcconfig */,
+				C8F7432819276ABF74177729 /* Pods-challenge-d90-withMVVM-share.debug.xcconfig */,
+				2DBD9A280FC676D17556374B /* Pods-challenge-d90-withMVVM-share.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -235,6 +271,8 @@
 		CD88AEFA28C8846700EFCBBB /* challenge-d90-withMVVM-framework */ = {
 			isa = PBXGroup;
 			children = (
+				CD88AF1E28C8882900EFCBBB /* Services */,
+				CD88AF1D28C887E700EFCBBB /* Middleware */,
 				CDA22A8C28C098A600D80622 /* Models */,
 				CD88AEFB28C8846700EFCBBB /* challenge_d90_withMVVM_framework.h */,
 				CD88AEFC28C8846700EFCBBB /* challenge_d90_withMVVM_framework.docc */,
@@ -248,6 +286,22 @@
 				CD88AF0928C8846700EFCBBB /* challenge_d90_withMVVM_frameworkTests.swift */,
 			);
 			path = "challenge-d90-withMVVM-frameworkTests";
+			sourceTree = "<group>";
+		};
+		CD88AF1D28C887E700EFCBBB /* Middleware */ = {
+			isa = PBXGroup;
+			children = (
+				CDA22A9428C0A1D200D80622 /* FileManager+Extension.swift */,
+			);
+			path = Middleware;
+			sourceTree = "<group>";
+		};
+		CD88AF1E28C8882900EFCBBB /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CD88AF1F28C8884A00EFCBBB /* RealmDataService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		CD8A476728C0951900AA49ED = {
@@ -344,7 +398,6 @@
 		CDA22A8D28C098AE00D80622 /* Middleware */ = {
 			isa = PBXGroup;
 			children = (
-				CDA22A9428C0A1D200D80622 /* FileManager+Extension.swift */,
 				CD01C0FB28C5C30C0007CDB3 /* UIImage+Extension.swift */,
 				CD01C0FD28C5C9060007CDB3 /* UIAlertController+Extension.swift */,
 			);
@@ -423,10 +476,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD88AF1028C8846700EFCBBB /* Build configuration list for PBXNativeTarget "challenge-d90-withMVVM-framework" */;
 			buildPhases = (
+				336FFB488D8514CA88A691E3 /* [CP] Check Pods Manifest.lock */,
 				CD88AEF428C8846700EFCBBB /* Headers */,
 				CD88AEF528C8846700EFCBBB /* Sources */,
 				CD88AEF628C8846700EFCBBB /* Frameworks */,
 				CD88AEF728C8846700EFCBBB /* Resources */,
+				CD88AF2528C88AAE00EFCBBB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -561,6 +616,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		336FFB488D8514CA88A691E3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-challenge-d90-withMVVM-framework-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		86C4B6CA9679C1CF6A339305 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -593,7 +670,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ShareMemeImages-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-challenge-d90-withMVVM-share-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -647,7 +724,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD88AF2728C88D8800EFCBBB /* Meme.swift in Sources */,
+				CD88AF2928C88D8F00EFCBBB /* RealmDataService.swift in Sources */,
 				CD88AEE428C737D300EFCBBB /* ShareViewController.swift in Sources */,
+				CD88AF2628C88D8400EFCBBB /* FileManager+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -656,6 +736,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD88AEFD28C8846700EFCBBB /* challenge_d90_withMVVM_framework.docc in Sources */,
+				CD88AF2028C8884A00EFCBBB /* RealmDataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -680,6 +761,7 @@
 				CD01C10228C600460007CDB3 /* NotificationAlerts.swift in Sources */,
 				CDA22A9928C0A4DB00D80622 /* MemeViewController.swift in Sources */,
 				CD01C0FC28C5C30C0007CDB3 /* UIImage+Extension.swift in Sources */,
+				CD88AF2828C88D8B00EFCBBB /* RealmDataService.swift in Sources */,
 				CD8A477628C0951900AA49ED /* SceneDelegate.swift in Sources */,
 				CDA22AA028C0AA5F00D80622 /* MemeViewDelegate.swift in Sources */,
 				CDA22AA928C0BB0000D80622 /* MemeVCViewModel.swift in Sources */,
@@ -747,7 +829,7 @@
 /* Begin XCBuildConfiguration section */
 		CD88AEEE28C737D300EFCBBB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FF196EABA164D163546A739B /* Pods-ShareMemeImages.debug.xcconfig */;
+			baseConfigurationReference = C8F7432819276ABF74177729 /* Pods-challenge-d90-withMVVM-share.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "challenge-d90-withMVVM-share/challenge-d90-withMVVM-share.entitlements";
 				CODE_SIGN_STYLE = Automatic;
@@ -774,7 +856,7 @@
 		};
 		CD88AEEF28C737D300EFCBBB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AC6F565DB7DB5838E14824AA /* Pods-ShareMemeImages.release.xcconfig */;
+			baseConfigurationReference = 2DBD9A280FC676D17556374B /* Pods-challenge-d90-withMVVM-share.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "challenge-d90-withMVVM-share/challenge-d90-withMVVM-share.entitlements";
 				CODE_SIGN_STYLE = Automatic;
@@ -801,6 +883,7 @@
 		};
 		CD88AF1128C8846700EFCBBB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9EA250C259C1CE53207C573B /* Pods-challenge-d90-withMVVM-framework.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -831,6 +914,7 @@
 		};
 		CD88AF1228C8846700EFCBBB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C00AA62F0E4EDC2DF78EEE46 /* Pods-challenge-d90-withMVVM-framework.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

@@ -13,7 +13,10 @@ pod "RealmSwift"
 
 end
 
-target 'ShareMemeImages' do
+target 'challenge-d90-withMVVM-share' do
+end  
+
+target 'challenge-d90-withMVVM-framework' do
 end  
 
 #end

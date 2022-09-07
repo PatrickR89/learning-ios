@@ -51,7 +51,6 @@ class ShareViewController: UIViewController {
                         }
 
                     } else {
-                        fatalError("Unable to save!")
                         self.extensionContext?.cancelRequest(withError: error!)
                     }
                 }

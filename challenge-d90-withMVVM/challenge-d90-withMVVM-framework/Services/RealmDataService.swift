@@ -12,7 +12,9 @@ class RealmDataService {
     static let shared = RealmDataService()
 
     func initiateRealm() -> Realm {
-        guard let defaultRealm = Realm.Configuration.defaultConfiguration.fileURL else {fatalError("unable to create default realm")}
+        guard let defaultRealm = Realm.Configuration.defaultConfiguration.fileURL else {
+            fatalError("unable to create default realm")
+        }
         let realmURL = FileManager.default.getRealmFilePath("default.realm")
         var config: Realm.Configuration?
 
@@ -39,7 +41,10 @@ class RealmDataService {
 extension FileManager {
     private func getDocumentsDirectory() -> URL {
         guard let groupPath = FileManager().containerURL(
-            forSecurityApplicationGroupIdentifier: "group.com.ruzman.challenge-d90") else {fatalError("group directory not found")}
+            forSecurityApplicationGroupIdentifier: "group.com.ruzman.challenge-d90")
+        else {
+            fatalError("group directory not found")
+        }
         return groupPath
     }
 

@@ -14,7 +14,15 @@
 		CD01C10228C600460007CDB3 /* NotificationAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD01C10128C600460007CDB3 /* NotificationAlerts.swift */; };
 		CD88AEE428C737D300EFCBBB /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AEE328C737D300EFCBBB /* ShareViewController.swift */; };
 		CD88AEE728C737D300EFCBBB /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD88AEE528C737D300EFCBBB /* MainInterface.storyboard */; };
-		CD88AEEC28C737D300EFCBBB /* ShareMemeImages.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CD88AEE128C737D300EFCBBB /* ShareMemeImages.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CD88AEEC28C737D300EFCBBB /* challenge-d90-withMVVM-share.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CD88AEE128C737D300EFCBBB /* challenge-d90-withMVVM-share.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CD88AEFD28C8846700EFCBBB /* challenge_d90_withMVVM_framework.docc in Sources */ = {isa = PBXBuildFile; fileRef = CD88AEFC28C8846700EFCBBB /* challenge_d90_withMVVM_framework.docc */; };
+		CD88AF0328C8846700EFCBBB /* challenge_d90_withMVVM_framework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD88AEF928C8846700EFCBBB /* challenge_d90_withMVVM_framework.framework */; };
+		CD88AF0A28C8846700EFCBBB /* challenge_d90_withMVVM_frameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF0928C8846700EFCBBB /* challenge_d90_withMVVM_frameworkTests.swift */; };
+		CD88AF0B28C8846700EFCBBB /* challenge_d90_withMVVM_framework.h in Headers */ = {isa = PBXBuildFile; fileRef = CD88AEFB28C8846700EFCBBB /* challenge_d90_withMVVM_framework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD88AF0E28C8846700EFCBBB /* challenge_d90_withMVVM_framework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD88AEF928C8846700EFCBBB /* challenge_d90_withMVVM_framework.framework */; };
+		CD88AF0F28C8846700EFCBBB /* challenge_d90_withMVVM_framework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CD88AEF928C8846700EFCBBB /* challenge_d90_withMVVM_framework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CD88AF1728C8852B00EFCBBB /* challenge_d90_withMVVM_framework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD88AEF928C8846700EFCBBB /* challenge_d90_withMVVM_framework.framework */; };
+		CD88AF1828C8852B00EFCBBB /* challenge_d90_withMVVM_framework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CD88AEF928C8846700EFCBBB /* challenge_d90_withMVVM_framework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CD8A477428C0951900AA49ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A477328C0951900AA49ED /* AppDelegate.swift */; };
 		CD8A477628C0951900AA49ED /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A477528C0951900AA49ED /* SceneDelegate.swift */; };
 		CD8A477828C0951900AA49ED /* MemesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A477728C0951900AA49ED /* MemesCollectionViewController.swift */; };
@@ -45,6 +53,34 @@
 			remoteGlobalIDString = CD88AEE028C737D300EFCBBB;
 			remoteInfo = ShareMemeImages;
 		};
+		CD88AF0428C8846700EFCBBB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD8A476828C0951900AA49ED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CD88AEF828C8846700EFCBBB;
+			remoteInfo = "challenge-d90-withMVVM-framework";
+		};
+		CD88AF0628C8846700EFCBBB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD8A476828C0951900AA49ED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CD8A476F28C0951900AA49ED;
+			remoteInfo = "challenge-d90-withMVVM";
+		};
+		CD88AF0C28C8846700EFCBBB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD8A476828C0951900AA49ED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CD88AEF828C8846700EFCBBB;
+			remoteInfo = "challenge-d90-withMVVM-framework";
+		};
+		CD88AF1928C8852B00EFCBBB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD8A476828C0951900AA49ED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CD88AEF828C8846700EFCBBB;
+			remoteInfo = "challenge-d90-withMVVM-framework";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -54,9 +90,31 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				CD88AEEC28C737D300EFCBBB /* ShareMemeImages.appex in Embed App Extensions */,
+				CD88AEEC28C737D300EFCBBB /* challenge-d90-withMVVM-share.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD88AF1328C8846700EFCBBB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CD88AF0F28C8846700EFCBBB /* challenge_d90_withMVVM_framework.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD88AF1B28C8852B00EFCBBB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CD88AF1828C8852B00EFCBBB /* challenge_d90_withMVVM_framework.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -70,10 +128,17 @@
 		CD01C0FB28C5C30C0007CDB3 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		CD01C0FD28C5C9060007CDB3 /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
 		CD01C10128C600460007CDB3 /* NotificationAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAlerts.swift; sourceTree = "<group>"; };
-		CD88AEE128C737D300EFCBBB /* ShareMemeImages.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShareMemeImages.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD88AEE128C737D300EFCBBB /* challenge-d90-withMVVM-share.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "challenge-d90-withMVVM-share.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD88AEE328C737D300EFCBBB /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		CD88AEE628C737D300EFCBBB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		CD88AEE828C737D300EFCBBB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD88AEF228C87D5000EFCBBB /* challenge-d90-withMVVM.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "challenge-d90-withMVVM.entitlements"; sourceTree = "<group>"; };
+		CD88AEF328C8819700EFCBBB /* challenge-d90-withMVVM-share.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "challenge-d90-withMVVM-share.entitlements"; sourceTree = "<group>"; };
+		CD88AEF928C8846700EFCBBB /* challenge_d90_withMVVM_framework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = challenge_d90_withMVVM_framework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD88AEFB28C8846700EFCBBB /* challenge_d90_withMVVM_framework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = challenge_d90_withMVVM_framework.h; sourceTree = "<group>"; };
+		CD88AEFC28C8846700EFCBBB /* challenge_d90_withMVVM_framework.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = challenge_d90_withMVVM_framework.docc; sourceTree = "<group>"; };
+		CD88AF0228C8846700EFCBBB /* challenge-d90-withMVVM-frameworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "challenge-d90-withMVVM-frameworkTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD88AF0928C8846700EFCBBB /* challenge_d90_withMVVM_frameworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = challenge_d90_withMVVM_frameworkTests.swift; sourceTree = "<group>"; };
 		CD8A477028C0951900AA49ED /* challenge-d90-withMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "challenge-d90-withMVVM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8A477328C0951900AA49ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD8A477528C0951900AA49ED /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +170,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				7901709950D7B47DEC0DABC7 /* Pods_ShareMemeImages.framework in Frameworks */,
+				CD88AF1728C8852B00EFCBBB /* challenge_d90_withMVVM_framework.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD88AEF628C8846700EFCBBB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD88AEFF28C8846700EFCBBB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD88AF0328C8846700EFCBBB /* challenge_d90_withMVVM_framework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +194,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D5E113F134788EB0040B078 /* Pods_challenge_d90_withMVVM.framework in Frameworks */,
+				CD88AF0E28C8846700EFCBBB /* challenge_d90_withMVVM_framework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,21 +221,42 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		CD88AEE228C737D300EFCBBB /* ShareMemeImages */ = {
+		CD88AEE228C737D300EFCBBB /* challenge-d90-withMVVM-share */ = {
 			isa = PBXGroup;
 			children = (
+				CD88AEF328C8819700EFCBBB /* challenge-d90-withMVVM-share.entitlements */,
 				CD88AEE328C737D300EFCBBB /* ShareViewController.swift */,
 				CD88AEE528C737D300EFCBBB /* MainInterface.storyboard */,
 				CD88AEE828C737D300EFCBBB /* Info.plist */,
 			);
-			path = ShareMemeImages;
+			path = "challenge-d90-withMVVM-share";
+			sourceTree = "<group>";
+		};
+		CD88AEFA28C8846700EFCBBB /* challenge-d90-withMVVM-framework */ = {
+			isa = PBXGroup;
+			children = (
+				CDA22A8C28C098A600D80622 /* Models */,
+				CD88AEFB28C8846700EFCBBB /* challenge_d90_withMVVM_framework.h */,
+				CD88AEFC28C8846700EFCBBB /* challenge_d90_withMVVM_framework.docc */,
+			);
+			path = "challenge-d90-withMVVM-framework";
+			sourceTree = "<group>";
+		};
+		CD88AF0828C8846700EFCBBB /* challenge-d90-withMVVM-frameworkTests */ = {
+			isa = PBXGroup;
+			children = (
+				CD88AF0928C8846700EFCBBB /* challenge_d90_withMVVM_frameworkTests.swift */,
+			);
+			path = "challenge-d90-withMVVM-frameworkTests";
 			sourceTree = "<group>";
 		};
 		CD8A476728C0951900AA49ED = {
 			isa = PBXGroup;
 			children = (
 				CD8A477228C0951900AA49ED /* challenge-d90-withMVVM */,
-				CD88AEE228C737D300EFCBBB /* ShareMemeImages */,
+				CD88AEE228C737D300EFCBBB /* challenge-d90-withMVVM-share */,
+				CD88AEFA28C8846700EFCBBB /* challenge-d90-withMVVM-framework */,
+				CD88AF0828C8846700EFCBBB /* challenge-d90-withMVVM-frameworkTests */,
 				CD8A477128C0951900AA49ED /* Products */,
 				5F560D7ADBDECF7A2F32A387 /* Pods */,
 				1BF597526F85B6C25BD88F2C /* Frameworks */,
@@ -164,7 +267,9 @@
 			isa = PBXGroup;
 			children = (
 				CD8A477028C0951900AA49ED /* challenge-d90-withMVVM.app */,
-				CD88AEE128C737D300EFCBBB /* ShareMemeImages.appex */,
+				CD88AEE128C737D300EFCBBB /* challenge-d90-withMVVM-share.appex */,
+				CD88AEF928C8846700EFCBBB /* challenge_d90_withMVVM_framework.framework */,
+				CD88AF0228C8846700EFCBBB /* challenge-d90-withMVVM-frameworkTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -172,9 +277,9 @@
 		CD8A477228C0951900AA49ED /* challenge-d90-withMVVM */ = {
 			isa = PBXGroup;
 			children = (
+				CD88AEF228C87D5000EFCBBB /* challenge-d90-withMVVM.entitlements */,
 				CDA22AB028C0D58800D80622 /* Enums */,
 				CDA22A8D28C098AE00D80622 /* Middleware */,
-				CDA22A8C28C098A600D80622 /* Models */,
 				CDA22A8B28C0989500D80622 /* Services */,
 				CDA22A8A28C0988D00D80622 /* ViewModels */,
 				CDA22A8928C0988600D80622 /* Views */,
@@ -282,24 +387,74 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		CD88AEF428C8846700EFCBBB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD88AF0B28C8846700EFCBBB /* challenge_d90_withMVVM_framework.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		CD88AEE028C737D300EFCBBB /* ShareMemeImages */ = {
+		CD88AEE028C737D300EFCBBB /* challenge-d90-withMVVM-share */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CD88AEED28C737D300EFCBBB /* Build configuration list for PBXNativeTarget "ShareMemeImages" */;
+			buildConfigurationList = CD88AEED28C737D300EFCBBB /* Build configuration list for PBXNativeTarget "challenge-d90-withMVVM-share" */;
 			buildPhases = (
 				92FE05E6C949938B3C9F88E6 /* [CP] Check Pods Manifest.lock */,
 				CD88AEDD28C737D300EFCBBB /* Sources */,
 				CD88AEDE28C737D300EFCBBB /* Frameworks */,
 				CD88AEDF28C737D300EFCBBB /* Resources */,
+				CD88AF1B28C8852B00EFCBBB /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CD88AF1A28C8852B00EFCBBB /* PBXTargetDependency */,
+			);
+			name = "challenge-d90-withMVVM-share";
+			productName = ShareMemeImages;
+			productReference = CD88AEE128C737D300EFCBBB /* challenge-d90-withMVVM-share.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		CD88AEF828C8846700EFCBBB /* challenge-d90-withMVVM-framework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD88AF1028C8846700EFCBBB /* Build configuration list for PBXNativeTarget "challenge-d90-withMVVM-framework" */;
+			buildPhases = (
+				CD88AEF428C8846700EFCBBB /* Headers */,
+				CD88AEF528C8846700EFCBBB /* Sources */,
+				CD88AEF628C8846700EFCBBB /* Frameworks */,
+				CD88AEF728C8846700EFCBBB /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = ShareMemeImages;
-			productName = ShareMemeImages;
-			productReference = CD88AEE128C737D300EFCBBB /* ShareMemeImages.appex */;
-			productType = "com.apple.product-type.app-extension";
+			name = "challenge-d90-withMVVM-framework";
+			productName = "challenge-d90-withMVVM-framework";
+			productReference = CD88AEF928C8846700EFCBBB /* challenge_d90_withMVVM_framework.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		CD88AF0128C8846700EFCBBB /* challenge-d90-withMVVM-frameworkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD88AF1428C8846700EFCBBB /* Build configuration list for PBXNativeTarget "challenge-d90-withMVVM-frameworkTests" */;
+			buildPhases = (
+				CD88AEFE28C8846700EFCBBB /* Sources */,
+				CD88AEFF28C8846700EFCBBB /* Frameworks */,
+				CD88AF0028C8846700EFCBBB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CD88AF0528C8846700EFCBBB /* PBXTargetDependency */,
+				CD88AF0728C8846700EFCBBB /* PBXTargetDependency */,
+			);
+			name = "challenge-d90-withMVVM-frameworkTests";
+			productName = "challenge-d90-withMVVM-frameworkTests";
+			productReference = CD88AF0228C8846700EFCBBB /* challenge-d90-withMVVM-frameworkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		CD8A476F28C0951900AA49ED /* challenge-d90-withMVVM */ = {
 			isa = PBXNativeTarget;
@@ -312,11 +467,13 @@
 				CD8A478728C096A000AA49ED /* Lint Source */,
 				86C4B6CA9679C1CF6A339305 /* [CP] Embed Pods Frameworks */,
 				CD88AEEB28C737D300EFCBBB /* Embed App Extensions */,
+				CD88AF1328C8846700EFCBBB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				CD88AEEA28C737D300EFCBBB /* PBXTargetDependency */,
+				CD88AF0D28C8846700EFCBBB /* PBXTargetDependency */,
 			);
 			name = "challenge-d90-withMVVM";
 			productName = "challenge-d90-withMVVM";
@@ -335,6 +492,13 @@
 				TargetAttributes = {
 					CD88AEE028C737D300EFCBBB = {
 						CreatedOnToolsVersion = 13.3.1;
+					};
+					CD88AEF828C8846700EFCBBB = {
+						CreatedOnToolsVersion = 13.3.1;
+					};
+					CD88AF0128C8846700EFCBBB = {
+						CreatedOnToolsVersion = 13.3.1;
+						TestTargetID = CD8A476F28C0951900AA49ED;
 					};
 					CD8A476F28C0951900AA49ED = {
 						CreatedOnToolsVersion = 13.3.1;
@@ -355,7 +519,9 @@
 			projectRoot = "";
 			targets = (
 				CD8A476F28C0951900AA49ED /* challenge-d90-withMVVM */,
-				CD88AEE028C737D300EFCBBB /* ShareMemeImages */,
+				CD88AEE028C737D300EFCBBB /* challenge-d90-withMVVM-share */,
+				CD88AEF828C8846700EFCBBB /* challenge-d90-withMVVM-framework */,
+				CD88AF0128C8846700EFCBBB /* challenge-d90-withMVVM-frameworkTests */,
 			);
 		};
 /* End PBXProject section */
@@ -366,6 +532,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD88AEE728C737D300EFCBBB /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD88AEF728C8846700EFCBBB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD88AF0028C8846700EFCBBB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,6 +651,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CD88AEF528C8846700EFCBBB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD88AEFD28C8846700EFCBBB /* challenge_d90_withMVVM_framework.docc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD88AEFE28C8846700EFCBBB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD88AF0A28C8846700EFCBBB /* challenge_d90_withMVVM_frameworkTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CD8A476C28C0951900AA49ED /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -504,8 +700,28 @@
 /* Begin PBXTargetDependency section */
 		CD88AEEA28C737D300EFCBBB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CD88AEE028C737D300EFCBBB /* ShareMemeImages */;
+			target = CD88AEE028C737D300EFCBBB /* challenge-d90-withMVVM-share */;
 			targetProxy = CD88AEE928C737D300EFCBBB /* PBXContainerItemProxy */;
+		};
+		CD88AF0528C8846700EFCBBB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CD88AEF828C8846700EFCBBB /* challenge-d90-withMVVM-framework */;
+			targetProxy = CD88AF0428C8846700EFCBBB /* PBXContainerItemProxy */;
+		};
+		CD88AF0728C8846700EFCBBB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CD8A476F28C0951900AA49ED /* challenge-d90-withMVVM */;
+			targetProxy = CD88AF0628C8846700EFCBBB /* PBXContainerItemProxy */;
+		};
+		CD88AF0D28C8846700EFCBBB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CD88AEF828C8846700EFCBBB /* challenge-d90-withMVVM-framework */;
+			targetProxy = CD88AF0C28C8846700EFCBBB /* PBXContainerItemProxy */;
+		};
+		CD88AF1A28C8852B00EFCBBB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CD88AEF828C8846700EFCBBB /* challenge-d90-withMVVM-framework */;
+			targetProxy = CD88AF1928C8852B00EFCBBB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -533,11 +749,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FF196EABA164D163546A739B /* Pods-ShareMemeImages.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "challenge-d90-withMVVM-share/challenge-d90-withMVVM-share.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y2ZMF37QVQ;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ShareMemeImages/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = ShareMemeImages;
+				INFOPLIST_FILE = "challenge-d90-withMVVM-share/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "challenge-d90-withMVVM-share";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -545,7 +763,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.myorganization.challenge-d90-withMVVM.ShareMemeImages";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.myorganization.challenge-d90-withMVVM.share";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -558,11 +776,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AC6F565DB7DB5838E14824AA /* Pods-ShareMemeImages.release.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "challenge-d90-withMVVM-share/challenge-d90-withMVVM-share.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y2ZMF37QVQ;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ShareMemeImages/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = ShareMemeImages;
+				INFOPLIST_FILE = "challenge-d90-withMVVM-share/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "challenge-d90-withMVVM-share";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -570,12 +790,106 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.myorganization.challenge-d90-withMVVM.ShareMemeImages";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.myorganization.challenge-d90-withMVVM.share";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CD88AF1128C8846700EFCBBB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = Y2ZMF37QVQ;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.myorganization.challenge-d90-withMVVM-framework";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		CD88AF1228C8846700EFCBBB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = Y2ZMF37QVQ;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.myorganization.challenge-d90-withMVVM-framework";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		CD88AF1528C8846700EFCBBB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.myorganization.challenge-d90-withMVVM-frameworkTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/challenge-d90-withMVVM.app/challenge-d90-withMVVM";
+			};
+			name = Debug;
+		};
+		CD88AF1628C8846700EFCBBB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.myorganization.challenge-d90-withMVVM-frameworkTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/challenge-d90-withMVVM.app/challenge-d90-withMVVM";
 			};
 			name = Release;
 		};
@@ -700,8 +1014,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "challenge-d90-withMVVM/challenge-d90-withMVVM.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y2ZMF37QVQ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "challenge-d90-withMVVM/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -728,8 +1044,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "challenge-d90-withMVVM/challenge-d90-withMVVM.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y2ZMF37QVQ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "challenge-d90-withMVVM/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -752,11 +1070,29 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CD88AEED28C737D300EFCBBB /* Build configuration list for PBXNativeTarget "ShareMemeImages" */ = {
+		CD88AEED28C737D300EFCBBB /* Build configuration list for PBXNativeTarget "challenge-d90-withMVVM-share" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CD88AEEE28C737D300EFCBBB /* Debug */,
 				CD88AEEF28C737D300EFCBBB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CD88AF1028C8846700EFCBBB /* Build configuration list for PBXNativeTarget "challenge-d90-withMVVM-framework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD88AF1128C8846700EFCBBB /* Debug */,
+				CD88AF1228C8846700EFCBBB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CD88AF1428C8846700EFCBBB /* Build configuration list for PBXNativeTarget "challenge-d90-withMVVM-frameworkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD88AF1528C8846700EFCBBB /* Debug */,
+				CD88AF1628C8846700EFCBBB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

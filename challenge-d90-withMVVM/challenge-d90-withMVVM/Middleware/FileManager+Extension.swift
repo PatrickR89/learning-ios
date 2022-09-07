@@ -10,7 +10,10 @@ import UIKit
 extension FileManager {
     private func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0]
+        guard let groupPath = FileManager().containerURL(forSecurityApplicationGroupIdentifier: "group.com.ruzman.challenge-d90") else {fatalError("group directory not found")}
+        print(" group path: \(groupPath)")
+        print(" self path: \(paths)")
+        return groupPath
     }
 
     func getFilePath(_ name: String) -> URL {

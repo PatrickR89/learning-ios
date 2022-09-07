@@ -20,7 +20,7 @@ extension UIImage {
                 width: image.size.width,
                 height: image.size.height),
             format: format)
-        let newImage = renderer.image { ctx in
+        let newImage = renderer.image { _ in
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.alignment = .center
             let paragraphAttributes: [NSAttributedString.Key: Any] = [

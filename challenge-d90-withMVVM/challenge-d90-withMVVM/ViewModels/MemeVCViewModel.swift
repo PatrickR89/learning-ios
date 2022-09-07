@@ -47,8 +47,7 @@ extension MemeVCViewModel {
         return alertController
     }
 
-    func createImagePickerController(
-        in viewController:
+    func createImagePickerController( in viewController:
         UIViewController &
         UIImagePickerControllerDelegate &
         UINavigationControllerDelegate) -> UIImagePickerController {
@@ -80,10 +79,20 @@ extension MemeVCViewModel {
 
         switch textPosition {
         case .top:
-            let tempMeme = Meme(imageName: meme.imageName, hasTopText: true, hasBottomText: meme.hasBottomText)
+            let tempMeme = Meme(
+                imageName: meme.imageName,
+                hasTopText: true,
+                hasBottomText: meme.hasBottomText,
+                dateAdded: meme.dateAdded)
+
             self.delegate?.memeVCViewModel(self, didEditMeme: tempMeme)
         case .bottom:
-            let tempMeme = Meme(imageName: meme.imageName, hasTopText: meme.hasTopText, hasBottomText: true)
+            let tempMeme = Meme(
+                imageName: meme.imageName,
+                hasTopText: meme.hasTopText,
+                hasBottomText: true,
+                dateAdded: meme.dateAdded)
+
             self.delegate?.memeVCViewModel(self, didEditMeme: tempMeme)
         }
     }

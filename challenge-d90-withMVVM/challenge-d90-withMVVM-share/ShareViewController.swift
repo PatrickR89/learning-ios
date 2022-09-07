@@ -49,7 +49,7 @@ class ShareViewController: UIViewController {
         if let jpegData = image.jpegData(compressionQuality: 0.5),
            let realm = self.realm {
             try? jpegData.write(to: newImagePath)
-            let meme = Meme(imageName: newImageName, hasTopText: false, hasBottomText: false)
+            let meme = Meme(imageName: newImageName, hasTopText: false, hasBottomText: false, dateAdded: Date.now)
             DispatchQueue.main.async {
                 try? realm.write {
                     realm.add(meme)

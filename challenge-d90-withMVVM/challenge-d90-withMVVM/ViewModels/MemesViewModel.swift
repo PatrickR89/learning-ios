@@ -27,7 +27,7 @@ class MemesViewModel {
 
     init(realm: Realm) {
         self.realm = realm
-        self.memes = realm.objects(Meme.self).sorted(byKeyPath: "imageName")
+        self.memes = realm.objects(Meme.self).sorted(byKeyPath: "dateAdded", ascending: false)
         memeViewModel.delegate = self
         memeViewModel.appendMemeVCViewModel(memeVCViewModel)
     }
@@ -79,7 +79,7 @@ extension MemesViewModel: MemeViewModelDelegate {
 
     func memeViewModel(_ viewModel: MemeViewModel, didChangeMeme inputMeme: Meme) {
         if let index = findMemeIndex(inputMeme) {
-            var meme = memes[index]
+            let meme = memes[index]
 
             try? self.realm.write {
                 meme.hasTopText = inputMeme.hasTopText

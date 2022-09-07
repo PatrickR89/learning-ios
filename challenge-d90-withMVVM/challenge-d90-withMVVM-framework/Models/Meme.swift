@@ -12,10 +12,12 @@ class Meme: Object {
     @Persisted(primaryKey: true) var imageName: String
     @Persisted var hasTopText: Bool
     @Persisted var hasBottomText: Bool
-    convenience init(imageName: String, hasTopText: Bool, hasBottomText: Bool) {
+    @Persisted var dateAdded: Date
+    convenience init(imageName: String, hasTopText: Bool, hasBottomText: Bool, dateAdded: Date) {
         self.init()
         self.imageName = imageName
         self.hasTopText = hasTopText
         self.hasBottomText = hasBottomText
+        self.dateAdded = dateAdded
     }
 }

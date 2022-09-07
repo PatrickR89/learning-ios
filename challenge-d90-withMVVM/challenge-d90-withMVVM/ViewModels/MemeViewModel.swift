@@ -8,7 +8,7 @@
 import UIKit
 
 class MemeViewModel {
-    private var meme: Meme = Meme(imageName: "", hasTopText: false, hasBottomText: false) {
+    private var meme: Meme = Meme(imageName: "", hasTopText: false, hasBottomText: false, dateAdded: Date.now) {
         didSet {
             valueDidChange()
             imageDidLoad(image: meme.imageName)
@@ -45,7 +45,7 @@ extension MemeViewModel {
         if let meme = meme {
             self.meme = meme
         } else {
-            self.meme = Meme(imageName: "", hasTopText: false, hasBottomText: false)
+            self.meme = Meme(imageName: "", hasTopText: false, hasBottomText: false, dateAdded: Date.now)
         }
     }
 

@@ -15,19 +15,19 @@ class RealmDataService {
         guard let defaultRealm = Realm.Configuration.defaultConfiguration.fileURL else {
             fatalError("unable to create default realm")
         }
-        let realmURL = FileManager.default.getRealmFilePath("default.realm")
+        let realmURL = FileManager.default.getRealmFilePath("defaultRealm.realm")
         var config: Realm.Configuration?
 
         if FileManager.default.fileExists(atPath: defaultRealm.path) {
             do {
                 _ = try FileManager.default.replaceItemAt(realmURL, withItemAt: defaultRealm)
 
-               config = Realm.Configuration(fileURL: realmURL, schemaVersion: 1)
+                config = Realm.Configuration(fileURL: realmURL, schemaVersion: 1)
             } catch {
-               print("Error info: \(error)")
+                print("Error info: \(error)")
             }
         } else {
-             config = Realm.Configuration(fileURL: realmURL, schemaVersion: 1)
+            config = Realm.Configuration(fileURL: realmURL, schemaVersion: 1)
         }
         guard let config = config else {
             fatalError("unable to create config")

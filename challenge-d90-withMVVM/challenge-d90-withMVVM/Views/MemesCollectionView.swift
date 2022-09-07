@@ -72,7 +72,7 @@ private extension MemesCollectionView {
 
                 switch changes {
 
-                case .initial(_):
+                case .initial:
                     collectionView.reloadData()
                 case .update(_, deletions: let deletions, insertions: let insertions, modifications: let modifications):
                     collectionView.performBatchUpdates {
@@ -80,7 +80,7 @@ private extension MemesCollectionView {
                         collectionView.insertItems(at: insertions.map({IndexPath(item: $0, section: 0)}))
                         collectionView.reloadItems(at: modifications.map({IndexPath(item: $0, section: 0)}))
                     }
-                case .error(_):
+                case .error:
                     print("error")
                 }
             }

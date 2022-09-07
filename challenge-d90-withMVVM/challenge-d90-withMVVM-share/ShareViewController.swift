@@ -8,23 +8,19 @@
 import UIKit
 import MobileCoreServices
 import RealmSwift
+import UniformTypeIdentifiers
 
 @objc (ShareExtensionViewController)
 
 class ShareViewController: UIViewController {
-    let realm: Realm
-
-    init () {
-        self.realm = RealmDataService.shared.initiateRealm()
-        super.init()
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    var realm: Realm?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        DispatchQueue.main.async {
+            self.realm = RealmDataService.shared.initiateRealm()
+        }
+
         handleShared()
     }
 
@@ -37,6 +33,21 @@ class ShareViewController: UIViewController {
                     guard error == nil else {return}
                     if let url = data as? URL,
                        let imageData = try? Data(contentsOf: url) {
+                        guard let image = UIImage(data: imageData) else {fatalError("Unable to load image")}
+                        let newImageName = UUID().uuidString
+                        let newImagePath = FileManager.default.getFilePath(newImageName)
+                        print(newImagePath)
+                        if let jpegData = image.jpegData(compressionQuality: 0.5),
+                           let realm = self.realm {
+                            try? jpegData.write(to: newImagePath)
+                            let meme = Meme(imageName: newImageName, hasTopText: false, hasBottomText: false)
+                            DispatchQueue.main.async {
+                                try? realm.write {
+                                    realm.add(meme)
+                                    print(meme)
+                                }
+                            }
+                        }
 
                     } else {
                         fatalError("Unable to save!")

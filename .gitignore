@@ -2569,3 +2569,11 @@ challenge-d90-withMVVM/Pods/Target Support Files/RealmSwift/RealmSwift-umbrella.
 challenge-d90-withMVVM/Pods/Target Support Files/RealmSwift/RealmSwift.debug.xcconfig
 challenge-d90-withMVVM/Pods/Target Support Files/RealmSwift/RealmSwift.modulemap
 challenge-d90-withMVVM/Pods/Target Support Files/RealmSwift/RealmSwift.release.xcconfig
+challenge-d90-withMVVM/Pods/Target Support Files/Pods-ShareMemeImages/Pods-ShareMemeImages-acknowledgements.markdown
+challenge-d90-withMVVM/Pods/Target Support Files/Pods-ShareMemeImages/Pods-ShareMemeImages-acknowledgements.plist
+challenge-d90-withMVVM/Pods/Target Support Files/Pods-ShareMemeImages/Pods-ShareMemeImages-dummy.m
+challenge-d90-withMVVM/Pods/Target Support Files/Pods-ShareMemeImages/Pods-ShareMemeImages-Info.plist
+challenge-d90-withMVVM/Pods/Target Support Files/Pods-ShareMemeImages/Pods-ShareMemeImages-umbrella.h
+challenge-d90-withMVVM/Pods/Target Support Files/Pods-ShareMemeImages/Pods-ShareMemeImages.debug.xcconfig
+challenge-d90-withMVVM/Pods/Target Support Files/Pods-ShareMemeImages/Pods-ShareMemeImages.modulemap
+challenge-d90-withMVVM/Pods/Target Support Files/Pods-ShareMemeImages/Pods-ShareMemeImages.release.xcconfig

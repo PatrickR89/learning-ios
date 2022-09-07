@@ -33,26 +33,28 @@ class ShareViewController: UIViewController {
                     guard error == nil else {return}
                     if let url = data as? URL,
                        let imageData = try? Data(contentsOf: url) {
-                        guard let image = UIImage(data: imageData) else {fatalError("Unable to load image")}
-                        let newImageName = UUID().uuidString
-                        let newImagePath = FileManager.default.getFilePath(newImageName)
-                        print(newImagePath)
-                        if let jpegData = image.jpegData(compressionQuality: 0.5),
-                           let realm = self.realm {
-                            try? jpegData.write(to: newImagePath)
-                            let meme = Meme(imageName: newImageName, hasTopText: false, hasBottomText: false)
-                            DispatchQueue.main.async {
-                                try? realm.write {
-                                    realm.add(meme)
-                                    print(meme)
-                                    self.extensionContext?.completeRequest(returningItems: nil)
-                                }
-                            }
-                        }
-
+                        saveData(imageData)
                     } else {
                         self.extensionContext?.cancelRequest(withError: error!)
                     }
+                }
+            }
+        }
+    }
+
+    private func saveData(_ imageData: Data) {
+        guard let image = UIImage(data: imageData) else {fatalError("Unable to load image")}
+        let newImageName = UUID().uuidString
+        let newImagePath = FileManager.default.getFilePath(newImageName)
+        if let jpegData = image.jpegData(compressionQuality: 0.5),
+           let realm = self.realm {
+            try? jpegData.write(to: newImagePath)
+            let meme = Meme(imageName: newImageName, hasTopText: false, hasBottomText: false)
+            DispatchQueue.main.async {
+                try? realm.write {
+                    realm.add(meme)
+                    print(meme)
+                    self.extensionContext?.completeRequest(returningItems: nil)
                 }
             }
         }

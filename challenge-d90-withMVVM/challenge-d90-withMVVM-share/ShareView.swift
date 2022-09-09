@@ -9,18 +9,29 @@ import UIKit
 
 class ShareView: UIView {
 
+    let viewModel: ShareViewModel
     let imageView = UIImageView()
     let acceptBtn = UIButton()
     let cancelBtn = UIButton()
     let stackView = UIStackView()
 
-    init() {
+    init(with viewModel: ShareViewModel) {
+        self.viewModel = viewModel
         super.init(frame: .zero)
+        setupBindings()
         setupUI()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    private func setupBindings() {
+        viewModel.observeImage { savedImage in
+            DispatchQueue.main.async { [weak self] in
+                self?.imageView.image = savedImage
+            }
+        }
     }
 
     func setupUI() {
@@ -57,6 +68,9 @@ class ShareView: UIView {
         acceptBtn.setTitle("Add", for: .normal)
         acceptBtn.backgroundColor = .systemBlue
 
+        cancelBtn.addTarget(self, action: #selector(cancelRequest), for: .touchUpInside)
+        acceptBtn.addTarget(self, action: #selector(fullfillRequest), for: .touchUpInside)
+
         let buttons: [UIButton] = [cancelBtn, acceptBtn]
 
         for button in buttons {
@@ -71,5 +85,13 @@ class ShareView: UIView {
         let blurView = UIVisualEffectView(effect: blur)
         blurView.frame = self.frame
         self.insertSubview(blurView, at: 0)
+    }
+
+    @objc private func fullfillRequest() {
+        viewModel.saveImage()
+    }
+
+    @objc private func cancelRequest() {
+        viewModel.cancelRequest()
     }
 }

@@ -10,6 +10,7 @@ import UIKit
 class ShareView: UIView {
 
     let viewModel: ShareViewModel
+    let title = UILabel()
     let imageView = UIImageView()
     let acceptBtn = UIButton()
     let cancelBtn = UIButton()
@@ -37,9 +38,14 @@ class ShareView: UIView {
     func setupUI() {
         self.addSubview(imageView)
         self.addSubview(stackView)
+        self.addSubview(title)
 
         imageView.translatesAutoresizingMaskIntoConstraints = false
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        title.translatesAutoresizingMaskIntoConstraints = false
+
+        title.font = UIFont.preferredFont(forTextStyle: .largeTitle)
+        title.text = "Add image to Memes"
 
         imageView.layer.borderColor = UIColor.gray.cgColor
         imageView.layer.borderWidth = 1
@@ -53,7 +59,9 @@ class ShareView: UIView {
             imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             imageView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -150),
             stackView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 100),
-            stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+            stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            title.bottomAnchor.constraint(equalTo: imageView.topAnchor, constant: -50),
+            title.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
     }
 

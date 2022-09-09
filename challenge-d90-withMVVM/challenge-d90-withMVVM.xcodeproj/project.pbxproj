@@ -255,11 +255,10 @@
 		CD88AEE228C737D300EFCBBB /* challenge-d90-withMVVM-share */ = {
 			isa = PBXGroup;
 			children = (
+				CD88AF3428CB271800EFCBBB /* ViewModels */,
+				CD88AF3328CB270D00EFCBBB /* Views */,
+				CD88AF3228CB26FE00EFCBBB /* ViewControllers */,
 				CD88AEF328C8819700EFCBBB /* challenge-d90-withMVVM-share.entitlements */,
-				CD88AEE328C737D300EFCBBB /* ShareViewController.swift */,
-				CD88AF2B28CB10C100EFCBBB /* ShareView.swift */,
-				CD88AF2D28CB1A8E00EFCBBB /* ShareViewModel.swift */,
-				CD88AF2F28CB1FD200EFCBBB /* ShareViewModelDelegate.swift */,
 				CD88AEE528C737D300EFCBBB /* MainInterface.storyboard */,
 				CD88AEE828C737D300EFCBBB /* Info.plist */,
 			);
@@ -300,6 +299,39 @@
 				CD88AF1F28C8884A00EFCBBB /* RealmDataService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		CD88AF3228CB26FE00EFCBBB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CD88AEE328C737D300EFCBBB /* ShareViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		CD88AF3328CB270D00EFCBBB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CD88AF2B28CB10C100EFCBBB /* ShareView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CD88AF3428CB271800EFCBBB /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				CD88AF3528CB272400EFCBBB /* Delegates */,
+				CD88AF2D28CB1A8E00EFCBBB /* ShareViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		CD88AF3528CB272400EFCBBB /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				CD88AF2F28CB1FD200EFCBBB /* ShareViewModelDelegate.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 		CD8A476728C0951900AA49ED = {

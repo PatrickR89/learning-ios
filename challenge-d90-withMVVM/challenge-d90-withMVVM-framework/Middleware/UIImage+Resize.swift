@@ -12,7 +12,7 @@ extension UIImage {
         let oldWidth = self.size.width
         let oldHeight = self.size.height
 
-        if oldWidth > 1024 {
+        if oldWidth > 1024 && oldWidth > oldHeight {
             let newHeight = 1024 * (oldHeight / oldWidth)
             let renderRect = CGRect(origin: .zero, size: CGSize(width: 1024, height: newHeight))
             return renderResizedImage(in: renderRect)

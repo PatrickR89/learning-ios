@@ -10,7 +10,7 @@ import UIKit
 extension UIImage {
     func addMemeText( text: String, at textPosition: Position) -> UIImage {
 
-        let image = self
+        let image = self.resizeImage()
         let format = UIGraphicsImageRendererFormat()
         format.scale = 1
         format.preferredRange = .standard

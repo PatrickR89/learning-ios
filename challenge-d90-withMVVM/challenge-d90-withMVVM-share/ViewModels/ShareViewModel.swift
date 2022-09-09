@@ -62,7 +62,7 @@ extension ShareViewModel {
 
     private func loadImage(fromData imageData: Data) {
         guard let image = UIImage(data: imageData) else {fatalError("Unable to load image")}
-        self.image = image
+        self.image = image.resizeImage()
     }
 
     func saveImage() {

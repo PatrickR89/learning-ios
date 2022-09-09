@@ -10,6 +10,7 @@ import UIKit
 class MemeView: UIView {
 
     private let imageView = UIImageView()
+    private let imageLayerView = UIImageView()
     private let topTextView = UITextView()
     private let bottomTextView = UITextView()
     var viewModel: MemeViewModel
@@ -25,32 +26,46 @@ class MemeView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    deinit {
+        viewModel.resetImageLayer()
+    }
 }
 
 private extension MemeView {
     func setupUI() {
         self.addSubview(imageView)
+        self.addSubview(imageLayerView)
         self.addSubview(topTextView)
         self.addSubview(bottomTextView)
 
         let imageTap = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(imageTap)
+        imageLayerView.isUserInteractionEnabled = true
+        imageLayerView.addGestureRecognizer(imageTap)
 
         setupTextView(for: topTextView)
         setupTextView(for: bottomTextView)
 
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageLayerView.translatesAutoresizingMaskIntoConstraints = false
+        imageLayerView.layer.zPosition = imageView.layer.zPosition + 1
 
         imageView.layer.borderColor = UIColor.gray.cgColor
         imageView.layer.borderWidth = 1
         imageView.contentMode = .scaleAspectFit
+        imageLayerView.contentMode = .scaleAspectFit
 
         NSLayoutConstraint.activate([
             imageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.75),
             imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor),
             imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            imageView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -100)
+            imageView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -100),
+            imageLayerView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.75),
+            imageLayerView.heightAnchor.constraint(equalTo: imageView.widthAnchor),
+            imageLayerView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            imageLayerView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -100)
         ])
     }
 
@@ -76,7 +91,7 @@ private extension MemeView {
     }
 
     func setupBindings() {
-        viewModel.observeImage { meme in
+        viewModel.observeMeme { meme in
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else {return}
                 let path = FileManager.default.getFilePath(meme.imageName)
@@ -94,6 +109,13 @@ private extension MemeView {
                     }
                 }
             }
+        }
+
+        viewModel.observeImageLayer { imageText in
+            DispatchQueue.main.async { [weak self] in
+                self?.imageLayerView.image = imageText
+            }
+
         }
     }
 

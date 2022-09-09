@@ -34,6 +34,11 @@ class MemeViewController: UIViewController {
             action: #selector(closeSelf))
 
     }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        memeView.viewModel.resetImageLayer()
+    }
 }
 
 private extension MemeViewController {

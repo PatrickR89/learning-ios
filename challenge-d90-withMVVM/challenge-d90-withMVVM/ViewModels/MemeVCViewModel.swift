@@ -77,7 +77,7 @@ extension MemeVCViewModel {
         let imagePath = FileManager.default.getFilePath(meme.imageName)
         guard let image = UIImage(contentsOfFile: imagePath.path) else {return}
 
-        let imageWithText = image.addMemeText(text: text, at: textPosition)
+        let imageWithText = image.saveImageWithText(text: text, at: textPosition)
         if let jpegData = imageWithText.jpegData(compressionQuality: 0.5) {
             try? jpegData.write(to: imagePath)
         }

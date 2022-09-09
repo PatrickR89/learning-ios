@@ -42,6 +42,7 @@ private extension MemeViewController {
     func setupUI() {
         view.addSubview(memeView)
         memeView.frame = view.bounds
+        memeView.setBackground()
         memeView.delegate = self
     }
 

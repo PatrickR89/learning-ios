@@ -34,6 +34,9 @@
 		CD88AF2C28CB10C100EFCBBB /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF2B28CB10C100EFCBBB /* ShareView.swift */; };
 		CD88AF2E28CB1A8E00EFCBBB /* ShareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF2D28CB1A8E00EFCBBB /* ShareViewModel.swift */; };
 		CD88AF3028CB1FD200EFCBBB /* ShareViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF2F28CB1FD200EFCBBB /* ShareViewModelDelegate.swift */; };
+		CD88AF3728CB34A800EFCBBB /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF3628CB34A800EFCBBB /* UIView+Extension.swift */; };
+		CD88AF3828CB34AD00EFCBBB /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF3628CB34A800EFCBBB /* UIView+Extension.swift */; };
+		CD88AF3928CB34AE00EFCBBB /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF3628CB34A800EFCBBB /* UIView+Extension.swift */; };
 		CD8A477428C0951900AA49ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A477328C0951900AA49ED /* AppDelegate.swift */; };
 		CD8A477628C0951900AA49ED /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A477528C0951900AA49ED /* SceneDelegate.swift */; };
 		CD8A477828C0951900AA49ED /* MemesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A477728C0951900AA49ED /* MemesCollectionViewController.swift */; };
@@ -161,6 +164,7 @@
 		CD88AF2B28CB10C100EFCBBB /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
 		CD88AF2D28CB1A8E00EFCBBB /* ShareViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewModel.swift; sourceTree = "<group>"; };
 		CD88AF2F28CB1FD200EFCBBB /* ShareViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewModelDelegate.swift; sourceTree = "<group>"; };
+		CD88AF3628CB34A800EFCBBB /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		CD8A477028C0951900AA49ED /* challenge-d90-withMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "challenge-d90-withMVVM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8A477328C0951900AA49ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD8A477528C0951900AA49ED /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -289,6 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				CDA22A9428C0A1D200D80622 /* FileManager+Extension.swift */,
+				CD88AF3628CB34A800EFCBBB /* UIView+Extension.swift */,
 			);
 			path = Middleware;
 			sourceTree = "<group>";
@@ -755,6 +760,7 @@
 			files = (
 				CD88AF2E28CB1A8E00EFCBBB /* ShareViewModel.swift in Sources */,
 				CD88AF3028CB1FD200EFCBBB /* ShareViewModelDelegate.swift in Sources */,
+				CD88AF3828CB34AD00EFCBBB /* UIView+Extension.swift in Sources */,
 				CD88AF2C28CB10C100EFCBBB /* ShareView.swift in Sources */,
 				CD88AF2728C88D8800EFCBBB /* Meme.swift in Sources */,
 				CD88AF2928C88D8F00EFCBBB /* RealmDataService.swift in Sources */,
@@ -769,6 +775,7 @@
 			files = (
 				CD88AEFD28C8846700EFCBBB /* challenge_d90_withMVVM_framework.docc in Sources */,
 				CD88AF2028C8884A00EFCBBB /* RealmDataService.swift in Sources */,
+				CD88AF3728CB34A800EFCBBB /* UIView+Extension.swift in Sources */,
 				CD88AF2A28CB093900EFCBBB /* FileManager+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -795,6 +802,7 @@
 				CDA22A9928C0A4DB00D80622 /* MemeViewController.swift in Sources */,
 				CD01C0FC28C5C30C0007CDB3 /* UIImage+Extension.swift in Sources */,
 				CD88AF2828C88D8B00EFCBBB /* RealmDataService.swift in Sources */,
+				CD88AF3928CB34AE00EFCBBB /* UIView+Extension.swift in Sources */,
 				CD8A477628C0951900AA49ED /* SceneDelegate.swift in Sources */,
 				CDA22AA028C0AA5F00D80622 /* MemeViewDelegate.swift in Sources */,
 				CDA22AA928C0BB0000D80622 /* MemeVCViewModel.swift in Sources */,

@@ -88,13 +88,6 @@ class ShareView: UIView {
         }
     }
 
-     func setBackground() {
-        let blur  = UIBlurEffect(style: .regular)
-        let blurView = UIVisualEffectView(effect: blur)
-        blurView.frame = self.frame
-        self.insertSubview(blurView, at: 0)
-    }
-
     @objc private func fullfillRequest() {
         viewModel.saveImage()
     }

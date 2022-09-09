@@ -25,7 +25,7 @@ class MemeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        addToolbarItems()
+
         bindNavigationItem()
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "Close",
@@ -51,19 +51,14 @@ private extension MemeViewController {
     func bindNavigationItem() {
         viewModel.observeImageState { imageState in
             DispatchQueue.main.async { [weak self] in
-                self?.toggleBarButton(imageState)
+                self?.toggleToolbar(imageState)
             }
         }
     }
 
-    func toggleBarButton(_ imageState: Bool) {
+    func toggleToolbar(_ imageState: Bool) {
         if imageState {
-            let editBarButton = UIBarButtonItem(
-                title: "Edit",
-                style: .plain,
-                target: self,
-                action: #selector(openActionController))
-            self.navigationItem.leftBarButtonItem = editBarButton
+            addToolbarItems()
         }
     }
 
@@ -77,11 +72,21 @@ private extension MemeViewController {
             action: #selector(deleteMeme))
         deleteButton.tintColor = .systemRed
 
+        let editIcon = UIImage(systemName: "pencil")
+        let editButton = UIBarButtonItem(
+            image: editIcon,
+            style: .plain,
+            target: self,
+            action: #selector(openActionController))
+
+        let shareIcon = UIImage(systemName: "square.and.arrow.up")
+        let shareButton = UIBarButtonItem(image: shareIcon, style: .plain, target: self, action: #selector(shareMeme))
+
         let spacer = UIBarButtonItem(
                     barButtonSystemItem: .flexibleSpace,
                     target: nil,
                     action: nil)
-        toolbarItems = [deleteButton, spacer]
+        toolbarItems = [deleteButton, spacer, editButton, spacer, shareButton]
         navigationController?.isToolbarHidden = false
     }
 
@@ -94,6 +99,9 @@ private extension MemeViewController {
         let alertController = viewModel.addDeletionAlertController(in: self)
         present(alertController, animated: true)
     }
+
+    @objc func editMeme() {}
+    @objc func shareMeme() {}
 }
 
 extension MemeViewController: MemeViewDelegate {

@@ -101,7 +101,10 @@ private extension MemeViewController {
     }
 
     @objc func editMeme() {}
-    @objc func shareMeme() {}
+    @objc func shareMeme() {
+        let alertController = viewModel.shareMeme(in: self)
+        present(alertController, animated: true)
+    }
 }
 
 extension MemeViewController: MemeViewDelegate {

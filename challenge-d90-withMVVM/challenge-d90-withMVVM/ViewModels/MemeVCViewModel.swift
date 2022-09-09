@@ -101,4 +101,31 @@ extension MemeVCViewModel {
             self.delegate?.memeVCViewModel(self, didEditMeme: tempMeme)
         }
     }
+
+    func shareMeme(in viewController: MemeViewController) -> UIAlertController {
+        let alertController = UIAlertController(
+            title: "Enter name",
+            message: "Name your meme before you send it",
+            preferredStyle: .alert)
+
+        alertController.addTextField()
+
+        let titleAction = UIAlertAction(title: "Send", style: .default) { [weak alertController, weak self] _ in
+            print("init")
+            guard let self = self,
+                  let title = alertController?.textFields?[0].text else {return}
+            let imagePath = FileManager.default.getFilePath(self.imageName)
+            guard let image = UIImage(contentsOfFile: imagePath.path) else {return}
+            print("lets")
+            let activityController = UIActivityViewController(activityItems: [image, title], applicationActivities: [])
+
+            viewController.present(activityController, animated: true)
+        }
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alertController.addAction(titleAction)
+        alertController.addAction(cancelAction)
+
+        return alertController
+    }
 }

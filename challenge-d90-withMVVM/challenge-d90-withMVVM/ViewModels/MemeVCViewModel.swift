@@ -47,6 +47,11 @@ extension MemeVCViewModel {
         return alertController
     }
 
+    func addDeletionAlertController(in viewController: UIViewController) -> UIAlertController {
+        let alertController = UIAlertController().createDeletionAlertController(in: viewController, with: self)
+        return alertController
+    }
+
     func createImagePickerController( in viewController:
         UIViewController &
         UIImagePickerControllerDelegate &

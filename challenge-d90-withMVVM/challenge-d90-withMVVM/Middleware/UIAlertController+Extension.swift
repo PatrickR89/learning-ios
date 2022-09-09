@@ -22,37 +22,9 @@ extension UIAlertController {
                 position: .bottom, to: alertController,
                 in: viewController, with: viewModel )
 
-            let deleteImage = UIAlertAction(
-                title: "Delete",
-                style: .destructive) { [weak viewController ] _ in
-                    guard let viewController = viewController else {return}
-                    let deleteAlertController = UIAlertController(
-                        title: "Delete",
-                        message: "Do you want to delete this meme?",
-                        preferredStyle: .alert)
-
-                    let deleteImage = UIAlertAction(
-                        title: "Yes",
-                        style: .default) { [weak viewController, weak viewModel] _ in
-                            guard let viewModel = viewModel,
-                                  let meme = viewModel.delegate?.memeVCViewModelDidRequestMeme(viewModel) else {return}
-                            let imageName = meme.imageName
-                            let path = FileManager.default.getFilePath(imageName)
-                            do {
-                                try FileManager.default.removeItem(at: path)
-                            } catch {
-                                print("Error in deleting")
-                            }
-                            viewModel.delegate?.memeVCViewModel(viewModel, didDeleteMeme: meme)
-                            viewController?.dismiss(animated: true)
-                        }
-
-                    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-
-                    deleteAlertController.addAction(cancelAction)
-                    deleteAlertController.addAction(deleteImage)
-                    viewController.present(deleteAlertController, animated: true)
-                }
+//            let deleteImage = UIAlertAction(
+//                title: "Delete",
+//                style: .destructive)
 
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
 
@@ -60,7 +32,7 @@ extension UIAlertController {
 
             if let addBottomText = addBottomText { alertController.addAction(addBottomText) }
 
-            alertController.addAction(deleteImage)
+//            alertController.addAction(deleteImage)
             alertController.addAction(cancelAction)
 
             return alertController
@@ -120,4 +92,34 @@ extension UIAlertController {
                 }
             }
         }
+
+    func createDeletionAlertController(in viewController: UIViewController, with viewModel: MemeVCViewModel) -> UIAlertController {
+
+        let deleteAlertController = UIAlertController(
+                title: "Delete",
+                message: "Do you want to delete this meme?",
+                preferredStyle: .alert)
+
+            let deleteImage = UIAlertAction(
+                title: "Yes",
+                style: .default) { [weak viewController, weak viewModel] _ in
+                    guard let viewModel = viewModel,
+                          let meme = viewModel.delegate?.memeVCViewModelDidRequestMeme(viewModel) else {return}
+                    let imageName = meme.imageName
+                    let path = FileManager.default.getFilePath(imageName)
+                    do {
+                        try FileManager.default.removeItem(at: path)
+                    } catch {
+                        print("Error in deleting")
+                    }
+                    viewModel.delegate?.memeVCViewModel(viewModel, didDeleteMeme: meme)
+                    viewController?.dismiss(animated: true)
+                }
+
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+
+            deleteAlertController.addAction(cancelAction)
+            deleteAlertController.addAction(deleteImage)
+        return deleteAlertController
+    }
 }

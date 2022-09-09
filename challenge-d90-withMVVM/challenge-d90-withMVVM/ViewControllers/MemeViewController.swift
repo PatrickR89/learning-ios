@@ -25,12 +25,14 @@ class MemeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        addToolbarItems()
         bindNavigationItem()
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "Close",
             style: .plain,
             target: self,
             action: #selector(closeSelf))
+
     }
 }
 
@@ -65,8 +67,31 @@ private extension MemeViewController {
         }
     }
 
+    func addToolbarItems() {
+        let deleteIcon = UIImage(systemName: "trash")
+
+        let deleteButton = UIBarButtonItem(
+            image: deleteIcon,
+            style: .plain,
+            target: self,
+            action: #selector(deleteMeme))
+        deleteButton.tintColor = .systemRed
+
+        let spacer = UIBarButtonItem(
+                    barButtonSystemItem: .flexibleSpace,
+                    target: nil,
+                    action: nil)
+        toolbarItems = [deleteButton, spacer]
+        navigationController?.isToolbarHidden = false
+    }
+
     @objc func openActionController() {
         let alertController = viewModel.addAlertController(in: self)
+        present(alertController, animated: true)
+    }
+
+    @objc func deleteMeme() {
+        let alertController = viewModel.addDeletionAlertController(in: self)
         present(alertController, animated: true)
     }
 }

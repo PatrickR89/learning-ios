@@ -38,6 +38,12 @@
 		CD88AF3928CB34AE00EFCBBB /* UIView+Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF3628CB34A800EFCBBB /* UIView+Background.swift */; };
 		CD88AF3F28CB3FE000EFCBBB /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF3A28CB38B400EFCBBB /* UIImage+Resize.swift */; };
 		CD88AF4028CB402300EFCBBB /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF3A28CB38B400EFCBBB /* UIImage+Resize.swift */; };
+		CD88AF4428CB46E100EFCBBB /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD88AF4328CB46E100EFCBBB /* Lato-Regular.ttf */; };
+		CD88AF4528CB46E100EFCBBB /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD88AF4328CB46E100EFCBBB /* Lato-Regular.ttf */; };
+		CD88AF4728CB46F700EFCBBB /* Lato-Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD88AF4628CB46F700EFCBBB /* Lato-Heavy.ttf */; };
+		CD88AF4828CB46F700EFCBBB /* Lato-Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD88AF4628CB46F700EFCBBB /* Lato-Heavy.ttf */; };
+		CD88AF4A28CB471500EFCBBB /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD88AF4928CB471500EFCBBB /* Lato-Bold.ttf */; };
+		CD88AF4B28CB471500EFCBBB /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD88AF4928CB471500EFCBBB /* Lato-Bold.ttf */; };
 		CD8A477428C0951900AA49ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A477328C0951900AA49ED /* AppDelegate.swift */; };
 		CD8A477628C0951900AA49ED /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A477528C0951900AA49ED /* SceneDelegate.swift */; };
 		CD8A477828C0951900AA49ED /* MemesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A477728C0951900AA49ED /* MemesCollectionViewController.swift */; };
@@ -167,6 +173,9 @@
 		CD88AF2F28CB1FD200EFCBBB /* ShareViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewModelDelegate.swift; sourceTree = "<group>"; };
 		CD88AF3628CB34A800EFCBBB /* UIView+Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Background.swift"; sourceTree = "<group>"; };
 		CD88AF3A28CB38B400EFCBBB /* UIImage+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
+		CD88AF4328CB46E100EFCBBB /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		CD88AF4628CB46F700EFCBBB /* Lato-Heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Heavy.ttf"; sourceTree = "<group>"; };
+		CD88AF4928CB471500EFCBBB /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 		CD8A477028C0951900AA49ED /* challenge-d90-withMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "challenge-d90-withMVVM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8A477328C0951900AA49ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD8A477528C0951900AA49ED /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -342,9 +351,20 @@
 			path = Delegates;
 			sourceTree = "<group>";
 		};
+		CD88AF4228CB46B600EFCBBB /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				CD88AF4928CB471500EFCBBB /* Lato-Bold.ttf */,
+				CD88AF4628CB46F700EFCBBB /* Lato-Heavy.ttf */,
+				CD88AF4328CB46E100EFCBBB /* Lato-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		CD8A476728C0951900AA49ED = {
 			isa = PBXGroup;
 			children = (
+				CD88AF4228CB46B600EFCBBB /* Fonts */,
 				CD8A477228C0951900AA49ED /* challenge-d90-withMVVM */,
 				CD88AEE228C737D300EFCBBB /* challenge-d90-withMVVM-share */,
 				CD88AEFA28C8846700EFCBBB /* challenge-d90-withMVVM-framework */,
@@ -623,7 +643,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD88AF4828CB46F700EFCBBB /* Lato-Heavy.ttf in Resources */,
 				CD88AEE728C737D300EFCBBB /* MainInterface.storyboard in Resources */,
+				CD88AF4528CB46E100EFCBBB /* Lato-Regular.ttf in Resources */,
+				CD88AF4B28CB471500EFCBBB /* Lato-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,7 +668,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD88AF4728CB46F700EFCBBB /* Lato-Heavy.ttf in Resources */,
+				CD88AF4A28CB471500EFCBBB /* Lato-Bold.ttf in Resources */,
 				CD8A478028C0951A00AA49ED /* LaunchScreen.storyboard in Resources */,
+				CD88AF4428CB46E100EFCBBB /* Lato-Regular.ttf in Resources */,
 				CD8A477D28C0951A00AA49ED /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1074,7 +1100,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1128,7 +1154,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

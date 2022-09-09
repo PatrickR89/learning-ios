@@ -23,8 +23,12 @@ extension UIImage {
         let newImage = renderer.image { _ in
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.alignment = .center
+            guard let customFont = UIFont(name: "Lato-Regular", size: 50) else {
+                fatalError( "Font not found" )
+            }
+
             let paragraphAttributes: [NSAttributedString.Key: Any] = [
-                .font: UIFont.preferredFont(forTextStyle: .largeTitle),
+                .font: UIFontMetrics.default.scaledFont(for: customFont),
                 .foregroundColor: UIColor.white,
                 .backgroundColor: UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.3),
                 .paragraphStyle: paragraphStyle

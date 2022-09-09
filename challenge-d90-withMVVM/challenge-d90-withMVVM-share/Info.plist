@@ -18,6 +18,12 @@
 		<string>MainInterface</string>
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.share-services</string>
+		<key>UIAppFonts</key>
+		<array>
+			<string>Lato-Regular.ttf</string>
+			<string>Lato-Heavy.ttf</string>
+			<string>Lato-Bold.ttf</string>
+		</array>
 	</dict>
 </dict>
 </plist>

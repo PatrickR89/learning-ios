@@ -14,14 +14,20 @@ import UniformTypeIdentifiers
 
 class ShareViewController: UIViewController {
     var realm: Realm?
+    var shareView = ShareView()
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        setupUI()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         DispatchQueue.main.async {
             self.realm = RealmDataService.shared.initiateRealm()
         }
-
-        handleShared()
+        title = "Add image to MemeEditor"
+//        handleShared()
     }
 
     private func handleShared() {
@@ -58,5 +64,11 @@ class ShareViewController: UIViewController {
                 }
             }
         }
+    }
+
+    private func setupUI() {
+        shareView.frame = view.frame
+        shareView.setBackground()
+        self.view = shareView
     }
 }

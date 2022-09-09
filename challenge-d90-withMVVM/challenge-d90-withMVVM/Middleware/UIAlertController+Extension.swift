@@ -27,7 +27,7 @@ extension UIAlertController {
                 with: viewModel )
 
             let deleteImage = UIAlertAction(
-                title: "DELETE MEME",
+                title: "DELETE",
                 style: .destructive) { [weak viewController, weak viewModel] _ in
                     guard let viewModel = viewModel,
                           let meme = viewModel.delegate?.memeVCViewModelDidRequestMeme(viewModel) else {return}
@@ -42,7 +42,7 @@ extension UIAlertController {
                     viewController?.dismiss(animated: true)
                 }
 
-            let cancelAction = UIAlertAction(title: "CANCEL", style: .cancel)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
 
             if let addTextToTop = addTextToTop {
                 alertController.addAction(addTextToTop)
@@ -79,7 +79,7 @@ extension UIAlertController {
                     let textAlertController = UIAlertController(title: title, message: nil, preferredStyle: .alert)
                     textAlertController.addTextField()
                     let addText = UIAlertAction(
-                        title: "ADD",
+                        title: "Add",
                         style: .default) { [weak textAlertController, weak viewModel] _ in
                             guard let viewModel = viewModel,
                                   let textAlertController = textAlertController,

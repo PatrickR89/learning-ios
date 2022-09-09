@@ -27,7 +27,7 @@ class MemeViewController: UIViewController {
         setupUI()
         bindNavigationItem()
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            title: "CLOSE",
+            title: "Close",
             style: .plain,
             target: self,
             action: #selector(closeSelf))
@@ -56,7 +56,7 @@ private extension MemeViewController {
     func toggleBarButton(_ imageState: Bool) {
         if imageState {
             let editBarButton = UIBarButtonItem(
-                title: "EDIT",
+                title: "Edit",
                 style: .plain,
                 target: self,
                 action: #selector(openActionController))

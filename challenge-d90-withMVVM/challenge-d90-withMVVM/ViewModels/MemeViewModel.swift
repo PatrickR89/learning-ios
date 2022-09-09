@@ -15,23 +15,33 @@ class MemeViewModel {
         }
     }
 
+    private var topText: String = "" {
+        didSet {
+            print(topText)
+        }
+    }
+    private var bottomText: String = "" {
+        didSet {
+            print(bottomText)
+        }
+    }
+
     weak var delegate: MemeViewModelDelegate?
     private var memeVCViewModel: MemeVCViewModel?
 
-    private var observer: ((UIImage) -> Void)?
+    private var observer: ((Meme) -> Void)?
 
     private func valueDidChange() {
         let path = FileManager.default.getFilePath(meme.imageName)
-        guard let observer = observer,
-              let image = UIImage(contentsOfFile: path.path) else {
+        guard let observer = observer else {
             return
         }
-        observer(image)
+        observer(meme)
     }
 }
 
 extension MemeViewModel {
-    func observeImage(_ closure: @escaping (UIImage) -> Void) {
+    func observeImage(_ closure: @escaping (Meme) -> Void) {
         self.observer = closure
         valueDidChange()
     }
@@ -65,5 +75,14 @@ extension MemeViewModel {
     func appendMemeVCViewModel(_ memeVCViewModel: MemeVCViewModel) {
         self.memeVCViewModel = memeVCViewModel
         memeVCViewModel.delegate = self
+    }
+
+    func updateMemeText(with text: String, on position: Position) {
+        switch position {
+        case .top:
+            self.topText = text
+        case .bottom:
+            self.bottomText = text
+        }
     }
 }

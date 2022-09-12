@@ -75,7 +75,7 @@ class MemeViewModel {
 
     private func imageLayerDidChange() {
         guard let imageLayerObserver = imageLayerObserver,
-        let imageLayer = imageLayer else {
+              let imageLayer = imageLayer else {
             return
         }
         imageLayerObserver(imageLayer)
@@ -141,5 +141,18 @@ extension MemeViewModel {
         case .bottom:
             self.bottomText = text
         }
+    }
+
+    func saveChanges() {
+        let imagePath = FileManager.default.getFilePath(meme.imageName)
+        guard let image = UIImage(contentsOfFile: imagePath.path),
+              let imageLayer = imageLayer else {return}
+
+        let imageWithText = image.saveImage(with: imageLayer)
+        if let jpegData = imageWithText.jpegData(compressionQuality: 0.5) {
+            try? jpegData.write(to: imagePath)
+        }
+
+        updateMeme(self.meme)
     }
 }

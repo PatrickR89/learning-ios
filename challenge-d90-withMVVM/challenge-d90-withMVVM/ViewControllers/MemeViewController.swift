@@ -37,6 +37,7 @@ class MemeViewController: UIViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
+        memeView.viewModel.saveChanges()
         memeView.viewModel.resetImageLayer()
     }
 }

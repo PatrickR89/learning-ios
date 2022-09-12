@@ -51,6 +51,29 @@ extension UIImage {
         return tempImage
     }
 
+    func saveImage(with imageLayer: UIImage) -> UIImage {
+        let image = self
+
+        let format = UIGraphicsImageRendererFormat()
+        format.scale = 1
+        format.preferredRange = .standard
+
+        let renderer = UIGraphicsImageRenderer(
+            size: CGSize(
+                width: image.size.width,
+                height: image.size.height),
+            format: format)
+        let rect = CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height)
+
+        let newImage = renderer.image { _ in
+            image.draw(at: CGPoint(x: 0, y: 0))
+//            imageLayer.draw(at: CGPoint(x: 0, y: 0))
+            imageLayer.draw(in: rect)
+        }
+
+        return newImage
+    }
+
     func saveImageWithText( text: String, at textPosition: Position) -> UIImage {
 
         let image = self.resizeImage()

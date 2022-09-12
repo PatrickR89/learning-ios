@@ -115,7 +115,6 @@ private extension MemeView {
             DispatchQueue.main.async { [weak self] in
                 self?.imageLayerView.image = imageText
             }
-
         }
     }
 

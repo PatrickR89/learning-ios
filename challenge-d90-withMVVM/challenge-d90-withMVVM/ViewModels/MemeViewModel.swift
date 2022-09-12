@@ -18,13 +18,37 @@ class MemeViewModel {
     private var topText: String = "" {
         didSet {
             addText(topText: topText, bottomText: bottomText)
-//            meme.hasTopText = true
+            let tempMeme = Meme(
+                imageName: meme.imageName,
+                hasTopText: true,
+                hasBottomText: meme.hasBottomText,
+                dateAdded: meme.dateAdded)
+
+            if topText != "" {
+                tempMeme.hasTopText = true
+                updateMeme(tempMeme)
+            } else {
+                tempMeme.hasTopText = false
+                updateMeme(tempMeme)
+            }
         }
     }
     private var bottomText: String = "" {
         didSet {
             addText(topText: topText, bottomText: bottomText)
-//            meme.hasBottomText = true
+            let tempMeme = Meme(
+                imageName: meme.imageName,
+                hasTopText: meme.hasTopText,
+                hasBottomText: false,
+                dateAdded: meme.dateAdded)
+
+            if bottomText != "" {
+                tempMeme.hasBottomText = true
+                updateMeme(tempMeme)
+            } else {
+                tempMeme.hasBottomText = false
+                updateMeme(tempMeme)
+            }
         }
     }
 
@@ -93,6 +117,7 @@ extension MemeViewModel {
 
     func deleteMeme(_ meme: Meme) {
         delegate?.memeViewModel(self, didDeleteMeme: meme)
+        self.meme = Meme(imageName: "", hasTopText: false, hasBottomText: false, dateAdded: Date.now)
     }
 
     func returnMeme() -> Meme? {

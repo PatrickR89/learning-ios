@@ -99,6 +99,8 @@ private extension MemeView {
                 self.imageView.image = image
 
                 if meme.imageName != "" {
+                    self.bottomTextView.isHidden = false
+                    self.topTextView.isHidden = false
                     if meme.hasTopText {
                         self.topTextView.isHidden = true
                         self.topTextView.isSelectable = false
@@ -107,6 +109,9 @@ private extension MemeView {
                         self.bottomTextView.isHidden = true
                         self.bottomTextView.isSelectable = false
                     }
+                } else if meme.imageName == "" {
+                    self.bottomTextView.isHidden = true
+                    self.topTextView.isHidden = true
                 }
             }
         }
@@ -140,5 +145,10 @@ extension MemeView: UITextViewDelegate {
                 viewModel.updateMemeText(with: textView.text, on: .bottom)
             }
         }
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.topTextView.endEditing(true)
+        self.bottomTextView.endEditing(true)
     }
 }

@@ -37,7 +37,7 @@ private extension MemesViewModel {
 
     func memeValueDidChange() {
         guard let observer = memeObserver,
-            let index = index else {return}
+              let index = index else {return}
         observer(memes[index])
     }
 
@@ -82,8 +82,12 @@ extension MemesViewModel: MemeViewModelDelegate {
             let meme = memes[index]
 
             try? self.realm.write {
-                meme.hasTopText = inputMeme.hasTopText
-                meme.hasBottomText = inputMeme.hasBottomText
+                if !meme.hasTopText {
+                    meme.hasTopText = memeViewModel.topText.value != ""
+                }
+                if !meme.hasBottomText {
+                    meme.hasBottomText = memeViewModel.bottomText.value != ""
+                }
             }
             self.index = index
         } else {

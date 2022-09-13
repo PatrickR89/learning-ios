@@ -97,21 +97,25 @@ private extension MemeView {
                 let path = FileManager.default.getFilePath(meme.imageName)
                 let image = UIImage(contentsOfFile: path.path)
                 self.imageView.image = image
+            }
+        }
 
-                if meme.imageName != "" {
-                    self.bottomTextView.isHidden = false
-                    self.topTextView.isHidden = false
-                    if meme.hasTopText {
-                        self.topTextView.isHidden = true
-                        self.topTextView.isSelectable = false
-                    }
-                    if meme.hasBottomText {
-                        self.bottomTextView.isHidden = true
-                        self.bottomTextView.isSelectable = false
-                    }
-                } else if meme.imageName == "" {
-                    self.bottomTextView.isHidden = true
-                    self.topTextView.isHidden = true
+        viewModel.observeTopText { topText, meme in
+            DispatchQueue.main.async { [weak self] in
+                if topText == "" && meme.imageName != "" && !meme.hasTopText {
+                    self?.topTextView.isHidden = false
+                } else {
+                    self?.topTextView.isHidden = true
+                }
+            }
+        }
+
+        viewModel.observeBottomText { bottomText, meme in
+            DispatchQueue.main.async { [weak self] in
+                if bottomText == "" && meme.imageName != "" && !meme.hasBottomText {
+                    self?.bottomTextView.isHidden = false
+                } else {
+                    self?.bottomTextView.isHidden = true
                 }
             }
         }

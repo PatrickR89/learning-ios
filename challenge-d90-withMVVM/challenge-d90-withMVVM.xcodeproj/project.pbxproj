@@ -44,6 +44,8 @@
 		CD88AF4828CB46F700EFCBBB /* Lato-Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD88AF4628CB46F700EFCBBB /* Lato-Heavy.ttf */; };
 		CD88AF4A28CB471500EFCBBB /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD88AF4928CB471500EFCBBB /* Lato-Bold.ttf */; };
 		CD88AF4B28CB471500EFCBBB /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD88AF4928CB471500EFCBBB /* Lato-Bold.ttf */; };
+		CD88AF4E28CF6E0100EFCBBB /* MemeText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF4D28CF6E0100EFCBBB /* MemeText.swift */; };
+		CD88AF4F28CF6E0100EFCBBB /* MemeText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF4D28CF6E0100EFCBBB /* MemeText.swift */; };
 		CD8A477428C0951900AA49ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A477328C0951900AA49ED /* AppDelegate.swift */; };
 		CD8A477628C0951900AA49ED /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A477528C0951900AA49ED /* SceneDelegate.swift */; };
 		CD8A477828C0951900AA49ED /* MemesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A477728C0951900AA49ED /* MemesCollectionViewController.swift */; };
@@ -176,6 +178,7 @@
 		CD88AF4328CB46E100EFCBBB /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		CD88AF4628CB46F700EFCBBB /* Lato-Heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Heavy.ttf"; sourceTree = "<group>"; };
 		CD88AF4928CB471500EFCBBB /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
+		CD88AF4D28CF6E0100EFCBBB /* MemeText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeText.swift; sourceTree = "<group>"; };
 		CD8A477028C0951900AA49ED /* challenge-d90-withMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "challenge-d90-withMVVM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8A477328C0951900AA49ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD8A477528C0951900AA49ED /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -361,6 +364,14 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		CD88AF4C28CF6DD700EFCBBB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CD88AF4D28CF6E0100EFCBBB /* MemeText.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		CD8A476728C0951900AA49ED = {
 			isa = PBXGroup;
 			children = (
@@ -390,6 +401,7 @@
 			isa = PBXGroup;
 			children = (
 				CD88AEF228C87D5000EFCBBB /* challenge-d90-withMVVM.entitlements */,
+				CD88AF4C28CF6DD700EFCBBB /* Models */,
 				CDA22AB028C0D58800D80622 /* Enums */,
 				CDA22A8D28C098AE00D80622 /* Middleware */,
 				CDA22A8B28C0989500D80622 /* Services */,
@@ -795,6 +807,7 @@
 				CD88AF2728C88D8800EFCBBB /* Meme.swift in Sources */,
 				CD88AF2928C88D8F00EFCBBB /* RealmDataService.swift in Sources */,
 				CD88AEE428C737D300EFCBBB /* ShareViewController.swift in Sources */,
+				CD88AF4F28CF6E0100EFCBBB /* MemeText.swift in Sources */,
 				CD88AF2628C88D8400EFCBBB /* FileManager+FilePath.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -824,6 +837,7 @@
 				CDA22A9E28C0A7C300D80622 /* MemeView.swift in Sources */,
 				CD8A477828C0951900AA49ED /* MemesCollectionViewController.swift in Sources */,
 				CDA22A8F28C0990400D80622 /* Meme.swift in Sources */,
+				CD88AF4E28CF6E0100EFCBBB /* MemeText.swift in Sources */,
 				CD88AF4028CB402300EFCBBB /* UIImage+Resize.swift in Sources */,
 				CD8A477428C0951900AA49ED /* AppDelegate.swift in Sources */,
 				CDA22AA728C0B66A00D80622 /* MemeViewModelDelegate.swift in Sources */,

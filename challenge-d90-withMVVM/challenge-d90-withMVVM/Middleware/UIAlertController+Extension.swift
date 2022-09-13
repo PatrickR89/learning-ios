@@ -13,7 +13,7 @@ extension UIAlertController {
         in viewController: UIViewController,
         with viewModel: MemeVCViewModel) -> UIAlertController {
             let alertController = UIAlertController(
-                title: "Edit or delete image",
+                title: "Edit meme",
                 message: nil, preferredStyle: .actionSheet)
             let addTextToTop = createAlertAction(
                 position: .top, to: alertController,
@@ -22,17 +22,11 @@ extension UIAlertController {
                 position: .bottom, to: alertController,
                 in: viewController, with: viewModel )
 
-//            let deleteImage = UIAlertAction(
-//                title: "Delete",
-//                style: .destructive)
-
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
 
             if let addTextToTop = addTextToTop { alertController.addAction(addTextToTop) }
-
             if let addBottomText = addBottomText { alertController.addAction(addBottomText) }
 
-//            alertController.addAction(deleteImage)
             alertController.addAction(cancelAction)
 
             return alertController
@@ -48,9 +42,9 @@ extension UIAlertController {
             guard let meme = viewModel.delegate?.memeVCViewModelDidRequestMeme(viewModel) else {return nil}
             switch position {
             case .top:
-                title = "Add text on top"
+                title = "Edit text on top"
             case .bottom:
-                title = "Add text on bottom"
+                title = "Edit text on bottom"
             }
 
             let alertAction = UIAlertAction(
@@ -59,7 +53,7 @@ extension UIAlertController {
                     let textAlertController = UIAlertController(title: title, message: nil, preferredStyle: .alert)
                     textAlertController.addTextField()
                     let addText = UIAlertAction(
-                        title: "Add",
+                        title: "Edit",
                         style: .default) { [weak textAlertController, weak viewModel] _ in
                             guard let viewModel = viewModel,
                                   let textAlertController = textAlertController,
@@ -79,13 +73,13 @@ extension UIAlertController {
 
             switch position {
             case .top:
-                if !meme.hasTopText {
+                if meme.hasTopText {
                     return alertAction
                 } else {
                     return nil
                 }
             case .bottom:
-                if !meme.hasBottomText {
+                if meme.hasBottomText {
                     return alertAction
                 } else {
                     return nil
@@ -93,9 +87,11 @@ extension UIAlertController {
             }
         }
 
-    func createDeletionAlertController(in viewController: UIViewController, with viewModel: MemeVCViewModel) -> UIAlertController {
+    func createDeletionAlertController(
+        in viewController: UIViewController,
+        with viewModel: MemeVCViewModel) -> UIAlertController {
 
-        let deleteAlertController = UIAlertController(
+            let deleteAlertController = UIAlertController(
                 title: "Delete",
                 message: "Do you want to delete this meme?",
                 preferredStyle: .alert)
@@ -120,6 +116,6 @@ extension UIAlertController {
 
             deleteAlertController.addAction(cancelAction)
             deleteAlertController.addAction(deleteImage)
-        return deleteAlertController
-    }
+            return deleteAlertController
+        }
 }

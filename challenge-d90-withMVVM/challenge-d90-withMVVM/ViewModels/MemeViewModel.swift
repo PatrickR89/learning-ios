@@ -11,44 +11,23 @@ class MemeViewModel {
     private var meme: Meme = Meme(imageName: "", hasTopText: false, hasBottomText: false, dateAdded: Date.now) {
         didSet {
             valueDidChange()
+            topTextDidChange()
+            bottomTextDidChange()
             imageDidLoad(image: meme.imageName)
         }
     }
 
-    private var topText: String = "" {
+    var topText: MemeText = MemeText(value: "", new: false) {
         didSet {
-            addText(topText: topText, bottomText: bottomText)
-            let tempMeme = Meme(
-                imageName: meme.imageName,
-                hasTopText: true,
-                hasBottomText: meme.hasBottomText,
-                dateAdded: meme.dateAdded)
-
-            if topText != "" {
-                tempMeme.hasTopText = true
-                updateMeme(tempMeme)
-            } else {
-                tempMeme.hasTopText = false
-                updateMeme(tempMeme)
-            }
+            addText(topText: topText.value, bottomText: bottomText.value)
+            topTextDidChange()
         }
     }
-    private var bottomText: String = "" {
-        didSet {
-            addText(topText: topText, bottomText: bottomText)
-            let tempMeme = Meme(
-                imageName: meme.imageName,
-                hasTopText: meme.hasTopText,
-                hasBottomText: false,
-                dateAdded: meme.dateAdded)
 
-            if bottomText != "" {
-                tempMeme.hasBottomText = true
-                updateMeme(tempMeme)
-            } else {
-                tempMeme.hasBottomText = false
-                updateMeme(tempMeme)
-            }
+    var bottomText: MemeText = MemeText(value: "", new: false) {
+        didSet {
+            addText(topText: topText.value, bottomText: bottomText.value)
+            bottomTextDidChange()
         }
     }
 
@@ -65,6 +44,8 @@ class MemeViewModel {
 
     private var observer: ((Meme) -> Void)?
     private var imageLayerObserver: ((UIImage) -> Void)?
+    private var topTextObserver: ((String, Meme) -> Void)?
+    private var bottomTextObserver: ((String, Meme) -> Void)?
 
     private func valueDidChange() {
         guard let observer = observer else {
@@ -80,11 +61,27 @@ class MemeViewModel {
         }
         imageLayerObserver(imageLayer)
     }
+
+    private func topTextDidChange() {
+        guard let textObserver = topTextObserver else {
+            return
+        }
+        textObserver(topText.value, meme)
+    }
+
+    private func bottomTextDidChange() {
+        guard let textObserver = bottomTextObserver else {
+            return
+        }
+        textObserver(bottomText.value, meme)
+    }
 }
 
 extension MemeViewModel {
     func resetImageLayer() {
         imageLayer = nil
+        topText.value = ""
+        bottomText.value = ""
     }
 
     func addText(topText: String, bottomText: String) {
@@ -100,6 +97,16 @@ extension MemeViewModel {
     func observeImageLayer(_ closure: @escaping (UIImage) -> Void) {
         self.imageLayerObserver = closure
         imageLayerDidChange()
+    }
+
+    func observeTopText(_ closure: @escaping (String, Meme) -> Void) {
+        self.topTextObserver = closure
+        topTextDidChange()
+    }
+
+    func observeBottomText(_ closure: @escaping (String, Meme) -> Void) {
+        self.bottomTextObserver = closure
+        bottomTextDidChange()
     }
 
     func updateMeme(_ meme: Meme) {
@@ -137,9 +144,9 @@ extension MemeViewModel {
     func updateMemeText(with text: String, on position: Position) {
         switch position {
         case .top:
-            self.topText = text
+            self.topText.value = text
         case .bottom:
-            self.bottomText = text
+            self.bottomText.value = text
         }
     }
 
@@ -153,6 +160,6 @@ extension MemeViewModel {
             try? jpegData.write(to: imagePath)
         }
 
-        updateMeme(self.meme)
+        updateMeme(meme)
     }
 }

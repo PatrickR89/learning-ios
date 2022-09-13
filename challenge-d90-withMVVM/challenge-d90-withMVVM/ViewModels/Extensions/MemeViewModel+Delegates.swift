@@ -8,12 +8,35 @@
 import UIKit
 
 extension MemeViewModel: MemeVCViewModelDelegate {
+
+    func memeVCViewModel(_ viewModel: MemeVCViewModel, didRequestText position: Position) -> MemeText {
+        switch position {
+        case .top:
+            return self.topText
+        case .bottom:
+            return self.bottomText
+        }
+    }
+
     func memeVCViewModel(_ viewModel: MemeVCViewModel, didSaveImageWithName imageName: String) {
         let meme = Meme(imageName: imageName, hasTopText: false, hasBottomText: false, dateAdded: Date.now)
+        topText.new = true
+        bottomText.new = true
         updateMeme(meme)
     }
 
-    func memeVCViewModel(_ viewModel: MemeVCViewModel, didEditMeme meme: Meme) {
+    func memeVCViewModel(
+        _ viewModel: MemeVCViewModel,
+        didEditMeme meme: Meme,
+        with text: String,
+        at position: Position) {
+        resetImageLayer()
+        switch position {
+        case .top:
+            addText(topText: text, bottomText: bottomText.value)
+        case .bottom:
+            addText(topText: topText.value, bottomText: text)
+        }
         updateMeme(meme)
     }
 

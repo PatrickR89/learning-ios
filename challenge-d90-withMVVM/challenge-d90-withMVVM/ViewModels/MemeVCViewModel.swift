@@ -74,31 +74,12 @@ extension MemeVCViewModel {
     }
 
     func editImage(meme: Meme, text: String, at textPosition: Position) {
-        let imagePath = FileManager.default.getFilePath(meme.imageName)
-        guard let image = UIImage(contentsOfFile: imagePath.path) else {return}
-
-        let imageWithText = image.saveImageWithText(text: text, at: textPosition)
-        if let jpegData = imageWithText.jpegData(compressionQuality: 0.5) {
-            try? jpegData.write(to: imagePath)
-        }
 
         switch textPosition {
         case .top:
-            let tempMeme = Meme(
-                imageName: meme.imageName,
-                hasTopText: true,
-                hasBottomText: meme.hasBottomText,
-                dateAdded: meme.dateAdded)
-
-            self.delegate?.memeVCViewModel(self, didEditMeme: tempMeme)
+            self.delegate?.memeVCViewModel(self, didEditMeme: meme, with: text, at: textPosition)
         case .bottom:
-            let tempMeme = Meme(
-                imageName: meme.imageName,
-                hasTopText: meme.hasTopText,
-                hasBottomText: true,
-                dateAdded: meme.dateAdded)
-
-            self.delegate?.memeVCViewModel(self, didEditMeme: tempMeme)
+            self.delegate?.memeVCViewModel(self, didEditMeme: meme, with: text, at: textPosition)
         }
     }
 

@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIImage {
-    
+
     func addMemeText( topText: String, bottomText: String ) -> UIImage {
         let image = self.resizeImage()
         let format = UIGraphicsImageRendererFormat()
@@ -133,7 +133,6 @@ extension UIImage {
         let height = size.height * 0.2
         let xPos = size.width * 0.05
         let yPos = size.height * 0.1
-
 
         return CGRect(x: xPos, y: yPos, width: width, height: height)
     }

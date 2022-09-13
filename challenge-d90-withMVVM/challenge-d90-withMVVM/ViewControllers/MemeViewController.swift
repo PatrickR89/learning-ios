@@ -63,12 +63,13 @@ private extension MemeViewController {
     }
 
     func toggleToolbar(_ imageState: Bool) {
-        if imageState {
-            addToolbarItems()
-        }
+
+            addToolbarItems(loadedImage: imageState)
+
     }
 
-    func addToolbarItems() {
+    func addToolbarItems(loadedImage state: Bool) {
+
         let deleteIcon = UIImage(systemName: "trash")
 
         let deleteButton = UIBarButtonItem(
@@ -92,7 +93,18 @@ private extension MemeViewController {
                     barButtonSystemItem: .flexibleSpace,
                     target: nil,
                     action: nil)
-        toolbarItems = [deleteButton, spacer, editButton, spacer, shareButton]
+        toolbarItems = []
+
+        if state == false {
+            toolbarItems?.append(deleteButton)
+            toolbarItems?.append(spacer)
+            toolbarItems?.append(spacer)
+        } else if state == true {
+            toolbarItems?.append(deleteButton)
+            toolbarItems?.append(spacer)
+            toolbarItems?.append(spacer)
+            toolbarItems?.append(shareButton)
+        }
         navigationController?.isToolbarHidden = false
     }
 
@@ -106,7 +118,6 @@ private extension MemeViewController {
         present(alertController, animated: true)
     }
 
-    @objc func editMeme() {}
     @objc func shareMeme() {
         let alertController = viewModel.shareMeme(in: self)
         present(alertController, animated: true)

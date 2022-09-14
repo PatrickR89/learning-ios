@@ -40,6 +40,8 @@ extension UIAlertController {
 
             var title: String
             guard let meme = viewModel.delegate?.memeVCViewModelDidRequestMeme(viewModel) else {return nil}
+            guard let topTextEditable = viewModel.delegate?.memeVCViewModel(viewModel, didRequestStatusForTextAt: .top) else {return nil}
+            guard let bottomTextEditable = viewModel.delegate?.memeVCViewModel(viewModel, didRequestStatusForTextAt: .bottom) else {return nil}
             switch position {
             case .top:
                 title = "Edit text on top"
@@ -72,13 +74,13 @@ extension UIAlertController {
 
             switch position {
             case .top:
-                if !meme.hasTopText {
+                if !meme.hasTopText && topTextEditable {
                     return alertAction
                 } else {
                     return nil
                 }
             case .bottom:
-                if !meme.hasBottomText {
+                if !meme.hasBottomText && bottomTextEditable {
                     return alertAction
                 } else {
                     return nil

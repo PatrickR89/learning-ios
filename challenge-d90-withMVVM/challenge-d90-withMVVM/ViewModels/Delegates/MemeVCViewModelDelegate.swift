@@ -13,4 +13,5 @@ protocol MemeVCViewModelDelegate: AnyObject {
     func memeVCViewModelDidRequestMeme(_ viewModel: MemeVCViewModel) -> Meme
     func memeVCViewModel(_ viewModel: MemeVCViewModel, didSaveImageWithName imageName: String)
     func memeVCViewModel(_ viewModel: MemeVCViewModel, didRequestText position: Position) -> MemeText
+    func memeVCViewModel(_ viewModel: MemeVCViewModel, didRequestStatusForTextAt position: Position) -> Bool
 }

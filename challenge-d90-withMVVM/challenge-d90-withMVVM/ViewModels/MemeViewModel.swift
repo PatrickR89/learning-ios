@@ -107,12 +107,13 @@ extension MemeViewModel {
     func addText(text: String, position: Position) {
         let path = FileManager.default.getFilePath(meme.imageName)
         guard let image = UIImage(contentsOfFile: path.path) else {return}
-        print("with toptext \(topText.value) and bottomtext \(bottomText.value)")
         switch position {
         case .top:
             imageLayer = image.addMemeText(topText: text, bottomText: bottomText.value)
+
         case .bottom:
             imageLayer = image.addMemeText(topText: topText.value, bottomText: text)
+
         }
     }
 

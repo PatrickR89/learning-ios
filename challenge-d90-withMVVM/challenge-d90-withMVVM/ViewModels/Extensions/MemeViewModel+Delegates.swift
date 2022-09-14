@@ -8,15 +8,23 @@
 import UIKit
 
 extension MemeViewModel: MemeVCViewModelDelegate {
-    func memeVCViewModel(_ viewModel: MemeVCViewModel, didEditText text: String, at position: Position) {
+    func memeVCViewModel(_ viewModel: MemeVCViewModel, didRequestStatusForTextAt position: Position) -> Bool {
         switch position {
         case .top:
-            self.topText.value = text
+            return topText.new
         case .bottom:
-            self.bottomText.value = text
+            return bottomText.new
         }
     }
 
+    func memeVCViewModel(_ viewModel: MemeVCViewModel, didEditText text: String, at position: Position) {
+        switch position {
+        case .top:
+            topText.value = text
+        case .bottom:
+            bottomText.value = text
+        }
+    }
 
     func memeVCViewModel(_ viewModel: MemeVCViewModel, didRequestText position: Position) -> MemeText {
         switch position {
@@ -29,25 +37,8 @@ extension MemeViewModel: MemeVCViewModelDelegate {
 
     func memeVCViewModel(_ viewModel: MemeVCViewModel, didSaveImageWithName imageName: String) {
         let meme = Meme(imageName: imageName, hasTopText: false, hasBottomText: false, dateAdded: Date.now)
-        topText.new = true
-        bottomText.new = true
         updateMeme(meme)
     }
-
-//    func memeVCViewModel(
-//        _ viewModel: MemeVCViewModel,
-//        didEditMeme meme: Meme,
-//        with text: String,
-//        at position: Position) {
-//            resetImageLayer(false)
-//            switch position {
-//            case .top:
-//                self.topText.value = text
-//            case .bottom:
-//                self.bottomText.value = text
-//            }
-//
-//        }
 
     func memeVCViewModel(_ viewModel: MemeVCViewModel, didDeleteMeme meme: Meme) {
         deleteMeme(meme)

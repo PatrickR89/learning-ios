@@ -73,6 +73,10 @@ extension MemesViewModel {
 
 extension MemesViewModel: MemeViewModelDelegate {
 
+    func memeViewModel(_ viewModel: MemeViewModel, didEnableEditing state: Bool) {
+        memeVCViewModel.updateEditState(editIsEnabled: state)
+    }
+
     func memeViewModel(_ viewModel: MemeViewModel, didLoadMeme state: Bool) {
         memeVCViewModel.updateIsImageLoaded(imageDidLoad: state)
     }

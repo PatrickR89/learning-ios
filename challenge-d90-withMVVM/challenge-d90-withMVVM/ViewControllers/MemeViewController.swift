@@ -25,6 +25,7 @@ class MemeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        navigationController?.isToolbarHidden = false
 
         bindNavigationItem()
         navigationItem.rightBarButtonItem = UIBarButtonItem(
@@ -32,7 +33,6 @@ class MemeViewController: UIViewController {
             style: .plain,
             target: self,
             action: #selector(closeSelf))
-
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -60,12 +60,17 @@ private extension MemeViewController {
                 self?.toggleToolbar(imageState)
             }
         }
+
+        viewModel.observeEditState { editState in
+            DispatchQueue.main.async { [weak self] in
+                self?.appendEditButton(isEditingEnabled: editState)
+            }
+
+        }
     }
 
     func toggleToolbar(_ imageState: Bool) {
-
-            addToolbarItems(loadedImage: imageState)
-
+        addToolbarItems(loadedImage: imageState)
     }
 
     func addToolbarItems(loadedImage state: Bool) {
@@ -79,6 +84,33 @@ private extension MemeViewController {
             action: #selector(deleteMeme))
         deleteButton.tintColor = .systemRed
 
+        let shareIcon = UIImage(systemName: "square.and.arrow.up")
+        let shareButton = UIBarButtonItem(
+            image: shareIcon,
+            style: .plain,
+            target: self,
+            action: #selector(shareMeme))
+
+        let spacer = UIBarButtonItem(
+            barButtonSystemItem: .flexibleSpace,
+            target: nil,
+            action: nil)
+
+        if state == false {
+            toolbarItems?.append(deleteButton)
+            toolbarItems?.append(spacer)
+        } else if state == true {
+            toolbarItems = []
+            toolbarItems?.append(deleteButton)
+            toolbarItems?.append(spacer)
+            toolbarItems?.append(spacer)
+            toolbarItems?.append(spacer)
+            toolbarItems?.append(shareButton)
+        }
+    }
+
+    func appendEditButton(isEditingEnabled editing: Bool) {
+
         let editIcon = UIImage(systemName: "pencil")
         let editButton = UIBarButtonItem(
             image: editIcon,
@@ -86,26 +118,16 @@ private extension MemeViewController {
             target: self,
             action: #selector(openActionController))
 
-        let shareIcon = UIImage(systemName: "square.and.arrow.up")
-        let shareButton = UIBarButtonItem(image: shareIcon, style: .plain, target: self, action: #selector(shareMeme))
-
         let spacer = UIBarButtonItem(
-                    barButtonSystemItem: .flexibleSpace,
-                    target: nil,
-                    action: nil)
-        toolbarItems = []
+            barButtonSystemItem: .flexibleSpace,
+            target: nil,
+            action: nil)
 
-        if state == false {
-            toolbarItems?.append(deleteButton)
-            toolbarItems?.append(spacer)
-            toolbarItems?.append(spacer)
-        } else if state == true {
-            toolbarItems?.append(deleteButton)
-            toolbarItems?.append(spacer)
-            toolbarItems?.append(spacer)
-            toolbarItems?.append(shareButton)
+        if editing == true {
+            toolbarItems?[2] = editButton
+        } else {
+            toolbarItems?[2] = spacer
         }
-        navigationController?.isToolbarHidden = false
     }
 
     @objc func openActionController() {
@@ -125,6 +147,7 @@ private extension MemeViewController {
 }
 
 extension MemeViewController: MemeViewDelegate {
+
     func memeViewDidTapImage(_ view: MemeView) {
         let picker = viewModel.createImagePickerController(in: self)
         present(picker, animated: true)

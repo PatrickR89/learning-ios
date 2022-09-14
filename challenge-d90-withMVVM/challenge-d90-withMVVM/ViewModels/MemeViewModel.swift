@@ -13,6 +13,7 @@ class MemeViewModel {
             valueDidChange()
             topTextDidChange()
             bottomTextDidChange()
+            changeEditingStatus()
             imageDidLoad(image: meme.imageName)
         }
     }
@@ -21,6 +22,9 @@ class MemeViewModel {
         didSet {
             addText(topText: topText.value, bottomText: bottomText.value)
             topTextDidChange()
+            if topText.value != "" {
+                changeEditingStatus()
+            }
         }
     }
 
@@ -28,6 +32,9 @@ class MemeViewModel {
         didSet {
             addText(topText: topText.value, bottomText: bottomText.value)
             bottomTextDidChange()
+            if bottomText.value != "" {
+                changeEditingStatus()
+            }
         }
     }
 
@@ -82,6 +89,17 @@ extension MemeViewModel {
         imageLayer = nil
         topText.value = ""
         bottomText.value = ""
+    }
+
+    func changeEditingStatus() {
+        guard meme.imageName != "" else {
+            delegate?.memeViewModel(self, didEnableEditing: false)
+            return
+        }
+        let memeHasChangableText = !meme.hasTopText || !meme.hasBottomText
+        let memeHasEditabletext = topText.value != "" || bottomText.value != ""
+        let status = memeHasChangableText && memeHasEditabletext
+        delegate?.memeViewModel(self, didEnableEditing: status)
     }
 
     func addText(topText: String, bottomText: String) {
@@ -145,8 +163,10 @@ extension MemeViewModel {
         switch position {
         case .top:
             self.topText.value = text
+            self.topText.new = true
         case .bottom:
             self.bottomText.value = text
+            self.bottomText.new = true
         }
     }
 

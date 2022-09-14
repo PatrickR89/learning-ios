@@ -15,6 +15,12 @@ class MemeVCViewModel {
         }
     }
 
+    private var isEditingEnabled: Bool = false {
+        didSet {
+            editStateDidChange()
+        }
+    }
+
     private var imageName: String = "" {
         didSet {
             delegate?.memeVCViewModel(self, didSaveImageWithName: imageName)
@@ -24,10 +30,16 @@ class MemeVCViewModel {
     weak var delegate: MemeVCViewModelDelegate?
 
     private var observer: ((Bool) -> Void)?
+    private var editObserver: ((Bool) -> Void)?
 
     private func valueDidChange() {
         guard let observer = self.observer else {return}
         observer(isImageLoaded)
+    }
+
+    private func editStateDidChange() {
+        guard let editObserver = self.editObserver else {return}
+        editObserver(isEditingEnabled)
     }
 }
 
@@ -38,8 +50,17 @@ extension MemeVCViewModel {
         valueDidChange()
     }
 
+    func observeEditState(_ closure: @escaping (Bool) -> Void) {
+        self.editObserver = closure
+        editStateDidChange()
+    }
+
     func updateIsImageLoaded(imageDidLoad isImageLoaded: Bool) {
         self.isImageLoaded = isImageLoaded
+    }
+
+    func updateEditState(editIsEnabled isEditEnabled: Bool) {
+        self.isEditingEnabled = isEditEnabled
     }
 
     func addAlertController(in viewController: UIViewController) -> UIAlertController {

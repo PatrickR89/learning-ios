@@ -91,13 +91,14 @@ private extension MemeView {
     }
 
     func setupBindings() {
-        viewModel.observeMeme { meme in
-            DispatchQueue.main.async { [weak self] in
+        viewModel.observeMeme { [weak self] (meme) in
+            DispatchQueue.main.async {
                 guard let self = self else {return}
                 let path = FileManager.default.getFilePath(meme.imageName)
                 let image = UIImage(contentsOfFile: path.path)
                 self.imageView.image = image
             }
+
         }
 
         viewModel.observeTopText { topText, meme in

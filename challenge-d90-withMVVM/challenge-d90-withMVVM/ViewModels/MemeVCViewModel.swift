@@ -73,7 +73,8 @@ extension MemeVCViewModel {
         return alertController
     }
 
-    func createImagePickerController( in viewController:
+    func createImagePickerController(
+        in viewController:
         UIViewController &
         UIImagePickerControllerDelegate &
         UINavigationControllerDelegate) -> UIImagePickerController {
@@ -94,14 +95,9 @@ extension MemeVCViewModel {
         imageName = newImageName
     }
 
-    func editImage(meme: Meme, text: String, at textPosition: Position) {
+    func editImage(text: String, at textPosition: Position) {
 
-        switch textPosition {
-        case .top:
-            self.delegate?.memeVCViewModel(self, didEditMeme: meme, with: text, at: textPosition)
-        case .bottom:
-            self.delegate?.memeVCViewModel(self, didEditMeme: meme, with: text, at: textPosition)
-        }
+        self.delegate?.memeVCViewModel(self, didEditText: text, at: textPosition)
     }
 
     func shareMeme(in viewController: MemeViewController) -> UIAlertController {

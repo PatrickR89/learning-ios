@@ -15,17 +15,17 @@ extension UIAlertController {
             let alertController = UIAlertController(
                 title: "Edit meme",
                 message: nil, preferredStyle: .actionSheet)
-            let addTextToTop = createAlertAction(
+            let editTopText = createAlertAction(
                 position: .top, to: alertController,
                 in: viewController, with: viewModel )
-            let addBottomText = createAlertAction(
+            let editBottomText = createAlertAction(
                 position: .bottom, to: alertController,
                 in: viewController, with: viewModel )
 
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
 
-            if let addTextToTop = addTextToTop { alertController.addAction(addTextToTop) }
-            if let addBottomText = addBottomText { alertController.addAction(addBottomText) }
+            if let editTextToTop = editTopText { alertController.addAction(editTextToTop) }
+            if let editBottomText = editBottomText { alertController.addAction(editBottomText) }
 
             alertController.addAction(cancelAction)
 
@@ -57,10 +57,9 @@ extension UIAlertController {
                         style: .default) { [weak textAlertController, weak viewModel] _ in
                             guard let viewModel = viewModel,
                                   let textAlertController = textAlertController,
-                                  let meme = viewModel.delegate?.memeVCViewModelDidRequestMeme(viewModel),
                                   let text = textAlertController.textFields?[0].text else {return}
 
-                            viewModel.editImage(meme: meme, text: text, at: position)
+                            viewModel.editImage(text: text, at: position)
 
                         }
 
@@ -73,13 +72,13 @@ extension UIAlertController {
 
             switch position {
             case .top:
-                if meme.hasTopText {
+                if !meme.hasTopText {
                     return alertAction
                 } else {
                     return nil
                 }
             case .bottom:
-                if meme.hasBottomText {
+                if !meme.hasBottomText {
                     return alertAction
                 } else {
                     return nil

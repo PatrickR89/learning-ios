@@ -20,7 +20,7 @@ class MemeViewModel {
 
     var topText: MemeText = MemeText(value: "", new: false) {
         didSet {
-            addText(topText: topText.value, bottomText: bottomText.value)
+            addText(text: topText.value, position: .top)
             topTextDidChange()
             if topText.value != "" {
                 changeEditingStatus()
@@ -30,7 +30,7 @@ class MemeViewModel {
 
     var bottomText: MemeText = MemeText(value: "", new: false) {
         didSet {
-            addText(topText: topText.value, bottomText: bottomText.value)
+            addText(text: bottomText.value, position: .bottom)
             bottomTextDidChange()
             if bottomText.value != "" {
                 changeEditingStatus()
@@ -85,10 +85,12 @@ class MemeViewModel {
 }
 
 extension MemeViewModel {
-    func resetImageLayer() {
+    func resetImageLayer(_ requestFromVC: Bool) {
         imageLayer = nil
-        topText.value = ""
-        bottomText.value = ""
+        if requestFromVC {
+            topText.value = ""
+            bottomText.value = ""
+        }
     }
 
     func changeEditingStatus() {
@@ -102,10 +104,16 @@ extension MemeViewModel {
         delegate?.memeViewModel(self, didEnableEditing: status)
     }
 
-    func addText(topText: String, bottomText: String) {
+    func addText(text: String, position: Position) {
         let path = FileManager.default.getFilePath(meme.imageName)
         guard let image = UIImage(contentsOfFile: path.path) else {return}
-        imageLayer = image.addMemeText(topText: topText, bottomText: bottomText)
+        print("with toptext \(topText.value) and bottomtext \(bottomText.value)")
+        switch position {
+        case .top:
+            imageLayer = image.addMemeText(topText: text, bottomText: bottomText.value)
+        case .bottom:
+            imageLayer = image.addMemeText(topText: topText.value, bottomText: text)
+        }
     }
 
     func observeMeme(_ closure: @escaping (Meme) -> Void) {

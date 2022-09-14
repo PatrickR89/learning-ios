@@ -8,7 +8,7 @@
 import UIKit
 
 protocol MemeVCViewModelDelegate: AnyObject {
-    func memeVCViewModel(_ viewModel: MemeVCViewModel, didEditMeme meme: Meme, with text: String, at position: Position)
+    func memeVCViewModel(_ viewModel: MemeVCViewModel, didEditText text: String, at position: Position)
     func memeVCViewModel(_ viewModel: MemeVCViewModel, didDeleteMeme meme: Meme)
     func memeVCViewModelDidRequestMeme(_ viewModel: MemeVCViewModel) -> Meme
     func memeVCViewModel(_ viewModel: MemeVCViewModel, didSaveImageWithName imageName: String)

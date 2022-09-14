@@ -38,7 +38,7 @@ class MemeViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         memeView.viewModel.saveChanges()
-        memeView.viewModel.resetImageLayer(true)
+        memeView.viewModel.resetImageLayer(withTextDeleteRequest: true)
     }
 }
 
@@ -131,7 +131,7 @@ private extension MemeViewController {
     }
 
     @objc func openActionController() {
-        let alertController = viewModel.addAlertController(in: self)
+        let alertController = viewModel.addEditAlertController(in: self)
         present(alertController, animated: true)
     }
 
@@ -141,7 +141,7 @@ private extension MemeViewController {
     }
 
     @objc func shareMeme() {
-        let alertController = viewModel.shareMeme(in: self)
+        let alertController = viewModel.addShareAlertController(in: self)
         present(alertController, animated: true)
     }
 }

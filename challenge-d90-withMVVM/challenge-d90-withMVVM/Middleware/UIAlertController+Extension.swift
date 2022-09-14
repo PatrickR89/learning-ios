@@ -9,7 +9,7 @@ import UIKit
 
 extension UIAlertController {
 
-    func createAlertController(
+    func createEditAlertController(
         in viewController: UIViewController,
         with viewModel: MemeVCViewModel) -> UIAlertController {
             let alertController = UIAlertController(
@@ -39,9 +39,15 @@ extension UIAlertController {
         with viewModel: MemeVCViewModel) -> UIAlertAction? {
 
             var title: String
-            guard let meme = viewModel.delegate?.memeVCViewModelDidRequestMeme(viewModel) else {return nil}
-            guard let topTextEditable = viewModel.delegate?.memeVCViewModel(viewModel, didRequestStatusForTextAt: .top) else {return nil}
-            guard let bottomTextEditable = viewModel.delegate?.memeVCViewModel(viewModel, didRequestStatusForTextAt: .bottom) else {return nil}
+
+            guard let meme = viewModel.delegate?.memeVCViewModelDidRequestMeme(viewModel),
+                  let topTextEditable = viewModel.delegate?.memeVCViewModel(
+                    viewModel,
+                    didRequestStatusForTextAt: .top),
+                  let bottomTextEditable = viewModel.delegate?.memeVCViewModel(
+                    viewModel,
+                    didRequestStatusForTextAt: .bottom) else {return nil}
+
             switch position {
             case .top:
                 title = "Edit text on top"
@@ -60,9 +66,7 @@ extension UIAlertController {
                             guard let viewModel = viewModel,
                                   let textAlertController = textAlertController,
                                   let text = textAlertController.textFields?[0].text else {return}
-
                             viewModel.editImage(text: text, at: position)
-
                         }
 
                     let cancel = UIAlertAction(title: "Cancel", style: .cancel)
@@ -88,6 +92,44 @@ extension UIAlertController {
             }
         }
 
+    func createShareAlertController(
+        in viewController: UIViewController,
+        with viewModel: MemeVCViewModel) -> UIAlertController {
+        let alertController = UIAlertController(
+            title: "Enter name",
+            message: "Name your meme before you send it",
+            preferredStyle: .alert)
+
+        alertController.addTextField()
+
+        let titleAction = UIAlertAction(title: "Send", style: .default) { [weak alertController, weak viewModel] _ in
+            print("init")
+            guard let viewModel = viewModel,
+                  let title = alertController?.textFields?[0].text else {return}
+            let imageName = viewModel.imageNameRequested()
+            print(imageName)
+            let path = FileManager.default.getFilePath(imageName)
+            print(path)
+            do {
+                let data = try Data(contentsOf: path)
+                guard let image = UIImage(data: data) else {return}
+                print("lets")
+                let activityController = UIActivityViewController(
+                    activityItems: [image, title],
+                    applicationActivities: [])
+                viewController.present(activityController, animated: true)
+            } catch {
+                print(error)
+            }
+        }
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alertController.addAction(titleAction)
+        alertController.addAction(cancelAction)
+
+        return alertController
+    }
+
     func createDeletionAlertController(
         in viewController: UIViewController,
         with viewModel: MemeVCViewModel) -> UIAlertController {
@@ -104,6 +146,7 @@ extension UIAlertController {
                           let meme = viewModel.delegate?.memeVCViewModelDidRequestMeme(viewModel) else {return}
                     let imageName = meme.imageName
                     let path = FileManager.default.getFilePath(imageName)
+                    print(path)
                     do {
                         try FileManager.default.removeItem(at: path)
                     } catch {

@@ -18,7 +18,7 @@ class MemeViewModel {
         }
     }
 
-    var topText: MemeText = MemeText(value: "", new: false) {
+    var topText: MemeText = MemeText(value: "", isNew: false) {
         didSet {
             addText(text: topText.value, position: .top)
             topTextDidChange()
@@ -28,7 +28,7 @@ class MemeViewModel {
         }
     }
 
-    var bottomText: MemeText = MemeText(value: "", new: false) {
+    var bottomText: MemeText = MemeText(value: "", isNew: false) {
         didSet {
             addText(text: bottomText.value, position: .bottom)
             bottomTextDidChange()
@@ -85,26 +85,15 @@ class MemeViewModel {
 }
 
 extension MemeViewModel {
-    func resetImageLayer(_ requestFromVC: Bool) {
+    func resetImageLayer(withTextDeleteRequest deleteAll: Bool) {
         imageLayer = nil
-        if requestFromVC {
+        if deleteAll {
             topText.value = ""
             bottomText.value = ""
         }
     }
 
-    func changeEditingStatus() {
-        guard meme.imageName != "" else {
-            delegate?.memeViewModel(self, didEnableEditing: false)
-            return
-        }
-        let memeHasChangableText = !meme.hasTopText || !meme.hasBottomText
-        let memeHasEditabletext = topText.value != "" || bottomText.value != ""
-        let status = memeHasChangableText && memeHasEditabletext
-        delegate?.memeViewModel(self, didEnableEditing: status)
-    }
-
-    func addText(text: String, position: Position) {
+    private func addText(text: String, position: Position) {
         let path = FileManager.default.getFilePath(meme.imageName)
         guard let image = UIImage(contentsOfFile: path.path) else {return}
         switch position {
@@ -113,10 +102,67 @@ extension MemeViewModel {
 
         case .bottom:
             imageLayer = image.addMemeText(topText: topText.value, bottomText: text)
-
         }
     }
 
+    func returnMeme() -> Meme? {
+        return meme
+    }
+
+    func appendMemeVCViewModel(_ memeVCViewModel: MemeVCViewModel) {
+        self.memeVCViewModel = memeVCViewModel
+        memeVCViewModel.delegate = self
+    }
+
+    func updateMemeText(with text: String, on position: Position) {
+        switch position {
+        case .top:
+            self.topText.value = text
+            self.topText.isNew = true
+        case .bottom:
+            self.bottomText.value = text
+            self.bottomText.isNew = true
+        }
+    }
+
+    func saveChanges() {
+        let imagePath = FileManager.default.getFilePath(meme.imageName)
+        guard let image = UIImage(contentsOfFile: imagePath.path),
+              let imageLayer = imageLayer else {return}
+
+        let imageWithText = image.saveImage(with: imageLayer)
+        if let jpegData = imageWithText.jpegData(compressionQuality: 0.5) {
+            try? jpegData.write(to: imagePath)
+        }
+        updateMeme(meme)
+    }
+}
+
+// MARK: Meme manipulation methods
+
+extension MemeViewModel {
+    func updateMeme(_ meme: Meme) {
+        self.meme = meme
+        delegate?.memeViewModel(self, didChangeMeme: meme)
+    }
+
+    func loadMeme(_ meme: Meme?) {
+        if let meme = meme {
+            self.meme = meme
+        } else {
+            self.meme = Meme(imageName: "", hasTopText: false, hasBottomText: false, dateAdded: Date.now)
+        }
+    }
+
+    func deleteMeme(_ meme: Meme) {
+        delegate?.memeViewModel(self, didDeleteMeme: meme)
+        self.meme = Meme(imageName: "", hasTopText: false, hasBottomText: false, dateAdded: Date.now)
+    }
+}
+
+// MARK: Observer methods
+
+extension MemeViewModel {
     func observeMeme(_ closure: @escaping (Meme) -> Void) {
         self.observer = closure
         valueDidChange()
@@ -135,60 +181,24 @@ extension MemeViewModel {
         self.bottomTextObserver = closure
         bottomTextDidChange()
     }
+}
 
-    func updateMeme(_ meme: Meme) {
-        self.meme = meme
-        delegate?.memeViewModel(self, didChangeMeme: meme)
-    }
+// MARK: MemeViewModelDelegate:
 
-    func loadMeme(_ meme: Meme?) {
-        if let meme = meme {
-            self.meme = meme
-        } else {
-            self.meme = Meme(imageName: "", hasTopText: false, hasBottomText: false, dateAdded: Date.now)
-        }
-    }
-
-    func deleteMeme(_ meme: Meme) {
-        delegate?.memeViewModel(self, didDeleteMeme: meme)
-        self.meme = Meme(imageName: "", hasTopText: false, hasBottomText: false, dateAdded: Date.now)
-    }
-
-    func returnMeme() -> Meme? {
-        return meme
-    }
-
+extension MemeViewModel {
     func imageDidLoad(image: String) {
         let state = image != ""
         delegate?.memeViewModel(self, didLoadMeme: state)
     }
 
-    func appendMemeVCViewModel(_ memeVCViewModel: MemeVCViewModel) {
-        self.memeVCViewModel = memeVCViewModel
-        memeVCViewModel.delegate = self
-    }
-
-    func updateMemeText(with text: String, on position: Position) {
-        switch position {
-        case .top:
-            self.topText.value = text
-            self.topText.new = true
-        case .bottom:
-            self.bottomText.value = text
-            self.bottomText.new = true
+    func changeEditingStatus() {
+        guard meme.imageName != "" else {
+            delegate?.memeViewModel(self, didEnableEditing: false)
+            return
         }
-    }
-
-    func saveChanges() {
-        let imagePath = FileManager.default.getFilePath(meme.imageName)
-        guard let image = UIImage(contentsOfFile: imagePath.path),
-              let imageLayer = imageLayer else {return}
-
-        let imageWithText = image.saveImage(with: imageLayer)
-        if let jpegData = imageWithText.jpegData(compressionQuality: 0.5) {
-            try? jpegData.write(to: imagePath)
-        }
-
-        updateMeme(meme)
+        let memeHasChangableText = !meme.hasTopText || !meme.hasBottomText
+        let memeHasEditabletext = topText.value != "" || bottomText.value != ""
+        let status = memeHasChangableText && memeHasEditabletext
+        delegate?.memeViewModel(self, didEnableEditing: status)
     }
 }

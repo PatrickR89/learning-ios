@@ -9,5 +9,5 @@ import UIKit
 
 struct MemeText {
     var value: String
-    var new: Bool
+    var isNew: Bool
 }

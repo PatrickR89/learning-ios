@@ -11,9 +11,9 @@ extension MemeViewModel: MemeVCViewModelDelegate {
     func memeVCViewModel(_ viewModel: MemeVCViewModel, didRequestStatusForTextAt position: Position) -> Bool {
         switch position {
         case .top:
-            return topText.new
+            return topText.isNew
         case .bottom:
-            return bottomText.new
+            return bottomText.isNew
         }
     }
 

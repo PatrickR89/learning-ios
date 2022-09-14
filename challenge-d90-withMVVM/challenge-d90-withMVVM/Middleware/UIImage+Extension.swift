@@ -33,6 +33,7 @@ extension UIImage {
                 .backgroundColor: UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.3),
                 .paragraphStyle: paragraphStyle
             ]
+
             if topText != "" {
                 let attributedString = NSAttributedString(string: topText, attributes: paragraphAttributes)
 
@@ -46,7 +47,6 @@ extension UIImage {
                 let textFrame = createBottomTextFrame(size: image.size)
                 attributedString.draw(with: textFrame, options: .usesLineFragmentOrigin, context: nil)
             }
-
         }
         return tempImage
     }
@@ -67,45 +67,7 @@ extension UIImage {
 
         let newImage = renderer.image { _ in
             image.draw(at: CGPoint(x: 0, y: 0))
-//            imageLayer.draw(at: CGPoint(x: 0, y: 0))
             imageLayer.draw(in: rect)
-        }
-
-        return newImage
-    }
-
-    func saveImageWithText( text: String, at textPosition: Position) -> UIImage {
-
-        let image = self.resizeImage()
-        let format = UIGraphicsImageRendererFormat()
-        format.scale = 1
-        format.preferredRange = .standard
-
-        let renderer = UIGraphicsImageRenderer(
-            size: CGSize(
-                width: image.size.width,
-                height: image.size.height),
-            format: format)
-
-        let newImage = renderer.image { _ in
-            let paragraphStyle = NSMutableParagraphStyle()
-            paragraphStyle.alignment = .center
-            guard let customFont = UIFont(name: "Lato-Regular", size: 50) else {
-                fatalError( "Font not found" )
-            }
-
-            let paragraphAttributes: [NSAttributedString.Key: Any] = [
-                .font: UIFontMetrics.default.scaledFont(for: customFont),
-                .foregroundColor: UIColor.white,
-                .backgroundColor: UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.3),
-                .paragraphStyle: paragraphStyle
-            ]
-            let attributedString = NSAttributedString(string: text, attributes: paragraphAttributes)
-
-            image.draw(at: CGPoint(x: 0, y: 0))
-
-            let textFrame = createTextFrame(size: image.size, position: textPosition)
-            attributedString.draw(with: textFrame, options: .usesLineFragmentOrigin, context: nil)
         }
 
         return newImage

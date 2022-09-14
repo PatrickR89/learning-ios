@@ -27,6 +27,8 @@ class MemeVCViewModel {
         }
     }
 
+    private var shareImageName: String = ""
+
     weak var delegate: MemeVCViewModelDelegate?
 
     private var observer: ((Bool) -> Void)?
@@ -63,8 +65,13 @@ extension MemeVCViewModel {
         self.isEditingEnabled = isEditEnabled
     }
 
-    func addAlertController(in viewController: UIViewController) -> UIAlertController {
-        let alertController = UIAlertController().createAlertController(in: viewController, with: self)
+    func addShareAlertController(in viewController: UIViewController) -> UIAlertController {
+        let alertController = UIAlertController().createShareAlertController(in: viewController, with: self)
+        return alertController
+    }
+
+    func addEditAlertController(in viewController: UIViewController) -> UIAlertController {
+        let alertController = UIAlertController().createEditAlertController(in: viewController, with: self)
         return alertController
     }
 
@@ -96,34 +103,14 @@ extension MemeVCViewModel {
     }
 
     func editImage(text: String, at textPosition: Position) {
-
         self.delegate?.memeVCViewModel(self, didEditText: text, at: textPosition)
     }
 
-    func shareMeme(in viewController: MemeViewController) -> UIAlertController {
-        let alertController = UIAlertController(
-            title: "Enter name",
-            message: "Name your meme before you send it",
-            preferredStyle: .alert)
+    func imageNameRequested() -> String {
+        return shareImageName
+    }
 
-        alertController.addTextField()
-
-        let titleAction = UIAlertAction(title: "Send", style: .default) { [weak alertController, weak self] _ in
-            print("init")
-            guard let self = self,
-                  let title = alertController?.textFields?[0].text else {return}
-            let imagePath = FileManager.default.getFilePath(self.imageName)
-            guard let image = UIImage(contentsOfFile: imagePath.path) else {return}
-            print("lets")
-            let activityController = UIActivityViewController(activityItems: [image, title], applicationActivities: [])
-
-            viewController.present(activityController, animated: true)
-        }
-
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        alertController.addAction(titleAction)
-        alertController.addAction(cancelAction)
-
-        return alertController
+    func imageNameLoaded(imageName: String) {
+        self.shareImageName = imageName
     }
 }

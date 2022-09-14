@@ -68,17 +68,19 @@ extension MemesViewModel {
 
     func loadMeme(_ meme: Meme?) {
         memeViewModel.loadMeme(meme)
+        if let imageName = meme?.imageName {
+            memeVCViewModel.imageNameLoaded(imageName: imageName)
+        }
     }
 }
 
 extension MemesViewModel: MemeViewModelDelegate {
+    func memeViewModel(_ viewModel: MemeViewModel, didLoadMeme state: Bool) {
+        memeVCViewModel.updateIsImageLoaded(imageDidLoad: state)
+    }
 
     func memeViewModel(_ viewModel: MemeViewModel, didEnableEditing state: Bool) {
         memeVCViewModel.updateEditState(editIsEnabled: state)
-    }
-
-    func memeViewModel(_ viewModel: MemeViewModel, didLoadMeme state: Bool) {
-        memeVCViewModel.updateIsImageLoaded(imageDidLoad: state)
     }
 
     func memeViewModel(_ viewModel: MemeViewModel, didChangeMeme inputMeme: Meme) {

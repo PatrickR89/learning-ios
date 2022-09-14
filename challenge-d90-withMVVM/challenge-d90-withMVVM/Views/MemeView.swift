@@ -28,7 +28,7 @@ class MemeView: UIView {
     }
 
     deinit {
-        viewModel.resetImageLayer(true)
+        viewModel.resetImageLayer(withTextDeleteRequest: true)
     }
 }
 

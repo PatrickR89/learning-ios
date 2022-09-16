@@ -8,16 +8,18 @@
 import UIKit
 
 class LoginView: UIView {
-    var nameView = UITextView()
-    var passwordView = UITextView()
-    var loginButton = UIButton()
-    var createAccBtn = UIButton()
+    private var warningLabel = UILabel()
+    private var nameView = UITextView()
+    private var passwordView = UITextView()
+    private var loginButton = UIButton()
+    private var createAccBtn = UIButton()
     private var viewModel: LoginViewModel
 
     init(with viewModel: LoginViewModel) {
         self.viewModel = viewModel
         super.init(frame: .zero)
         setupUI()
+        setupBindings()
     }
 
     required init?(coder: NSCoder) {
@@ -27,16 +29,13 @@ class LoginView: UIView {
 
 private extension LoginView {
     func setupUI() {
-        self.addSubview(nameView)
-        self.addSubview(passwordView)
-        self.addSubview(loginButton)
-        self.addSubview(createAccBtn)
-        self.backgroundColor = .white
+        let subviews = [nameView, passwordView, loginButton, createAccBtn, warningLabel]
+        for subview in subviews {
+            self.addSubview(subview)
+            subview.translatesAutoresizingMaskIntoConstraints = false
+        }
 
-        nameView.translatesAutoresizingMaskIntoConstraints = false
-        passwordView.translatesAutoresizingMaskIntoConstraints = false
-        loginButton.translatesAutoresizingMaskIntoConstraints = false
-        createAccBtn.translatesAutoresizingMaskIntoConstraints = false
+        self.backgroundColor = .white
 
         setupTextView(for: nameView)
         setupTextView(for: passwordView)
@@ -50,6 +49,14 @@ private extension LoginView {
         loginButton.backgroundColor = .systemBlue
         createAccBtn.backgroundColor = .systemBlue
 
+        warningLabel.textColor = .red
+        warningLabel.isHidden = true
+        warningLabel.text = ""
+
+        activateConstraints()
+    }
+
+    func activateConstraints() {
         NSLayoutConstraint.activate([
             nameView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -50),
             nameView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
@@ -64,35 +71,56 @@ private extension LoginView {
             loginButton.widthAnchor.constraint(equalTo: nameView.widthAnchor),
             createAccBtn.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 20),
             createAccBtn.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            createAccBtn.widthAnchor.constraint(equalTo: nameView.widthAnchor)
+            createAccBtn.widthAnchor.constraint(equalTo: nameView.widthAnchor),
+            warningLabel.bottomAnchor.constraint(equalTo: nameView.topAnchor, constant: -30),
+            warningLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            warningLabel.widthAnchor.constraint(equalTo: nameView.widthAnchor),
+            warningLabel.heightAnchor.constraint(equalTo: nameView.heightAnchor)
         ])
     }
 
-    @objc private func createUser() {
+    @objc func createUser() {
         self.nameView.endEditing(true)
         self.passwordView.endEditing(true)
         viewModel.createNewUser()
     }
 
-    @objc private func login() {
+    @objc func login() {
         self.nameView.endEditing(true)
         self.passwordView.endEditing(true)
         viewModel.login()
     }
 
-    private func setupTextView(for textView: UITextView) {
+    func setupTextView(for textView: UITextView) {
         textView.textContainer.maximumNumberOfLines = 1
         textView.textAlignment = .left
         textView.backgroundColor = .lightGray
         textView.textColor = .black
         textView.isScrollEnabled = false
         textView.delegate = self
+        textView.autocorrectionType = .no
+        textView.autocapitalizationType = .none
 
         if textView == nameView {
             nameView.text = "Enter username..."
         } else {
             passwordView.text = "Enter password..."
         }
+    }
+
+    func setupBindings() {
+        viewModel.observeLoginStatus { loginStatus in
+            DispatchQueue.main.async { [weak self] in
+                if !loginStatus {
+                    self?.loginFailed()
+                }
+            }
+        }
+    }
+
+    func loginFailed() {
+        warningLabel.text = "! Incorrect user name and/or password"
+        warningLabel.isHidden = false
     }
 }
 

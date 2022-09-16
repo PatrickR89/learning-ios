@@ -9,10 +9,10 @@ import UIKit
 import RealmSwift
 
 enum Levels: String, PersistableEnum {
-    case VeryEasy = "2 * 4"
-    case Easy = "3 * 4"
-    case Medium = "4 * 4"
-    case Hard = "3 * 6"
-    case VeryHard = "4 * 6"
-    case EmotionalDamage = "4 * 8"
+    case veryEasy = "2 * 4"
+    case easy = "3 * 4"
+    case mediumHard = "4 * 4"
+    case hard = "3 * 6"
+    case veryHard = "4 * 6"
+    case emotionalDamage = "4 * 8"
 }

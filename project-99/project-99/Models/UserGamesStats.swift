@@ -16,13 +16,20 @@ class UserGamesStats: Object {
     @Persisted var pairsRevealed: Int
     @Persisted var totalPlayTime: Double
 
-    convenience init(userId: UUID, numberOfGames: Int, numOfGamesWon: Int, cardsClicked: Int, pairsRevealed: Int, totalPlayTime: Double) {
-        self.init()
-        self.userId = userId
-        self.numberOfGames = numberOfGames
-        self.numOfGamesWon = numOfGamesWon
-        self.cardsClicked = cardsClicked
-        self.pairsRevealed = pairsRevealed
-        self.totalPlayTime = totalPlayTime
-    }
+    convenience init(
+        userId: UUID,
+        numberOfGames: Int,
+        numOfGamesWon: Int,
+        cardsClicked: Int,
+        pairsRevealed: Int,
+        totalPlayTime: Double) {
+
+            self.init()
+            self.userId = userId
+            self.numberOfGames = numberOfGames
+            self.numOfGamesWon = numOfGamesWon
+            self.cardsClicked = cardsClicked
+            self.pairsRevealed = pairsRevealed
+            self.totalPlayTime = totalPlayTime
+        }
 }

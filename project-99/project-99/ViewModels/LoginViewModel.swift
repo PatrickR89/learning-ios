@@ -10,11 +10,7 @@ import RealmSwift
 
 class LoginViewModel {
     var realm: Realm
-    private var user: User = User(id: UUID(), name: "", password: "") {
-        didSet {
-            print(user)
-        }
-    }
+    private var user: User = User(id: UUID(), name: "", password: "")
     private var username: String? {
         didSet {
             guard let username = username else {
@@ -34,19 +30,15 @@ class LoginViewModel {
 extension LoginViewModel {
     func usernameChanged(_ username: String) {
         self.username = username
-        print(username)
     }
 
     func passwordChanged(_ password: String) {
         self.password = password
-        print(password)
     }
 
     func createNewUser() {
-        print("saving")
         guard let username = username,
               let password = password else {return}
-        print("saved")
         let newUser = User(id: UUID(), name: username, password: password)
 
         try? realm.write {
@@ -55,10 +47,18 @@ extension LoginViewModel {
     }
 
     func findUserByName(_ username: String) {
-        print("searching")
-        print(realm.objects(User.self))
         if let result = realm.object(ofType: User.self, forPrimaryKey: username) {
             self.user = result
+        }
+    }
+
+    func login() {
+        guard let username = username,
+            let password = password else {return}
+        if username == user.name && password == user.password {
+            print("login")
+        } else {
+            print("incorrect user name and/or password")
         }
     }
 }

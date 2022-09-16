@@ -41,13 +41,13 @@ private extension LoginView {
         nameView.textAlignment = .left
         nameView.backgroundColor = .lightGray
         nameView.textColor = .black
-        nameView.layer.borderColor = UIColor.white.cgColor
-        nameView.layer.borderWidth = 1
+        nameView.isScrollEnabled = false
         passwordView.text = "Enter password..."
         passwordView.textContainer.maximumNumberOfLines = 1
         passwordView.textAlignment = .left
         passwordView.backgroundColor = .lightGray
         passwordView.textColor = .black
+        passwordView.isScrollEnabled = false
 
         loginButton.setTitle("Login", for: .normal)
         createAccBtn.setTitle("Create user", for: .normal)

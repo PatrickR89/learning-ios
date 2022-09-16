@@ -20,14 +20,32 @@ class LoginViewModel {
         }
     }
     private var password: String?
+    private var loginSuccess: Bool? {
+        didSet {
+            loginStatusDidChange()
+        }
+    }
+
+    private var observer: ((Bool) -> Void)?
 
     init(in realm: Realm) {
         self.realm = realm
     }
 
+    private func loginStatusDidChange () {
+        guard let observer = observer,
+        let loginSuccess = loginSuccess else {
+            return
+        }
+        observer(loginSuccess)
+    }
 }
 
 extension LoginViewModel {
+    func observeLoginStatus(_ closure: @escaping ((Bool) -> Void)) {
+        self.observer = closure
+        loginStatusDidChange()
+    }
     func usernameChanged(_ username: String) {
         self.username = username
     }
@@ -54,11 +72,12 @@ extension LoginViewModel {
 
     func login() {
         guard let username = username,
-            let password = password else {return}
+              let password = password else {return }
         if username == user.name && password == user.password {
             print("login")
+            self.loginSuccess = true
         } else {
-            print("incorrect user name and/or password")
+            self.loginSuccess = false
         }
     }
 }

@@ -22,4 +22,8 @@ extension MainMenuViewModel {
     func setUsername() -> String {
         return user.name
     }
+
+    func returnUserId() -> UUID {
+        return user.id
+    }
 }

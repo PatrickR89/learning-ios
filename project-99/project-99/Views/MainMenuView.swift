@@ -15,6 +15,8 @@ class MainMenuView: UIView {
     private let stackView = UIStackView()
     private let viewModel: MainMenuViewModel
 
+    weak var delegate: MainMenuViewDelegate?
+
     init(with viewModel: MainMenuViewModel) {
         self.viewModel = viewModel
         super.init(frame: .zero)
@@ -29,6 +31,8 @@ class MainMenuView: UIView {
         gameButton.setTitle("New Game", for: .normal)
         statsButton.setTitle("Stats", for: .normal)
         settingsButton.setTitle("Settings", for: .normal)
+
+        settingsButton.addTarget(self, action: #selector(openSettings), for: .touchUpInside)
 
         let buttons: [UIButton] = [gameButton, statsButton, settingsButton]
         self.addSubview(stackView)
@@ -45,5 +49,9 @@ class MainMenuView: UIView {
             stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             stackView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.75)
         ])
+    }
+
+    @objc func openSettings() {
+        delegate?.mainMenuView(self, didTapOnSettingsForUser: viewModel.returnUserId())
     }
 }

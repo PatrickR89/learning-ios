@@ -10,10 +10,13 @@ import RealmSwift
 
 class LoginViewController: UIViewController {
 
-    let viewModel = LoginViewModel()
+    let viewModel: LoginViewModel
     let loginView: LoginView
+    let realm: Realm
 
     init () {
+        self.realm = RealmDataService.shared.initiateRealm()
+        self.viewModel = LoginViewModel(in: realm)
         self.loginView = LoginView(with: viewModel)
         super.init(nibName: nil, bundle: nil)
     }

@@ -36,6 +36,17 @@ class SettingsViewController: UIViewController {
         tableView.frame = view.frame
         ThemeTableViewCell.register(in: tableView)
     }
+
+    private func bindTheme() {
+        viewModel.observeTheme { _ in
+            DispatchQueue.main.async { [weak self] in
+                if let index = self?.tableContent.firstIndex(where: {$0.self == SettingsContent.theme}) {
+                    let indexPath = IndexPath(row: index, section: 0)
+                    self?.tableView.reloadRows(at: [indexPath], with: .fade)
+                }
+            }
+        }
+    }
 }
 
 extension SettingsViewController: UITableViewDataSource {
@@ -50,6 +61,9 @@ extension SettingsViewController: UITableViewDataSource {
 
         case .theme:
             let cell = ThemeTableViewCell.dequeue(in: tableView, for: indexPath)
+            if let theme = viewModel.returnTheme() {
+                cell.changeValue(with: theme)
+            }
             return cell
         case .multicolor:
             let cell = ThemeTableViewCell.dequeue(in: tableView, for: indexPath)

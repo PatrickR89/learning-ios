@@ -38,7 +38,7 @@ class MainMenuViewController: UIViewController {
 
 extension MainMenuViewController: MainMenuViewDelegate {
     func mainMenuView(_ view: MainMenuView, didTapOnSettingsForUser id: UUID) {
-        let settingsViewModel = SettingsViewModel(forUser: id)
+        let settingsViewModel = SettingsViewModel(forUser: id, in: viewModel.realm)
         let viewController = SettingsViewController(with: settingsViewModel)
         let navController = UINavigationController()
 

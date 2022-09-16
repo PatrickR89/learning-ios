@@ -59,8 +59,24 @@ extension LoginViewModel {
               let password = password else {return}
         let newUser = User(id: UUID(), name: username, password: password)
 
+        let newSettings = UserSettings(
+            userId: newUser.id,
+            theme: .system,
+            withMulticolor: false,
+            withTimer: false)
+
+        let newStats = UserGamesStats(
+            userId: newUser.id,
+            numberOfGames: 0,
+            numOfGamesWon: 0,
+            cardsClicked: 0,
+            pairsRevealed: 0,
+            totalPlayTime: 0.0)
+
         try? realm.write {
             realm.add(newUser)
+            realm.add(newSettings)
+            realm.add(newStats)
         }
     }
 

@@ -41,8 +41,8 @@ private extension LoginViewController {
 
 extension LoginViewController: LoginViewDelegate {
     func loginView(_ view: LoginView, didLogUser user: User, in viewModel: LoginViewModel) {
-        
-        let mainMenuViewModel = MainMenuViewModel(for: user)
+
+        let mainMenuViewModel = MainMenuViewModel(for: user, in: realm)
         let viewController = MainMenuViewController(with: mainMenuViewModel)
 
         navigationController?.pushViewController(viewController, animated: true)

@@ -49,6 +49,9 @@ private extension LoginView {
         loginButton.backgroundColor = .systemBlue
         createAccBtn.backgroundColor = .systemBlue
 
+        loginButton.layer.cornerRadius = 4
+        createAccBtn.layer.cornerRadius = 4
+
         warningLabel.textColor = .red
         warningLabel.isHidden = true
         warningLabel.text = ""
@@ -94,16 +97,18 @@ private extension LoginView {
     func setupTextView(for textField: UITextField ) {
 
         textField.textAlignment = .left
-        textField.backgroundColor = .lightGray
         textField.textColor = .black
         textField.delegate = self
         textField.autocorrectionType = .no
         textField.autocapitalizationType = .none
+        textField.layer.cornerRadius = 4
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = UIColor.lightGray.cgColor
 
         if textField == nameField {
-            textField.placeholder = "Enter username..."
+            textField.placeholder = " Enter username..."
         } else {
-            textField.placeholder = "Enter password..."
+            textField.placeholder = " Enter password..."
             textField.isSecureTextEntry = true
         }
     }

@@ -64,6 +64,10 @@ extension LoginViewModel {
         }
     }
 
+    func sendUser() -> User {
+        return user
+    }
+
     func findUserByName(_ username: String) {
         if let result = realm.object(ofType: User.self, forPrimaryKey: username) {
             self.user = result
@@ -74,7 +78,6 @@ extension LoginViewModel {
         guard let username = username,
               let password = password else {return }
         if username == user.name && password == user.password {
-            print("login")
             self.loginSuccess = true
         } else {
             self.loginSuccess = false

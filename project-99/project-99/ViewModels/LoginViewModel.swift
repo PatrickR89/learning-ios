@@ -8,5 +8,25 @@
 import UIKit
 
 class LoginViewModel {
-    
+    private var user: User = User(id: UUID(), name: "", password: "")
+    private var username: String? {
+        didSet {
+            guard let username = username else {
+                return
+            }
+            print(username)
+        }
+    }
+    private var password: String?
+
+}
+
+extension LoginViewModel {
+    func usernameChanged(_ username: String) {
+        self.username = username
+    }
+
+    func passwordChanged(_ password: String) {
+        self.password = password
+    }
 }

@@ -37,8 +37,6 @@ private extension LoginView {
             subview.translatesAutoresizingMaskIntoConstraints = false
         }
 
-        self.backgroundColor = .white
-
         setupTextView(for: nameField)
         setupTextView(for: passwordField)
 
@@ -94,6 +92,8 @@ private extension LoginView {
         self.nameField.endEditing(true)
         self.passwordField.endEditing(true)
         viewModel.login()
+        self.nameField.text = ""
+        self.passwordField.text = ""
     }
 
     func setupTextView(for textField: UITextField ) {

@@ -16,7 +16,9 @@ class LoginViewModel {
             guard let username = username else {
                 return
             }
-            findUserByName(username)
+            if username != "" {
+                findUserByName(username)
+            }
         }
     }
     private var password: String?
@@ -95,6 +97,8 @@ extension LoginViewModel {
               let password = password else {return }
         if username == user.name && password == user.password {
             self.loginSuccess = true
+            self.username = ""
+            self.password = ""
         } else {
             self.loginSuccess = false
         }

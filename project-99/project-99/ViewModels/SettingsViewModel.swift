@@ -42,6 +42,17 @@ class SettingsViewModel {
         return theme
     }
 
+    func changeTheme() {
+        let themes: [Theme] = [.system, .dark, .light]
+        if let index = themes.firstIndex(where: {$0.rawValue == userTheme?.rawValue}) {
+            var newIndex = index + 1
+            if newIndex > themes.count - 1 {
+                newIndex = 0
+            }
+            userTheme = themes[newIndex]
+        }
+    }
+
     private func themeDidChange() {
         guard let themeObserver = themeObserver,
         let userTheme = userTheme else {

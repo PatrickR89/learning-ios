@@ -12,6 +12,7 @@ class MainMenuView: UIView {
     private let gameButton = UIButton()
     private let statsButton = UIButton()
     private let settingsButton = UIButton()
+    private let stackView = UIStackView()
     private let viewModel: MainMenuViewModel
 
     init(with viewModel: MainMenuViewModel) {
@@ -25,6 +26,24 @@ class MainMenuView: UIView {
     }
 
     func setupUI() {
-        self.backgroundColor = .red
+        gameButton.setTitle("New Game", for: .normal)
+        statsButton.setTitle("Stats", for: .normal)
+        settingsButton.setTitle("Settings", for: .normal)
+
+        let buttons: [UIButton] = [gameButton, statsButton, settingsButton]
+        self.addSubview(stackView)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+
+        stackView.axis = .vertical
+        stackView.distribution = .equalCentering
+        stackView.alignment = .top
+        stackView.spacing = 20
+        stackView.arrangeView(with: buttons)
+
+        NSLayoutConstraint.activate([
+            stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            stackView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.75)
+        ])
     }
 }

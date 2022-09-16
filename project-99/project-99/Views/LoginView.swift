@@ -45,6 +45,7 @@ private extension LoginView {
         createAccBtn.setTitle("Create user", for: .normal)
 
         createAccBtn.addTarget(self, action: #selector(createUser), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
 
         loginButton.backgroundColor = .systemBlue
         createAccBtn.backgroundColor = .systemBlue
@@ -71,6 +72,12 @@ private extension LoginView {
         self.nameView.endEditing(true)
         self.passwordView.endEditing(true)
         viewModel.createNewUser()
+    }
+
+    @objc private func login() {
+        self.nameView.endEditing(true)
+        self.passwordView.endEditing(true)
+        viewModel.login()
     }
 
     private func setupTextView(for textView: UITextView) {

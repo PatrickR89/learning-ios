@@ -9,8 +9,8 @@ import UIKit
 
 class LoginView: UIView {
     private var warningLabel = UILabel()
-    private var nameView = UITextView()
-    private var passwordView = UITextView()
+    private var nameField = UITextField()
+    private var passwordField = UITextField()
     private var loginButton = UIButton()
     private var createAccBtn = UIButton()
     private var viewModel: LoginViewModel
@@ -29,7 +29,7 @@ class LoginView: UIView {
 
 private extension LoginView {
     func setupUI() {
-        let subviews = [nameView, passwordView, loginButton, createAccBtn, warningLabel]
+        let subviews = [nameField, passwordField, loginButton, createAccBtn, warningLabel]
         for subview in subviews {
             self.addSubview(subview)
             subview.translatesAutoresizingMaskIntoConstraints = false
@@ -37,8 +37,8 @@ private extension LoginView {
 
         self.backgroundColor = .white
 
-        setupTextView(for: nameView)
-        setupTextView(for: passwordView)
+        setupTextView(for: nameField)
+        setupTextView(for: passwordField)
 
         loginButton.setTitle("Login", for: .normal)
         createAccBtn.setTitle("Create user", for: .normal)
@@ -58,53 +58,53 @@ private extension LoginView {
 
     func activateConstraints() {
         NSLayoutConstraint.activate([
-            nameView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -50),
-            nameView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            nameView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.75),
-            nameView.heightAnchor.constraint(equalToConstant: 35),
-            passwordView.topAnchor.constraint(equalTo: nameView.bottomAnchor, constant: 20),
-            passwordView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            passwordView.widthAnchor.constraint(equalTo: nameView.widthAnchor),
-            passwordView.heightAnchor.constraint(equalToConstant: 35),
-            loginButton.topAnchor.constraint(equalTo: passwordView.bottomAnchor, constant: 40),
+            nameField.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -50),
+            nameField.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            nameField.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.75),
+            nameField.heightAnchor.constraint(equalToConstant: 35),
+            passwordField.topAnchor.constraint(equalTo: nameField.bottomAnchor, constant: 20),
+            passwordField.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            passwordField.widthAnchor.constraint(equalTo: nameField.widthAnchor),
+            passwordField.heightAnchor.constraint(equalToConstant: 35),
+            loginButton.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant: 40),
             loginButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            loginButton.widthAnchor.constraint(equalTo: nameView.widthAnchor),
+            loginButton.widthAnchor.constraint(equalTo: nameField.widthAnchor),
             createAccBtn.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 20),
             createAccBtn.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            createAccBtn.widthAnchor.constraint(equalTo: nameView.widthAnchor),
-            warningLabel.bottomAnchor.constraint(equalTo: nameView.topAnchor, constant: -30),
+            createAccBtn.widthAnchor.constraint(equalTo: nameField.widthAnchor),
+            warningLabel.bottomAnchor.constraint(equalTo: nameField.topAnchor, constant: -30),
             warningLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            warningLabel.widthAnchor.constraint(equalTo: nameView.widthAnchor),
-            warningLabel.heightAnchor.constraint(equalTo: nameView.heightAnchor)
+            warningLabel.widthAnchor.constraint(equalTo: nameField.widthAnchor),
+            warningLabel.heightAnchor.constraint(equalTo: nameField.heightAnchor)
         ])
     }
 
     @objc func createUser() {
-        self.nameView.endEditing(true)
-        self.passwordView.endEditing(true)
+        self.nameField.endEditing(true)
+        self.passwordField.endEditing(true)
         viewModel.createNewUser()
     }
 
     @objc func login() {
-        self.nameView.endEditing(true)
-        self.passwordView.endEditing(true)
+        self.nameField.endEditing(true)
+        self.passwordField.endEditing(true)
         viewModel.login()
     }
 
-    func setupTextView(for textView: UITextView) {
-        textView.textContainer.maximumNumberOfLines = 1
-        textView.textAlignment = .left
-        textView.backgroundColor = .lightGray
-        textView.textColor = .black
-        textView.isScrollEnabled = false
-        textView.delegate = self
-        textView.autocorrectionType = .no
-        textView.autocapitalizationType = .none
+    func setupTextView(for textField: UITextField ) {
 
-        if textView == nameView {
-            nameView.text = "Enter username..."
+        textField.textAlignment = .left
+        textField.backgroundColor = .lightGray
+        textField.textColor = .black
+        textField.delegate = self
+        textField.autocorrectionType = .no
+        textField.autocapitalizationType = .none
+
+        if textField == nameField {
+            textField.placeholder = "Enter username..."
         } else {
-            passwordView.text = "Enter password..."
+            textField.placeholder = "Enter password..."
+            textField.isSecureTextEntry = true
         }
     }
 
@@ -126,41 +126,19 @@ private extension LoginView {
 
 extension LoginView {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.nameView.endEditing(true)
-        self.passwordView.endEditing(true)
+        self.nameField.endEditing(true)
+        self.passwordField.endEditing(true)
     }
 }
 
-extension LoginView: UITextViewDelegate {
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView == nameView {
-            if textView.text == "Enter username..." {
-                textView.text = ""
-            }
+extension LoginView: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == nameField {
+            viewModel.usernameChanged(textField.text ?? "")
         }
 
-        if textView == passwordView {
-            if textView.text == "Enter password..." {
-                textView.text = ""
-            }
-        }
-    }
-
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView == nameView {
-            if textView.text == "" {
-                textView.text = "Enter username..."
-            } else {
-                viewModel.usernameChanged(textView.text)
-            }
-        }
-
-        if textView == passwordView {
-            if textView.text == "" {
-                textView.text = "Enter password..."
-            } else {
-                viewModel.passwordChanged(textView.text)
-            }
+        if textField == passwordField {
+            viewModel.passwordChanged(textField.text ?? "")
         }
     }
 }

@@ -41,8 +41,11 @@ private extension LoginViewController {
 
 extension LoginViewController: LoginViewDelegate {
     func loginView(_ view: LoginView, didLogUser user: User, in viewModel: LoginViewModel) {
-        let viewController = MainMenuViewController(user: user)
+        
+        let mainMenuViewModel = MainMenuViewModel(for: user)
+        let viewController = MainMenuViewController(with: mainMenuViewModel)
 
         navigationController?.pushViewController(viewController, animated: true)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: nil, action: nil)
     }
 }

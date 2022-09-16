@@ -9,12 +9,15 @@ import UIKit
 
 class MainMenuViewController: UIViewController {
 
-    var user: User
+    private let viewModel: MainMenuViewModel
+    private let menuView: MainMenuView
 
-    init(user: User) {
-        self.user = user
+    init(with viewModel: MainMenuViewModel) {
+        self.viewModel = viewModel
+        self.menuView = MainMenuView(with: viewModel)
 
         super.init(nibName: nil, bundle: nil)
+        setupUI()
     }
 
     required init?(coder: NSCoder) {
@@ -23,7 +26,11 @@ class MainMenuViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Welcome \(user.name)"
-        view.backgroundColor = .green
+        title = "Welcome \(viewModel.setUsername())"
+    }
+
+    private func setupUI() {
+        view.addSubview(menuView)
+        menuView.frame = view.frame
     }
 }

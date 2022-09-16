@@ -12,8 +12,10 @@ class LoginView: UIView {
     var passwordView = UITextView()
     var loginButton = UIButton()
     var createAccBtn = UIButton()
+    private var viewModel: LoginViewModel
 
     init(with viewModel: LoginViewModel) {
+        self.viewModel = viewModel
         super.init(frame: .zero)
         setupUI()
     }
@@ -36,18 +38,8 @@ private extension LoginView {
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         createAccBtn.translatesAutoresizingMaskIntoConstraints = false
 
-        nameView.text = "Enter username..."
-        nameView.textContainer.maximumNumberOfLines = 1
-        nameView.textAlignment = .left
-        nameView.backgroundColor = .lightGray
-        nameView.textColor = .black
-        nameView.isScrollEnabled = false
-        passwordView.text = "Enter password..."
-        passwordView.textContainer.maximumNumberOfLines = 1
-        passwordView.textAlignment = .left
-        passwordView.backgroundColor = .lightGray
-        passwordView.textColor = .black
-        passwordView.isScrollEnabled = false
+        setupTextView(for: nameView)
+        setupTextView(for: passwordView)
 
         loginButton.setTitle("Login", for: .normal)
         createAccBtn.setTitle("Create user", for: .normal)
@@ -71,5 +63,61 @@ private extension LoginView {
             createAccBtn.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             createAccBtn.widthAnchor.constraint(equalTo: nameView.widthAnchor)
         ])
+    }
+
+    private func setupTextView(for textView: UITextView) {
+        textView.textContainer.maximumNumberOfLines = 1
+        textView.textAlignment = .left
+        textView.backgroundColor = .lightGray
+        textView.textColor = .black
+        textView.isScrollEnabled = false
+        textView.delegate = self
+
+        if textView == nameView {
+            nameView.text = "Enter username..."
+        } else {
+            passwordView.text = "Enter password..."
+        }
+    }
+}
+
+extension LoginView {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.nameView.endEditing(true)
+        self.passwordView.endEditing(true)
+    }
+}
+
+extension LoginView: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView == nameView {
+            if textView.text == "Enter username..." {
+                textView.text = ""
+            }
+        }
+
+        if textView == passwordView {
+            if textView.text == "Enter password..." {
+                textView.text = ""
+            }
+        }
+    }
+
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView == nameView {
+            if textView.text == "" {
+                textView.text = "Enter username..."
+            } else {
+                viewModel.usernameChanged(textView.text)
+            }
+        }
+
+        if textView == passwordView {
+            if textView.text == "" {
+                textView.text = "Enter password..."
+            } else {
+                viewModel.passwordChanged(textView.text)
+            }
+        }
     }
 }

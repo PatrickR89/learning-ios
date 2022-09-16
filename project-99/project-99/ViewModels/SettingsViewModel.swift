@@ -14,6 +14,9 @@ class SettingsViewModel {
     private var userTheme: Theme? {
         didSet {
             themeDidChange()
+            if let userTheme = userTheme {
+                ColorContainer.shared.changeTheme(to: userTheme)
+            }
         }
     }
 

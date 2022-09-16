@@ -17,6 +17,7 @@ class SettingsViewController: UIViewController {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         setupUI()
+        bindTheme()
     }
 
     required init?(coder: NSCoder) {
@@ -33,6 +34,7 @@ class SettingsViewController: UIViewController {
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.frame = view.frame
         ThemeTableViewCell.register(in: tableView)
     }
@@ -77,6 +79,26 @@ extension SettingsViewController: UITableViewDataSource {
         case .password:
             let cell = ThemeTableViewCell.dequeue(in: tableView, for: indexPath)
             return cell
+        }
+    }
+}
+
+extension SettingsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let content = tableContent[indexPath.row]
+
+        switch content {
+
+        case .theme:
+            viewModel.changeTheme()
+        case .multicolor:
+            break
+        case .timer:
+            break
+        case .username:
+            break
+        case .password:
+            break
         }
     }
 }

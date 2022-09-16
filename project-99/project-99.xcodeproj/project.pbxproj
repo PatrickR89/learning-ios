@@ -160,7 +160,7 @@
 		CD88AF7428D306E500EFCBBB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CD88AFA728D491E100EFCBBB /* SettingsCells */,
+				CD88AFA728D491E100EFCBBB /* SettingsViewCells */,
 				CD88AF9B28D467FB00EFCBBB /* Delegates */,
 				CD88AF9028D3254500EFCBBB /* LoginView.swift */,
 				CD88AF9E28D46C9200EFCBBB /* MainMenuView.swift */,
@@ -212,12 +212,12 @@
 			path = Middleware;
 			sourceTree = "<group>";
 		};
-		CD88AFA728D491E100EFCBBB /* SettingsCells */ = {
+		CD88AFA728D491E100EFCBBB /* SettingsViewCells */ = {
 			isa = PBXGroup;
 			children = (
 				CD88AFA828D4920300EFCBBB /* ThemeTableViewCell.swift */,
 			);
-			path = SettingsCells;
+			path = SettingsViewCells;
 			sourceTree = "<group>";
 		};
 		EB75619A2A5DAE8CA72D994E /* Frameworks */ = {

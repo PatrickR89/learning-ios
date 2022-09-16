@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 
 class MainMenuViewModel {
-    private let realm: Realm
+    let realm: Realm
     private let user: User
 
     init(for user: User, in realm: Realm) {

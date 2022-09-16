@@ -9,7 +9,7 @@ import UIKit
 import RealmSwift
 
 enum Theme: String, PersistableEnum {
-    case light
-    case dark
-    case system
+    case light = "light"
+    case dark = "dark"
+    case system = "system"
 }

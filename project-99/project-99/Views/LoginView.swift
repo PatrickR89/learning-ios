@@ -15,6 +15,8 @@ class LoginView: UIView {
     private var createAccBtn = UIButton()
     private var viewModel: LoginViewModel
 
+    weak var delegate: LoginViewDelegate?
+
     init(with viewModel: LoginViewModel) {
         self.viewModel = viewModel
         super.init(frame: .zero)
@@ -116,8 +118,11 @@ private extension LoginView {
     func setupBindings() {
         viewModel.observeLoginStatus { loginStatus in
             DispatchQueue.main.async { [weak self] in
+                guard let self = self else {return}
                 if !loginStatus {
-                    self?.loginFailed()
+                    self.loginFailed()
+                } else {
+                    self.delegate?.loginView(self, didLogUser: self.viewModel.sendUser(), in: self.viewModel)
                 }
             }
         }

@@ -19,6 +19,7 @@ class LoginViewController: UIViewController {
         self.viewModel = LoginViewModel(in: realm)
         self.loginView = LoginView(with: viewModel)
         super.init(nibName: nil, bundle: nil)
+        loginView.delegate = self
     }
 
     required init?(coder: NSCoder) {
@@ -35,5 +36,13 @@ private extension LoginViewController {
     func setupUI() {
         view.addSubview(loginView)
         loginView.frame = view.frame
+    }
+}
+
+extension LoginViewController: LoginViewDelegate {
+    func loginView(_ view: LoginView, didLogUser user: User, in viewModel: LoginViewModel) {
+        let viewController = MainMenuViewController(user: user)
+
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }

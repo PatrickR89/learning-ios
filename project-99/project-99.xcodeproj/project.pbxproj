@@ -22,6 +22,8 @@
 		CD88AF9128D3254500EFCBBB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF9028D3254500EFCBBB /* LoginView.swift */; };
 		CD88AF9428D450D300EFCBBB /* RealmDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF9328D450D300EFCBBB /* RealmDataService.swift */; };
 		CD88AF9628D4510300EFCBBB /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF9528D4510300EFCBBB /* FileManager+Extension.swift */; };
+		CD88AF9828D466E500EFCBBB /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF9728D466E500EFCBBB /* MainMenuViewController.swift */; };
+		CD88AF9A28D4677F00EFCBBB /* LoginViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF9928D4677F00EFCBBB /* LoginViewDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		CD88AF9028D3254500EFCBBB /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		CD88AF9328D450D300EFCBBB /* RealmDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataService.swift; sourceTree = "<group>"; };
 		CD88AF9528D4510300EFCBBB /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
+		CD88AF9728D466E500EFCBBB /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainMenuViewController.swift; path = "project-99/ViewControllers/MainMenuViewController.swift"; sourceTree = SOURCE_ROOT; };
+		CD88AF9928D4677F00EFCBBB /* LoginViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewDelegate.swift; path = "../New Group/LoginViewDelegate.swift"; sourceTree = "<group>"; };
 		E9ED53374000A43727DB32F3 /* Pods-project-99.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-99.release.xcconfig"; path = "Target Support Files/Pods-project-99/Pods-project-99.release.xcconfig"; sourceTree = "<group>"; };
 		EE006DE768882589EA85F5B5 /* Pods-project-99.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-99.debug.xcconfig"; path = "Target Support Files/Pods-project-99/Pods-project-99.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,6 +121,7 @@
 		CD88AF7228D306D500EFCBBB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				CD88AF9728D466E500EFCBBB /* MainMenuViewController.swift */,
 				CD88AF6028D2F0B200EFCBBB /* LoginViewController.swift */,
 			);
 			path = ViewControllers;
@@ -133,6 +138,7 @@
 		CD88AF7428D306E500EFCBBB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CD88AF9B28D467FB00EFCBBB /* Delegates */,
 				CD88AF9028D3254500EFCBBB /* LoginView.swift */,
 			);
 			path = Views;
@@ -161,6 +167,14 @@
 				CD88AF9328D450D300EFCBBB /* RealmDataService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		CD88AF9B28D467FB00EFCBBB /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				CD88AF9928D4677F00EFCBBB /* LoginViewDelegate.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 		EB75619A2A5DAE8CA72D994E /* Frameworks */ = {
@@ -313,9 +327,11 @@
 				CD88AF7828D307BA00EFCBBB /* UserSettings.swift in Sources */,
 				CD88AF5F28D2F0B200EFCBBB /* SceneDelegate.swift in Sources */,
 				CD88AF7D28D30BAC00EFCBBB /* UserGamesStats.swift in Sources */,
+				CD88AF9828D466E500EFCBBB /* MainMenuViewController.swift in Sources */,
 				CD88AF9128D3254500EFCBBB /* LoginView.swift in Sources */,
 				CD88AF9428D450D300EFCBBB /* RealmDataService.swift in Sources */,
 				CD88AF8F28D3252D00EFCBBB /* LoginViewModel.swift in Sources */,
+				CD88AF9A28D4677F00EFCBBB /* LoginViewDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

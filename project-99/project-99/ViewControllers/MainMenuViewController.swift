@@ -32,5 +32,17 @@ class MainMenuViewController: UIViewController {
     private func setupUI() {
         view.addSubview(menuView)
         menuView.frame = view.frame
+        menuView.delegate = self
+    }
+}
+
+extension MainMenuViewController: MainMenuViewDelegate {
+    func mainMenuView(_ view: MainMenuView, didTapOnSettingsForUser id: UUID) {
+        let settingsViewModel = SettingsViewModel(forUser: id)
+        let viewController = SettingsViewController(with: settingsViewModel)
+        let navController = UINavigationController()
+
+        navController.viewControllers = [viewController]
+        present(navController, animated: true)
     }
 }

@@ -79,6 +79,17 @@ extension SettingsViewController: UITableViewDataSource {
         return sections.count
     }
 
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return "Game settings"
+        case 1:
+            return "Account settings"
+        default:
+            return ""
+        }
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sections[section].count
     }

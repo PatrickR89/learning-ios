@@ -37,4 +37,15 @@ extension UITableViewCell {
             valueLabel.heightAnchor.constraint(equalTo: titleLabel.heightAnchor)
         ])
     }
+
+    func setupSingleLable(with label: UILabel) {
+        contentView.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            label.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            label.heightAnchor.constraint(equalToConstant: 20)
+        ])
+    }
 }

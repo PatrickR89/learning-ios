@@ -11,10 +11,13 @@ class SettingsViewController: UIViewController {
 
     private let viewModel: SettingsViewModel
     private let tableView = UITableView()
-    private let tableContent: [SettingsContent] = [.theme, .multicolor, .timer, .username, .password]
+    private let primaryContent: [SettingsContent] = [.theme, .multicolor, .timer]
+    private let secondContent: [SettingsContent] = [.username, .password]
+    private let sections: [[SettingsContent]]
 
     init(with viewModel: SettingsViewModel) {
         self.viewModel = viewModel
+        self.sections = [primaryContent, secondContent]
         super.init(nibName: nil, bundle: nil)
         setupUI()
         setupBindings()
@@ -31,7 +34,6 @@ class SettingsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "\(viewModel.returnId())"
     }
 
     private func setupUI() {
@@ -43,12 +45,14 @@ class SettingsViewController: UIViewController {
         ThemeTableViewCell.register(in: tableView)
         MulticolorViewCell.register(in: tableView)
         TimerViewCell.register(in: tableView)
+        UsernameViewCell.register(in: tableView)
+        PasswordViewCell.register(in: tableView)
     }
 
     private func setupBindings() {
         viewModel.observeMulticolorState { _ in
             DispatchQueue.main.async { [weak self] in
-                if let index = self?.tableContent.firstIndex(where: {$0.self == SettingsContent.multicolor}) {
+                if let index = self?.primaryContent.firstIndex(where: {$0.self == SettingsContent.multicolor}) {
                     let indexPath = IndexPath(row: index, section: 0)
                     self?.tableView.reloadRows(at: [indexPath], with: .fade)
                 }
@@ -57,7 +61,7 @@ class SettingsViewController: UIViewController {
 
         viewModel.observerTimerState { _ in
             DispatchQueue.main.async { [weak self] in
-                if let index = self?.tableContent.firstIndex(where: {$0.self == SettingsContent.timer}) {
+                if let index = self?.primaryContent.firstIndex(where: {$0.self == SettingsContent.timer}) {
                     let indexPath = IndexPath(row: index, section: 0)
                     self?.tableView.reloadRows(at: [indexPath], with: .fade)
                 }
@@ -67,12 +71,17 @@ class SettingsViewController: UIViewController {
 }
 
 extension SettingsViewController: UITableViewDataSource {
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sections.count
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableContent.count
+        return sections[section].count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let content = tableContent[indexPath.row]
+        let content = sections[indexPath.section][indexPath.row]
 
         switch content {
 
@@ -95,10 +104,10 @@ extension SettingsViewController: UITableViewDataSource {
             }
             return cell
         case .username:
-            let cell = ThemeTableViewCell.dequeue(in: tableView, for: indexPath)
+            let cell = UsernameViewCell.dequeue(in: tableView, for: indexPath)
             return cell
         case .password:
-            let cell = ThemeTableViewCell.dequeue(in: tableView, for: indexPath)
+            let cell = PasswordViewCell.dequeue(in: tableView, for: indexPath)
             return cell
         }
     }
@@ -106,7 +115,7 @@ extension SettingsViewController: UITableViewDataSource {
 
 extension SettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let content = tableContent[indexPath.row]
+        let content = sections[indexPath.section][indexPath.row]
 
         switch content {
 

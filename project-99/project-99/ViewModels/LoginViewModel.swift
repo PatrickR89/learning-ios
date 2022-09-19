@@ -89,8 +89,12 @@ extension LoginViewModel {
     }
 
     func findUserByName(_ username: String) {
-        if let result = realm.object(ofType: User.self, forPrimaryKey: username) {
-            self.user = result
+        let result = realm.objects(User.self).where {
+            $0.name == username
+        }
+
+        if result.count > 0 {
+            self.user = result[0]
         }
     }
 

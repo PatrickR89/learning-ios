@@ -11,8 +11,22 @@ import RealmSwift
 class SettingsViewModel {
     private let realm: Realm
     private var user: User
-    private var newUsername: String?
-    private var newPassword: String?
+    private var newUsername: String? {
+        didSet {
+            guard let newUsername = newUsername else {
+                return
+            }
+            changeUsername(with: newUsername)
+        }
+    }
+    private var newPassword: String? {
+        didSet {
+            guard let newPassword = newPassword else {
+                return
+            }
+            changePassword(with: newPassword)
+        }
+    }
 
     private var userTheme: ThemeChoice? {
         didSet {
@@ -142,6 +156,14 @@ extension SettingsViewModel {
         self.withTimer = !withTimer
     }
 
+    func editUsername(with name: String) {
+        self.newUsername = name
+    }
+
+    func editPassword(with password: String) {
+        self.newPassword = password
+    }
+
     // MARK: Save values to Realm
 
     func saveTheme(save theme: ThemeChoice) {
@@ -168,6 +190,19 @@ extension SettingsViewModel {
         }
     }
 
+    func changeUsername(with newUsername: String) {
+        delegate?.settingsViewModel(self, didChangeUsername: newUsername)
+            try? realm.write {
+                user.name = newUsername
+            }
+    }
+
+    func changePassword(with newPassword: String) {
+            try? realm.write {
+                user.password = newPassword
+            }
+    }
+
     // MARK: Observe values
 
     func observeMulticolorState(_ closure: @escaping (Bool) -> Void) {
@@ -182,11 +217,11 @@ extension SettingsViewModel {
 
     // MARK: Account verification
 
-    func verifyPassword(_ password: String) {
+    func verifyPassword(_ password: String, for change: AccountChanges) {
         if password == user.password {
-            delegate?.settingsViewModel(self, didVerifyPasswordWithResult: true)
+            delegate?.settingsViewModel(self, didVerifyPasswordWithResult: true, for: change)
         } else {
-            delegate?.settingsViewModel(self, didVerifyPasswordWithResult: false)
+            delegate?.settingsViewModel(self, didVerifyPasswordWithResult: false, for: change)
         }
     }
 
@@ -204,6 +239,16 @@ extension SettingsViewModel {
 
     func addInvalidPasswordAlertController(in viewController: UIViewController) -> UIAlertController {
         let alertController = UIAlertController().createInvalidPasswordAlertController(in: viewController)
+        return alertController
+    }
+
+    func addChangeAccountAlertController(
+        in viewController: UIViewController,
+        for change: AccountChanges) -> UIAlertController {
+        let alertController = UIAlertController().editAccountAlertController(
+            in: viewController,
+            with: self,
+            for: change)
         return alertController
     }
 }

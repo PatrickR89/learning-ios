@@ -15,6 +15,8 @@ class SettingsViewController: UIViewController {
     private let secondContent: [SettingsContent] = [.username, .password]
     private let sections: [[SettingsContent]]
 
+    weak var delegate: SettingsViewControllerDelegate?
+
     init(with viewModel: SettingsViewModel) {
         self.viewModel = viewModel
         self.sections = [primaryContent, secondContent]
@@ -137,12 +139,21 @@ extension SettingsViewController: UITableViewDelegate {
 }
 
 extension SettingsViewController: SettingsViewModelDelegate {
-    func settingsViewModel(_ viewModel: SettingsViewModel, didVerifyPasswordWithResult result: Bool) {
+    func settingsViewModel(_ viewModel: SettingsViewModel, didChangeUsername username: String) {
+        delegate?.settingsViewController(self, didRecieveUpdatedName: username)
+    }
+
+    func settingsViewModel(
+        _ viewModel: SettingsViewModel,
+        didVerifyPasswordWithResult result: Bool,
+        for change: AccountChanges) {
+
         if !result {
             let alertController = viewModel.addInvalidPasswordAlertController(in: self)
             present(alertController, animated: true)
         } else {
-            print("password check!")
+            let alertController = viewModel.addChangeAccountAlertController(in: self, for: change)
+            present(alertController, animated: true)
         }
     }
 }

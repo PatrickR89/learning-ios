@@ -16,7 +16,7 @@ class RealmDataService {
             fatalError("unable to create default realm")
         }
 
-        let url = FileManager.default.getFilePath("default.realm")
+        let url = FileManager.default.getFilePath("defaultRealm.realm")
         var config: Realm.Configuration?
 
         if FileManager.default.fileExists(atPath: defaultRealm.path) {

@@ -11,7 +11,7 @@ extension UIAlertController {
     func createPasswordVerificationAlertController(
         in viewController: UIViewController,
         with viewModel: SettingsViewModel,
-        for: AccountChanges) -> UIAlertController {
+        for change: AccountChanges) -> UIAlertController {
 
         let alertController = UIAlertController(
             title: "Enter your password",
@@ -28,7 +28,7 @@ extension UIAlertController {
             style: .default) {  [weak viewModel, weak alertController, weak self] _ in
             guard let verificationPassword = alertController?.textFields?[0].text else {return}
 
-            viewModel?.verifyPassword(verificationPassword)
+            viewModel?.verifyPassword(verificationPassword, for: change)
             self?.dismiss(animated: true)
         }
         alertController.addAction(cancelAction)
@@ -42,6 +42,36 @@ extension UIAlertController {
         let alertAction = UIAlertAction(title: "OK", style: .default)
 
         alertController.addAction(alertAction)
+        return alertController
+    }
+
+    func editAccountAlertController(
+        in viewController: UIViewController,
+        with viewModel: SettingsViewModel,
+        for change: AccountChanges) -> UIAlertController {
+        var title: String
+        switch change {
+        case .username:
+            title = "Enter new username"
+        case .password:
+            title = "Enter new password"
+        }
+        let alertController = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        alertController.addTextField()
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let changeAction = UIAlertAction(title: "Change", style: .default) { [weak viewModel, weak alertController] _ in
+            guard let input = alertController?.textFields?[0].text else {return}
+            switch change {
+            case .username:
+                viewModel?.editUsername(with: input)
+            case .password:
+                viewModel?.editPassword(with: input)
+            }
+        }
+
+        alertController.addAction(cancelAction)
+        alertController.addAction(changeAction)
+
         return alertController
     }
 }

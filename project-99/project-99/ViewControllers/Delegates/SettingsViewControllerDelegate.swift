@@ -10,5 +10,5 @@ import Foundation
 protocol SettingsViewControllerDelegate: AnyObject {
     func settingsViewController(
         _ viewController: SettingsViewController,
-        didRecieveUpdatedName username:String)
+        didRecieveUpdatedName username: String)
 }

@@ -50,6 +50,7 @@ class SettingsViewController: UIViewController {
     }
 
     private func setupBindings() {
+        viewModel.delegate = self
         viewModel.observeMulticolorState { _ in
             DispatchQueue.main.async { [weak self] in
                 if let index = self?.primaryContent.firstIndex(where: {$0.self == SettingsContent.multicolor}) {
@@ -126,9 +127,22 @@ extension SettingsViewController: UITableViewDelegate {
         case .timer:
             viewModel.changeTimer()
         case .username:
-            break
+            let alertController = viewModel.addPasswordVerificationAlertController(in: self, for: .username)
+            present(alertController, animated: true)
         case .password:
-            break
+            let alertController = viewModel.addPasswordVerificationAlertController(in: self, for: .password)
+            present(alertController, animated: true)
+        }
+    }
+}
+
+extension SettingsViewController: SettingsViewModelDelegate {
+    func settingsViewModel(_ viewModel: SettingsViewModel, didVerifyPasswordWithResult result: Bool) {
+        if !result {
+            let alertController = viewModel.addInvalidPasswordAlertController(in: self)
+            present(alertController, animated: true)
+        } else {
+            print("password check!")
         }
     }
 }

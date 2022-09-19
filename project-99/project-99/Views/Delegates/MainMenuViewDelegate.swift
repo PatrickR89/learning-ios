@@ -8,5 +8,5 @@
 import Foundation
 
 protocol MainMenuViewDelegate: AnyObject {
-    func mainMenuView(_ view: MainMenuView, didTapOnSettingsForUser id: UUID)
+    func mainMenuView(_ view: MainMenuView, didTapOnSettingsForUser user: User)
 }

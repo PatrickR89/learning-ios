@@ -40,7 +40,7 @@ class MainMenuViewController: UIViewController {
 }
 
 extension MainMenuViewController: MainMenuViewDelegate {
-    func mainMenuView(_ view: MainMenuView, didTapOnSettingsForUser id: UUID) {
+    func mainMenuView(_ view: MainMenuView, didTapOnSettingsForUser user: User) {
 
         let viewController = SettingsViewController(with: settingsViewModel)
         let navController = UINavigationController()

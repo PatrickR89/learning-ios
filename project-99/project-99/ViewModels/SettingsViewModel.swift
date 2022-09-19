@@ -16,6 +16,7 @@ class SettingsViewModel {
             themeDidChange()
             if let userTheme = userTheme {
                 ThemeContainer.shared.changeTheme(to: userTheme)
+                saveTheme(save: userTheme)
             }
         }
     }
@@ -40,6 +41,14 @@ class SettingsViewModel {
         return theme
     }
 
+    func saveTheme(save theme: ThemeChoice) {
+        if let result = realm.object(ofType: UserSettings.self, forPrimaryKey: userId) {
+            try? realm.write {
+                result.theme = theme
+            }
+        }
+    }
+
     func changeTheme() {
         let themes: [ThemeChoice] = [.system, .dark, .light]
         if let index = themes.firstIndex(where: {$0.rawValue == userTheme?.rawValue}) {
@@ -53,7 +62,7 @@ class SettingsViewModel {
 
     private func themeDidChange() {
         guard let themeObserver = themeObserver,
-        let userTheme = userTheme else {
+              let userTheme = userTheme else {
             return
         }
         themeObserver(userTheme)

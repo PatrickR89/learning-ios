@@ -21,10 +21,19 @@ class SettingsViewModel {
         }
     }
 
-    private var withMulticolor: Bool?
+    private var withMulticolor: Bool? {
+        didSet {
+            multicolorDidChange()
+            if let withMulticolor = withMulticolor {
+                saveMulticolorState(save: withMulticolor)
+            }
+        }
+    }
+    
     private var withTimer: Bool?
 
     private var themeObserver: ((ThemeChoice) -> Void)?
+    private var multicolorObserver: ((Bool) -> Void)?
 
     init(forUser userId: UUID, in realm: Realm) {
         self.userId = userId
@@ -41,10 +50,25 @@ class SettingsViewModel {
         return theme
     }
 
+    func returnMulticolorState() -> Bool? {
+        guard let withMulticolor = withMulticolor else {
+            return nil
+        }
+        return withMulticolor
+    }
+
     func saveTheme(save theme: ThemeChoice) {
         if let result = realm.object(ofType: UserSettings.self, forPrimaryKey: userId) {
             try? realm.write {
                 result.theme = theme
+            }
+        }
+    }
+
+    func saveMulticolorState(save state: Bool) {
+        if let result = realm.object(ofType: UserSettings.self, forPrimaryKey: userId) {
+            try? realm.write {
+                result.withMulticolor = state
             }
         }
     }
@@ -60,12 +84,32 @@ class SettingsViewModel {
         }
     }
 
+    func changeMulticolor() {
+        guard let withMulticolor = withMulticolor else {
+            return
+        }
+        self.withMulticolor = !withMulticolor
+    }
+
     private func themeDidChange() {
         guard let themeObserver = themeObserver,
               let userTheme = userTheme else {
             return
         }
         themeObserver(userTheme)
+    }
+
+    private func multicolorDidChange() {
+        guard let multicolorObserver = multicolorObserver,
+              let withMulticolor = withMulticolor else {
+            return
+        }
+        multicolorObserver(withMulticolor)
+    }
+
+    func observeMulticolorState(_ closure: @escaping (Bool) -> Void) {
+        self.multicolorObserver = closure
+        multicolorDidChange()
     }
 
     func loadUserSettings() {

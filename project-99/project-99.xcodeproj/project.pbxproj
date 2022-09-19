@@ -35,6 +35,7 @@
 		CD88AFAF28D497E400EFCBBB /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFAE28D497E400EFCBBB /* SettingsViewModel.swift */; };
 		CD88AFB128D4AE7D00EFCBBB /* ColorContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFB028D4AE7D00EFCBBB /* ColorContainer.swift */; };
 		CD88AFB328D83E0700EFCBBB /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFB228D83E0700EFCBBB /* AppTheme.swift */; };
+		CD88AFB528D84D9C00EFCBBB /* MulticolorViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFB428D84D9C00EFCBBB /* MulticolorViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		CD88AFAE28D497E400EFCBBB /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		CD88AFB028D4AE7D00EFCBBB /* ColorContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorContainer.swift; sourceTree = "<group>"; };
 		CD88AFB228D83E0700EFCBBB /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
+		CD88AFB428D84D9C00EFCBBB /* MulticolorViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticolorViewCell.swift; sourceTree = "<group>"; };
 		E9ED53374000A43727DB32F3 /* Pods-project-99.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-99.release.xcconfig"; path = "Target Support Files/Pods-project-99/Pods-project-99.release.xcconfig"; sourceTree = "<group>"; };
 		EE006DE768882589EA85F5B5 /* Pods-project-99.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-99.debug.xcconfig"; path = "Target Support Files/Pods-project-99/Pods-project-99.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -222,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				CD88AFA828D4920300EFCBBB /* ThemeTableViewCell.swift */,
+				CD88AFB428D84D9C00EFCBBB /* MulticolorViewCell.swift */,
 			);
 			path = SettingsViewCells;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 				CD88AFB328D83E0700EFCBBB /* AppTheme.swift in Sources */,
 				CD88AF9428D450D300EFCBBB /* RealmDataService.swift in Sources */,
 				CD88AF8F28D3252D00EFCBBB /* LoginViewModel.swift in Sources */,
+				CD88AFB528D84D9C00EFCBBB /* MulticolorViewCell.swift in Sources */,
 				CD88AFAB28D493DE00EFCBBB /* SettingsContent.swift in Sources */,
 				CD88AF9A28D4677F00EFCBBB /* LoginViewDelegate.swift in Sources */,
 				CD88AFA428D4815000EFCBBB /* SettingsViewController.swift in Sources */,

@@ -68,7 +68,7 @@ class SettingsViewModel {
         themeObserver(userTheme)
     }
 
-    private func loadUserSettings() {
+    func loadUserSettings() {
         if let result = realm.object(ofType: UserSettings.self, forPrimaryKey: userId) {
             self.userTheme = result.theme
             self.withMulticolor = result.withMulticolor

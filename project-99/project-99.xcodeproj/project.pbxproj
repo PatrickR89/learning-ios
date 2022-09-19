@@ -36,6 +36,7 @@
 		CD88AFB128D4AE7D00EFCBBB /* ColorContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFB028D4AE7D00EFCBBB /* ColorContainer.swift */; };
 		CD88AFB328D83E0700EFCBBB /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFB228D83E0700EFCBBB /* AppTheme.swift */; };
 		CD88AFB528D84D9C00EFCBBB /* MulticolorViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFB428D84D9C00EFCBBB /* MulticolorViewCell.swift */; };
+		CD88AFB728D859E500EFCBBB /* TimerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFB628D859E500EFCBBB /* TimerViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		CD88AFB028D4AE7D00EFCBBB /* ColorContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorContainer.swift; sourceTree = "<group>"; };
 		CD88AFB228D83E0700EFCBBB /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
 		CD88AFB428D84D9C00EFCBBB /* MulticolorViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticolorViewCell.swift; sourceTree = "<group>"; };
+		CD88AFB628D859E500EFCBBB /* TimerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewCell.swift; sourceTree = "<group>"; };
 		E9ED53374000A43727DB32F3 /* Pods-project-99.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-99.release.xcconfig"; path = "Target Support Files/Pods-project-99/Pods-project-99.release.xcconfig"; sourceTree = "<group>"; };
 		EE006DE768882589EA85F5B5 /* Pods-project-99.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-99.debug.xcconfig"; path = "Target Support Files/Pods-project-99/Pods-project-99.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -225,6 +227,7 @@
 			children = (
 				CD88AFA828D4920300EFCBBB /* ThemeTableViewCell.swift */,
 				CD88AFB428D84D9C00EFCBBB /* MulticolorViewCell.swift */,
+				CD88AFB628D859E500EFCBBB /* TimerViewCell.swift */,
 			);
 			path = SettingsViewCells;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				CD88AF7628D306FB00EFCBBB /* User.swift in Sources */,
 				CD88AF9F28D46C9200EFCBBB /* MainMenuView.swift in Sources */,
 				CD88AF9D28D46C7A00EFCBBB /* MainMenuViewModel.swift in Sources */,
+				CD88AFB728D859E500EFCBBB /* TimerViewCell.swift in Sources */,
 				CD88AF6128D2F0B200EFCBBB /* LoginViewController.swift in Sources */,
 				CD88AFAD28D496A800EFCBBB /* MainMenuViewDelegate.swift in Sources */,
 				CD88AF5D28D2F0B200EFCBBB /* AppDelegate.swift in Sources */,

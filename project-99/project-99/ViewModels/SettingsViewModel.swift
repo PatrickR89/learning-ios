@@ -29,11 +29,19 @@ class SettingsViewModel {
             }
         }
     }
-    
-    private var withTimer: Bool?
+
+    private var withTimer: Bool? {
+        didSet {
+            timerStateDidChange()
+            if let withTimer = withTimer {
+                saveTimerState(save: withTimer)
+            }
+        }
+    }
 
     private var themeObserver: ((ThemeChoice) -> Void)?
-    private var multicolorObserver: ((Bool) -> Void)?
+    private var multicolorStateObserver: ((Bool) -> Void)?
+    private var timerStateObserver: ((Bool) -> Void)?
 
     init(forUser userId: UUID, in realm: Realm) {
         self.userId = userId
@@ -57,6 +65,13 @@ class SettingsViewModel {
         return withMulticolor
     }
 
+    func returnTimerState() -> Bool? {
+        guard let withTimer = withTimer else {
+            return nil
+        }
+        return withTimer
+    }
+
     func saveTheme(save theme: ThemeChoice) {
         if let result = realm.object(ofType: UserSettings.self, forPrimaryKey: userId) {
             try? realm.write {
@@ -69,6 +84,14 @@ class SettingsViewModel {
         if let result = realm.object(ofType: UserSettings.self, forPrimaryKey: userId) {
             try? realm.write {
                 result.withMulticolor = state
+            }
+        }
+    }
+
+    func saveTimerState(save state: Bool) {
+        if let result = realm.object(ofType: UserSettings.self, forPrimaryKey: userId) {
+            try? realm.write {
+                result.withTimer = state
             }
         }
     }
@@ -91,6 +114,13 @@ class SettingsViewModel {
         self.withMulticolor = !withMulticolor
     }
 
+    func changeTimer() {
+        guard let withTimer = withTimer else {
+            return
+        }
+        self.withTimer = !withTimer
+    }
+
     private func themeDidChange() {
         guard let themeObserver = themeObserver,
               let userTheme = userTheme else {
@@ -100,16 +130,29 @@ class SettingsViewModel {
     }
 
     private func multicolorDidChange() {
-        guard let multicolorObserver = multicolorObserver,
+        guard let multicolorObserver = multicolorStateObserver,
               let withMulticolor = withMulticolor else {
             return
         }
         multicolorObserver(withMulticolor)
     }
 
+    private func timerStateDidChange() {
+        guard let timerStateObserver = timerStateObserver,
+              let withTimer = withTimer else {
+            return
+        }
+        timerStateObserver(withTimer)
+    }
+
     func observeMulticolorState(_ closure: @escaping (Bool) -> Void) {
-        self.multicolorObserver = closure
+        self.multicolorStateObserver = closure
         multicolorDidChange()
+    }
+
+    func observerTimerState(_ closure: @escaping (Bool) -> Void) {
+        self.timerStateObserver = closure
+        timerStateDidChange()
     }
 
     func loadUserSettings() {

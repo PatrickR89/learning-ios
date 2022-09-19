@@ -17,7 +17,7 @@ class SettingsViewController: UIViewController {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         setupUI()
-
+        setupBindings()
         use(AppTheme.self) {
             $0.tableView.backgroundColor = $1.backgroundColor
             $0.tableView.reloadData()
@@ -41,6 +41,18 @@ class SettingsViewController: UIViewController {
         tableView.delegate = self
         tableView.frame = view.frame
         ThemeTableViewCell.register(in: tableView)
+        MulticolorViewCell.register(in: tableView)
+    }
+
+    private func setupBindings() {
+        viewModel.observeMulticolorState { _ in
+            DispatchQueue.main.async { [weak self] in
+                if let index = self?.tableContent.firstIndex(where: {$0.self == SettingsContent.multicolor}) {
+                    let indexPath = IndexPath(row: index, section: 0)
+                    self?.tableView.reloadRows(at: [indexPath], with: .fade)
+                }
+            }
+        }
     }
 }
 
@@ -61,7 +73,10 @@ extension SettingsViewController: UITableViewDataSource {
             }
             return cell
         case .multicolor:
-            let cell = ThemeTableViewCell.dequeue(in: tableView, for: indexPath)
+            let cell = MulticolorViewCell.dequeue(in: tableView, for: indexPath)
+            if let withMulticolor = viewModel.returnMulticolorState() {
+                cell.changeMulticolorState(withMulticolor)
+            }
             return cell
         case .timer:
             let cell = ThemeTableViewCell.dequeue(in: tableView, for: indexPath)
@@ -85,7 +100,7 @@ extension SettingsViewController: UITableViewDelegate {
         case .theme:
             viewModel.changeTheme()
         case .multicolor:
-            break
+            viewModel.changeMulticolor()
         case .timer:
             break
         case .username:

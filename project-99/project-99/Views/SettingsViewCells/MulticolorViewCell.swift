@@ -1,13 +1,13 @@
 //
-//  ThemeTableViewCell.swift
+//  MulticolorViewCell.swift
 //  project-99
 //
-//  Created by Patrick on 16.09.2022..
+//  Created by Patrick on 19.09.2022..
 //
 
 import UIKit
 
-class ThemeTableViewCell: UITableViewCell {
+class MulticolorViewCell: UITableViewCell {
 
     private let titleLabel = UILabel()
     private let valueLabel = UILabel()
@@ -15,6 +15,7 @@ class ThemeTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
+
         use(AppTheme.self) {
             $0.backgroundColor = $1.backgroundColor
             $0.titleLabel.textColor = $1.textColor
@@ -26,14 +27,16 @@ class ThemeTableViewCell: UITableViewCell {
     }
 
     private func setupUI() {
-        setupUI(with: titleLabel, and: valueLabel)
-        contentView.addSubview(titleLabel)
-        contentView.addSubview(valueLabel)
-        titleLabel.text = "Current theme:"
-        valueLabel.text = "dark"
+        self.setupUI(with: titleLabel, and: valueLabel)
+        titleLabel.text = "Multicolored game:"
+        valueLabel.text = "no"
     }
 
-    func changeValue(with newValue: ThemeChoice) {
-        valueLabel.text = newValue.rawValue
+    func changeMulticolorState(_ withMulticolor: Bool) {
+        if withMulticolor {
+            valueLabel.text = "yes"
+        } else {
+            valueLabel.text = "no"
+        }
     }
 }

@@ -136,9 +136,9 @@ extension SettingsViewController: UITableViewDelegate {
         case .theme:
             viewModel.changeTheme()
         case .multicolor:
-            viewModel.changeMulticolor()
+            viewModel.toggleMulticolor()
         case .timer:
-            viewModel.changeTimer()
+            viewModel.toggleTimer()
         case .username:
             let alertController = viewModel.addPasswordVerificationAlertController(in: self, for: .username)
             present(alertController, animated: true)

@@ -42,12 +42,22 @@ class SettingsViewController: UIViewController {
         tableView.frame = view.frame
         ThemeTableViewCell.register(in: tableView)
         MulticolorViewCell.register(in: tableView)
+        TimerViewCell.register(in: tableView)
     }
 
     private func setupBindings() {
         viewModel.observeMulticolorState { _ in
             DispatchQueue.main.async { [weak self] in
                 if let index = self?.tableContent.firstIndex(where: {$0.self == SettingsContent.multicolor}) {
+                    let indexPath = IndexPath(row: index, section: 0)
+                    self?.tableView.reloadRows(at: [indexPath], with: .fade)
+                }
+            }
+        }
+
+        viewModel.observerTimerState { _ in
+            DispatchQueue.main.async { [weak self] in
+                if let index = self?.tableContent.firstIndex(where: {$0.self == SettingsContent.timer}) {
                     let indexPath = IndexPath(row: index, section: 0)
                     self?.tableView.reloadRows(at: [indexPath], with: .fade)
                 }
@@ -79,7 +89,10 @@ extension SettingsViewController: UITableViewDataSource {
             }
             return cell
         case .timer:
-            let cell = ThemeTableViewCell.dequeue(in: tableView, for: indexPath)
+            let cell = TimerViewCell.dequeue(in: tableView, for: indexPath)
+            if let withTimer = viewModel.returnTimerState() {
+                cell.changeTimerState(withTimer)
+            }
             return cell
         case .username:
             let cell = ThemeTableViewCell.dequeue(in: tableView, for: indexPath)
@@ -102,7 +115,7 @@ extension SettingsViewController: UITableViewDelegate {
         case .multicolor:
             viewModel.changeMulticolor()
         case .timer:
-            break
+            viewModel.changeTimer()
         case .username:
             break
         case .password:

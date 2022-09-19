@@ -142,14 +142,14 @@ extension SettingsViewModel {
         }
     }
 
-    func changeMulticolor() {
+    func toggleMulticolor() {
         guard let withMulticolor = withMulticolor else {
             return
         }
         self.withMulticolor = !withMulticolor
     }
 
-    func changeTimer() {
+    func toggleTimer() {
         guard let withTimer = withTimer else {
             return
         }
@@ -192,15 +192,15 @@ extension SettingsViewModel {
 
     func changeUsername(with newUsername: String) {
         delegate?.settingsViewModel(self, didChangeUsername: newUsername)
-            try? realm.write {
-                user.name = newUsername
-            }
+        try? realm.write {
+            user.name = newUsername
+        }
     }
 
     func changePassword(with newPassword: String) {
-            try? realm.write {
-                user.password = newPassword
-            }
+        try? realm.write {
+            user.password = newPassword
+        }
     }
 
     // MARK: Observe values
@@ -245,10 +245,10 @@ extension SettingsViewModel {
     func addChangeAccountAlertController(
         in viewController: UIViewController,
         for change: AccountChanges) -> UIAlertController {
-        let alertController = UIAlertController().editAccountAlertController(
-            in: viewController,
-            with: self,
-            for: change)
-        return alertController
-    }
+            let alertController = UIAlertController().editAccountAlertController(
+                in: viewController,
+                with: self,
+                for: change)
+            return alertController
+        }
 }

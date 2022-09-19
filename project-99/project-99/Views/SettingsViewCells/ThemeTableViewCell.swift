@@ -15,6 +15,10 @@ class ThemeTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
+        use(AppTheme.self) {
+            $0.backgroundColor = $1.backgroundColor
+            $0.titleLabel.textColor = $1.textColor
+        }
     }
 
     required init?(coder: NSCoder) {
@@ -40,7 +44,7 @@ class ThemeTableViewCell: UITableViewCell {
         ])
     }
 
-    func changeValue(with newValue: Theme) {
+    func changeValue(with newValue: ThemeChoice) {
         valueLabel.text = newValue.rawValue
     }
 }

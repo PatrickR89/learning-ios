@@ -8,5 +8,6 @@ target 'project-99' do
   # Pods for project-99
 
 pod "RealmSwift"
+pod "Themes"
 
 end

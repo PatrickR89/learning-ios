@@ -11,12 +11,12 @@ class MainMenuViewController: UIViewController {
 
     private let viewModel: MainMenuViewModel
     private let menuView: MainMenuView
-    let settingsViewModel: SettingsViewModel
+    private let settingsViewModel: SettingsViewModel
 
     init(with viewModel: MainMenuViewModel) {
         self.viewModel = viewModel
         self.menuView = MainMenuView(with: viewModel)
-        self.settingsViewModel = SettingsViewModel(forUser: viewModel.returnUserId(), in: viewModel.realm)
+        self.settingsViewModel = SettingsViewModel(forUser: viewModel.returnUser(), in: viewModel.realm)
 
         super.init(nibName: nil, bundle: nil)
         setupUI()

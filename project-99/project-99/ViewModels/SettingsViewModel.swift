@@ -10,7 +10,10 @@ import RealmSwift
 
 class SettingsViewModel {
     private let realm: Realm
-    private var userId: UUID
+    private var user: User
+    private var newUsername: String?
+    private var newPassword: String?
+
     private var userTheme: ThemeChoice? {
         didSet {
             themeDidChange()
@@ -43,14 +46,52 @@ class SettingsViewModel {
     private var multicolorStateObserver: ((Bool) -> Void)?
     private var timerStateObserver: ((Bool) -> Void)?
 
-    init(forUser userId: UUID, in realm: Realm) {
-        self.userId = userId
+    init(forUser user: User, in realm: Realm) {
+        self.user = user
         self.realm = realm
         loadUserSettings()
     }
 
+    func loadUserSettings() {
+        if let result = realm.object(ofType: UserSettings.self, forPrimaryKey: user.id) {
+            self.userTheme = result.theme
+            self.withMulticolor = result.withMulticolor
+            self.withTimer = result.withTimer
+        }
+    }
+}
+
+private extension SettingsViewModel {
+    func themeDidChange() {
+        guard let themeObserver = themeObserver,
+              let userTheme = userTheme else {
+            return
+        }
+        themeObserver(userTheme)
+    }
+
+    func multicolorDidChange() {
+        guard let multicolorObserver = multicolorStateObserver,
+              let withMulticolor = withMulticolor else {
+            return
+        }
+        multicolorObserver(withMulticolor)
+    }
+
+    func timerStateDidChange() {
+        guard let timerStateObserver = timerStateObserver,
+              let withTimer = withTimer else {
+            return
+        }
+        timerStateObserver(withTimer)
+    }
+}
+
+extension SettingsViewModel {
+    // MARK: Return values
+
     func returnId() -> UUID {
-        return userId
+        return user.id
     }
 
     func returnTheme() -> ThemeChoice? {
@@ -72,29 +113,7 @@ class SettingsViewModel {
         return withTimer
     }
 
-    func saveTheme(save theme: ThemeChoice) {
-        if let result = realm.object(ofType: UserSettings.self, forPrimaryKey: userId) {
-            try? realm.write {
-                result.theme = theme
-            }
-        }
-    }
-
-    func saveMulticolorState(save state: Bool) {
-        if let result = realm.object(ofType: UserSettings.self, forPrimaryKey: userId) {
-            try? realm.write {
-                result.withMulticolor = state
-            }
-        }
-    }
-
-    func saveTimerState(save state: Bool) {
-        if let result = realm.object(ofType: UserSettings.self, forPrimaryKey: userId) {
-            try? realm.write {
-                result.withTimer = state
-            }
-        }
-    }
+    // MARK: Change values
 
     func changeTheme() {
         let themes: [ThemeChoice] = [.system, .dark, .light]
@@ -121,29 +140,33 @@ class SettingsViewModel {
         self.withTimer = !withTimer
     }
 
-    private func themeDidChange() {
-        guard let themeObserver = themeObserver,
-              let userTheme = userTheme else {
-            return
+    // MARK: Save values to Realm
+
+    func saveTheme(save theme: ThemeChoice) {
+        if let result = realm.object(ofType: UserSettings.self, forPrimaryKey: user.id) {
+            try? realm.write {
+                result.theme = theme
+            }
         }
-        themeObserver(userTheme)
     }
 
-    private func multicolorDidChange() {
-        guard let multicolorObserver = multicolorStateObserver,
-              let withMulticolor = withMulticolor else {
-            return
+    func saveMulticolorState(save state: Bool) {
+        if let result = realm.object(ofType: UserSettings.self, forPrimaryKey: user.id) {
+            try? realm.write {
+                result.withMulticolor = state
+            }
         }
-        multicolorObserver(withMulticolor)
     }
 
-    private func timerStateDidChange() {
-        guard let timerStateObserver = timerStateObserver,
-              let withTimer = withTimer else {
-            return
+    func saveTimerState(save state: Bool) {
+        if let result = realm.object(ofType: UserSettings.self, forPrimaryKey: user.id) {
+            try? realm.write {
+                result.withTimer = state
+            }
         }
-        timerStateObserver(withTimer)
     }
+
+    // MARK: Observe values
 
     func observeMulticolorState(_ closure: @escaping (Bool) -> Void) {
         self.multicolorStateObserver = closure
@@ -153,13 +176,5 @@ class SettingsViewModel {
     func observerTimerState(_ closure: @escaping (Bool) -> Void) {
         self.timerStateObserver = closure
         timerStateDidChange()
-    }
-
-    func loadUserSettings() {
-        if let result = realm.object(ofType: UserSettings.self, forPrimaryKey: userId) {
-            self.userTheme = result.theme
-            self.withMulticolor = result.withMulticolor
-            self.withTimer = result.withTimer
-        }
     }
 }

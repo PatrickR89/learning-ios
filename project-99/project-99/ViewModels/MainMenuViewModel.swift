@@ -23,7 +23,7 @@ extension MainMenuViewModel {
         return user.name
     }
 
-    func returnUserId() -> UUID {
-        return user.id
+    func returnUser() -> User {
+        return user
     }
 }

@@ -21,7 +21,9 @@ class LoginViewModel {
             }
         }
     }
+
     private var password: String?
+
     private var loginSuccess: Bool? {
         didSet {
             loginStatusDidChange()

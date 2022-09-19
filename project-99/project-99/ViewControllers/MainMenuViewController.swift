@@ -11,13 +11,16 @@ class MainMenuViewController: UIViewController {
 
     private let viewModel: MainMenuViewModel
     private let menuView: MainMenuView
+    let settingsViewModel: SettingsViewModel
 
     init(with viewModel: MainMenuViewModel) {
         self.viewModel = viewModel
         self.menuView = MainMenuView(with: viewModel)
+        self.settingsViewModel = SettingsViewModel(forUser: viewModel.returnUserId(), in: viewModel.realm)
 
         super.init(nibName: nil, bundle: nil)
         setupUI()
+        settingsViewModel.loadUserSettings()
     }
 
     required init?(coder: NSCoder) {
@@ -38,7 +41,7 @@ class MainMenuViewController: UIViewController {
 
 extension MainMenuViewController: MainMenuViewDelegate {
     func mainMenuView(_ view: MainMenuView, didTapOnSettingsForUser id: UUID) {
-        let settingsViewModel = SettingsViewModel(forUser: id, in: viewModel.realm)
+
         let viewController = SettingsViewController(with: settingsViewModel)
         let navController = UINavigationController()
 

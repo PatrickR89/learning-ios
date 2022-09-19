@@ -46,6 +46,8 @@ class SettingsViewModel {
     private var multicolorStateObserver: ((Bool) -> Void)?
     private var timerStateObserver: ((Bool) -> Void)?
 
+    weak var delegate: SettingsViewModelDelegate?
+
     init(forUser user: User, in realm: Realm) {
         self.user = user
         self.realm = realm
@@ -176,5 +178,32 @@ extension SettingsViewModel {
     func observerTimerState(_ closure: @escaping (Bool) -> Void) {
         self.timerStateObserver = closure
         timerStateDidChange()
+    }
+
+    // MARK: Account verification
+
+    func verifyPassword(_ password: String) {
+        if password == user.password {
+            delegate?.settingsViewModel(self, didVerifyPasswordWithResult: true)
+        } else {
+            delegate?.settingsViewModel(self, didVerifyPasswordWithResult: false)
+        }
+    }
+
+    // MARK: AlertControllers
+
+    func addPasswordVerificationAlertController(
+        in viewController: UIViewController,
+        for change: AccountChanges) -> UIAlertController {
+            let alertController = UIAlertController().createPasswordVerificationAlertController(
+                in: viewController,
+                with: self,
+                for: change)
+            return alertController
+        }
+
+    func addInvalidPasswordAlertController(in viewController: UIViewController) -> UIAlertController {
+        let alertController = UIAlertController().createInvalidPasswordAlertController(in: viewController)
+        return alertController
     }
 }

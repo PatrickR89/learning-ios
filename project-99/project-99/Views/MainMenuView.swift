@@ -58,6 +58,6 @@ class MainMenuView: UIView {
     }
 
     @objc func openSettings() {
-        delegate?.mainMenuView(self, didTapOnSettingsForUser: viewModel.returnUserId())
+        delegate?.mainMenuView(self, didTapOnSettingsForUser: viewModel.returnUser())
     }
 }

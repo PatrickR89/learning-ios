@@ -8,5 +8,9 @@
 import Foundation
 
 protocol SettingsViewModelDelegate: AnyObject {
-    func settingsViewModel(_ viewModel: SettingsViewModel, didVerifyPasswordWithResult result: Bool)
+    func settingsViewModel(
+        _ viewModel: SettingsViewModel,
+        didVerifyPasswordWithResult result: Bool,
+        for change: AccountChanges)
+    func settingsViewModel(_ viewModel: SettingsViewModel, didChangeUsername username: String)
 }

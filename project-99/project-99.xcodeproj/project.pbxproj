@@ -42,6 +42,7 @@
 		CD88AFBD28D86ED700EFCBBB /* UIAlertController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFBC28D86ED700EFCBBB /* UIAlertController+Extensions.swift */; };
 		CD88AFBF28D8717B00EFCBBB /* AccountChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFBE28D8717B00EFCBBB /* AccountChanges.swift */; };
 		CD88AFC228D8744200EFCBBB /* SettingsViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFC128D8744200EFCBBB /* SettingsViewModelDelegate.swift */; };
+		CD88AFC528D8893800EFCBBB /* SettingsViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFC428D8893800EFCBBB /* SettingsViewControllerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +83,7 @@
 		CD88AFBC28D86ED700EFCBBB /* UIAlertController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extensions.swift"; sourceTree = "<group>"; };
 		CD88AFBE28D8717B00EFCBBB /* AccountChanges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountChanges.swift; sourceTree = "<group>"; };
 		CD88AFC128D8744200EFCBBB /* SettingsViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelDelegate.swift; sourceTree = "<group>"; };
+		CD88AFC428D8893800EFCBBB /* SettingsViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewControllerDelegate.swift; sourceTree = "<group>"; };
 		E9ED53374000A43727DB32F3 /* Pods-project-99.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-99.release.xcconfig"; path = "Target Support Files/Pods-project-99/Pods-project-99.release.xcconfig"; sourceTree = "<group>"; };
 		EE006DE768882589EA85F5B5 /* Pods-project-99.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-99.debug.xcconfig"; path = "Target Support Files/Pods-project-99/Pods-project-99.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -159,6 +161,7 @@
 		CD88AF7228D306D500EFCBBB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				CD88AFC328D8892100EFCBBB /* Delegates */,
 				CD88AF9728D466E500EFCBBB /* MainMenuViewController.swift */,
 				CD88AF6028D2F0B200EFCBBB /* LoginViewController.swift */,
 				CD88AFA328D4815000EFCBBB /* SettingsViewController.swift */,
@@ -251,6 +254,14 @@
 			isa = PBXGroup;
 			children = (
 				CD88AFC128D8744200EFCBBB /* SettingsViewModelDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		CD88AFC328D8892100EFCBBB /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				CD88AFC428D8893800EFCBBB /* SettingsViewControllerDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -420,6 +431,7 @@
 				CD88AF9828D466E500EFCBBB /* MainMenuViewController.swift in Sources */,
 				CD88AFA928D4920300EFCBBB /* ThemeTableViewCell.swift in Sources */,
 				CD88AFA628D490DC00EFCBBB /* TableViewCell+Extension.swift in Sources */,
+				CD88AFC528D8893800EFCBBB /* SettingsViewControllerDelegate.swift in Sources */,
 				CD88AF9128D3254500EFCBBB /* LoginView.swift in Sources */,
 				CD88AFB328D83E0700EFCBBB /* AppTheme.swift in Sources */,
 				CD88AF9428D450D300EFCBBB /* RealmDataService.swift in Sources */,

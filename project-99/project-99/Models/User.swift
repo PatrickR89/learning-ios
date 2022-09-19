@@ -9,8 +9,8 @@ import UIKit
 import RealmSwift
 
 class User: Object {
-    @Persisted var id: UUID
-    @Persisted (primaryKey: true) var name: String
+    @Persisted (primaryKey: true) var id: UUID
+    @Persisted var name: String
     @Persisted var password: String
 
     convenience init(id: UUID, name: String, password: String) {

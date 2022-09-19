@@ -17,8 +17,12 @@ class SettingsViewController: UIViewController {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         setupUI()
-        bindTheme()
-        bindColors()
+
+        use(AppTheme.self) {
+            $0.tableView.backgroundColor = $1.backgroundColor
+            $0.tableView.reloadData()
+            $0.reloadInputViews()
+        }
     }
 
     required init?(coder: NSCoder) {
@@ -36,29 +40,7 @@ class SettingsViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.frame = view.frame
-        tableView.backgroundColor = ColorContainer.shared.backgroundColor
         ThemeTableViewCell.register(in: tableView)
-    }
-
-    private func bindTheme() {
-        viewModel.observeTheme { _ in
-            DispatchQueue.main.async { [weak self] in
-                if let index = self?.tableContent.firstIndex(where: {$0.self == SettingsContent.theme}) {
-                    let indexPath = IndexPath(row: index, section: 0)
-                    self?.tableView.reloadRows(at: [indexPath], with: .fade)
-                }
-            }
-        }
-    }
-
-    private func bindColors() {
-        ColorContainer.shared.bindBackGroundColor { color in
-            DispatchQueue.main.async { [weak self] in
-                self?.tableView.backgroundColor = color
-                self?.tableView.reloadData()
-                self?.reloadInputViews()
-            }
-        }
     }
 }
 
@@ -76,7 +58,6 @@ extension SettingsViewController: UITableViewDataSource {
             let cell = ThemeTableViewCell.dequeue(in: tableView, for: indexPath)
             if let theme = viewModel.returnTheme() {
                 cell.changeValue(with: theme)
-                cell.contentView.backgroundColor = ColorContainer.shared.backgroundColor
             }
             return cell
         case .multicolor:

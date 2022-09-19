@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Themes
 
 class MainMenuView: UIView {
 
@@ -21,6 +22,11 @@ class MainMenuView: UIView {
         self.viewModel = viewModel
         super.init(frame: .zero)
         setupUI()
+
+        use(AppTheme.self) {
+            $0.backgroundColor = $1.backgroundColor
+            $0.reloadInputViews()
+        }
     }
 
     required init?(coder: NSCoder) {

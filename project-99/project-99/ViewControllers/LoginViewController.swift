@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import Themes
 
 class LoginViewController: UIViewController {
 
@@ -19,6 +20,7 @@ class LoginViewController: UIViewController {
         self.viewModel = LoginViewModel(in: realm)
         self.loginView = LoginView(with: viewModel)
         super.init(nibName: nil, bundle: nil)
+        ThemeManager.shared.currentTheme = ThemeContainer.shared.systemTheme
         loginView.delegate = self
     }
 

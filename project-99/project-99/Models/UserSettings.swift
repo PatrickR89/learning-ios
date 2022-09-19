@@ -10,11 +10,11 @@ import RealmSwift
 
 class UserSettings: Object {
     @Persisted (primaryKey: true) var userId: UUID
-    @Persisted var theme: Theme
+    @Persisted var theme: ThemeChoice
     @Persisted var withMulticolor: Bool
     @Persisted var withTimer: Bool
 
-    convenience init(userId: UUID, theme: Theme, withMulticolor: Bool, withTimer: Bool) {
+    convenience init(userId: UUID, theme: ThemeChoice, withMulticolor: Bool, withTimer: Bool) {
         self.init()
         self.userId = userId
         self.theme = theme

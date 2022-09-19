@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Themes
 
 class LoginView: UIView {
     private var warningLabel = UILabel()
@@ -22,6 +23,15 @@ class LoginView: UIView {
         super.init(frame: .zero)
         setupUI()
         setupBindings()
+
+        use(AppTheme.self) {
+            $0.backgroundColor = $1.backgroundColor
+            $0.passwordField.backgroundColor = $1.textFieldBackground
+            $0.nameField.backgroundColor = $1.textFieldBackground
+            $0.passwordField.textColor = $1.textColor
+            $0.nameField.textColor = $1.textColor
+            $0.reloadInputViews()
+        }
     }
 
     required init?(coder: NSCoder) {

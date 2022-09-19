@@ -11,11 +11,11 @@ import RealmSwift
 class SettingsViewModel {
     private let realm: Realm
     private var userId: UUID
-    private var userTheme: Theme? {
+    private var userTheme: ThemeChoice? {
         didSet {
             themeDidChange()
             if let userTheme = userTheme {
-                ColorContainer.shared.changeTheme(to: userTheme)
+                ThemeContainer.shared.changeTheme(to: userTheme)
             }
         }
     }
@@ -23,7 +23,7 @@ class SettingsViewModel {
     private var withMulticolor: Bool?
     private var withTimer: Bool?
 
-    private var themeObserver: ((Theme) -> Void)?
+    private var themeObserver: ((ThemeChoice) -> Void)?
 
     init(forUser userId: UUID, in realm: Realm) {
         self.userId = userId
@@ -35,18 +35,13 @@ class SettingsViewModel {
         return userId
     }
 
-    func observeTheme(_ closure: @escaping ((Theme) -> Void)) {
-        self.themeObserver = closure
-        themeDidChange()
-    }
-
-    func returnTheme() -> Theme? {
+    func returnTheme() -> ThemeChoice? {
         guard let theme = userTheme else {return nil}
         return theme
     }
 
     func changeTheme() {
-        let themes: [Theme] = [.system, .dark, .light]
+        let themes: [ThemeChoice] = [.system, .dark, .light]
         if let index = themes.firstIndex(where: {$0.rawValue == userTheme?.rawValue}) {
             var newIndex = index + 1
             if newIndex > themes.count - 1 {

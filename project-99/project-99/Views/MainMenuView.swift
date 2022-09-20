@@ -39,6 +39,7 @@ class MainMenuView: UIView {
         settingsButton.setTitle("Settings", for: .normal)
 
         settingsButton.addTarget(self, action: #selector(openSettings), for: .touchUpInside)
+        statsButton.addTarget(self, action: #selector(openStats), for: .touchUpInside)
 
         let buttons: [UIButton] = [gameButton, statsButton, settingsButton]
         self.addSubview(stackView)
@@ -59,5 +60,9 @@ class MainMenuView: UIView {
 
     @objc func openSettings() {
         delegate?.mainMenuView(self, didTapOnSettingsForUser: viewModel.returnUser())
+    }
+
+    @objc func openStats() {
+        delegate?.mainMenuView(self, didTapOnStatsForUser: viewModel.returnUser())
     }
 }

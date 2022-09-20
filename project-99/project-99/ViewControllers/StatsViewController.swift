@@ -44,9 +44,9 @@ class StatsViewController: UIViewController {
 
 extension StatsViewController: UITableViewDataSource {
 
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
-    }
+//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 200
+//    }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
@@ -57,14 +57,15 @@ extension StatsViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = GamesViewCell.dequeue(in: tableView, for: indexPath)
+        cell.bottomView.isHidden = viewModel.isCellBottomHidden[indexPath.row]
         return cell
     }
 }
 extension StatsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? GamesViewCell
-            else { return }
-        cell.bottomView.isHidden = !cell.bottomView.isHidden
+//        guard let cell = tableView.cellForRow(at: indexPath) as? GamesViewCell
+//            else { return }
+        viewModel.toggleCellBottom(at: indexPath.row)
         tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 }

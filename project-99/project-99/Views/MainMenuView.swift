@@ -49,7 +49,7 @@ class MainMenuView: UIView {
         stackView.distribution = .equalCentering
         stackView.alignment = .top
         stackView.spacing = 20
-        stackView.arrangeView(with: buttons)
+        stackView.arrangeView(withButtons: buttons)
 
         NSLayoutConstraint.activate([
             stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),

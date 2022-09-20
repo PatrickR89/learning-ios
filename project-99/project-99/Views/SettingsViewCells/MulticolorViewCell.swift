@@ -27,7 +27,7 @@ class MulticolorViewCell: UITableViewCell {
     }
 
     private func setupUI() {
-        self.setupUI(with: titleLabel, and: valueLabel)
+        self.setupUI(withLabels: titleLabel, and: valueLabel)
         titleLabel.text = "Multicolored game:"
         valueLabel.text = "no"
     }

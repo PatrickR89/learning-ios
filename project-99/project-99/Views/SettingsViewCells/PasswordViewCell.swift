@@ -26,7 +26,7 @@ class PasswordViewCell: UITableViewCell {
     }
 
     private func setupUI() {
-        self.setupSingleLable(with: titleLabel)
+        self.setupUI(withSingleLabel: titleLabel)
         titleLabel.text = "Change password"
     }
 }

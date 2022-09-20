@@ -27,7 +27,7 @@ class TimerViewCell: UITableViewCell {
     }
 
     private func setupUI() {
-        self.setupUI(with: titleLabel, and: valueLabel)
+        self.setupUI(withLabels: titleLabel, and: valueLabel)
         titleLabel.text = "Timer:"
         valueLabel.text = "off"
     }

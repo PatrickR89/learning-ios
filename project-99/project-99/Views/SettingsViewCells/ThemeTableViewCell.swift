@@ -26,7 +26,7 @@ class ThemeTableViewCell: UITableViewCell {
     }
 
     private func setupUI() {
-        setupUI(with: titleLabel, and: valueLabel)
+        setupUI(withLabels: titleLabel, and: valueLabel)
         titleLabel.text = "Current theme:"
         valueLabel.text = "dark"
     }

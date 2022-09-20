@@ -1,23 +1,23 @@
 //
-//  UsernameViewCell.swift
+//  GamesViewCell.swift
 //  project-99
 //
-//  Created by Patrick on 19.09.2022..
+//  Created by Patrick on 20.09.2022..
 //
 
 import UIKit
 
-class UsernameViewCell: UITableViewCell {
+class GamesViewCell: UITableViewCell {
 
-    private let titleLabel = UILabel()
+    private let stackView = UIStackView()
+    private let topView = GamesTopSubview()
+    let bottomView = GamesBottomSubview()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
-
         use(AppTheme.self) {
             $0.backgroundColor = $1.backgroundColor
-            $0.titleLabel.textColor = $1.textColor
         }
     }
 
@@ -26,7 +26,7 @@ class UsernameViewCell: UITableViewCell {
     }
 
     private func setupUI() {
-        self.setupUI(withSingleLabel: titleLabel)
-        titleLabel.text = "Change username"
+        setupUI(withExpandableView: stackView)
+        stackView.arrangeView(asExpandableWith: topView, and: bottomView)
     }
 }

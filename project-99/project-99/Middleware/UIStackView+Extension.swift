@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIStackView {
-    func arrangeView(with buttons: [UIButton]) {
+    func arrangeView(withButtons buttons: [UIButton]) {
 
         for button in buttons {
             button.backgroundColor = .systemBlue
@@ -19,6 +19,23 @@ extension UIStackView {
                 button.centerXAnchor.constraint(equalTo: self.centerXAnchor),
                 button.heightAnchor.constraint(equalToConstant: 35),
                 button.widthAnchor.constraint(equalTo: self.widthAnchor)
+            ])
+        }
+    }
+
+    func arrangeView(asExpandableWith topView: UIView, and bottomView: UIView) {
+        self.addArrangedSubview(topView)
+
+        NSLayoutConstraint.activate([
+            topView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            topView.widthAnchor.constraint(equalTo: self.widthAnchor)
+        ])
+
+        if !bottomView.isHidden {
+            self.addArrangedSubview(bottomView)
+            NSLayoutConstraint.activate([
+                bottomView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+                bottomView.widthAnchor.constraint(equalTo: self.widthAnchor)
             ])
         }
     }

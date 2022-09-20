@@ -21,7 +21,18 @@ extension UITableViewCell {
         return cell
     }
 
-    func setupUI(with titleLabel: UILabel, and valueLabel: UILabel) {
+    func setupUI(withSingleLabel label: UILabel) {
+        contentView.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            label.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            label.heightAnchor.constraint(equalToConstant: 20)
+        ])
+    }
+
+    func setupUI(withLabels titleLabel: UILabel, and valueLabel: UILabel) {
         contentView.addSubview(titleLabel)
         contentView.addSubview(valueLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -38,14 +49,20 @@ extension UITableViewCell {
         ])
     }
 
-    func setupSingleLable(with label: UILabel) {
-        contentView.addSubview(label)
-        label.translatesAutoresizingMaskIntoConstraints = false
+    func setupUI(withExpandableView stack: UIStackView) {
+        self.addSubview(stack)
+        stack.translatesAutoresizingMaskIntoConstraints = false
+
+        stack.axis = .vertical
+        stack.distribution = .equalSpacing
+        stack.alignment = .top
+        stack.spacing = 30
 
         NSLayoutConstraint.activate([
-            label.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            label.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            label.heightAnchor.constraint(equalToConstant: 20)
+            stack.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            stack.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
+            stack.widthAnchor.constraint(equalTo: self.widthAnchor),
+            self.bottomAnchor.constraint(equalTo: stack.bottomAnchor, constant: 20)
         ])
     }
 }

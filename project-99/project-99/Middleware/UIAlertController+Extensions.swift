@@ -63,9 +63,9 @@ extension UIAlertController {
             guard let input = alertController?.textFields?[0].text else {return}
             switch change {
             case .username:
-                viewModel?.editUsername(with: input)
+                viewModel?.usernameDidEdit(with: input)
             case .password:
-                viewModel?.editPassword(with: input)
+                viewModel?.passwordDidEdit(with: input)
             }
         }
 

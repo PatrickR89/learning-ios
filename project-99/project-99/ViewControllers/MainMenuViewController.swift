@@ -12,11 +12,13 @@ class MainMenuViewController: UIViewController {
     private let viewModel: MainMenuViewModel
     private let menuView: MainMenuView
     private let settingsViewModel: SettingsViewModel
+    private let statsViewModel: StatsViewModel
 
     init(with viewModel: MainMenuViewModel) {
         self.viewModel = viewModel
         self.menuView = MainMenuView(with: viewModel)
         self.settingsViewModel = SettingsViewModel(forUser: viewModel.returnUser(), in: viewModel.realm)
+        self.statsViewModel = StatsViewModel(for: viewModel.returnUser(), in: viewModel.realm)
 
         super.init(nibName: nil, bundle: nil)
         setupUI()
@@ -41,7 +43,14 @@ class MainMenuViewController: UIViewController {
 }
 
 extension MainMenuViewController: MainMenuViewDelegate {
-    func mainMenuView(_ view: MainMenuView, didTapOnSettingsForUser user: User) {
+    func mainMenuView(_ view: MainMenuView, didTapOnStatsForUser user: User?) {
+        let viewController = StatsViewController(with: statsViewModel)
+        let navController = UINavigationController()
+        navController.viewControllers = [viewController]
+        present(navController, animated: true)
+    }
+
+    func mainMenuView(_ view: MainMenuView, didTapOnSettingsForUser user: User?) {
 
         let viewController = SettingsViewController(with: settingsViewModel)
         viewController.delegate = self

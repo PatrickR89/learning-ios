@@ -20,9 +20,14 @@ class StatCellBottomSubview: UIView {
     private let rateStackView = UIStackView()
     private let tableStackView = UIStackView()
 
-    init() {
+    private let viewModel: StatCellBottomViewModel
+    weak var delegate: StatCellBottomSubviewDelegate?
+
+    init(as cellType: StatsContent) {
+        self.viewModel = StatCellBottomViewModel(as: cellType)
         super.init(frame: .zero)
-        setupUI()
+        setupUI(as: cellType)
+        setupBindings(as: cellType)
 
         let labels = [totalLabel, wonLabel, rateLabel]
         use(AppTheme.self) {
@@ -38,7 +43,33 @@ class StatCellBottomSubview: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setupUI() {
+    func setupBindings(as cellType: StatsContent) {
+        viewModel.observeValues { value in
+            print(value)
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else {return}
+                self.totalValueLabel.text = "\(value.totalValue)"
+                self.wonValueLabel.text = "\(value.positiveValue)"
+                if value.totalValue != 0 {
+                    let rate = (value.positiveValue / value.totalValue) * 100
+                    self.rateValueLabel.text = "\(rate)%"
+                } else {
+                    self.rateValueLabel.text = "0.00%"
+                }
+
+                switch cellType {
+                case .games:
+                    self.delegate?.statCellBottomSubview(self, didChangeValueAt: 0)
+                case .pairs:
+                    self.delegate?.statCellBottomSubview(self, didChangeValueAt: 1)
+                case .time:
+                    break
+                }
+            }
+        }
+    }
+
+    func setupUI(as cellType: StatsContent) {
         self.addSubview(tableStackView)
 
         totalStackView.arrangeView(asRowWith: totalLabel, and: totalValueLabel)
@@ -49,12 +80,18 @@ class StatCellBottomSubview: UIView {
 
         tableStackView.arrangeView(asColumnWith: rows)
 
-        totalLabel.text = "Games played:"
-        totalValueLabel.text = "0"
-        wonLabel.text = "Games won:"
-        wonValueLabel.text = "0"
-        rateLabel.text = "Success rate:"
-        rateValueLabel.text = "0%"
+        switch cellType {
+        case .games:
+            totalLabel.text = "Games played:"
+            wonLabel.text = "Games won:"
+            rateLabel.text = "Success rate:"
+        case .pairs:
+            totalLabel.text = "Total pairs:"
+            wonLabel.text = "Pairs removed:"
+            rateLabel.text = "Success rate:"
+        case .time:
+            break
+        }
 
         NSLayoutConstraint.activate([
             tableStackView.topAnchor.constraint(equalTo: self.topAnchor),

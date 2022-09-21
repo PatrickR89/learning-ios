@@ -103,6 +103,7 @@ extension LoginViewModel {
               let password = password else {return }
         if username == user.name && password == user.password {
             self.loginSuccess = true
+            UserContainer.shared.saveUser(with: user.id)
             self.username = ""
             self.password = ""
         } else {

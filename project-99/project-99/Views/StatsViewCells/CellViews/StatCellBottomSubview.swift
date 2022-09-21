@@ -21,13 +21,12 @@ class StatCellBottomSubview: UIView {
     private let tableStackView = UIStackView()
 
     private let viewModel: StatCellBottomViewModel
-    weak var delegate: StatCellBottomSubviewDelegate?
 
     init(as cellType: StatsContent) {
         self.viewModel = StatCellBottomViewModel(as: cellType)
         super.init(frame: .zero)
         setupUI(as: cellType)
-        setupBindings(as: cellType)
+        setupBindings()
 
         let labels = [totalLabel, wonLabel, rateLabel]
         use(AppTheme.self) {
@@ -43,7 +42,7 @@ class StatCellBottomSubview: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setupBindings(as cellType: StatsContent) {
+    func setupBindings() {
         viewModel.observeValues { value in
             print(value)
             DispatchQueue.main.async { [weak self] in
@@ -55,15 +54,6 @@ class StatCellBottomSubview: UIView {
                     self.rateValueLabel.text = "\(rate)%"
                 } else {
                     self.rateValueLabel.text = "0.00%"
-                }
-
-                switch cellType {
-                case .games:
-                    self.delegate?.statCellBottomSubview(self, didChangeValueAt: 0)
-                case .pairs:
-                    self.delegate?.statCellBottomSubview(self, didChangeValueAt: 1)
-                case .time:
-                    break
                 }
             }
         }

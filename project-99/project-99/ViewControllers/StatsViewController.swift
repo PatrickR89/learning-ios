@@ -62,12 +62,10 @@ extension StatsViewController: UITableViewDataSource {
         switch cellContent {
         case .games:
             let cell = GamesViewCell.dequeue(in: tableView, for: indexPath)
-            cell.bottomView.delegate = self
             cell.bottomView.isHidden = viewModel.isCellBottomHidden[indexPath.row]
             return cell
         case .pairs:
             let cell = PairsViewCell.dequeue(in: tableView, for: indexPath)
-            cell.bottomView.delegate = self
             cell.bottomView.isHidden = viewModel.isCellBottomHidden[indexPath.row]
             return cell
         case .time:
@@ -81,13 +79,6 @@ extension StatsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         viewModel.toggleCellBottom(at: indexPath.row)
-        tableView.reloadRows(at: [indexPath], with: .none)
-    }
-}
-
-extension StatsViewController: StatCellBottomSubviewDelegate {
-    func statCellBottomSubview(_ view: StatCellBottomSubview, didChangeValueAt index: Int) {
-        let indexPath = IndexPath(row: index, section: 0)
         tableView.reloadRows(at: [indexPath], with: .none)
     }
 }

@@ -56,9 +56,7 @@ extension UIStackView {
 
         NSLayoutConstraint.activate([
             titleLable.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            titleLable.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            valueLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            valueLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10)
+            valueLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor)
         ])
     }
 
@@ -71,7 +69,7 @@ extension UIStackView {
         self.alignment = .top
         self.spacing = 20
 
-        for (index, row) in rows.enumerated() {
+        for row in rows {
             self.addArrangedSubview(row)
 
             NSLayoutConstraint.activate([
@@ -79,16 +77,6 @@ extension UIStackView {
                 row.widthAnchor.constraint(equalTo: self.widthAnchor),
                 row.heightAnchor.constraint(equalToConstant: 30)
             ])
-
-            if index == 0 {
-                NSLayoutConstraint.activate([
-                    row.topAnchor.constraint(equalTo: self.topAnchor, constant: 10)
-                ])
-            } else {
-                NSLayoutConstraint.activate([
-                    row.topAnchor.constraint(equalTo: rows[index - 1].bottomAnchor, constant: 5)
-                ])
-            }
         }
     }
 }

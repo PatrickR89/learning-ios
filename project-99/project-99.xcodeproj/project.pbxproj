@@ -54,7 +54,6 @@
 		CD88AFDF28DAFA5C00EFCBBB /* PairsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFDE28DAFA5C00EFCBBB /* PairsViewCell.swift */; };
 		CD88AFE228DAFC6D00EFCBBB /* StatCellBottomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFE128DAFC6D00EFCBBB /* StatCellBottomViewModel.swift */; };
 		CD88AFE528DB073000EFCBBB /* UserContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFE428DB073000EFCBBB /* UserContainer.swift */; };
-		CD88AFE728DB11AF00EFCBBB /* StatCellBottomSubviewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFE628DB11AF00EFCBBB /* StatCellBottomSubviewDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,7 +106,6 @@
 		CD88AFDE28DAFA5C00EFCBBB /* PairsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairsViewCell.swift; sourceTree = "<group>"; };
 		CD88AFE128DAFC6D00EFCBBB /* StatCellBottomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatCellBottomViewModel.swift; sourceTree = "<group>"; };
 		CD88AFE428DB073000EFCBBB /* UserContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContainer.swift; sourceTree = "<group>"; };
-		CD88AFE628DB11AF00EFCBBB /* StatCellBottomSubviewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatCellBottomSubviewDelegate.swift; sourceTree = "<group>"; };
 		E9ED53374000A43727DB32F3 /* Pods-project-99.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-99.release.xcconfig"; path = "Target Support Files/Pods-project-99/Pods-project-99.release.xcconfig"; sourceTree = "<group>"; };
 		EE006DE768882589EA85F5B5 /* Pods-project-99.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-99.debug.xcconfig"; path = "Target Support Files/Pods-project-99/Pods-project-99.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -311,7 +309,6 @@
 		CD88AFCF28D9854900EFCBBB /* CellViews */ = {
 			isa = PBXGroup;
 			children = (
-				CD88AFE828DB11EF00EFCBBB /* Delegates */,
 				CD88AFD028D9858000EFCBBB /* StatCellTopSubview.swift */,
 				CD88AFD228D9885E00EFCBBB /* StatCellBottomSubview.swift */,
 			);
@@ -340,14 +337,6 @@
 				CD88AFE428DB073000EFCBBB /* UserContainer.swift */,
 			);
 			path = Containers;
-			sourceTree = "<group>";
-		};
-		CD88AFE828DB11EF00EFCBBB /* Delegates */ = {
-			isa = PBXGroup;
-			children = (
-				CD88AFE628DB11AF00EFCBBB /* StatCellBottomSubviewDelegate.swift */,
-			);
-			path = Delegates;
 			sourceTree = "<group>";
 		};
 		EB75619A2A5DAE8CA72D994E /* Frameworks */ = {
@@ -528,7 +517,6 @@
 				CD88AF9128D3254500EFCBBB /* LoginView.swift in Sources */,
 				CD88AFB328D83E0700EFCBBB /* AppTheme.swift in Sources */,
 				CD88AF9428D450D300EFCBBB /* RealmDataService.swift in Sources */,
-				CD88AFE728DB11AF00EFCBBB /* StatCellBottomSubviewDelegate.swift in Sources */,
 				CD88AFC728D9781200EFCBBB /* StatsViewController.swift in Sources */,
 				CD88AFDD28DAEEB600EFCBBB /* Statistics.swift in Sources */,
 				CD88AF8F28D3252D00EFCBBB /* LoginViewModel.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  GamesTopSubview.swift
+//  StatCellTopSubview.swift
 //  project-99
 //
 //  Created by Patrick on 20.09.2022..
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GamesTopSubview: UIView {
+class StatCellTopSubview: UIView {
 
     private let titleLabel = UILabel()
     private let valueLabel = UILabel()

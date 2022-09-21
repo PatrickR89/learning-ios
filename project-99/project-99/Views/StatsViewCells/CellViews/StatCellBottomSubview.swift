@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GamesBottomSubview: UIView {
+class StatCellBottomSubview: UIView {
 
     private let totalLabel = UILabel()
     private let totalValueLabel = UILabel()

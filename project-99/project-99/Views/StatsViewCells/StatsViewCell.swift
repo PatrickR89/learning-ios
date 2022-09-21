@@ -10,8 +10,8 @@ import UIKit
 class StatsViewCell: UITableViewCell {
 
     private let stackView = UIStackView()
-    private let topView = GamesTopSubview()
-    let bottomView = GamesBottomSubview()
+    private let topView = StatCellTopSubview()
+    let bottomView = StatCellBottomSubview()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

@@ -11,7 +11,7 @@ import RealmSwift
 class StatsViewModel {
     private let realm: Realm
     private let user: User
-    var isCellBottomHidden = [true, true, true, true, true, true, true, true, true, true]
+    var isCellBottomHidden = [true, true, true]
 
     init(for user: User, in realm: Realm) {
         self.user = user

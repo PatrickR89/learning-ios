@@ -28,7 +28,7 @@ class GamesTopSubview: UIView {
 
     func setupUI() {
         self.setupCellViewUI(withLabels: titleLabel, and: valueLabel)
-        self.addSubview(titleLabel)
+
         titleLabel.text = "Games"
         valueLabel.text = "0/0"
     }

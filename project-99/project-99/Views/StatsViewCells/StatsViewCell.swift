@@ -1,5 +1,5 @@
 //
-//  GamesViewCell.swift
+//  StatsViewCell.swift
 //  project-99
 //
 //  Created by Patrick on 20.09.2022..
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GamesViewCell: UITableViewCell {
+class StatsViewCell: UITableViewCell {
 
     private let stackView = UIStackView()
     private let topView = GamesTopSubview()
@@ -28,5 +28,10 @@ class GamesViewCell: UITableViewCell {
     private func setupUI() {
         setupUI(withExpandableView: stackView)
         stackView.arrangeView(asExpandableWith: topView, and: bottomView)
+
+        NSLayoutConstraint.activate([
+            stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            stackView.widthAnchor.constraint(equalTo: self.widthAnchor)
+        ])
     }
 }

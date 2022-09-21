@@ -1,5 +1,5 @@
 //
-//  StatsViewCell.swift
+//  GamesViewCell.swift
 //  project-99
 //
 //  Created by Patrick on 20.09.2022..
@@ -7,13 +7,16 @@
 
 import UIKit
 
-class StatsViewCell: UITableViewCell {
+class GamesViewCell: UITableViewCell {
 
     private let stackView = UIStackView()
     private let topView = StatCellTopSubview()
-    let bottomView = StatCellBottomSubview()
+    var bottomView: StatCellBottomSubview
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        self.bottomView = StatCellBottomSubview(
+            as: StatsContent.games)
+
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
         use(AppTheme.self) {

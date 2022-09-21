@@ -39,4 +39,56 @@ extension UIStackView {
             ])
         }
     }
+
+    func arrangeView(asRowWith titleLable: UILabel, and valueLabel: UILabel) {
+
+        valueLabel.textColor = .systemBlue
+
+        self.translatesAutoresizingMaskIntoConstraints = false
+
+        self.axis = .horizontal
+        self.distribution = .equalSpacing
+        self.alignment = .center
+        self.spacing = 20
+
+        self.addArrangedSubview(titleLable)
+        self.addArrangedSubview(valueLabel)
+
+        NSLayoutConstraint.activate([
+            titleLable.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            titleLable.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+            valueLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            valueLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10)
+        ])
+    }
+
+    func arrangeView(asColumnWith rows: [UIStackView]) {
+
+        self.translatesAutoresizingMaskIntoConstraints = false
+
+        self.axis = .vertical
+        self.distribution = .equalCentering
+        self.alignment = .top
+        self.spacing = 20
+
+        for (index, row) in rows.enumerated() {
+            self.addArrangedSubview(row)
+
+            NSLayoutConstraint.activate([
+                row.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+                row.widthAnchor.constraint(equalTo: self.widthAnchor),
+                row.heightAnchor.constraint(equalToConstant: 30)
+            ])
+
+            if index == 0 {
+                NSLayoutConstraint.activate([
+                    row.topAnchor.constraint(equalTo: self.topAnchor, constant: 10)
+                ])
+            } else {
+                NSLayoutConstraint.activate([
+                    row.topAnchor.constraint(equalTo: rows[index - 1].bottomAnchor, constant: 5)
+                ])
+            }
+        }
+    }
 }

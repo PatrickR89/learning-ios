@@ -35,7 +35,7 @@ class StatsViewController: UIViewController {
 
     private func setupUI() {
         view.addSubview(tableView)
-        GamesViewCell.register(in: tableView)
+        StatsViewCell.register(in: tableView)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.frame = view.frame
@@ -44,28 +44,27 @@ class StatsViewController: UIViewController {
 
 extension StatsViewController: UITableViewDataSource {
 
-//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 200
-//    }
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
+    }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 3
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = GamesViewCell.dequeue(in: tableView, for: indexPath)
+        let cell = StatsViewCell.dequeue(in: tableView, for: indexPath)
         cell.bottomView.isHidden = viewModel.isCellBottomHidden[indexPath.row]
         return cell
     }
 }
 extension StatsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        guard let cell = tableView.cellForRow(at: indexPath) as? GamesViewCell
-//            else { return }
+
         viewModel.toggleCellBottom(at: indexPath.row)
-        tableView.reloadRows(at: [indexPath], with: .automatic)
+        tableView.reloadRows(at: [indexPath], with: .none)
     }
 }

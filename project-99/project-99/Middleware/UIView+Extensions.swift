@@ -31,4 +31,16 @@ extension UIView {
             ])
         }
     }
+
+    func setupCellArrowImageView(for imageView: UIImageView) {
+        self.addSubview(imageView)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            imageView.heightAnchor.constraint(equalToConstant: 20),
+            imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor),
+            imageView.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+        ])
+    }
 }

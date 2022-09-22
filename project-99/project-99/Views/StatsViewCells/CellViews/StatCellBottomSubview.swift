@@ -20,14 +20,13 @@ class StatCellBottomSubview: UIView {
     private let rateStackView = UIStackView()
     private let tableStackView = UIStackView()
 
-    private let viewModel: StatCellBottomViewModel
+    let viewModel: StatCellBottomViewModel
 
-    init(as cellType: StatsContent) {
-        self.viewModel = StatCellBottomViewModel(as: cellType)
+    init(with viewModel: StatCellBottomViewModel, as cellType: StatsContent) {
+        self.viewModel = viewModel
         super.init(frame: .zero)
-        setupUI(as: cellType)
         setupBindings()
-
+        setupUI(as: cellType)
         let labels = [totalLabel, wonLabel, rateLabel]
         use(AppTheme.self) {
             $0.backgroundColor = $1.backgroundColor
@@ -44,7 +43,6 @@ class StatCellBottomSubview: UIView {
 
     func setupBindings() {
         viewModel.observeValues { value in
-            print(value)
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else {return}
                 self.totalValueLabel.text = "\(value.totalValue)"
@@ -55,6 +53,12 @@ class StatCellBottomSubview: UIView {
                 } else {
                     self.rateValueLabel.text = "0.00%"
                 }
+            }
+        }
+
+        viewModel.observeHiddenState { state in
+            DispatchQueue.main.async { [weak self] in
+                self?.isHidden = state
             }
         }
     }
@@ -86,8 +90,7 @@ class StatCellBottomSubview: UIView {
         NSLayoutConstraint.activate([
             tableStackView.topAnchor.constraint(equalTo: self.topAnchor),
             tableStackView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.9),
-            tableStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            self.heightAnchor.constraint(equalTo: tableStackView.heightAnchor)
+            tableStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
     }
 }

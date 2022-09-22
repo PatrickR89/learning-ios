@@ -16,7 +16,7 @@ class StatsViewController: UIViewController {
     init(with viewModel: StatsViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-
+        viewModel.delegate = self
         use(AppTheme.self) {
             $0.tableView.backgroundColor = $1.backgroundColor
             $0.tableView.reloadData()
@@ -46,13 +46,14 @@ class StatsViewController: UIViewController {
 
 extension StatsViewController: UITableViewDataSource {
 
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+            if viewModel.isCellBottomHidden[indexPath.row] {
+                return 40
+            } else {
+                return 200
+            }
     }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return content.count
     }
@@ -63,10 +64,12 @@ extension StatsViewController: UITableViewDataSource {
         case .games:
             let cell = GamesViewCell.dequeue(in: tableView, for: indexPath)
             cell.bottomView.isHidden = viewModel.isCellBottomHidden[indexPath.row]
+            cell.cellBottomViewModel.changeHiddenState(viewModel.isCellBottomHidden[indexPath.row])
             return cell
         case .pairs:
             let cell = PairsViewCell.dequeue(in: tableView, for: indexPath)
             cell.bottomView.isHidden = viewModel.isCellBottomHidden[indexPath.row]
+            cell.cellBottomViewModel.changeHiddenState(viewModel.isCellBottomHidden[indexPath.row])
             return cell
         case .time:
             let cell = GamesViewCell.dequeue(in: tableView, for: indexPath)
@@ -77,8 +80,13 @@ extension StatsViewController: UITableViewDataSource {
 }
 extension StatsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
         viewModel.toggleCellBottom(at: indexPath.row)
+    }
+}
+
+extension StatsViewController: StatsViewModelDelegate {
+    func statsViewModel(_ viewModel: StatsViewModel, didChangeStateAtIndex index: Int) {
+        let indexPath = IndexPath(row: index, section: 0)
         tableView.reloadRows(at: [indexPath], with: .none)
     }
 }

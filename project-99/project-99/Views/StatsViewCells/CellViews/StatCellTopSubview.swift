@@ -11,7 +11,7 @@ class StatCellTopSubview: UIView {
 
     private let titleLabel = UILabel()
     private let arrowView = UIImageView()
-    private let viewModel: StatCellTopViewModel
+    let viewModel: StatCellTopViewModel
 
     init(as cellType: StatsContent, isExtended bottomView: Bool) {
         self.viewModel = StatCellTopViewModel(with: cellType, for: bottomView)
@@ -31,8 +31,9 @@ class StatCellTopSubview: UIView {
 
     func setupUI() {
         self.setupCellViewUI(withLabels: titleLabel, and: nil)
-
+        self.setupCellArrowImageView(for: arrowView)
         titleLabel.text = "Games"
+        arrowView.image = UIImage(systemName: "chevron.down")
 
     }
 
@@ -46,6 +47,16 @@ class StatCellTopSubview: UIView {
                     self?.titleLabel.text = "Pairs"
                 case .time:
                     self?.titleLabel.text = "Time"
+                }
+            }
+        }
+
+        viewModel.observeCellExtension { isExtended in
+            DispatchQueue.main.async { [weak self] in
+                if isExtended {
+                    self?.arrowView.image = UIImage(systemName: "chevron.up")
+                } else {
+                    self?.arrowView.image = UIImage(systemName: "chevron.down")
                 }
             }
         }

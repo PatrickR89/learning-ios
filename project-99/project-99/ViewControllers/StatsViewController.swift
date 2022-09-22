@@ -18,6 +18,7 @@ class StatsViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         viewModel.delegate = self
         use(AppTheme.self) {
+            $0.view.backgroundColor = $1.backgroundColor
             $0.tableView.backgroundColor = $1.backgroundColor
             $0.tableView.reloadData()
             $0.reloadInputViews()

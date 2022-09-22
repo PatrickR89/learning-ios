@@ -79,4 +79,24 @@ extension UIStackView {
             ])
         }
     }
+
+    func arrangeView(asColumnWith viewRows: [UIView]) {
+
+        self.translatesAutoresizingMaskIntoConstraints = false
+
+        self.axis = .vertical
+        self.distribution = .equalCentering
+        self.alignment = .top
+        self.spacing = 20
+
+        for row in viewRows {
+            self.addArrangedSubview(row)
+
+            NSLayoutConstraint.activate([
+                row.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+                row.widthAnchor.constraint(equalTo: self.widthAnchor),
+                row.heightAnchor.constraint(equalToConstant: 30)
+            ])
+        }
+    }
 }

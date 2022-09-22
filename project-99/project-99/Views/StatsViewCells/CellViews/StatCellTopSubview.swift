@@ -45,7 +45,7 @@ class StatCellTopSubview: UIView {
                     self?.titleLabel.text = "Games"
                 case .pairs:
                     self?.titleLabel.text = "Pairs"
-                case .time:
+                case .gameTimes:
                     self?.titleLabel.text = "Time"
                 }
             }
@@ -53,7 +53,7 @@ class StatCellTopSubview: UIView {
 
         viewModel.observeCellExtension { isExtended in
             DispatchQueue.main.async { [weak self] in
-                if isExtended {
+                if !isExtended {
                     self?.arrowView.image = UIImage(systemName: "chevron.up")
                 } else {
                     self?.arrowView.image = UIImage(systemName: "chevron.down")

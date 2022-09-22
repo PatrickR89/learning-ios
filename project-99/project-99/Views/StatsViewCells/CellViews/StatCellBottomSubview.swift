@@ -68,7 +68,7 @@ class StatCellBottomSubview: UIView {
             totalsView.addTitle("Total pairs:")
             winsView.addTitle("Pairs removed:")
             rateView.addTitle("Success rate:")
-        case .time:
+        case .gameTimes:
             break
         }
 

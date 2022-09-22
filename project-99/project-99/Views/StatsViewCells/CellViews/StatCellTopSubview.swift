@@ -10,11 +10,14 @@ import UIKit
 class StatCellTopSubview: UIView {
 
     private let titleLabel = UILabel()
-    private let valueLabel = UILabel()
+    private let arrowView = UIImageView()
+    private let viewModel: StatCellTopViewModel
 
-    init() {
+    init(as cellType: StatsContent, isExtended bottomView: Bool) {
+        self.viewModel = StatCellTopViewModel(with: cellType, for: bottomView)
         super.init(frame: .zero)
         setupUI()
+        setupBindings()
 
         use(AppTheme.self) {
             $0.backgroundColor = $1.backgroundColor
@@ -27,9 +30,24 @@ class StatCellTopSubview: UIView {
     }
 
     func setupUI() {
-        self.setupCellViewUI(withLabels: titleLabel, and: valueLabel)
+        self.setupCellViewUI(withLabels: titleLabel, and: nil)
 
         titleLabel.text = "Games"
-        valueLabel.text = "0/0"
+
+    }
+
+    func setupBindings() {
+        viewModel.observeCellType { value in
+            DispatchQueue.main.async { [weak self] in
+                switch value {
+                case .games:
+                    self?.titleLabel.text = "Games"
+                case .pairs:
+                    self?.titleLabel.text = "Pairs"
+                case .time:
+                    self?.titleLabel.text = "Time"
+                }
+            }
+        }
     }
 }

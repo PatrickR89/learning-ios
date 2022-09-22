@@ -9,16 +9,10 @@ import UIKit
 
 class StatCellBottomSubview: UIView {
 
-    private let totalLabel = UILabel()
-    private let totalValueLabel = UILabel()
-    private let wonLabel = UILabel()
-    private let wonValueLabel = UILabel()
-    private let rateLabel = UILabel()
-    private let rateValueLabel = UILabel()
-    private let totalStackView = UIStackView()
-    private let wonStackView = UIStackView()
-    private let rateStackView = UIStackView()
-    private let tableStackView = UIStackView()
+    private let totalsView = LabelLayout()
+    private let winsView = LabelLayout()
+    private let rateView = LabelLayout()
+    private let labelStack = UIStackView()
 
     let viewModel: StatCellBottomViewModel
 
@@ -27,13 +21,8 @@ class StatCellBottomSubview: UIView {
         super.init(frame: .zero)
         setupBindings()
         setupUI(as: cellType)
-        let labels = [totalLabel, wonLabel, rateLabel]
         use(AppTheme.self) {
             $0.backgroundColor = $1.backgroundColor
-
-            for label in labels {
-                label.textColor = $1.textColor
-            }
         }
     }
 
@@ -45,13 +34,13 @@ class StatCellBottomSubview: UIView {
         viewModel.observeValues { value in
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else {return}
-                self.totalValueLabel.text = "\(value.totalValue)"
-                self.wonValueLabel.text = "\(value.positiveValue)"
+                self.totalsView.addValue("\(value.totalValue)")
+                self.winsView.addValue("\(value.positiveValue)")
                 if value.totalValue != 0 {
                     let rate = (value.positiveValue / value.totalValue) * 100
-                    self.rateValueLabel.text = "\(rate)%"
+                    self.rateView.addValue("\(rate)%")
                 } else {
-                    self.rateValueLabel.text = "0.00%"
+                    self.rateView.addValue("0.00%")
                 }
             }
         }
@@ -64,33 +53,29 @@ class StatCellBottomSubview: UIView {
     }
 
     func setupUI(as cellType: StatsContent) {
-        self.addSubview(tableStackView)
+        self.addSubview(labelStack)
 
-        totalStackView.arrangeView(asRowWith: totalLabel, and: totalValueLabel)
-        wonStackView.arrangeView(asRowWith: wonLabel, and: wonValueLabel)
-        rateStackView.arrangeView(asRowWith: rateLabel, and: rateValueLabel)
+        let views: [UIView] = [totalsView, winsView, rateView]
 
-        let rows = [totalStackView, wonStackView, rateStackView]
-
-        tableStackView.arrangeView(asColumnWith: rows)
+        labelStack.arrangeView(asColumnWith: views)
 
         switch cellType {
         case .games:
-            totalLabel.text = "Games played:"
-            wonLabel.text = "Games won:"
-            rateLabel.text = "Success rate:"
+            totalsView.addTitle("Games played:")
+            winsView.addTitle("Games won:")
+            rateView.addTitle("Success rate:")
         case .pairs:
-            totalLabel.text = "Total pairs:"
-            wonLabel.text = "Pairs removed:"
-            rateLabel.text = "Success rate:"
+            totalsView.addTitle("Total pairs:")
+            winsView.addTitle("Pairs removed:")
+            rateView.addTitle("Success rate:")
         case .time:
             break
         }
 
         NSLayoutConstraint.activate([
-            tableStackView.topAnchor.constraint(equalTo: self.topAnchor),
-            tableStackView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.9),
-            tableStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+            labelStack.topAnchor.constraint(equalTo: self.topAnchor),
+            labelStack.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.9),
+            labelStack.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
     }
 }

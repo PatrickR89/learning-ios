@@ -10,12 +10,13 @@ import UIKit
 class GamesViewCell: UITableViewCell {
 
     private let stackView = UIStackView()
-    private let topView = StatCellTopSubview()
+    private let topView: StatCellTopSubview
     var bottomView: StatCellBottomSubview
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         self.bottomView = StatCellBottomSubview(
             as: StatsContent.games)
+        self.topView = StatCellTopSubview(as: StatsContent.games, isExtended: !self.bottomView.isHidden)
 
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()

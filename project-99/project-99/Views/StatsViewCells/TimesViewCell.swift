@@ -1,26 +1,23 @@
 //
-//  PairsViewCell.swift
+//  TimesViewCell.swift
 //  project-99
 //
-//  Created by Patrick on 21.09.2022..
+//  Created by Patrick on 22.09.2022..
 //
 
 import UIKit
 
-class PairsViewCell: UITableViewCell {
+class TimesViewCell: UITableViewCell {
 
     private let stackView = UIStackView()
     private let topView: StatCellTopSubview
-    var bottomView: StatCellBottomSubview
-    let cellBottomViewModel: StatCellBottomViewModel
+    var bottomView: TimesCellBottomSubview
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        self.cellBottomViewModel = StatCellBottomViewModel(as: StatsContent.pairs)
-        self.bottomView = StatCellBottomSubview(
-            with: cellBottomViewModel, as: StatsContent.pairs)
-        self.topView = StatCellTopSubview(as: StatsContent.pairs, isExtended: self.bottomView.isHidden)
+        self.bottomView = TimesCellBottomSubview(cellType: .gameTimes)
+        self.topView = StatCellTopSubview(as: StatsContent.gameTimes, isExtended: !self.bottomView.isHidden)
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.cellBottomViewModel.delegate = self
+        setupUI()
         use(AppTheme.self) {
             $0.backgroundColor = $1.backgroundColor
         }
@@ -38,13 +35,5 @@ class PairsViewCell: UITableViewCell {
             stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             stackView.widthAnchor.constraint(equalTo: self.widthAnchor)
         ])
-    }
-}
-
-extension PairsViewCell: StatCellBottomViewModelDelegate {
-    func statCellBottomViewModel(_ viewModel: StatCellBottomViewModel, didChangeViewHiddenState: Bool) {
-        stackView.removeFromSuperview()
-        setupUI()
-        topView.viewModel.toggleExtension(with: self.bottomView.isHidden)
     }
 }

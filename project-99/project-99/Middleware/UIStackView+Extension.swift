@@ -33,6 +33,7 @@ extension UIStackView {
 
         if !hidden {
             self.addArrangedSubview(bottomView)
+            bottomView.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
                 bottomView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
                 bottomView.widthAnchor.constraint(equalTo: self.widthAnchor)

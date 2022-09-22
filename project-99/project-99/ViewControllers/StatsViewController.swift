@@ -11,7 +11,7 @@ class StatsViewController: UIViewController {
 
     private let viewModel: StatsViewModel
     private let tableView = UITableView()
-    private let content: [StatsContent] = [.games, .pairs, .time]
+    private let content: [StatsContent] = [.games, .pairs, .gameTimes]
 
     init(with viewModel: StatsViewModel) {
         self.viewModel = viewModel
@@ -39,6 +39,7 @@ class StatsViewController: UIViewController {
         view.addSubview(tableView)
         GamesViewCell.register(in: tableView)
         PairsViewCell.register(in: tableView)
+        TimesViewCell.register(in: tableView)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.frame = view.frame
@@ -72,9 +73,9 @@ extension StatsViewController: UITableViewDataSource {
             cell.bottomView.isHidden = viewModel.isCellBottomHidden[indexPath.row]
             cell.cellBottomViewModel.changeHiddenState(viewModel.isCellBottomHidden[indexPath.row])
             return cell
-        case .time:
-            let cell = GamesViewCell.dequeue(in: tableView, for: indexPath)
-            cell.bottomView.isHidden = viewModel.isCellBottomHidden[indexPath.row]
+        case .gameTimes:
+            let cell = TimesViewCell.dequeue(in: tableView, for: indexPath)
+//            cell.bottomView.isHidden = viewModel.isCellBottomHidden[indexPath.row]
             return cell
         }
     }

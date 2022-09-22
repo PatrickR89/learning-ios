@@ -62,7 +62,7 @@ class StatCellBottomViewModel {
         case .pairs:
             values?.totalValue = realmData.cardsClicked
             values?.positiveValue = realmData.pairsRevealed
-        case .time:
+        case .gameTimes:
             break
         }
     }

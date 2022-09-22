@@ -10,5 +10,5 @@ import Foundation
 enum StatsContent {
     case games
     case pairs
-    case time
+    case gameTimes
 }

@@ -19,7 +19,7 @@ class GamesViewCell: UITableViewCell {
 
         self.bottomView = StatCellBottomSubview(
             with: cellBottomViewModel, as: StatsContent.games)
-        self.topView = StatCellTopSubview(as: StatsContent.games, isExtended: !self.bottomView.isHidden)
+        self.topView = StatCellTopSubview(as: StatsContent.games, isExtended: self.bottomView.isHidden)
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.cellBottomViewModel.delegate = self
         use(AppTheme.self) {

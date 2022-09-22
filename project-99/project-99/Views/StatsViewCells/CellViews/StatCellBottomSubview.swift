@@ -9,9 +9,9 @@ import UIKit
 
 class StatCellBottomSubview: UIView {
 
-    private let totalsView = LabelLayout()
-    private let winsView = LabelLayout()
-    private let rateView = LabelLayout()
+    private let totalsView = LabelLayoutView()
+    private let winsView = LabelLayoutView()
+    private let rateView = LabelLayoutView()
     private let labelStack = UIStackView()
 
     let viewModel: StatCellBottomViewModel

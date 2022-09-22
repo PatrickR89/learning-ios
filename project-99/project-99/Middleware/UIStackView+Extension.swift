@@ -23,7 +23,7 @@ extension UIStackView {
         }
     }
 
-    func arrangeView(asExpandableWith topView: UIView, and bottomView: UIView) {
+    func arrangeView(asExpandableWith topView: UIView, and bottomView: UIView, bottomIsHidden hidden: Bool) {
         self.addArrangedSubview(topView)
 
         NSLayoutConstraint.activate([
@@ -31,7 +31,7 @@ extension UIStackView {
             topView.widthAnchor.constraint(equalTo: self.widthAnchor)
         ])
 
-        if !bottomView.isHidden {
+        if !hidden {
             self.addArrangedSubview(bottomView)
             NSLayoutConstraint.activate([
                 bottomView.centerXAnchor.constraint(equalTo: self.centerXAnchor),

@@ -50,4 +50,8 @@ class StatCellTopViewModel {
         self.extensionObserver = closure
         cellExtensionDidChange()
     }
+
+    func toggleExtension(with value: Bool) {
+        self.extendedCell = value
+    }
 }

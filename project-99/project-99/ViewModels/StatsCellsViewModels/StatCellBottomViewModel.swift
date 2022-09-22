@@ -18,7 +18,17 @@ class StatCellBottomViewModel {
         }
     }
 
+    private var isViewHidden: Bool = true {
+        didSet {
+            hideValueDidChange()
+            delegate?.statCellBottomViewModel(self, didChangeViewHiddenState: isViewHidden)
+        }
+    }
+
     private var observer: ((Statistics) -> Void)?
+    private var hiddenObserver: ((Bool) -> Void)?
+
+    weak var delegate: StatCellBottomViewModelDelegate?
 
     init(as currentType: StatsContent) {
         self.realm = RealmDataService.shared.initiateRealm()
@@ -32,6 +42,13 @@ class StatCellBottomViewModel {
             return
         }
         observer(values)
+    }
+
+    private func hideValueDidChange() {
+        guard let hiddenObserver = hiddenObserver else {
+            return
+        }
+        hiddenObserver(isViewHidden)
     }
 
     private func retrieveData(with currentType: StatsContent) {
@@ -53,5 +70,14 @@ class StatCellBottomViewModel {
     func observeValues(_ closure: @escaping (Statistics) -> Void) {
         self.observer = closure
         valueDidChange()
+    }
+
+    func observeHiddenState(_ closure: @escaping (Bool) -> Void) {
+        self.hiddenObserver = closure
+        hideValueDidChange()
+    }
+
+    func changeHiddenState(_ state: Bool) {
+        self.isViewHidden = state
     }
 }

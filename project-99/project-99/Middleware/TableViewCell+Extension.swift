@@ -50,6 +50,7 @@ extension UITableViewCell {
     }
 
     func setupUI(withExpandableView stack: UIStackView) {
+        stack.removeFromSuperview()
         self.addSubview(stack)
         stack.translatesAutoresizingMaskIntoConstraints = false
 
@@ -61,8 +62,7 @@ extension UITableViewCell {
         NSLayoutConstraint.activate([
             stack.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             stack.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
-            stack.widthAnchor.constraint(equalTo: self.widthAnchor),
-            self.bottomAnchor.constraint(equalTo: stack.bottomAnchor, constant: 20)
+            stack.widthAnchor.constraint(equalTo: self.widthAnchor)
         ])
     }
 }

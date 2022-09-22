@@ -11,6 +11,7 @@ import RealmSwift
 class StatsViewModel {
     private let realm: Realm
     private let user: User
+    weak var delegate: StatsViewModelDelegate?
     var isCellBottomHidden = [true, true, true]
 
     init(for user: User, in realm: Realm) {
@@ -19,6 +20,7 @@ class StatsViewModel {
     }
 
     func toggleCellBottom(at index: Int) {
-        isCellBottomHidden[index] = !isCellBottomHidden[index]
+         isCellBottomHidden[index] = !isCellBottomHidden[index]
+        delegate?.statsViewModel(self, didChangeStateAtIndex: index)
     }
 }

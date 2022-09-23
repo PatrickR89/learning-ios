@@ -77,11 +77,25 @@ extension LoginViewModel {
             pairsRevealed: 0,
             totalPlayTime: 0.0)
 
+        let initialTimes = LevelTimes(
+            userId: newUser.id,
+            veryEasy: 0.0,
+            easy: 0.0,
+            mediumHard: 0.0,
+            hard: 0.0,
+            veryHard: 0.0,
+            emotionalDamage: 0.0)
+
         try? realm.write {
             realm.add(newUser)
             realm.add(newSettings)
             realm.add(newStats)
+            realm.add(initialTimes)
         }
+
+        self.loginSuccess = true
+        self.user = newUser
+        UserContainer.shared.saveUser(with: newUser.id)
     }
 
     func sendUser() -> User {

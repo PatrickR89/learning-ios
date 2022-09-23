@@ -75,7 +75,8 @@ extension StatsViewController: UITableViewDataSource {
             return cell
         case .gameTimes:
             let cell = TimesViewCell.dequeue(in: tableView, for: indexPath)
-//            cell.bottomView.isHidden = viewModel.isCellBottomHidden[indexPath.row]
+            cell.bottomView.isHidden = viewModel.isCellBottomHidden[indexPath.row]
+            cell.cellBottomViewModel.changeHiddenState(viewModel.isCellBottomHidden[indexPath.row])
             return cell
         }
     }

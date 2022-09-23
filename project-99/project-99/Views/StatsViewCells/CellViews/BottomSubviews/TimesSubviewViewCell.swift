@@ -14,6 +14,10 @@ class TimesSubviewViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
+
+        use(AppTheme.self) {
+            $0.backgroundColor = $1.backgroundColor
+        }
     }
 
     required init?(coder: NSCoder) {

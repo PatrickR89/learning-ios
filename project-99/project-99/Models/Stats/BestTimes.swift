@@ -8,6 +8,6 @@
 import Foundation
 
 struct BestTimes {
-    var title: Levels
+    var title: Level
     var time: Double
 }

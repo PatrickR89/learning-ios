@@ -34,7 +34,6 @@ class NewGameViewController: UIViewController {
 
     private func setupUI() {
         view.addSubview(tableView)
-//        tableView.frame = view.frame
 
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
@@ -62,4 +61,13 @@ extension NewGameViewController: UITableViewDataSource {
     }
 }
 
-extension NewGameViewController: UITableViewDelegate {}
+extension NewGameViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let navController = UINavigationController()
+        let gameViewModel = GameViewModel(for: viewModel.loadLevel(at: indexPath.row))
+        let viewController = GameViewController(with: gameViewModel)
+
+        navController.viewControllers = [viewController]
+        present(navController, animated: true)
+    }
+}

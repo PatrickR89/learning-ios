@@ -63,6 +63,7 @@
 		CD88AFF828DC6D6B00EFCBBB /* TimesSubviewViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFF728DC6D6B00EFCBBB /* TimesSubviewViewCell.swift */; };
 		CD88AFFA28DC71D500EFCBBB /* BestTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFF928DC71D500EFCBBB /* BestTimes.swift */; };
 		CD88AFFC28DD825F00EFCBBB /* LevelsTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFFB28DD825F00EFCBBB /* LevelsTime.swift */; };
+		CD88AFFF28DD877A00EFCBBB /* TimesSubviewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFFE28DD877A00EFCBBB /* TimesSubviewCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -124,6 +125,7 @@
 		CD88AFF728DC6D6B00EFCBBB /* TimesSubviewViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesSubviewViewCell.swift; sourceTree = "<group>"; };
 		CD88AFF928DC71D500EFCBBB /* BestTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestTimes.swift; sourceTree = "<group>"; };
 		CD88AFFB28DD825F00EFCBBB /* LevelsTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelsTime.swift; sourceTree = "<group>"; };
+		CD88AFFE28DD877A00EFCBBB /* TimesSubviewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesSubviewCellViewModel.swift; sourceTree = "<group>"; };
 		E9ED53374000A43727DB32F3 /* Pods-project-99.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-99.release.xcconfig"; path = "Target Support Files/Pods-project-99/Pods-project-99.release.xcconfig"; sourceTree = "<group>"; };
 		EE006DE768882589EA85F5B5 /* Pods-project-99.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-99.debug.xcconfig"; path = "Target Support Files/Pods-project-99/Pods-project-99.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -353,6 +355,7 @@
 				CD88AFEB28DC44BE00EFCBBB /* Delegates */,
 				CD88AFE128DAFC6D00EFCBBB /* StatCellBottomViewModel.swift */,
 				CD88AFE928DC2E2800EFCBBB /* StatCellTopViewModel.swift */,
+				CD88AFFE28DD877A00EFCBBB /* TimesSubviewCellViewModel.swift */,
 			);
 			path = StatsCellsViewModels;
 			sourceTree = "<group>";
@@ -564,6 +567,7 @@
 				CD88AFA628D490DC00EFCBBB /* TableViewCell+Extension.swift in Sources */,
 				CD88AFED28DC44DC00EFCBBB /* StatCellBottomViewModelDelegate.swift in Sources */,
 				CD88AFC528D8893800EFCBBB /* SettingsViewControllerDelegate.swift in Sources */,
+				CD88AFFF28DD877A00EFCBBB /* TimesSubviewCellViewModel.swift in Sources */,
 				CD88AF9128D3254500EFCBBB /* LoginView.swift in Sources */,
 				CD88AFB328D83E0700EFCBBB /* AppTheme.swift in Sources */,
 				CD88AFFA28DC71D500EFCBBB /* BestTimes.swift in Sources */,

@@ -68,6 +68,8 @@
 		CD88B00328DD9C0D00EFCBBB /* NewGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B00228DD9C0D00EFCBBB /* NewGameViewController.swift */; };
 		CD88B00528DD9C1F00EFCBBB /* NewGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B00428DD9C1F00EFCBBB /* NewGameViewModel.swift */; };
 		CD88B00828DD9D1200EFCBBB /* NewGameViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B00728DD9D1200EFCBBB /* NewGameViewCell.swift */; };
+		CD88B00A28DDA73700EFCBBB /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B00928DDA73700EFCBBB /* GameViewController.swift */; };
+		CD88B00C28DDA74C00EFCBBB /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B00B28DDA74C00EFCBBB /* GameViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -134,6 +136,8 @@
 		CD88B00228DD9C0D00EFCBBB /* NewGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameViewController.swift; sourceTree = "<group>"; };
 		CD88B00428DD9C1F00EFCBBB /* NewGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameViewModel.swift; sourceTree = "<group>"; };
 		CD88B00728DD9D1200EFCBBB /* NewGameViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameViewCell.swift; sourceTree = "<group>"; };
+		CD88B00928DDA73700EFCBBB /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		CD88B00B28DDA74C00EFCBBB /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		E9ED53374000A43727DB32F3 /* Pods-project-99.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-99.release.xcconfig"; path = "Target Support Files/Pods-project-99/Pods-project-99.release.xcconfig"; sourceTree = "<group>"; };
 		EE006DE768882589EA85F5B5 /* Pods-project-99.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-99.debug.xcconfig"; path = "Target Support Files/Pods-project-99/Pods-project-99.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -219,6 +223,7 @@
 				CD88AFA328D4815000EFCBBB /* SettingsViewController.swift */,
 				CD88AFC628D9781200EFCBBB /* StatsViewController.swift */,
 				CD88B00228DD9C0D00EFCBBB /* NewGameViewController.swift */,
+				CD88B00928DDA73700EFCBBB /* GameViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -233,6 +238,7 @@
 				CD88AFAE28D497E400EFCBBB /* SettingsViewModel.swift */,
 				CD88AFC828D978D200EFCBBB /* StatsViewModel.swift */,
 				CD88B00428DD9C1F00EFCBBB /* NewGameViewModel.swift */,
+				CD88B00B28DDA74C00EFCBBB /* GameViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -569,6 +575,7 @@
 				CD88AFBD28D86ED700EFCBBB /* UIAlertController+Extensions.swift in Sources */,
 				CD88AFAD28D496A800EFCBBB /* MainMenuViewDelegate.swift in Sources */,
 				CD88B00528DD9C1F00EFCBBB /* NewGameViewModel.swift in Sources */,
+				CD88B00A28DDA73700EFCBBB /* GameViewController.swift in Sources */,
 				CD88AF5D28D2F0B200EFCBBB /* AppDelegate.swift in Sources */,
 				CD88AF7B28D308EF00EFCBBB /* Theme.swift in Sources */,
 				CD88AFA128D47A7E00EFCBBB /* UIStackView+Extension.swift in Sources */,
@@ -593,6 +600,7 @@
 				CD88AF9128D3254500EFCBBB /* LoginView.swift in Sources */,
 				CD88AFB328D83E0700EFCBBB /* AppTheme.swift in Sources */,
 				CD88AFFA28DC71D500EFCBBB /* BestTimes.swift in Sources */,
+				CD88B00C28DDA74C00EFCBBB /* GameViewModel.swift in Sources */,
 				CD88AF9428D450D300EFCBBB /* RealmDataService.swift in Sources */,
 				CD88AFF628DC601500EFCBBB /* LabelLayoutView.swift in Sources */,
 				CD88AFC728D9781200EFCBBB /* StatsViewController.swift in Sources */,

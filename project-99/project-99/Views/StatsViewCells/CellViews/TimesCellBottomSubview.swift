@@ -10,16 +10,13 @@ import UIKit
 class TimesCellBottomSubview: UIView {
 
     private let tableView = UITableView()
-
-    var times: [BestTimes] = [
-        BestTimes(title: .easy, time: 0.33),
-        BestTimes(title: .mediumHard, time: 99.00),
-        BestTimes(title: .veryEasy, time: 4.33),
-        BestTimes(title: .emotionalDamage, time: 22.33)]
+    private let viewModel = TimesCellBottomModelView()
 
     init(cellType: StatsContent) {
         super.init(frame: .zero)
         setupUI(as: cellType)
+        setupBindings()
+        viewModel.loadTimes()
         use(AppTheme.self) {
             $0.backgroundColor = $1.backgroundColor
         }
@@ -41,6 +38,14 @@ class TimesCellBottomSubview: UIView {
             tableView.heightAnchor.constraint(equalToConstant: 270)
         ])
     }
+
+    private func setupBindings() {
+        viewModel.observeTimes { _ in
+            DispatchQueue.main.async { [weak self] in
+                self?.tableView.reloadData()
+            }
+        }
+    }
 }
 
 extension TimesCellBottomSubview: UITableViewDataSource {
@@ -50,13 +55,13 @@ extension TimesCellBottomSubview: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return times.count
+        return viewModel.countTimesLength()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let time = times[indexPath.row]
+        let time = viewModel.returnTimesElement(for: indexPath.row)
         let cell = TimesSubviewViewCell.dequeue(in: tableView, for: indexPath)
-        cell.addLabel(with: "\(time.title.rawValue)", and: "\(time.time)")
+        cell.addLabel(with: "\(time.title)", and: "\(time.time)")
         return cell
     }
 }

@@ -10,9 +10,10 @@ import UIKit
 class TimesCellBottomSubview: UIView {
 
     private let tableView = UITableView()
-    private let viewModel = TimesCellBottomModelView()
+    private let viewModel: TimesCellBottomViewModel
 
-    init(cellType: StatsContent) {
+    init(with viewModel: TimesCellBottomViewModel, cellType: StatsContent) {
+        self.viewModel = viewModel
         super.init(frame: .zero)
         setupUI(as: cellType)
         setupBindings()

@@ -12,12 +12,14 @@ class TimesViewCell: UITableViewCell {
     private let stackView = UIStackView()
     private let topView: StatCellTopSubview
     var bottomView: TimesCellBottomSubview
+    var cellBottomViewModel: TimesCellBottomViewModel
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        self.bottomView = TimesCellBottomSubview(cellType: .gameTimes)
+        self.cellBottomViewModel = TimesCellBottomViewModel()
+        self.bottomView = TimesCellBottomSubview(with: cellBottomViewModel, cellType: .gameTimes)
         self.topView = StatCellTopSubview(as: StatsContent.gameTimes, isExtended: !self.bottomView.isHidden)
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupUI()
+        self.cellBottomViewModel.delegate = self
         use(AppTheme.self) {
             $0.backgroundColor = $1.backgroundColor
         }
@@ -35,5 +37,12 @@ class TimesViewCell: UITableViewCell {
             stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             stackView.widthAnchor.constraint(equalTo: self.widthAnchor)
         ])
+    }
+}
+
+extension TimesViewCell: TimesCellBottomViewModelDelegate {
+    func timesCellBottomViewModel(_ viewModel: TimesCellBottomViewModel, didChangeViewHiddenState: Bool) {
+        setupUI()
+        topView.viewModel.toggleExtension(with: self.bottomView.isHidden)
     }
 }

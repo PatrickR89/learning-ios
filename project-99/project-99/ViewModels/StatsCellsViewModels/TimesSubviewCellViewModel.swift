@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class TimesCellBottomModelView {
+class TimesCellBottomViewModel {
     private var realm: Realm
 
     private var times = [BestTimes]() {
@@ -17,7 +17,17 @@ class TimesCellBottomModelView {
         }
     }
 
+    private var isViewHidden: Bool = true {
+        didSet {
+            hideValueDidChange()
+            delegate?.timesCellBottomViewModel(self, didChangeViewHiddenState: isViewHidden)
+        }
+    }
+
     private var observer: (([BestTimes]) -> Void)?
+    private var hiddenObserver: ((Bool) -> Void)?
+
+    weak var delegate: TimesCellBottomViewModelDelegate?
 
     init() {
         self.realm = RealmDataService.shared.initiateRealm()
@@ -29,6 +39,13 @@ class TimesCellBottomModelView {
             return
         }
         observer(times)
+    }
+
+    private func hideValueDidChange() {
+        guard let hiddenObserver = hiddenObserver else {
+            return
+        }
+        hiddenObserver(isViewHidden)
     }
 
     func observeTimes(_ closure: @escaping ([BestTimes]) -> Void) {
@@ -55,5 +72,14 @@ class TimesCellBottomModelView {
 
     func returnTimesElement(for index: Int) -> BestTimes {
         return times[index]
+    }
+
+    func observeHiddenState(_ closure: @escaping (Bool) -> Void) {
+        self.hiddenObserver = closure
+        hideValueDidChange()
+    }
+
+    func changeHiddenState(_ state: Bool) {
+        self.isViewHidden = state
     }
 }

@@ -14,7 +14,6 @@ class GameView: UIView {
     lazy var collectionLayout: UICollectionViewFlowLayout = {
         let collectionLayout = UICollectionViewFlowLayout()
         collectionLayout.scrollDirection = .vertical
-        collectionLayout.itemSize = CGSize(width: self.frame.width / 3.33, height: self.frame.width / 3.33)
         collectionLayout.minimumInteritemSpacing = 0
         collectionLayout.minimumLineSpacing = 0
 
@@ -35,7 +34,27 @@ class GameView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configCollectionViewLayout() {
+    func configCollectionViewLayout(for level: Level) {
+        var dimensionDependance: Double
+        switch level {
+        case .veryEasy:
+            dimensionDependance = 2.3
+        case .easy:
+            dimensionDependance = 3.12
+        case .mediumHard:
+            dimensionDependance = 4.3
+        case .hard:
+            dimensionDependance = 3.3
+        case .veryHard:
+            dimensionDependance = 4.3
+        case .emotionalDamage:
+            dimensionDependance = 4.35
+        }
+
+        collectionLayout.itemSize = CGSize(
+            width: self.frame.width / dimensionDependance,
+            height: self.frame.width / dimensionDependance)
+        
         self.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -63,7 +82,6 @@ extension GameView: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: "image",
                 for: indexPath) as? GameViewCell else {fatalError("No cell!")}
-            print(cell.heightAnchor)
             cell.configImageLayout()
             let card = viewModel.returnCardForIndex(at: indexPath.item)
             cell.drawCard(with: card)

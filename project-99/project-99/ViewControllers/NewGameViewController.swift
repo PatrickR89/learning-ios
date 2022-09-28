@@ -68,6 +68,7 @@ extension NewGameViewController: UITableViewDelegate {
         let viewController = GameViewController(with: gameViewModel)
 
         navController.viewControllers = [viewController]
+        navController.modalPresentationStyle = .fullScreen
         present(navController, animated: true)
     }
 }

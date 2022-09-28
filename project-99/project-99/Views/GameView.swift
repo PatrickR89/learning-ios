@@ -26,6 +26,15 @@ class GameView: UIView {
         return collectionView
     }()
 
+    init(with viewModel: GameViewModel) {
+        self.viewModel = viewModel
+        super.init(frame: .zero)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     func configCollectionViewLayout() {
         self.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -41,20 +50,11 @@ class GameView: UIView {
             collectionView.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor)
         ])
     }
-
-    init(with viewModel: GameViewModel) {
-        self.viewModel = viewModel
-        super.init(frame: .zero)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 }
 
 extension GameView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 12
+        return viewModel.countCardsLength()
     }
 
     func collectionView(
@@ -63,6 +63,10 @@ extension GameView: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: "image",
                 for: indexPath) as? GameViewCell else {fatalError("No cell!")}
+            print(cell.heightAnchor)
+            cell.configImageLayout()
+            let card = viewModel.returnCardForIndex(at: indexPath.item)
+            cell.drawCard(with: card)
             return cell
         }
 }

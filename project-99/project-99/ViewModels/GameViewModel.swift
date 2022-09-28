@@ -6,40 +6,53 @@
 //
 
 import Foundation
+import UIKit
 
 class GameViewModel {
-    var currentGameCards = [String]()
+    private var currentSymbols = [String]() {
+        didSet {
+            setupCards()
+        }
+    }
+    private var currentCards = [GameCard]()
 
     init(for level: Level) {
-        setupCards(gameDifficulty: level)
+        setupSymbols(gameDifficulty: level)
     }
 
-    func fetchSymbols() -> [String] {
+    private func fetchSymbols() -> [String] {
         guard let symbolUrl = Bundle.main.url(forResource: "symbolList", withExtension: ".txt"),
               let symbols = try? String(contentsOf: symbolUrl) else {fatalError("Symbols for game not found")}
         let cardSymbols = symbols.components(separatedBy: "\n").shuffled()
         return cardSymbols
     }
 
-    func setupCards(gameDifficulty: Level) {
+    private func setupSymbols(gameDifficulty: Level) {
 
         let cardSymbols = fetchSymbols()
         switch gameDifficulty {
 
         case .veryEasy:
-            currentGameCards = Array(cardSymbols[0..<4])
+            currentSymbols = Array(cardSymbols[0..<4])
         case .easy:
-            currentGameCards = Array(cardSymbols[0..<6])
+            currentSymbols = Array(cardSymbols[0..<6])
         case .mediumHard:
-            currentGameCards = Array(cardSymbols[0..<8])
+            currentSymbols = Array(cardSymbols[0..<8])
         case .hard:
-            currentGameCards = Array(cardSymbols[0..<9])
+            currentSymbols = Array(cardSymbols[0..<9])
         case .veryHard:
-            currentGameCards = Array(cardSymbols[0..<12])
+            currentSymbols = Array(cardSymbols[0..<12])
         case .emotionalDamage:
-            currentGameCards = Array(cardSymbols[0..<16])
+            currentSymbols = Array(cardSymbols[0..<16])
         }
+    }
 
-        print(currentGameCards)
+    private func setupCards() {
+        var cardId: Int = 0
+        for symbol in currentSymbols {
+            currentCards += Array(repeating: GameCard(id: cardId, image: symbol, color: .systemBlue), count: 2)
+            cardId += 1
+        }
+        currentCards.shuffle()
     }
 }

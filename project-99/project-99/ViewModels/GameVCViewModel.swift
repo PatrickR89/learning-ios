@@ -16,8 +16,8 @@ class GameVCViewModel {
         self.playGameViewModel = GameViewModel(for: level)
     }
 
-    func sendGameLevel() -> String {
-        return game.rawValue
+    func sendGameLevel() -> Level {
+        return game
     }
 
     func provideInitializedViewModel() -> GameViewModel {

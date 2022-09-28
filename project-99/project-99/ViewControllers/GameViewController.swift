@@ -30,12 +30,20 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(viewModel.sendGameLevel())
+
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .close,
+            target: self,
+            action: #selector(closeGame))
     }
 
     func setupUI() {
         view.addSubview(gameView)
         gameView.frame = view.frame
-        gameView.configCollectionViewLayout()
+        gameView.configCollectionViewLayout(for: viewModel.sendGameLevel())
+    }
+
+    @objc func closeGame() {
+        self.dismiss(animated: true)
     }
 }

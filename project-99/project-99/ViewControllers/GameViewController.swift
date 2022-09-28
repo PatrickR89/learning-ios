@@ -9,10 +9,12 @@ import UIKit
 
 class GameViewController: UIViewController {
 
-    private let viewModel: GameViewModel
+    private let viewModel: GameVCViewModel
+    private let gameView: GameView
 
-    init(with viewModel: GameViewModel) {
+    init(with viewModel: GameVCViewModel) {
         self.viewModel = viewModel
+        self.gameView = GameView(with: viewModel.provideInitializedViewModel())
 
         super.init(nibName: nil, bundle: nil)
 

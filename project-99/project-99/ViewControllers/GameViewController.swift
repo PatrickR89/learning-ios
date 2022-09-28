@@ -17,7 +17,7 @@ class GameViewController: UIViewController {
         self.gameView = GameView(with: viewModel.provideInitializedViewModel())
 
         super.init(nibName: nil, bundle: nil)
-
+        setupUI()
         use(AppTheme.self) {
             $0.view.backgroundColor = $1.backgroundColor
             $0.reloadInputViews()
@@ -31,5 +31,11 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print(viewModel.sendGameLevel())
+    }
+
+    func setupUI() {
+        view.addSubview(gameView)
+        gameView.frame = view.frame
+        gameView.configCollectionViewLayout()
     }
 }

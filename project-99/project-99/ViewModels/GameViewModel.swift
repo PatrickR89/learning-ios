@@ -55,4 +55,12 @@ class GameViewModel {
         }
         currentCards.shuffle()
     }
+
+    func countCardsLength() -> Int {
+        return currentCards.count
+    }
+
+    func returnCardForIndex(at index: Int) -> GameCard {
+        return currentCards[index]
+    }
 }

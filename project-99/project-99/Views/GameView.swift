@@ -28,6 +28,12 @@ class GameView: UIView {
     init(with viewModel: GameViewModel) {
         self.viewModel = viewModel
         super.init(frame: .zero)
+
+        use(AppTheme.self) {
+            $0.backgroundColor = $1.backgroundColor
+            $0.collectionView.backgroundColor = $1.backgroundColor
+            $0.reloadInputViews()
+        }
     }
 
     required init?(coder: NSCoder) {
@@ -54,7 +60,7 @@ class GameView: UIView {
         collectionLayout.itemSize = CGSize(
             width: self.frame.width / dimensionDependance,
             height: self.frame.width / dimensionDependance)
-        
+
         self.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -91,5 +97,7 @@ extension GameView: UICollectionViewDataSource {
 
 extension GameView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let card = viewModel.returnCardForIndex(at: indexPath.row)
+        viewModel.selectCard(card: card)
     }
 }

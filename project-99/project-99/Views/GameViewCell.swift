@@ -9,12 +9,6 @@ import UIKit
 
 class GameViewCell: UICollectionViewCell {
 
-//    var imageName = "" {
-//        didSet {
-//            configImageLayout()
-//        }
-//    }
-
     lazy var imageView = UIImageView()
 
     override init(frame: CGRect) {
@@ -29,12 +23,11 @@ class GameViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-//    func configCellImage(_ inputName: String) {
-//        imageName = inputName
-//    }
-
     func configImageLayout() {
         contentView.addSubview(imageView)
+        contentView.layer.cornerRadius = 5
+        contentView.layer.borderColor = UIColor.lightGray.cgColor
+        contentView.layer.borderWidth = 29
 
         imageView.translatesAutoresizingMaskIntoConstraints = false
 

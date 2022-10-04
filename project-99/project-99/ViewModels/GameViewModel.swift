@@ -26,6 +26,7 @@ class GameViewModel {
     private var removedPairs: Int = 0
     private var turnsLeft: Int = 0
     private var turnsCountdown: Bool = false
+    weak var delegate: GameViewModelDelegate?
 
     init(for level: Level) {
         setupSymbols(gameDifficulty: level)
@@ -106,10 +107,12 @@ class GameViewModel {
         if selectedCardOne.image == selectedCardTwo.image && selectedCardOne.color == selectedCardTwo.color {
             if let firstCardIndex = currentCards.firstIndex(where: {$0.id == selectedCardOne.id}) {
                 currentCards.remove(at: firstCardIndex)
+                delegate?.gameViewModel(self, didRemoveCardsPairAt: firstCardIndex)
             }
 
             if let secondCardIndex = currentCards.firstIndex(where: {$0.id == selectedCardTwo.id}) {
                 currentCards.remove(at: secondCardIndex)
+                delegate?.gameViewModel(self, didRemoveCardsPairAt: secondCardIndex)
             }
             print("match")
             // add visual removal of cards - change to a new view of collection cell to maintain layout
@@ -121,5 +124,7 @@ class GameViewModel {
                 turnsLeft -= 1
             }
         }
+
+        resetSelectedCards()
     }
 }

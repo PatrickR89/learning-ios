@@ -75,6 +75,7 @@
 		CD88B01328DDB0DA00EFCBBB /* GameViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B01228DDB0DA00EFCBBB /* GameViewCell.swift */; };
 		CD88B01528E30A5F00EFCBBB /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B01428E30A5F00EFCBBB /* GameViewModel.swift */; };
 		CD88B01728E42B5900EFCBBB /* GameCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B01628E42B5900EFCBBB /* GameCard.swift */; };
+		CD88B01928EB34C600EFCBBB /* GameViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B01828EB34C600EFCBBB /* GameViewModelDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -148,6 +149,7 @@
 		CD88B01228DDB0DA00EFCBBB /* GameViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewCell.swift; sourceTree = "<group>"; };
 		CD88B01428E30A5F00EFCBBB /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		CD88B01628E42B5900EFCBBB /* GameCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCard.swift; sourceTree = "<group>"; };
+		CD88B01828EB34C600EFCBBB /* GameViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModelDelegate.swift; sourceTree = "<group>"; };
 		E9ED53374000A43727DB32F3 /* Pods-project-99.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-99.release.xcconfig"; path = "Target Support Files/Pods-project-99/Pods-project-99.release.xcconfig"; sourceTree = "<group>"; };
 		EE006DE768882589EA85F5B5 /* Pods-project-99.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-99.debug.xcconfig"; path = "Target Support Files/Pods-project-99/Pods-project-99.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -336,6 +338,7 @@
 			children = (
 				CD88AFC128D8744200EFCBBB /* SettingsViewModelDelegate.swift */,
 				CD88AFEE28DC49E400EFCBBB /* StatsViewModelDelegate.swift */,
+				CD88B01828EB34C600EFCBBB /* GameViewModelDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -599,6 +602,7 @@
 				CD88AF6128D2F0B200EFCBBB /* LoginViewController.swift in Sources */,
 				CD88AFBD28D86ED700EFCBBB /* UIAlertController+Extensions.swift in Sources */,
 				CD88AFAD28D496A800EFCBBB /* MainMenuViewDelegate.swift in Sources */,
+				CD88B01928EB34C600EFCBBB /* GameViewModelDelegate.swift in Sources */,
 				CD88B00528DD9C1F00EFCBBB /* NewGameViewModel.swift in Sources */,
 				CD88B00A28DDA73700EFCBBB /* GameViewController.swift in Sources */,
 				CD88AF5D28D2F0B200EFCBBB /* AppDelegate.swift in Sources */,

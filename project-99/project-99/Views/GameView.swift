@@ -27,8 +27,9 @@ class GameView: UIView {
 
     init(with viewModel: GameViewModel) {
         self.viewModel = viewModel
-        super.init(frame: .zero)
 
+        super.init(frame: .zero)
+        self.viewModel.delegate = self
         use(AppTheme.self) {
             $0.backgroundColor = $1.backgroundColor
             $0.collectionView.backgroundColor = $1.backgroundColor
@@ -99,5 +100,15 @@ extension GameView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let card = viewModel.returnCardForIndex(at: indexPath.row)
         viewModel.selectCard(card: card)
+    }
+}
+
+extension GameView: GameViewModelDelegate {
+    func gameViewModel(_ viewModel: GameViewModel, didChangeCardSelectionAt index: Int) {
+    }
+
+    func gameViewModel(_ viewModel: GameViewModel, didRemoveCardsPairAt index: Int) {
+        let indexPath = IndexPath(item: index, section: 0)
+        collectionView.deleteItems(at: [indexPath])
     }
 }

@@ -27,7 +27,7 @@ class GameViewCell: UICollectionViewCell {
         contentView.addSubview(imageView)
         contentView.layer.cornerRadius = 5
         contentView.layer.borderColor = UIColor.lightGray.cgColor
-        contentView.layer.borderWidth = 29
+        contentView.layer.borderWidth = 2
 
         imageView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -42,6 +42,5 @@ class GameViewCell: UICollectionViewCell {
     func drawCard(with card: GameCard) {
         imageView.image = UIImage(systemName: card.image)
         imageView.tintColor = card.color
-        print(card.id)
     }
 }

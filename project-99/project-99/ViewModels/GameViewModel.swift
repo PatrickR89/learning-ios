@@ -45,23 +45,23 @@ class GameViewModel {
         switch gameDifficulty {
 
         case .veryEasy:
-            currentSymbols = Array(cardSymbols[0..<4])
+            currentSymbols = Array(cardSymbols[0..<4]) + Array(cardSymbols[0..<4])
         case .easy:
-            currentSymbols = Array(cardSymbols[0..<6])
+            currentSymbols = Array(cardSymbols[0..<6]) + Array(cardSymbols[0..<6])
         case .mediumHard:
-            currentSymbols = Array(cardSymbols[0..<8])
+            currentSymbols = Array(cardSymbols[0..<8]) + Array(cardSymbols[0..<8])
             turnsLeft = 30
             turnsCountdown = true
         case .hard:
-            currentSymbols = Array(cardSymbols[0..<9])
+            currentSymbols = Array(cardSymbols[0..<9]) + Array(cardSymbols[0..<9])
             turnsLeft = 30
             turnsCountdown = true
         case .veryHard:
-            currentSymbols = Array(cardSymbols[0..<12])
+            currentSymbols = Array(cardSymbols[0..<12]) + Array(cardSymbols[0..<12])
             turnsLeft = 15
             turnsCountdown = true
         case .emotionalDamage:
-            currentSymbols = Array(cardSymbols[0..<16])
+            currentSymbols = Array(cardSymbols[0..<16]) + Array(cardSymbols[0..<16])
             turnsLeft = 10
             turnsCountdown = true
         }
@@ -70,10 +70,13 @@ class GameViewModel {
     private func setupCards() {
         var cardId: Int = 0
         for symbol in currentSymbols {
-            currentCards += Array(repeating: GameCard(id: cardId, image: symbol, color: .systemBlue), count: 2)
+
+            currentCards.append(GameCard(id: cardId, image: symbol, color: .systemBlue))
             cardId += 1
         }
         currentCards.shuffle()
+
+        print(currentCards)
     }
 
     func countCardsLength() -> Int {
@@ -86,7 +89,7 @@ class GameViewModel {
 
     func selectCard(card: GameCard) {
         if  selectedCardOne != nil {
-            if selectedCardTwo == nil {
+            if selectedCardTwo == nil && selectedCardOne?.id != card.id {
                 selectedCardTwo = card
             }
         } else {

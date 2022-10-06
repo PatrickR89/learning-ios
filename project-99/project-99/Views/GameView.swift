@@ -107,8 +107,8 @@ extension GameView: GameViewModelDelegate {
     func gameViewModel(_ viewModel: GameViewModel, didChangeCardSelectionAt index: Int) {
     }
 
-    func gameViewModel(_ viewModel: GameViewModel, didRemoveCardsPairAt index: Int) {
+    func gameViewModel(_ viewModel: GameViewModel, didPairCardAt index: Int) {
         let indexPath = IndexPath(item: index, section: 0)
-        collectionView.deleteItems(at: [indexPath])
+        collectionView.reloadItems(at: [indexPath])
     }
 }

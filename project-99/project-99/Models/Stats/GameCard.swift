@@ -11,4 +11,5 @@ struct GameCard {
     var id: Int
     var image: String
     var color: UIColor
+    var paired: Bool
 }

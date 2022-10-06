@@ -71,7 +71,7 @@ class GameViewModel {
         var cardId: Int = 0
         for symbol in currentSymbols {
 
-            currentCards.append(GameCard(id: cardId, image: symbol, color: .systemBlue))
+            currentCards.append(GameCard(id: cardId, image: symbol, color: .systemBlue, paired: false))
             cardId += 1
         }
         currentCards.shuffle()
@@ -88,12 +88,16 @@ class GameViewModel {
     }
 
     func selectCard(card: GameCard) {
-        if  selectedCardOne != nil {
-            if selectedCardTwo == nil && selectedCardOne?.id != card.id {
-                selectedCardTwo = card
-            }
-        } else {
+
+        if card.paired != false {return}
+
+        if selectedCardOne == nil {
             selectedCardOne = card
+            return
+        }
+
+        if selectedCardTwo == nil && selectedCardOne?.id != card.id {
+            selectedCardTwo = card
         }
     }
 
@@ -109,13 +113,15 @@ class GameViewModel {
         }
         if selectedCardOne.image == selectedCardTwo.image && selectedCardOne.color == selectedCardTwo.color {
             if let firstCardIndex = currentCards.firstIndex(where: {$0.id == selectedCardOne.id}) {
-                currentCards.remove(at: firstCardIndex)
-                delegate?.gameViewModel(self, didRemoveCardsPairAt: firstCardIndex)
+                currentCards[firstCardIndex].paired = true
+                currentCards[firstCardIndex].color = .lightGray
+                delegate?.gameViewModel(self, didPairCardAt: firstCardIndex)
             }
 
             if let secondCardIndex = currentCards.firstIndex(where: {$0.id == selectedCardTwo.id}) {
-                currentCards.remove(at: secondCardIndex)
-                delegate?.gameViewModel(self, didRemoveCardsPairAt: secondCardIndex)
+                currentCards[secondCardIndex].paired = true
+                currentCards[secondCardIndex].color = .lightGray
+                delegate?.gameViewModel(self, didPairCardAt: secondCardIndex)
             }
             print("match")
             // add visual removal of cards - change to a new view of collection cell to maintain layout

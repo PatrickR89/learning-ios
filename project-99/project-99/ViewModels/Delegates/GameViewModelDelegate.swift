@@ -9,5 +9,5 @@ import Foundation
 
 protocol GameViewModelDelegate: AnyObject {
     func gameViewModel(_ viewModel: GameViewModel, didChangeCardSelectionAt index: Int)
-    func gameViewModel(_ viewModel: GameViewModel, didRemoveCardsPairAt index: Int)
+    func gameViewModel(_ viewModel: GameViewModel, didPairCardAt index: Int)
 }

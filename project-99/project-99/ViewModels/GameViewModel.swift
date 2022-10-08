@@ -16,9 +16,14 @@ class GameViewModel {
     }
     private var currentCards = [GameCard]()
 
-    private var selectedCardOne: GameCard?
+    private var selectedCardOne: GameCard? {
+        didSet {
+            firstCardValueDidChange()
+        }
+    }
     private var selectedCardTwo: GameCard? {
         didSet {
+            secondCardValueDidChange()
             compareCards()
         }
     }
@@ -28,8 +33,27 @@ class GameViewModel {
     private var turnsCountdown: Bool = false
     weak var delegate: GameViewModelDelegate?
 
+    private var firstCardObserver: ((GameCard) -> Void)?
+    private var secondCardObserver: ((GameCard) -> Void)?
+
     init(for level: Level) {
         setupSymbols(gameDifficulty: level)
+    }
+
+    private func firstCardValueDidChange() {
+        guard let firstCardObserver = firstCardObserver,
+           let selectedCardOne = selectedCardOne else {
+            return
+        }
+        firstCardObserver(selectedCardOne)
+    }
+
+    private func secondCardValueDidChange() {
+        guard let secondCardObserver = secondCardObserver,
+           let selectedCardTwo = selectedCardTwo else {
+            return
+        }
+        secondCardObserver(selectedCardTwo)
     }
 
     private func fetchSymbols() -> [String] {
@@ -71,12 +95,26 @@ class GameViewModel {
         var cardId: Int = 0
         for symbol in currentSymbols {
 
-            currentCards.append(GameCard(id: cardId, image: symbol, color: .systemBlue, paired: false))
+            currentCards.append(
+                GameCard(
+                    id: cardId,
+                    image: symbol,
+                    color: .systemBlue,
+                    isVisible: false,
+                    isPaired: false))
             cardId += 1
         }
         currentCards.shuffle()
+    }
 
-        print(currentCards)
+    func bindFirstCardObserver(_ closure: @escaping (GameCard) -> Void) {
+        firstCardObserver = closure
+        firstCardValueDidChange()
+    }
+
+    func bindSecondCardObserver(_ closure: @escaping (GameCard) -> Void) {
+        secondCardObserver = closure
+        secondCardValueDidChange()
     }
 
     func countCardsLength() -> Int {
@@ -87,23 +125,42 @@ class GameViewModel {
         return currentCards[index]
     }
 
-    func selectCard(card: GameCard) {
+    func returnIndexForCard(card: GameCard) -> Int {
+        guard let index = currentCards.firstIndex(where: {$0.id == card.id}) else {return 0}
+        return index
+    }
 
-        if card.paired != false {return}
+    func selectCard(card: GameCard, at index: Int) {
+
+        if card.isPaired != false {return}
 
         if selectedCardOne == nil {
+            guard let index = currentCards.firstIndex(where: {$0.id == card.id}) else {return}
+            currentCards[index].isVisible = true
             selectedCardOne = card
             return
         }
 
         if selectedCardTwo == nil && selectedCardOne?.id != card.id {
+            guard let index = currentCards.firstIndex(where: {$0.id == card.id}) else {return}
+            currentCards[index].isVisible = true
             selectedCardTwo = card
         }
     }
 
     func resetSelectedCards() {
+        guard let cardOne = selectedCardOne,
+              let cardTwo = selectedCardTwo,
+              let firstIndex = currentCards.firstIndex(where: {$0.id == cardOne.id}),
+              let secondIndex = currentCards.firstIndex(where: {$0.id == cardTwo.id}) else {return}
+        currentCards[firstIndex].isVisible = false
+        currentCards[secondIndex].isVisible = false
         selectedCardOne = nil
         selectedCardTwo = nil
+    }
+
+    func keepCardRevealed(for card: GameCard) -> Bool {
+        return card.isVisible || card.isPaired
     }
 
     func compareCards() {
@@ -111,15 +168,16 @@ class GameViewModel {
               let selectedCardTwo = selectedCardTwo else {
             return
         }
+
         if selectedCardOne.image == selectedCardTwo.image && selectedCardOne.color == selectedCardTwo.color {
             if let firstCardIndex = currentCards.firstIndex(where: {$0.id == selectedCardOne.id}) {
-                currentCards[firstCardIndex].paired = true
+                currentCards[firstCardIndex].isPaired = true
                 currentCards[firstCardIndex].color = .lightGray
                 delegate?.gameViewModel(self, didPairCardAt: firstCardIndex)
             }
 
             if let secondCardIndex = currentCards.firstIndex(where: {$0.id == selectedCardTwo.id}) {
-                currentCards[secondCardIndex].paired = true
+                currentCards[secondCardIndex].isPaired = true
                 currentCards[secondCardIndex].color = .lightGray
                 delegate?.gameViewModel(self, didPairCardAt: secondCardIndex)
             }
@@ -128,6 +186,7 @@ class GameViewModel {
             removedPairs += 1
         } else {
             // turn cards on their backs
+
             print("mismatch")
             if turnsCountdown {
                 turnsLeft -= 1

@@ -30,6 +30,7 @@ class GameView: UIView {
 
         super.init(frame: .zero)
         self.viewModel.delegate = self
+        self.bindObservers()
         use(AppTheme.self) {
             $0.backgroundColor = $1.backgroundColor
             $0.collectionView.backgroundColor = $1.backgroundColor
@@ -76,6 +77,24 @@ class GameView: UIView {
             collectionView.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor)
         ])
     }
+
+    private func bindObservers() {
+        viewModel.bindFirstCardObserver { firstCard in
+            DispatchQueue.main.async { [weak self] in
+                guard let itemIndex = self?.viewModel.returnIndexForCard(card: firstCard) else {return}
+                let indexPath = IndexPath(item: itemIndex, section: 0)
+                self?.collectionView.reloadItems(at: [indexPath])
+            }
+        }
+
+        viewModel.bindSecondCardObserver { secondCard in
+            DispatchQueue.main.async { [weak self] in
+                guard let itemIndex = self?.viewModel.returnIndexForCard(card: secondCard) else {return}
+                let indexPath = IndexPath(item: itemIndex, section: 0)
+                self?.collectionView.reloadItems(at: [indexPath])
+            }
+        }
+    }
 }
 
 extension GameView: UICollectionViewDataSource {
@@ -89,17 +108,22 @@ extension GameView: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: "image",
                 for: indexPath) as? GameViewCell else {fatalError("No cell!")}
-            cell.configImageLayout()
+            cell.configCellBasicLayout()
             let card = viewModel.returnCardForIndex(at: indexPath.item)
-            cell.drawCard(with: card)
+            print(viewModel.keepCardRevealed(for: card))
+            if viewModel.keepCardRevealed(for: card) {
+                cell.revealCardFace(with: card)
+            } else {
+                cell.hideCardFace()
+            }
             return cell
         }
 }
 
 extension GameView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let card = viewModel.returnCardForIndex(at: indexPath.row)
-        viewModel.selectCard(card: card)
+        let card = viewModel.returnCardForIndex(at: indexPath.item)
+        viewModel.selectCard(card: card, at: indexPath.item)
     }
 }
 

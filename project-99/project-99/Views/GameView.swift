@@ -29,7 +29,6 @@ class GameView: UIView {
         self.viewModel = viewModel
 
         super.init(frame: .zero)
-        self.viewModel.delegate = self
         self.bindObservers()
         use(AppTheme.self) {
             $0.backgroundColor = $1.backgroundColor
@@ -101,7 +100,6 @@ extension GameView: UICollectionViewDataSource {
                 for: indexPath) as? GameViewCell else {fatalError("No cell!")}
             cell.configCellBasicLayout()
             let card = viewModel.returnCardForIndex(at: indexPath.item)
-            print(viewModel.keepCardRevealed(for: card))
             if viewModel.keepCardRevealed(for: card) {
                 cell.revealCardFace(with: card)
             } else {
@@ -115,15 +113,5 @@ extension GameView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let card = viewModel.returnCardForIndex(at: indexPath.item)
         viewModel.selectCard(card: card, at: indexPath.item)
-    }
-}
-
-extension GameView: GameViewModelDelegate {
-    func gameViewModel(_ viewModel: GameViewModel, didChangeCardSelectionAt index: Int) {
-    }
-
-    func gameViewModel(_ viewModel: GameViewModel, didPairCardAt index: Int) {
-        let indexPath = IndexPath(item: index, section: 0)
-        collectionView.reloadItems(at: [indexPath])
     }
 }

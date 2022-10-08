@@ -30,7 +30,6 @@ class GameViewModel {
     private var removedPairs: Int = 0
     private var turnsLeft: Int = 0
     private var turnsCountdown: Bool = false
-    weak var delegate: GameViewModelDelegate?
     private var cardsDeckObserver: (([GameCard]) -> Void)?
 
     init(for level: Level) {

@@ -79,19 +79,10 @@ class GameView: UIView {
     }
 
     private func bindObservers() {
-        viewModel.bindFirstCardObserver { firstCard in
-            DispatchQueue.main.async { [weak self] in
-                guard let itemIndex = self?.viewModel.returnIndexForCard(card: firstCard) else {return}
-                let indexPath = IndexPath(item: itemIndex, section: 0)
-                self?.collectionView.reloadItems(at: [indexPath])
-            }
-        }
 
-        viewModel.bindSecondCardObserver { secondCard in
+        viewModel.bindCardsDeckObserver { _ in
             DispatchQueue.main.async { [weak self] in
-                guard let itemIndex = self?.viewModel.returnIndexForCard(card: secondCard) else {return}
-                let indexPath = IndexPath(item: itemIndex, section: 0)
-                self?.collectionView.reloadItems(at: [indexPath])
+                self?.collectionView.reloadData()
             }
         }
     }

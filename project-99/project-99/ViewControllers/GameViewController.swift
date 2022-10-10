@@ -18,6 +18,7 @@ class GameViewController: UIViewController {
 
         super.init(nibName: nil, bundle: nil)
         setupUI()
+        bindObserver()
         use(AppTheme.self) {
             $0.view.backgroundColor = $1.backgroundColor
             $0.reloadInputViews()
@@ -35,6 +36,18 @@ class GameViewController: UIViewController {
             barButtonSystemItem: .close,
             target: self,
             action: #selector(closeGame))
+    }
+
+    private func bindObserver() {
+        viewModel.observeGameState { isGameOver in
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else {return}
+                if isGameOver {
+                    let alertController = self.viewModel.addGameOverAlertController(in: self)
+                    self.present(alertController, animated: true)
+                }
+            }
+        }
     }
 
     func setupUI() {

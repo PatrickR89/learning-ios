@@ -28,9 +28,18 @@ class GameViewModel {
     }
 
     private var removedPairs: Int = 0
-    private var turnsLeft: Int = 0
-    private var turnsCountdown: Bool = false
+    private var turnsLeft: Int = 0 {
+        didSet {
+            remainingTurnsValueDidChange()
+        }
+    }
+    private var turnsCountdown: Bool = false {
+        didSet {
+            remainingTurnsValueDidChange()
+        }
+    }
     private var cardsDeckObserver: (([GameCard]) -> Void)?
+    private var turnsLeftObserver: ((Bool, Int) -> Void)?
 
     init(for level: Level) {
         setupSymbols(gameDifficulty: level)
@@ -41,6 +50,13 @@ class GameViewModel {
             return
         }
         cardsDeckObserver(cardsDeck)
+    }
+
+    private func remainingTurnsValueDidChange() {
+        guard let turnsLeftObserver = turnsLeftObserver else {
+            return
+        }
+        turnsLeftObserver(turnsCountdown, turnsLeft)
     }
 
     private func fetchSymbols() -> [String] {
@@ -94,9 +110,14 @@ class GameViewModel {
         cardsDeck.shuffle()
     }
 
-    func bindCardsDeckObserver(_ closure: @escaping ([GameCard]) -> Void) {
+    func observeCardDeck(_ closure: @escaping ([GameCard]) -> Void) {
         cardsDeckObserver = closure
         cardsValueInDeckDidChange()
+    }
+
+    func observeRemainigTurns(_ closure: @escaping (Bool, Int) -> Void) {
+        turnsLeftObserver = closure
+        remainingTurnsValueDidChange()
     }
 
     func countCardsLength() -> Int {

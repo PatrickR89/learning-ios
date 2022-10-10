@@ -25,6 +25,8 @@ class GameView: UIView {
         return collectionView
     }()
 
+    let remainingChancesLabel = UILabel()
+
     init(with viewModel: GameViewModel) {
         self.viewModel = viewModel
 
@@ -63,14 +65,21 @@ class GameView: UIView {
             height: self.frame.width / dimensionDependance)
 
         self.addSubview(collectionView)
+        self.addSubview(remainingChancesLabel)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        remainingChancesLabel.translatesAutoresizingMaskIntoConstraints = false
 
         collectionView.register(GameViewCell.self, forCellWithReuseIdentifier: "image")
         collectionView.delegate = self
         collectionView.dataSource = self
 
+        remainingChancesLabel.text = "Remaning chances: 0"
+        remainingChancesLabel.textAlignment = .center
+
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: self.layoutMarginsGuide.topAnchor),
+            remainingChancesLabel.topAnchor.constraint(equalTo: self.layoutMarginsGuide.topAnchor),
+            remainingChancesLabel.widthAnchor.constraint(equalTo: self.layoutMarginsGuide.widthAnchor),
+            collectionView.topAnchor.constraint(equalTo: remainingChancesLabel.bottomAnchor, constant: 5),
             collectionView.bottomAnchor.constraint(equalTo: self.layoutMarginsGuide.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor)
@@ -79,9 +88,19 @@ class GameView: UIView {
 
     private func bindObservers() {
 
-        viewModel.bindCardsDeckObserver { _ in
+        viewModel.observeCardDeck { _ in
             DispatchQueue.main.async { [weak self] in
                 self?.collectionView.reloadData()
+            }
+        }
+
+        viewModel.observeRemainigTurns { isTurnsCountdown, turnsValue in
+            DispatchQueue.main.async { [weak self] in
+                if !isTurnsCountdown {
+                    self?.remainingChancesLabel.isHidden = true
+                } else {
+                    self?.remainingChancesLabel.text = "Remainig chances: \(turnsValue)"
+                }
             }
         }
     }

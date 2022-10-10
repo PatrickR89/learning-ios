@@ -31,6 +31,7 @@ class GameViewModel {
     private var turnsLeft: Int = 0 {
         didSet {
             remainingTurnsValueDidChange()
+            checkIfGameDidEnd()
         }
     }
     private var turnsCountdown: Bool = false {
@@ -40,6 +41,8 @@ class GameViewModel {
     }
     private var cardsDeckObserver: (([GameCard]) -> Void)?
     private var turnsLeftObserver: ((Bool, Int) -> Void)?
+
+    weak var delegate: GameViewModelDelegate?
 
     init(for level: Level) {
         setupSymbols(gameDifficulty: level)
@@ -135,6 +138,8 @@ class GameViewModel {
 
     func selectCard(card: GameCard, at index: Int) {
 
+        if turnsCountdown && turnsLeft <= 0 {return}
+
         if card.isPaired != false {return}
 
         if selectedCardOne == nil {
@@ -198,6 +203,11 @@ class GameViewModel {
                 self?.resetSelectedCards()
             }
         }
+    }
 
+    private func checkIfGameDidEnd() {
+        if turnsCountdown && turnsLeft <= 0 {
+            delegate?.gameViewModelDidEndGame(self)
+        }
     }
 }

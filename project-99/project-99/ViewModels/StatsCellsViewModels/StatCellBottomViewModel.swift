@@ -31,7 +31,7 @@ class StatCellBottomViewModel {
     weak var delegate: StatCellBottomViewModelDelegate?
 
     init(as currentType: StatsContent) {
-        self.realm = RealmDataService.shared.initiateRealm()
+        self.realm = RealmDataProvider.shared.initiateRealm()
         self.currentType = currentType
         retrieveData(with: currentType)
     }

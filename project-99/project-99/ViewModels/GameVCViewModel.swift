@@ -52,6 +52,10 @@ class GameVCViewModel {
 }
 
 extension GameVCViewModel: GameViewModelDelegate {
+    func gameViewModelDidFinishGame(_ viewModel: GameViewModel) {
+        return
+    }
+
     func gameViewModelDidEndGame(_ viewModel: GameViewModel) {
         self.isGameOver = true
     }

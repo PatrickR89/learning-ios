@@ -213,7 +213,7 @@ class GameViewModel {
 
     private func checkIfGameDidEnd() {
         if turnsCountdown && turnsLeft <= 0 {
-            delegate?.gameViewModelDidEndGame(self)
+            delegate?.gameViewModelDidEndGame(self, with: .gameLost)
         }
     }
 
@@ -221,6 +221,7 @@ class GameViewModel {
         if removedPairs == cardsDeck.count / 2 && removedPairs != 0 {
             print("win")
             RealmDataService.shared.updateGamesWon()
+            delegate?.gameViewModelDidEndGame(self, with: .gameWon)
         }
     }
 }

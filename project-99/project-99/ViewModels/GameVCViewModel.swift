@@ -11,13 +11,13 @@ class GameVCViewModel {
     private let game: Level
     private var playGameViewModel: GameViewModel
 
-    private var isGameOver = false {
+    private var isGameOver: EndGame = .inGame {
         didSet {
             gameOverValueDidChange()
         }
     }
 
-    private var gameObserver: ((Bool) -> Void)?
+    private var gameObserver: ((EndGame) -> Void)?
 
     init(for level: Level) {
         self.game = level
@@ -32,7 +32,7 @@ class GameVCViewModel {
         observeGame(isGameOver)
     }
 
-    func observeGameState(_ closure: @escaping (Bool) -> Void) {
+    func observeGameState(_ closure: @escaping (EndGame) -> Void) {
         self.gameObserver = closure
         gameOverValueDidChange()
     }
@@ -49,14 +49,15 @@ class GameVCViewModel {
         let alertController = UIAlertController().createGameOverAlertController(in: viewController, with: self)
         return alertController
     }
+
+    func addGameFinishedAlertController(in viewController: GameViewController) -> UIAlertController {
+        let alertController = UIAlertController().createGameWonAlertController(in: viewController, with: self)
+        return alertController
+    }
 }
 
 extension GameVCViewModel: GameViewModelDelegate {
-    func gameViewModelDidFinishGame(_ viewModel: GameViewModel) {
-        return
-    }
-
-    func gameViewModelDidEndGame(_ viewModel: GameViewModel) {
-        self.isGameOver = true
+    func gameViewModelDidEndGame(_ viewModel: GameViewModel, with result: EndGame) {
+        self.isGameOver = result
     }
 }

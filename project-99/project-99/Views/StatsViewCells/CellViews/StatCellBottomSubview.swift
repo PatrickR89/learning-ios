@@ -36,9 +36,15 @@ class StatCellBottomSubview: UIView {
                 guard let self = self else {return}
                 self.totalsView.addValue("\(value.totalValue)")
                 self.winsView.addValue("\(value.positiveValue)")
+
                 if value.totalValue != 0 {
-                    let rate = (value.positiveValue / value.totalValue) * 100
-                    self.rateView.addValue("\(rate)%")
+                    let rate: Double = (Double(value.positiveValue) / Double(value.totalValue)) * 100.00
+                    let formatter = NumberFormatter()
+                    formatter.numberStyle = .decimal
+                    formatter.maximumFractionDigits = 2
+                    if let formattedRate = formatter.string(from: rate as NSNumber) {
+                        self.rateView.addValue("\(formattedRate)%")
+                    }
                 } else {
                     self.rateView.addValue("0.00%")
                 }

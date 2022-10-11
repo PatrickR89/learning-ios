@@ -48,6 +48,7 @@ class GameViewModel {
     init(for level: Level) {
         self.gameLevel = level
         setupSymbols(gameDifficulty: level)
+        RealmDataService.shared.updateTotalGames()
     }
 
     private func cardsValueInDeckDidChange() {
@@ -215,6 +216,7 @@ class GameViewModel {
     private func allCardsPaired() {
         if removedPairs == cardsDeck.count / 2 && removedPairs != 0 {
             print("win")
+            RealmDataService.shared.updateGamesWon()
         }
     }
 }

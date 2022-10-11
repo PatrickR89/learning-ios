@@ -20,7 +20,7 @@
 		CD88AF8328D30F9600EFCBBB /* Levels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF8228D30F9600EFCBBB /* Levels.swift */; };
 		CD88AF8F28D3252D00EFCBBB /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF8E28D3252D00EFCBBB /* LoginViewModel.swift */; };
 		CD88AF9128D3254500EFCBBB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF9028D3254500EFCBBB /* LoginView.swift */; };
-		CD88AF9428D450D300EFCBBB /* RealmDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF9328D450D300EFCBBB /* RealmDataService.swift */; };
+		CD88AF9428D450D300EFCBBB /* RealmDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF9328D450D300EFCBBB /* RealmDataProvider.swift */; };
 		CD88AF9628D4510300EFCBBB /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF9528D4510300EFCBBB /* FileManager+Extension.swift */; };
 		CD88AF9828D466E500EFCBBB /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF9728D466E500EFCBBB /* MainMenuViewController.swift */; };
 		CD88AF9A28D4677F00EFCBBB /* LoginViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF9928D4677F00EFCBBB /* LoginViewDelegate.swift */; };
@@ -94,7 +94,7 @@
 		CD88AF8228D30F9600EFCBBB /* Levels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Levels.swift; sourceTree = "<group>"; };
 		CD88AF8E28D3252D00EFCBBB /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		CD88AF9028D3254500EFCBBB /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		CD88AF9328D450D300EFCBBB /* RealmDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataService.swift; sourceTree = "<group>"; };
+		CD88AF9328D450D300EFCBBB /* RealmDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataProvider.swift; sourceTree = "<group>"; };
 		CD88AF9528D4510300EFCBBB /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
 		CD88AF9728D466E500EFCBBB /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainMenuViewController.swift; path = "project-99/ViewControllers/MainMenuViewController.swift"; sourceTree = SOURCE_ROOT; };
 		CD88AF9928D4677F00EFCBBB /* LoginViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewDelegate.swift; path = "../New Group/LoginViewDelegate.swift"; sourceTree = "<group>"; };
@@ -296,7 +296,7 @@
 		CD88AF9228D450C300EFCBBB /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				CD88AF9328D450D300EFCBBB /* RealmDataService.swift */,
+				CD88AF9328D450D300EFCBBB /* RealmDataProvider.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -633,7 +633,7 @@
 				CD88AFB328D83E0700EFCBBB /* AppTheme.swift in Sources */,
 				CD88AFFA28DC71D500EFCBBB /* BestTimes.swift in Sources */,
 				CD88B00C28DDA74C00EFCBBB /* GameVCViewModel.swift in Sources */,
-				CD88AF9428D450D300EFCBBB /* RealmDataService.swift in Sources */,
+				CD88AF9428D450D300EFCBBB /* RealmDataProvider.swift in Sources */,
 				CD88AFF628DC601500EFCBBB /* LabelLayoutView.swift in Sources */,
 				CD88AFC728D9781200EFCBBB /* StatsViewController.swift in Sources */,
 				CD88AFDD28DAEEB600EFCBBB /* Statistics.swift in Sources */,

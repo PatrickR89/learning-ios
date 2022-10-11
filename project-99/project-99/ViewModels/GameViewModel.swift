@@ -5,10 +5,12 @@
 //  Created by Patrick on 27.09.2022..
 //
 
-import Foundation
 import UIKit
+import RealmSwift
 
 class GameViewModel {
+
+    private var gameLevel: Level
     private var currentSymbols = [String]() {
         didSet {
             setupCards()
@@ -45,6 +47,7 @@ class GameViewModel {
     weak var delegate: GameViewModelDelegate?
 
     init(for level: Level) {
+        self.gameLevel = level
         setupSymbols(gameDifficulty: level)
     }
 
@@ -188,11 +191,10 @@ class GameViewModel {
                 cardsDeck[secondCardIndex].color = .lightGray
             }
             print("match")
-            // add visual removal of cards - change to a new view of collection cell to maintain layout
             removedPairs += 1
             resetSelectedCards()
+            allCardsPaired()
         } else {
-            // turn cards on their backs
 
             print("mismatch")
             if turnsCountdown {
@@ -208,6 +210,12 @@ class GameViewModel {
     private func checkIfGameDidEnd() {
         if turnsCountdown && turnsLeft <= 0 {
             delegate?.gameViewModelDidEndGame(self)
+        }
+    }
+
+    private func allCardsPaired() {
+        if removedPairs == cardsDeck.count / 2 && removedPairs != 0 {
+            print("win")
         }
     }
 }

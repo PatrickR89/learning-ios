@@ -9,4 +9,5 @@ import Foundation
 
 protocol GameViewModelDelegate: AnyObject {
     func gameViewModelDidEndGame(_ viewModel: GameViewModel)
+    func gameViewModelDidFinishGame(_ viewModel: GameViewModel)
 }

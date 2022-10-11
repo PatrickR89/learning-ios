@@ -17,7 +17,7 @@ class LoginViewController: UIViewController {
 
     init () {
         UserContainer.shared.saveUser(with: nil)
-        self.realm = RealmDataService.shared.initiateRealm()
+        self.realm = RealmDataProvider.shared.initiateRealm()
         self.viewModel = LoginViewModel(in: realm)
         self.loginView = LoginView(with: viewModel)
         super.init(nibName: nil, bundle: nil)

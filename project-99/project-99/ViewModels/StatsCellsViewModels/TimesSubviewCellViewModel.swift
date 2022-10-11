@@ -30,7 +30,7 @@ class TimesCellBottomViewModel {
     weak var delegate: TimesCellBottomViewModelDelegate?
 
     init() {
-        self.realm = RealmDataService.shared.initiateRealm()
+        self.realm = RealmDataProvider.shared.initiateRealm()
 
     }
 

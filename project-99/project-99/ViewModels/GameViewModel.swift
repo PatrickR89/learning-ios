@@ -100,15 +100,36 @@ class GameViewModel {
         }
     }
 
+    private func createColors() -> [UIColor] {
+        var colors: [UIColor] = [.blue, .cyan, .green,
+                                 .orange, .yellow, .orange,
+                                 .red, .magenta, .purple,
+                                 .brown, .systemIndigo, .systemMint,
+                                 .systemTeal, .black, .darkGray,
+                                 .systemPink]
+        colors.shuffle()
+        return colors
+    }
+
     private func setupCards() {
         var cardId: Int = 0
+        let colors = createColors()
+        let symbols = Array(Set(currentSymbols))
+
         for symbol in currentSymbols {
+            var color: UIColor = .systemBlue
+
+            if RealmDataService.shared.loadMulticolorValue() {
+                if let index = symbols.firstIndex(where: {$0 == symbol}) {
+                    color = colors[index]
+                }
+            }
 
             cardsDeck.append(
                 GameCard(
                     id: cardId,
                     image: symbol,
-                    color: .systemBlue,
+                    color: color,
                     isVisible: false,
                     isPaired: false))
             cardId += 1

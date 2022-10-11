@@ -60,4 +60,12 @@ class RealmDataService {
             result.pairsRevealed += 1
         }
     }
+
+    func loadMulticolorValue() -> Bool {
+        guard let userId = userId,
+              let result = realm.object(ofType: UserSettings.self, forPrimaryKey: userId) else {
+            return false
+        }
+        return result.withMulticolor
+    }
 }

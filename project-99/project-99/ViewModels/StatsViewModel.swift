@@ -20,7 +20,7 @@ class StatsViewModel {
     }
 
     func toggleCellBottom(at index: Int) {
-         isCellBottomHidden[index] = !isCellBottomHidden[index]
+        isCellBottomHidden[index] = !isCellBottomHidden[index]
         delegate?.statsViewModel(self, didChangeStateAtIndex: index)
     }
 }

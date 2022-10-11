@@ -93,4 +93,23 @@ extension UIAlertController {
 
         return alertController
     }
+
+    func createGameWonAlertController(
+        in viewController: GameViewController,
+        with viewModel: GameVCViewModel) -> UIAlertController {
+
+        let alertController = UIAlertController(
+            title: "You win!",
+            message: nil,
+            preferredStyle: .alert)
+
+        let alertAction = UIAlertAction(
+            title: "Ok",
+            style: .default) { [weak viewController] _ in
+            viewController?.dismiss(animated: true)
+        }
+        alertController.addAction(alertAction)
+
+        return alertController
+    }
 }

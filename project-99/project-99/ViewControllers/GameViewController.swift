@@ -42,8 +42,11 @@ class GameViewController: UIViewController {
         viewModel.observeGameState { isGameOver in
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else {return}
-                if isGameOver {
+                if isGameOver == .gameLost {
                     let alertController = self.viewModel.addGameOverAlertController(in: self)
+                    self.present(alertController, animated: true)
+                } else if isGameOver == .gameWon {
+                    let alertController = self.viewModel.addGameFinishedAlertController(in: self)
                     self.present(alertController, animated: true)
                 }
             }

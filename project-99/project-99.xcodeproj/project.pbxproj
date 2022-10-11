@@ -76,6 +76,7 @@
 		CD88B01528E30A5F00EFCBBB /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B01428E30A5F00EFCBBB /* GameViewModel.swift */; };
 		CD88B01728E42B5900EFCBBB /* GameCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B01628E42B5900EFCBBB /* GameCard.swift */; };
 		CD88B01B28F3F7DB00EFCBBB /* GameViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B01A28F3F7DB00EFCBBB /* GameViewModelDelegate.swift */; };
+		CD88B01D28F5402900EFCBBB /* RealmDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B01C28F5402900EFCBBB /* RealmDataService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -150,6 +151,7 @@
 		CD88B01428E30A5F00EFCBBB /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		CD88B01628E42B5900EFCBBB /* GameCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCard.swift; sourceTree = "<group>"; };
 		CD88B01A28F3F7DB00EFCBBB /* GameViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModelDelegate.swift; sourceTree = "<group>"; };
+		CD88B01C28F5402900EFCBBB /* RealmDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataService.swift; sourceTree = "<group>"; };
 		E9ED53374000A43727DB32F3 /* Pods-project-99.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-99.release.xcconfig"; path = "Target Support Files/Pods-project-99/Pods-project-99.release.xcconfig"; sourceTree = "<group>"; };
 		EE006DE768882589EA85F5B5 /* Pods-project-99.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-99.debug.xcconfig"; path = "Target Support Files/Pods-project-99/Pods-project-99.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -218,11 +220,10 @@
 		CD88AF7128D306CA00EFCBBB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CD88B02028F541DD00EFCBBB /* Realm */,
+				CD88B01F28F541CF00EFCBBB /* App */,
+				CD88B01E28F541AB00EFCBBB /* Game */,
 				CD88AFDB28DAEE9400EFCBBB /* Stats */,
-				CD88AF7528D306FB00EFCBBB /* User.swift */,
-				CD88AF7728D307BA00EFCBBB /* UserSettings.swift */,
-				CD88AF7C28D30BAC00EFCBBB /* UserGamesStats.swift */,
-				CD88AFB228D83E0700EFCBBB /* AppTheme.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -297,6 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				CD88AF9328D450D300EFCBBB /* RealmDataProvider.swift */,
+				CD88B01C28F5402900EFCBBB /* RealmDataService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -378,8 +380,6 @@
 			children = (
 				CD88AFDC28DAEEB600EFCBBB /* Statistics.swift */,
 				CD88AFF928DC71D500EFCBBB /* BestTimes.swift */,
-				CD88AFFB28DD825F00EFCBBB /* LevelsTime.swift */,
-				CD88B01628E42B5900EFCBBB /* GameCard.swift */,
 			);
 			path = Stats;
 			sourceTree = "<group>";
@@ -435,6 +435,33 @@
 				CD88B01028DDB05900EFCBBB /* symbolList.txt */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		CD88B01E28F541AB00EFCBBB /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				CD88B01628E42B5900EFCBBB /* GameCard.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		CD88B01F28F541CF00EFCBBB /* App */ = {
+			isa = PBXGroup;
+			children = (
+				CD88AFB228D83E0700EFCBBB /* AppTheme.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		CD88B02028F541DD00EFCBBB /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				CD88AF7528D306FB00EFCBBB /* User.swift */,
+				CD88AF7728D307BA00EFCBBB /* UserSettings.swift */,
+				CD88AF7C28D30BAC00EFCBBB /* UserGamesStats.swift */,
+				CD88AFFB28DD825F00EFCBBB /* LevelsTime.swift */,
+			);
+			path = Realm;
 			sourceTree = "<group>";
 		};
 		EB75619A2A5DAE8CA72D994E /* Frameworks */ = {
@@ -632,6 +659,7 @@
 				CD88AF9128D3254500EFCBBB /* LoginView.swift in Sources */,
 				CD88AFB328D83E0700EFCBBB /* AppTheme.swift in Sources */,
 				CD88AFFA28DC71D500EFCBBB /* BestTimes.swift in Sources */,
+				CD88B01D28F5402900EFCBBB /* RealmDataService.swift in Sources */,
 				CD88B00C28DDA74C00EFCBBB /* GameVCViewModel.swift in Sources */,
 				CD88AF9428D450D300EFCBBB /* RealmDataProvider.swift in Sources */,
 				CD88AFF628DC601500EFCBBB /* LabelLayoutView.swift in Sources */,

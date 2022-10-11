@@ -143,7 +143,8 @@ class GameViewModel {
 
         if turnsCountdown && turnsLeft <= 0 {return}
 
-        if card.isPaired != false {return}
+        if card.isPaired == true {return}
+        if card.isVisible == true {return}
 
         if selectedCardOne == nil {
             guard let index = cardsDeck.firstIndex(where: {$0.id == card.id}) else {return}
@@ -180,6 +181,8 @@ class GameViewModel {
             return
         }
 
+        RealmDataService.shared.updateTotalSelectedCards()
+
         if selectedCardOne.image == selectedCardTwo.image && selectedCardOne.color == selectedCardTwo.color {
             if let firstCardIndex = cardsDeck.firstIndex(where: {$0.id == selectedCardOne.id}) {
                 cardsDeck[firstCardIndex].isPaired = true
@@ -192,6 +195,7 @@ class GameViewModel {
             }
             print("match")
             removedPairs += 1
+            RealmDataService.shared.updatePairedCards()
             resetSelectedCards()
             allCardsPaired()
         } else {

@@ -18,11 +18,19 @@ class RealmDataService {
         self.userId = UserContainer.shared.loadUser()
     }
 
-    func updateTotalGames() {
+    private func loadGameStats() -> UserGamesStats {
         guard let userId = userId,
-              let result = realm.object(ofType: UserGamesStats.self, forPrimaryKey: userId) else {return}
+              let result = realm.object(
+                ofType: UserGamesStats.self,
+                forPrimaryKey: userId) else {
+            fatalError("user stats could not be loaded")
+        }
 
-        print(result.numberOfGames)
+        return result
+    }
+
+    func updateTotalGames() {
+        let result = loadGameStats()
 
         try? realm.write {
             result.numberOfGames += 1
@@ -30,13 +38,26 @@ class RealmDataService {
     }
 
     func updateGamesWon() {
-        guard let userId = userId,
-              let result = realm.object(ofType: UserGamesStats.self, forPrimaryKey: userId) else {return}
-
-        print(result.numOfGamesWon)
+        let result = loadGameStats()
 
         try? realm.write {
             result.numOfGamesWon += 1
+        }
+    }
+
+    func updateTotalSelectedCards() {
+        let result = loadGameStats()
+
+        try? realm.write {
+            result.cardsClicked += 1
+        }
+    }
+
+    func updatePairedCards() {
+        let result = loadGameStats()
+
+        try? realm.write {
+            result.pairsRevealed += 1
         }
     }
 }

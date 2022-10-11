@@ -45,7 +45,7 @@ class RealmDataService {
         }
     }
 
-    func updateTotalSelectedCards() {
+    func updateTotalSelectedPairs() {
         let result = loadGameStats()
 
         try? realm.write {

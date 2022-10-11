@@ -181,7 +181,7 @@ class GameViewModel {
             return
         }
 
-        RealmDataService.shared.updateTotalSelectedCards()
+        RealmDataService.shared.updateTotalSelectedPairs()
 
         if selectedCardOne.image == selectedCardTwo.image && selectedCardOne.color == selectedCardTwo.color {
             if let firstCardIndex = cardsDeck.firstIndex(where: {$0.id == selectedCardOne.id}) {
@@ -193,14 +193,12 @@ class GameViewModel {
                 cardsDeck[secondCardIndex].isPaired = true
                 cardsDeck[secondCardIndex].color = .lightGray
             }
-            print("match")
             removedPairs += 1
             RealmDataService.shared.updatePairedCards()
             resetSelectedCards()
             allCardsPaired()
         } else {
 
-            print("mismatch")
             if turnsCountdown {
                 turnsLeft -= 1
             }
@@ -219,7 +217,6 @@ class GameViewModel {
 
     private func allCardsPaired() {
         if removedPairs == cardsDeck.count / 2 && removedPairs != 0 {
-            print("win")
             RealmDataService.shared.updateGamesWon()
             delegate?.gameViewModelDidEndGame(self, with: .gameWon)
         }

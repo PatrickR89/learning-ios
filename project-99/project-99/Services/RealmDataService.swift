@@ -69,6 +69,15 @@ class RealmDataService {
         return result.withMulticolor
     }
 
+    func loadTimerValue() -> Bool {
+        guard let userId = userId,
+              let result = realm.object(ofType: UserSettings.self, forPrimaryKey: userId) else {
+            return false
+        }
+
+        return result.withTimer
+    }
+
     func saveNewTime(save time: Double, for level: Level) {
         guard let userId = userId,
               let result = realm.object(ofType: LevelTimes.self, forPrimaryKey: userId) else {

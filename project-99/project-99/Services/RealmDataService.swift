@@ -68,4 +68,25 @@ class RealmDataService {
         }
         return result.withMulticolor
     }
+
+    func saveNewTime(save time: Double, for level: Level) {
+        guard let userId = userId,
+              let result = realm.object(ofType: LevelTimes.self, forPrimaryKey: userId) else {
+            return
+        }
+
+        if result.value(forKey: level.rawValue) as? Double == 0.0 {
+                try? realm.write {
+                    result.setValue(time, forKey: level.rawValue)
+                }
+        }
+
+        if let levelTime = result.value(forKey: level.rawValue) as? Double {
+            if time < levelTime {
+                try? realm.write {
+                    result.setValue(time, forKey: level.rawValue)
+                }
+            }
+        }
+    }
 }

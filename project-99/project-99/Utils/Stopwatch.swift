@@ -18,14 +18,17 @@ class Stopwatch {
         }
     }
     @Published private(set) var timeString: String = "0.0"
+    @Published private(set) var isTimerOff: Bool = !RealmDataService.shared.loadTimerValue()
 
     func startTimer() {
         timer?.cancel()
-        startTime = Date()
-        self.timer = Timer.publish(every: 0.05, on: .main, in: .common)
-            .autoconnect()
-            .sink { _ in
-            self.elapsedTime = self.getElapsedTime()
+        if !isTimerOff {
+            startTime = Date()
+            self.timer = Timer.publish(every: 0.05, on: .main, in: .common)
+                .autoconnect()
+                .sink { _ in
+                self.elapsedTime = self.getElapsedTime()
+            }
         }
     }
 
@@ -40,7 +43,9 @@ class Stopwatch {
         timer?.cancel()
         timer = nil
         startTime = nil
-        RealmDataService.shared.saveNewTime(save: self.elapsedTime, for: game)
+        if !isTimerOff {
+            RealmDataService.shared.saveNewTime(save: self.elapsedTime, for: game)
+        }
         elapsedTime = 0
     }
 

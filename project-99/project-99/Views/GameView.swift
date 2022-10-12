@@ -13,6 +13,8 @@ class GameView: UIView {
     let viewModel: GameViewModel
     let stopwatch: Stopwatch
     var elapsedTime: AnyCancellable?
+    var isTimerCountOn: AnyCancellable?
+    var isTimerTextOn: AnyCancellable?
 
     lazy var collectionLayout: UICollectionViewFlowLayout = {
         let collectionLayout = UICollectionViewFlowLayout()
@@ -57,6 +59,12 @@ class GameView: UIView {
         self.elapsedTime = stopwatch.$timeString
             .receive(on: DispatchQueue.main)
             .assign(to: \.text!, on: timerCountLabel)
+        self.isTimerCountOn = stopwatch.$isTimerOff
+            .receive(on: DispatchQueue.main)
+            .assign(to: \.isHidden, on: timerCountLabel)
+        self.isTimerTextOn = stopwatch.$isTimerOff
+            .receive(on: DispatchQueue.main)
+            .assign(to: \.isHidden, on: timerTextLabel)
     }
 }
 

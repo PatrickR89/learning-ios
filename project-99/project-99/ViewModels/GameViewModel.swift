@@ -9,6 +9,7 @@ import UIKit
 
 class GameViewModel {
 
+    private var stopwatch: Stopwatch
     private var gameLevel: Level
     private var currentSymbols = [String]() {
         didSet {
@@ -45,10 +46,12 @@ class GameViewModel {
 
     weak var delegate: GameViewModelDelegate?
 
-    init(for level: Level) {
+    init(for level: Level, with stopwatch: Stopwatch) {
         self.gameLevel = level
+        self.stopwatch = stopwatch
         setupSymbols(gameDifficulty: level)
         RealmDataService.shared.updateTotalGames()
+        self.stopwatch.startTimer()
     }
 
     private func cardsValueInDeckDidChange() {
@@ -232,6 +235,7 @@ class GameViewModel {
 
     private func checkIfGameDidEnd() {
         if turnsCountdown && turnsLeft <= 0 {
+            stopwatch.resetTimer()
             delegate?.gameViewModelDidEndGame(self, with: .gameLost)
         }
     }
@@ -239,6 +243,7 @@ class GameViewModel {
     private func allCardsPaired() {
         if removedPairs == cardsDeck.count / 2 && removedPairs != 0 {
             RealmDataService.shared.updateGamesWon()
+            stopwatch.stopAndSaveTime(for: gameLevel)
             delegate?.gameViewModelDidEndGame(self, with: .gameWon)
         }
     }

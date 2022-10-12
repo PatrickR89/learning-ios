@@ -54,7 +54,9 @@ class GameView: UIView {
     }
 
     func bindElapsedTime() {
-        self.elapsedTime = stopwatch.$timeString.receive(on: DispatchQueue.main).assign(to: \.text!, on: timerCountLabel)
+        self.elapsedTime = stopwatch.$timeString
+            .receive(on: DispatchQueue.main)
+            .assign(to: \.text!, on: timerCountLabel)
     }
 }
 

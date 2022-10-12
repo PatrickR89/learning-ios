@@ -10,6 +10,7 @@ import UIKit
 class GameView: UIView {
 
     let viewModel: GameViewModel
+    let stopwatch: Stopwatch
 
     lazy var collectionLayout: UICollectionViewFlowLayout = {
         let collectionLayout = UICollectionViewFlowLayout()
@@ -26,15 +27,21 @@ class GameView: UIView {
     }()
 
     let remainingChancesLabel = UILabel()
+    let timerTextLabel = UILabel()
+    let timerCountLabel = UILabel()
 
-    init(with viewModel: GameViewModel) {
+    init(with viewModel: GameViewModel, and stopwatch: Stopwatch) {
         self.viewModel = viewModel
+        self.stopwatch = stopwatch
 
         super.init(frame: .zero)
         self.bindObservers()
         use(AppTheme.self) {
             $0.backgroundColor = $1.backgroundColor
             $0.collectionView.backgroundColor = $1.backgroundColor
+            $0.remainingChancesLabel.textColor = $1.textColor
+            $0.timerTextLabel.textColor = $1.textColor
+            $0.timerCountLabel.textColor = $1.textColor
             $0.reloadInputViews()
         }
     }
@@ -42,7 +49,9 @@ class GameView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
 
+extension GameView {
     func configCollectionViewLayout(for level: Level) {
         var dimensionDependance: Double
         switch level {
@@ -66,8 +75,12 @@ class GameView: UIView {
 
         self.addSubview(collectionView)
         self.addSubview(remainingChancesLabel)
+        self.addSubview(timerTextLabel)
+        self.addSubview(timerCountLabel)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         remainingChancesLabel.translatesAutoresizingMaskIntoConstraints = false
+        timerTextLabel.translatesAutoresizingMaskIntoConstraints = false
+        timerCountLabel.translatesAutoresizingMaskIntoConstraints = false
 
         collectionView.register(GameViewCell.self, forCellWithReuseIdentifier: "image")
         collectionView.delegate = self
@@ -76,9 +89,24 @@ class GameView: UIView {
         remainingChancesLabel.text = "Remaning chances: 0"
         remainingChancesLabel.textAlignment = .center
 
+        timerTextLabel.text = "Time:"
+        timerCountLabel.text = "0.0"
+        timerTextLabel.textAlignment = .right
+        timerCountLabel.textAlignment = .right
+
+        setupConstraints()
+    }
+
+    private func setupConstraints() {
         NSLayoutConstraint.activate([
             remainingChancesLabel.topAnchor.constraint(equalTo: self.layoutMarginsGuide.topAnchor),
-            remainingChancesLabel.widthAnchor.constraint(equalTo: self.layoutMarginsGuide.widthAnchor),
+            remainingChancesLabel.widthAnchor.constraint(equalTo: self.layoutMarginsGuide.widthAnchor, multiplier: 0.5),
+            timerCountLabel.centerYAnchor.constraint(equalTo: remainingChancesLabel.centerYAnchor),
+            timerCountLabel.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor, constant: -5),
+            timerCountLabel.widthAnchor.constraint(equalTo: self.layoutMarginsGuide.widthAnchor, multiplier: 0.15),
+            timerTextLabel.centerYAnchor.constraint(equalTo: remainingChancesLabel.centerYAnchor),
+            timerTextLabel.trailingAnchor.constraint(equalTo: timerCountLabel.leadingAnchor, constant: -5),
+            timerTextLabel.widthAnchor.constraint(equalTo: self.layoutMarginsGuide.widthAnchor, multiplier: 0.35),
             collectionView.topAnchor.constraint(equalTo: remainingChancesLabel.bottomAnchor, constant: 5),
             collectionView.bottomAnchor.constraint(equalTo: self.layoutMarginsGuide.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor),

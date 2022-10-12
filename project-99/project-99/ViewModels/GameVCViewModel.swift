@@ -19,9 +19,9 @@ class GameVCViewModel {
 
     private var gameObserver: ((EndGame) -> Void)?
 
-    init(for level: Level) {
+    init(for level: Level, with stopwatch: Stopwatch) {
         self.game = level
-        self.playGameViewModel = GameViewModel(for: level)
+        self.playGameViewModel = GameViewModel(for: level, with: stopwatch)
         self.playGameViewModel.delegate = self
     }
 

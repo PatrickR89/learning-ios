@@ -10,11 +10,13 @@ import UIKit
 class GameViewController: UIViewController {
 
     private let viewModel: GameVCViewModel
-    private let gameView: GameView
+    private let gameView: GameView?
+    private let stopwatch: Stopwatch
 
-    init(with viewModel: GameVCViewModel) {
+    init(with viewModel: GameVCViewModel, and stopwatch: Stopwatch) {
+        self.stopwatch = stopwatch
         self.viewModel = viewModel
-        self.gameView = GameView(with: viewModel.provideInitializedViewModel())
+        self.gameView = GameView(with: viewModel.provideInitializedViewModel(), and: stopwatch)
 
         super.init(nibName: nil, bundle: nil)
         setupUI()
@@ -27,6 +29,10 @@ class GameViewController: UIViewController {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    deinit {
+        stopwatch.resetTimer()
     }
 
     override func viewDidLoad() {
@@ -54,12 +60,16 @@ class GameViewController: UIViewController {
     }
 
     func setupUI() {
+        guard let gameView = gameView else {
+            return
+        }
         view.addSubview(gameView)
         gameView.frame = view.frame
         gameView.configCollectionViewLayout(for: viewModel.sendGameLevel())
     }
 
     @objc func closeGame() {
+        stopwatch.resetTimer()
         self.dismiss(animated: true)
     }
 }

@@ -12,33 +12,35 @@ class Stopwatch {
     private var startTime: Date?
     private var timer: Cancellable?
 
-    @Published private(set) var elapsedTime: TimeInterval = 0
+    private var elapsedTime: TimeInterval = 0 {
+        didSet {
+            timeString = String(format: "%.2f", elapsedTime)
+        }
+    }
+    @Published private(set) var timeString: String = "0.0"
 
     func startTimer() {
-        print("timer start")
-//        timer?.cancel()
-//        startTime = Date()
-//        self.timer = Timer.publish(every: 0.05, on: .main, in: .common)
-//            .autoconnect()
-//            .sink { _ in
-//            self.elapsedTime = self.getElapsedTime()
-//        }
+        timer?.cancel()
+        startTime = Date()
+        self.timer = Timer.publish(every: 0.05, on: .main, in: .common)
+            .autoconnect()
+            .sink { _ in
+            self.elapsedTime = self.getElapsedTime()
+        }
     }
 
     func resetTimer() {
-        print("timer reset")
-//        timer?.cancel()
-//        timer = nil
-//        startTime = nil
-//        elapsedTime = 0
+        timer?.cancel()
+        timer = nil
+        startTime = nil
+        elapsedTime = 0
     }
 
     func stopAndSaveTime(for game: Level) {
-        print("timer stop")
-//        timer?.cancel()
-//        timer = nil
-//        startTime = nil
-//        elapsedTime = 0
+        timer?.cancel()
+        timer = nil
+        startTime = nil
+        elapsedTime = 0
     }
 
     private func getElapsedTime() -> TimeInterval {

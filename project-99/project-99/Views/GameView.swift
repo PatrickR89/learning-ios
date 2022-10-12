@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import Combine
 
 class GameView: UIView {
 
     let viewModel: GameViewModel
     let stopwatch: Stopwatch
+    var elapsedTime: AnyCancellable?
 
     lazy var collectionLayout: UICollectionViewFlowLayout = {
         let collectionLayout = UICollectionViewFlowLayout()
@@ -36,6 +38,7 @@ class GameView: UIView {
 
         super.init(frame: .zero)
         self.bindObservers()
+        self.bindElapsedTime()
         use(AppTheme.self) {
             $0.backgroundColor = $1.backgroundColor
             $0.collectionView.backgroundColor = $1.backgroundColor
@@ -48,6 +51,10 @@ class GameView: UIView {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func bindElapsedTime() {
+        self.elapsedTime = stopwatch.$timeString.receive(on: DispatchQueue.main).assign(to: \.text!, on: timerCountLabel)
     }
 }
 
@@ -90,7 +97,7 @@ extension GameView {
         remainingChancesLabel.textAlignment = .center
 
         timerTextLabel.text = "Time:"
-        timerCountLabel.text = "0.0"
+        timerCountLabel.text = "00.0"
         timerTextLabel.textAlignment = .right
         timerCountLabel.textAlignment = .right
 

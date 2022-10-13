@@ -35,6 +35,15 @@ class SettingsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .close,
+            target: self,
+            action: #selector(dismissSelf))
+    }
+
+    @objc private func dismissSelf() {
+        self.dismiss(animated: true)
     }
 
     private func setupUI() {

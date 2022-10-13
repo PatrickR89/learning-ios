@@ -33,6 +33,14 @@ class StatsViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
 
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .close,
+            target: self,
+            action: #selector(dismissSelf))
+    }
+
+    @objc private func dismissSelf() {
+        self.dismiss(animated: true)
     }
 
     private func setupUI() {
@@ -42,7 +50,13 @@ class StatsViewController: UIViewController {
         TimesViewCell.register(in: tableView)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.frame = view.frame
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 20),
+            tableView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, constant: -50),
+            tableView.widthAnchor.constraint(equalTo: view.widthAnchor)
+        ])
     }
 }
 

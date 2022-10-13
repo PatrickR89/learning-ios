@@ -14,7 +14,7 @@ class LabelLayoutView: UIView {
     private let rowStack = UIStackView()
 
     init() {
-        super.init(frame: .zero)
+        super.init(frame: .infinite)
         setupUI()
 
         use(AppTheme.self) {
@@ -33,7 +33,8 @@ class LabelLayoutView: UIView {
         valueLabel.textColor = .systemBlue
 
         NSLayoutConstraint.activate([
-            rowStack.widthAnchor.constraint(equalTo: self.widthAnchor)
+            rowStack.widthAnchor.constraint(equalTo: self.widthAnchor),
+            rowStack.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5)
         ])
     }
 

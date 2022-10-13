@@ -31,6 +31,7 @@ class TimesCellBottomSubview: UIView {
         self.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
+        tableView.delegate = self
         TimesSubviewViewCell.register(in: tableView)
         NSLayoutConstraint.activate([
             tableView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
@@ -55,15 +56,18 @@ extension TimesCellBottomSubview: UITableViewDataSource {
         return viewModel.countTimesLength()
     }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 45
-    }
-
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let time = viewModel.returnTimesElement(for: indexPath.row)
         let cell = TimesSubviewViewCell.dequeue(in: tableView, for: indexPath)
         let tempTime = String(format: "%.2f", time.time)
         cell.addLabel(with: "\(time.title)", and: "\(tempTime)")
         return cell
+    }
+}
+
+extension TimesCellBottomSubview: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 45
     }
 }

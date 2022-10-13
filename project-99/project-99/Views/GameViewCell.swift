@@ -59,7 +59,7 @@ class GameViewCell: UICollectionViewCell {
             backLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             backLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             backLabel.heightAnchor.constraint(equalToConstant: 40),
-            backLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.5)
+            backLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor)
         ])
     }
 }

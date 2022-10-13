@@ -75,15 +75,15 @@ extension GameView {
         case .veryEasy:
             dimensionDependance = 2.3
         case .easy:
-            dimensionDependance = 3.12
+            dimensionDependance = 3.3
         case .mediumHard:
             dimensionDependance = 4.3
         case .hard:
-            dimensionDependance = 3.3
+            dimensionDependance = 3.5
         case .veryHard:
             dimensionDependance = 4.3
         case .emotionalDamage:
-            dimensionDependance = 4.35
+            dimensionDependance = 4.55
         }
 
         collectionLayout.itemSize = CGSize(

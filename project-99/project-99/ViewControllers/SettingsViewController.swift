@@ -10,7 +10,7 @@ import UIKit
 class SettingsViewController: UIViewController {
 
     private let viewModel: SettingsViewModel
-    private let tableView = UITableView()
+    private let tableView: UITableView
     private let primaryContent: [SettingsContent] = [.theme, .multicolor, .timer]
     private let secondContent: [SettingsContent] = [.username, .password]
     private let sections: [[SettingsContent]]
@@ -18,14 +18,13 @@ class SettingsViewController: UIViewController {
     weak var delegate: SettingsViewControllerDelegate?
 
     init(with viewModel: SettingsViewModel) {
+        self.tableView = UITableView()
         self.viewModel = viewModel
         self.sections = [primaryContent, secondContent]
         super.init(nibName: nil, bundle: nil)
         setupUI()
-        setupBindings()
         use(AppTheme.self) {
             $0.tableView.backgroundColor = $1.backgroundColor
-            $0.tableView.reloadData()
             $0.reloadInputViews()
         }
     }
@@ -49,6 +48,8 @@ class SettingsViewController: UIViewController {
         TimerViewCell.register(in: tableView)
         UsernameViewCell.register(in: tableView)
         PasswordViewCell.register(in: tableView)
+
+        setupBindings()
     }
 
     private func setupBindings() {
@@ -70,6 +71,12 @@ class SettingsViewController: UIViewController {
                 }
             }
         }
+
+        viewModel.observeThemeState { _ in
+            DispatchQueue.main.async { [weak self] in
+                self?.tableView.reloadData()
+            }
+        }
     }
 }
 
@@ -77,6 +84,10 @@ extension SettingsViewController: UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

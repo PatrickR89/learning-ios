@@ -215,6 +215,11 @@ extension SettingsViewModel {
         timerStateDidChange()
     }
 
+    func observeThemeState(_ closure: @escaping(ThemeChoice) -> Void) {
+        self.themeObserver = closure
+        themeDidChange()
+    }
+
     // MARK: Account verification
 
     func verifyPassword(_ password: String, for change: AccountChanges) {

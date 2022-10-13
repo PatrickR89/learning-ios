@@ -49,11 +49,15 @@ class StatsViewController: UIViewController {
 extension StatsViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            if viewModel.isCellBottomHidden[indexPath.row] {
-                return 40
+        if viewModel.isCellBottomHidden[indexPath.row] {
+            return 40
+        } else {
+            if (tableView.cellForRow(at: indexPath) as? TimesViewCell) != nil {
+                return 350
             } else {
                 return 200
             }
+        }
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

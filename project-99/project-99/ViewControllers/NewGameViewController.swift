@@ -54,6 +54,10 @@ extension NewGameViewController: UITableViewDataSource {
         return viewModel.countLevels()
     }
 
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = NewGameViewCell.dequeue(in: tableView, for: indexPath)
         cell.setupLevelLabel(with: viewModel.loadLevel(at: indexPath.row))

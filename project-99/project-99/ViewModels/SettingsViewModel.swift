@@ -203,6 +203,10 @@ extension SettingsViewModel {
         }
     }
 
+    func deleteAccount() {
+        delegate?.settingsViewModelDidDeleteAccount(self)
+    }
+
     // MARK: Observe values
 
     func observeMulticolorState(_ closure: @escaping (Bool) -> Void) {

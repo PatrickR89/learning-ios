@@ -12,7 +12,7 @@ class SettingsViewController: UIViewController {
     private let viewModel: SettingsViewModel
     private let tableView: UITableView
     private let primaryContent: [SettingsContent] = [.theme, .multicolor, .timer]
-    private let secondContent: [SettingsContent] = [.username, .password]
+    private let secondContent: [SettingsContent] = [.username, .password, .delete]
     private let sections: [[SettingsContent]]
 
     weak var delegate: SettingsViewControllerDelegate?
@@ -57,6 +57,7 @@ class SettingsViewController: UIViewController {
         TimerViewCell.register(in: tableView)
         UsernameViewCell.register(in: tableView)
         PasswordViewCell.register(in: tableView)
+        DeleteAccViewCell.register(in: tableView)
 
         setupBindings()
     }
@@ -143,6 +144,9 @@ extension SettingsViewController: UITableViewDataSource {
         case .password:
             let cell = PasswordViewCell.dequeue(in: tableView, for: indexPath)
             return cell
+        case .delete:
+            let cell = DeleteAccViewCell.dequeue(in: tableView, for: indexPath)
+            return cell
         }
     }
 }
@@ -165,11 +169,19 @@ extension SettingsViewController: UITableViewDelegate {
         case .password:
             let alertController = viewModel.addPasswordVerificationAlertController(in: self, for: .password)
             present(alertController, animated: true)
+        case .delete:
+            let alertController = viewModel.addPasswordVerificationAlertController(in: self, for: .delete)
+            present(alertController, animated: true)
         }
     }
 }
 
 extension SettingsViewController: SettingsViewModelDelegate {
+    func settingsViewModelDidDeleteAccount(_ viewModel: SettingsViewModel) {
+        delegate?.settingsViewController(self, didReciveAccountDeletionFrom: viewModel)
+        self.dismiss(animated: true)
+    }
+
     func settingsViewModel(_ viewModel: SettingsViewModel, didChangeUsername username: String) {
         delegate?.settingsViewController(self, didRecieveUpdatedName: username)
     }

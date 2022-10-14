@@ -33,7 +33,7 @@ class GameViewModel {
     private var turnsLeft: Int = 0 {
         didSet {
             remainingTurnsValueDidChange()
-            checkIfGameDidEnd()
+            endGameWithLose()
         }
     }
     private var turnsCountdown: Bool = false {
@@ -184,7 +184,7 @@ class GameViewModel {
         }
     }
 
-    func resetSelectedCards() {
+    func resetCardsSelection() {
         guard let cardOne = selectedCardOne,
               let cardTwo = selectedCardTwo,
               let firstIndex = cardsDeck.firstIndex(where: {$0.id == cardOne.id}),
@@ -219,8 +219,8 @@ class GameViewModel {
             }
             removedPairs += 1
             RealmDataService.shared.updatePairedCards()
-            resetSelectedCards()
-            allCardsPaired()
+            resetCardsSelection()
+            endGameIfWin()
         } else {
 
             if turnsCountdown {
@@ -228,19 +228,19 @@ class GameViewModel {
             }
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
-                self?.resetSelectedCards()
+                self?.resetCardsSelection()
             }
         }
     }
 
-    private func checkIfGameDidEnd() {
+    private func endGameWithLose() {
         if turnsCountdown && turnsLeft <= 0 {
             stopwatch.resetTimer()
             delegate?.gameViewModelDidEndGame(self, with: .gameLost)
         }
     }
 
-    private func allCardsPaired() {
+    private func endGameIfWin() {
         if removedPairs == cardsDeck.count / 2 && removedPairs != 0 {
             RealmDataService.shared.updateGamesWon()
             stopwatch.stopAndSaveTime(for: gameLevel)

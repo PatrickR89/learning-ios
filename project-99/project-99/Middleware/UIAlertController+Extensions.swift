@@ -78,10 +78,10 @@ extension UIAlertController {
                 switch change {
                 case .username:
                     guard let input = alertController?.textFields?[0].text else {return}
-                    viewModel?.usernameDidEdit(with: input)
+                    viewModel?.userDidEditUsername(with: input)
                 case .password:
                     guard let input = alertController?.textFields?[0].text else {return}
-                    viewModel?.passwordDidEdit(with: input)
+                    viewModel?.userDidEditPassword(with: input)
                 case .delete:
                     viewModel?.deleteAccount()
                 }

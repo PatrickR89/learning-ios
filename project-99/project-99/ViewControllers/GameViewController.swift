@@ -16,7 +16,7 @@ class GameViewController: UIViewController {
     init(with viewModel: GameVCViewModel, and stopwatch: Stopwatch) {
         self.stopwatch = stopwatch
         self.viewModel = viewModel
-        self.gameView = GameView(with: viewModel.provideInitializedViewModel(), and: stopwatch)
+        self.gameView = GameView(with: viewModel.provideGameViewModel(), and: stopwatch)
 
         super.init(nibName: nil, bundle: nil)
         setupUI()

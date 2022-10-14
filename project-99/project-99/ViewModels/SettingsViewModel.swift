@@ -156,11 +156,11 @@ extension SettingsViewModel {
         self.withTimer = !withTimer
     }
 
-    func usernameDidEdit(with name: String) {
+    func userDidEditUsername(with name: String) {
         self.newUsername = name
     }
 
-    func passwordDidEdit(with password: String) {
+    func userDidEditPassword(with password: String) {
         self.newPassword = password
     }
 

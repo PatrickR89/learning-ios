@@ -41,7 +41,7 @@ class GameVCViewModel {
         return game
     }
 
-    func provideInitializedViewModel() -> GameViewModel {
+    func provideGameViewModel() -> GameViewModel {
         return playGameViewModel
     }
 

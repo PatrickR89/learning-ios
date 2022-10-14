@@ -7,15 +7,21 @@
 
 import Foundation
 import RealmSwift
+import Combine
 
 class RealmDataService {
     static let shared = RealmDataService()
+    private var cancellable: AnyCancellable?
     private var realm: Realm
     private var userId: UUID?
 
     init() {
         self.realm = RealmDataProvider.shared.initiateRealm()
-        self.userId = UserContainer.shared.loadUser()
+        bindUserId()
+    }
+
+    private func bindUserId() {
+        self.cancellable = UserContainer.shared.$userId.receive(on: DispatchQueue.main).assign(to: \.userId, on: self)
     }
 
     private func loadGameStats() -> UserGamesStats {
@@ -127,7 +133,5 @@ class RealmDataService {
                 realm.delete(user)
             }
         }
-
-        self.userId = nil
     }
 }

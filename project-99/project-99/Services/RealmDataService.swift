@@ -98,4 +98,36 @@ class RealmDataService {
             }
         }
     }
+
+    func deleteAccount() {
+        guard let userId = userId else {
+            return
+        }
+
+        if let levelTimes = realm.object(ofType: LevelTimes.self, forPrimaryKey: userId) {
+            try? realm.write {
+                realm.delete(levelTimes)
+            }
+        }
+
+        if let userSettings = realm.object(ofType: UserSettings.self, forPrimaryKey: userId) {
+            try? realm.write {
+                realm.delete(userSettings)
+            }
+        }
+
+        if let userGameStats = realm.object(ofType: UserGamesStats.self, forPrimaryKey: userId) {
+            try? realm.write {
+                realm.delete(userGameStats)
+            }
+        }
+
+        if let user = realm.object(ofType: User.self, forPrimaryKey: userId) {
+            try? realm.write {
+                realm.delete(user)
+            }
+        }
+
+        self.userId = nil
+    }
 }

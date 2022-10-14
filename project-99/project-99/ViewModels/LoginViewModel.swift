@@ -119,6 +119,7 @@ extension LoginViewModel {
 
         if result.count > 0 {
             self.user = result[0]
+            print(result)
         }
     }
 
@@ -133,5 +134,9 @@ extension LoginViewModel {
         } else {
             self.loginSuccess = false
         }
+    }
+
+    func userDeleted() {
+        self.user = User(id: UUID(), name: "", password: "")
     }
 }

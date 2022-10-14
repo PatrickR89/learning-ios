@@ -33,7 +33,7 @@
 		CD88AFAB28D493DE00EFCBBB /* SettingsContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFAA28D493DE00EFCBBB /* SettingsContent.swift */; };
 		CD88AFAD28D496A800EFCBBB /* MainMenuViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFAC28D496A800EFCBBB /* MainMenuViewDelegate.swift */; };
 		CD88AFAF28D497E400EFCBBB /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFAE28D497E400EFCBBB /* SettingsViewModel.swift */; };
-		CD88AFB128D4AE7D00EFCBBB /* ColorContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFB028D4AE7D00EFCBBB /* ColorContainer.swift */; };
+		CD88AFB128D4AE7D00EFCBBB /* ThemeContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFB028D4AE7D00EFCBBB /* ThemeContainer.swift */; };
 		CD88AFB328D83E0700EFCBBB /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFB228D83E0700EFCBBB /* AppTheme.swift */; };
 		CD88AFB528D84D9C00EFCBBB /* MulticolorViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFB428D84D9C00EFCBBB /* MulticolorViewCell.swift */; };
 		CD88AFB728D859E500EFCBBB /* TimerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFB628D859E500EFCBBB /* TimerViewCell.swift */; };
@@ -112,7 +112,7 @@
 		CD88AFAA28D493DE00EFCBBB /* SettingsContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContent.swift; sourceTree = "<group>"; };
 		CD88AFAC28D496A800EFCBBB /* MainMenuViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewDelegate.swift; sourceTree = "<group>"; };
 		CD88AFAE28D497E400EFCBBB /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
-		CD88AFB028D4AE7D00EFCBBB /* ColorContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorContainer.swift; sourceTree = "<group>"; };
+		CD88AFB028D4AE7D00EFCBBB /* ThemeContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeContainer.swift; sourceTree = "<group>"; };
 		CD88AFB228D83E0700EFCBBB /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
 		CD88AFB428D84D9C00EFCBBB /* MulticolorViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticolorViewCell.swift; sourceTree = "<group>"; };
 		CD88AFB628D859E500EFCBBB /* TimerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewCell.swift; sourceTree = "<group>"; };
@@ -298,8 +298,6 @@
 			isa = PBXGroup;
 			children = (
 				CD88B02928F92D8400EFCBBB /* Delegates */,
-				CD88AF9528D4510300EFCBBB /* FileManager+Extension.swift */,
-				CD88AFB028D4AE7D00EFCBBB /* ColorContainer.swift */,
 				CD88B02528F6984100EFCBBB /* Stopwatch.swift */,
 				CD88B02728F9269200EFCBBB /* KeyboardLayoutObserver.swift */,
 			);
@@ -327,6 +325,7 @@
 		CD88AFA228D47A8600EFCBBB /* Middleware */ = {
 			isa = PBXGroup;
 			children = (
+				CD88AF9528D4510300EFCBBB /* FileManager+Extension.swift */,
 				CD88AFA028D47A7E00EFCBBB /* UIStackView+Extension.swift */,
 				CD88AFA528D490DC00EFCBBB /* UITableViewCell+Extension.swift */,
 				CD88AFBC28D86ED700EFCBBB /* UIAlertController+Extensions.swift */,
@@ -410,6 +409,7 @@
 		CD88AFE328DB072200EFCBBB /* Containers */ = {
 			isa = PBXGroup;
 			children = (
+				CD88AFB028D4AE7D00EFCBBB /* ThemeContainer.swift */,
 				CD88AFE428DB073000EFCBBB /* UserContainer.swift */,
 			);
 			path = Containers;
@@ -641,7 +641,7 @@
 				CD88AFEF28DC49E400EFCBBB /* StatsViewModelDelegate.swift in Sources */,
 				CD88AFF828DC6D6B00EFCBBB /* TimesSubviewViewCell.swift in Sources */,
 				CD88B02B28F92DAC00EFCBBB /* KeyboardLayoutObserverDelegate.swift in Sources */,
-				CD88AFB128D4AE7D00EFCBBB /* ColorContainer.swift in Sources */,
+				CD88AFB128D4AE7D00EFCBBB /* ThemeContainer.swift in Sources */,
 				CD88AFAF28D497E400EFCBBB /* SettingsViewModel.swift in Sources */,
 				CD88AF7628D306FB00EFCBBB /* User.swift in Sources */,
 				CD88AF9F28D46C9200EFCBBB /* MainMenuView.swift in Sources */,

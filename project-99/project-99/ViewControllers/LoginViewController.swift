@@ -91,7 +91,7 @@ extension LoginViewController: LoginViewDelegate {
     }
 }
 
-extension LoginViewController: KeyboardControllerDelegate {
+extension LoginViewController: KeyboardLayoutObserverDelegate {
 
     func keyboardController(_ controller: KeyboardLayoutObserver, didEndEditing editing: Bool) {
         self.view.endEditing(editing)

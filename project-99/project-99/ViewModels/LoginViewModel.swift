@@ -119,7 +119,6 @@ extension LoginViewModel {
 
         if result.count > 0 {
             self.user = result[0]
-            print(result)
         }
     }
 
@@ -138,5 +137,6 @@ extension LoginViewModel {
 
     func userDeleted() {
         self.user = User(id: UUID(), name: "", password: "")
+        UserContainer.shared.saveUser(with: nil)
     }
 }

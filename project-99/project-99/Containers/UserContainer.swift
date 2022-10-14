@@ -6,11 +6,12 @@
 //
 
 import UIKit
+import Combine
 
 class UserContainer {
     static let shared = UserContainer()
 
-    private var userId: UUID?
+    @Published private(set) var userId: UUID?
 
     func saveUser(with id: UUID?) {
         guard let id = id else {

@@ -9,7 +9,6 @@ import UIKit
 import RealmSwift
 
 class LoginViewModel {
-    var realm: Realm
     private var user: User = User(id: UUID(), name: "", password: "")
     private var username: String? {
         didSet {
@@ -37,10 +36,6 @@ class LoginViewModel {
     }
 
     private var observer: ((Bool) -> Void)?
-
-    init(in realm: Realm) {
-        self.realm = realm
-    }
 
     private func loginStatusDidChange () {
         guard let observer = observer,
@@ -71,37 +66,10 @@ extension LoginViewModel {
     func createNewUser() {
         guard let username = username,
               let password = password else {return}
+        if username == "" || password == "" {return}
         let newUser = User(id: UUID(), name: username, password: password)
 
-        let newSettings = UserSettings(
-            userId: newUser.id,
-            theme: .system,
-            withMulticolor: false,
-            withTimer: false)
-
-        let newStats = UserGamesStats(
-            userId: newUser.id,
-            numberOfGames: 0,
-            numOfGamesWon: 0,
-            cardsClicked: 0,
-            pairsRevealed: 0,
-            totalPlayTime: 0.0)
-
-        let initialTimes = LevelTimes(
-            userId: newUser.id,
-            veryEasy: 0.0,
-            easy: 0.0,
-            mediumHard: 0.0,
-            hard: 0.0,
-            veryHard: 0.0,
-            emotionalDamage: 0.0)
-
-        try? realm.write {
-            realm.add(newUser)
-            realm.add(newSettings)
-            realm.add(newStats)
-            realm.add(initialTimes)
-        }
+        RealmDataService.shared.saveNewUser(newUser)
 
         self.loginSuccess = true
         self.user = newUser
@@ -113,9 +81,7 @@ extension LoginViewModel {
     }
 
     func findUserByName(_ username: String) {
-        let result = realm.objects(User.self).where {
-            $0.name == username
-        }
+        let result = RealmDataService.shared.findUserByName(username)
 
         if result.count > 0 {
             self.user = result[0]

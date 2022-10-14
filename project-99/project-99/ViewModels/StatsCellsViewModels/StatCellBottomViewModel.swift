@@ -6,11 +6,9 @@
 //
 
 import Foundation
-import RealmSwift
 
 class StatCellBottomViewModel {
 
-    private var realm: Realm
     private var currentType: StatsContent
     private var values: Statistics? {
         didSet {
@@ -31,7 +29,6 @@ class StatCellBottomViewModel {
     weak var delegate: StatCellBottomViewModelDelegate?
 
     init(as currentType: StatsContent) {
-        self.realm = RealmDataProvider.shared.initiateRealm()
         self.currentType = currentType
         retrieveData(with: currentType)
     }
@@ -52,8 +49,9 @@ class StatCellBottomViewModel {
     }
 
     private func retrieveData(with currentType: StatsContent) {
-        guard let userId = UserContainer.shared.loadUser(),
-              let realmData = realm.object(ofType: UserGamesStats.self, forPrimaryKey: userId) else {return}
+
+        let realmData = RealmDataService.shared.loadStatistics()
+
         values = Statistics(totalValue: 1, positiveValue: 1)
         switch currentType {
         case .games:

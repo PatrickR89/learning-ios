@@ -36,11 +36,28 @@ class RealmDataService {
         return result
     }
 
-    func loadUserSettings() -> UserSettings {
+    func loadLevelTimes() -> LevelTimes {
         guard let userId = userId,
-              let result = realm.object(
+                let result = realm.object(
+            ofType: LevelTimes.self,
+            forPrimaryKey: userId) else {
+            fatalError("user level times could not be found")
+        }
+        return result
+    }
+
+    func loadStatistics() -> UserGamesStats {
+        guard let userId = userId,
+              let result = realm.object(ofType: UserGamesStats.self, forPrimaryKey: userId) else {
+            fatalError("user game stats could not be found")
+        }
+        return result
+    }
+
+    func loadUserSettings(forUser id: UUID) -> UserSettings {
+        guard let result = realm.object(
                 ofType: UserSettings.self,
-                forPrimaryKey: userId) else {
+                forPrimaryKey: id) else {
             fatalError("user settings could not be loaded")
         }
 
@@ -117,9 +134,53 @@ class RealmDataService {
         }
     }
 
-    func saveTheme(save theme: ThemeChoice) {
+    func saveNewUser(_ newUser: User) {
 
-              let result = loadUserSettings()
+        let newSettings = UserSettings(
+            userId: newUser.id,
+            theme: .system,
+            withMulticolor: false,
+            withTimer: false)
+
+        let newStats = UserGamesStats(
+            userId: newUser.id,
+            numberOfGames: 0,
+            numOfGamesWon: 0,
+            cardsClicked: 0,
+            pairsRevealed: 0,
+            totalPlayTime: 0.0)
+
+        let initialTimes = LevelTimes(
+            userId: newUser.id,
+            veryEasy: 0.0,
+            easy: 0.0,
+            mediumHard: 0.0,
+            hard: 0.0,
+            veryHard: 0.0,
+            emotionalDamage: 0.0)
+
+        try? realm.write {
+            realm.add(newUser)
+            realm.add(newSettings)
+            realm.add(newStats)
+            realm.add(initialTimes)
+        }
+    }
+
+    func findUserByName(_ username: String) -> Results<User> {
+         let result = realm.objects(User.self).where {
+            $0.name == username
+        }
+
+        return result
+    }
+
+    func saveTheme(save theme: ThemeChoice) {
+        guard let userId = userId else {
+            return
+        }
+
+              let result = loadUserSettings(forUser: userId)
             try? realm.write {
                 result.theme = theme
             }
@@ -127,7 +188,10 @@ class RealmDataService {
     }
 
     func saveMulticolorState(save state: Bool) {
-         let result = loadUserSettings()
+        guard let userId = userId else {
+            return
+        }
+         let result = loadUserSettings(forUser: userId)
             try? realm.write {
                 result.withMulticolor = state
             }
@@ -135,7 +199,10 @@ class RealmDataService {
     }
 
     func saveTimerState(save state: Bool) {
-         let result = loadUserSettings()
+        guard let userId = userId else {
+            return
+        }
+         let result = loadUserSettings(forUser: userId)
             try? realm.write {
                 result.withTimer = state
             }

@@ -104,5 +104,9 @@ extension LoginViewController: MainMenuViewControllerDelegate {
         _ viewController: MainMenuViewController,
         didReciveAccountDeletionFrom settingsViewController: SettingsViewController) {
             navigationController?.popViewController(animated: true)
+            RealmDataService.shared.deleteAccount()
+            viewModel.usernameChanged("")
+            viewModel.passwordChanged("")
+            viewModel.userDeleted()
         }
 }

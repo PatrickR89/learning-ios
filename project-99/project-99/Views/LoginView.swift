@@ -96,6 +96,8 @@ private extension LoginView {
         self.nameField.endEditing(true)
         self.passwordField.endEditing(true)
         viewModel.createNewUser()
+        self.nameField.text = ""
+        self.passwordField.text = ""
     }
 
     @objc func login() {

@@ -74,7 +74,6 @@ extension MainMenuViewController: SettingsViewControllerDelegate {
     func settingsViewController(
         _ viewController: SettingsViewController,
         didReciveAccountDeletionFrom viewModel: SettingsViewModel) {
-        print("Account deleted")
         delegate?.mainMenuViewController(self, didReciveAccountDeletionFrom: viewController)
     }
 

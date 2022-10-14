@@ -36,6 +36,17 @@ class RealmDataService {
         return result
     }
 
+    func loadUserSettings() -> UserSettings {
+        guard let userId = userId,
+              let result = realm.object(
+                ofType: UserSettings.self,
+                forPrimaryKey: userId) else {
+            fatalError("user settings could not be loaded")
+        }
+
+        return result
+    }
+
     func updateTotalGames() {
         let result = loadGameStats()
 
@@ -103,6 +114,52 @@ class RealmDataService {
                     result.setValue(time, forKey: level.rawValue)
                 }
             }
+        }
+    }
+
+    func saveTheme(save theme: ThemeChoice) {
+
+              let result = loadUserSettings()
+            try? realm.write {
+                result.theme = theme
+            }
+
+    }
+
+    func saveMulticolorState(save state: Bool) {
+         let result = loadUserSettings()
+            try? realm.write {
+                result.withMulticolor = state
+            }
+
+    }
+
+    func saveTimerState(save state: Bool) {
+         let result = loadUserSettings()
+            try? realm.write {
+                result.withTimer = state
+            }
+    }
+
+    func changeUsername(with newUsername: String) {
+        guard let userId = userId,
+              let user = realm.object(ofType: User.self, forPrimaryKey: userId) else {
+            return
+        }
+
+        try? realm.write {
+            user.name = newUsername
+        }
+    }
+
+    func changePassword(with newPassword: String) {
+        guard let userId = userId,
+              let user = realm.object(ofType: User.self, forPrimaryKey: userId) else {
+            return
+        }
+
+        try? realm.write {
+            user.password = newPassword
         }
     }
 

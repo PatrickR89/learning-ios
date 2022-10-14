@@ -16,6 +16,7 @@ class RealmDataService {
     private var userId: UUID?
 
     init() {
+        self.userId = UserContainer.shared.loadUser()
         self.realm = RealmDataProvider.shared.initiateRealm()
         bindUserId()
     }

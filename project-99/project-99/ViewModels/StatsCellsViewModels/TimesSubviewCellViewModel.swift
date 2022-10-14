@@ -58,12 +58,11 @@ class TimesCellBottomViewModel {
             ofType: LevelTimes.self,
             forPrimaryKey: UserContainer.shared.loadUser()) else {return}
 
-        times.append(BestTimes(title: .veryEasy, time: result.veryEasy))
-        times.append(BestTimes(title: .easy, time: result.easy))
-        times.append(BestTimes(title: .mediumHard, time: result.mediumHard))
-        times.append(BestTimes(title: .hard, time: result.hard))
-        times.append(BestTimes(title: .veryHard, time: result.veryHard))
-        times.append(BestTimes(title: .emotionalDamage, time: result.emotionalDamage))
+        times = [BestTimes(title: .veryEasy, time: result.veryEasy), BestTimes(title: .easy, time: result.easy),
+                 BestTimes(title: .mediumHard, time: result.mediumHard), BestTimes(title: .hard, time: result.hard),
+                 BestTimes(title: .veryHard, time: result.veryHard),
+                 BestTimes(title: .emotionalDamage, time: result.emotionalDamage)
+        ]
     }
 
     func countTimesLength() -> Int {

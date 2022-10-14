@@ -13,11 +13,11 @@ class LoginViewController: UIViewController {
 
     let viewModel: LoginViewModel
     let loginView: LoginView
-    lazy var keyboardController: KeyboardLayoutController = {
-        let keyboardController = KeyboardLayoutController(for: self)
-        return keyboardController
+    lazy var keyboardLayoutObserver: KeyboardLayoutObserver = {
+        let keyboardLayoutObserver = KeyboardLayoutObserver(for: self)
+        return keyboardLayoutObserver
     }()
-
+    let keyboardLayoutGuide = UILayoutGuide()
     let realm: Realm
 
     init () {
@@ -27,7 +27,7 @@ class LoginViewController: UIViewController {
         self.loginView = LoginView(with: viewModel)
         super.init(nibName: nil, bundle: nil)
         ThemeManager.shared.currentTheme = ThemeContainer.shared.systemTheme
-        self.keyboardController.delegate = self
+        self.keyboardLayoutObserver.delegate = self
         loginView.delegate = self
     }
 
@@ -38,14 +38,45 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        keyboardController.hideKeyboardOnTap(for: self)
+        keyboardLayoutObserver.hideKeyboardOnTap(for: self)
+    }
+
+    func keyboardDidUpdate(with height: Double, for duration: Double) {
+        let constraint = self.keyboardLayoutGuide
+            .constraintsAffectingLayout(for: .vertical)
+            .first {
+                $0.firstAttribute == .height
+            }
+
+        constraint?.constant = height
+
+        self.view.layoutIfNeeded()
+        UIView.animate(
+            withDuration: duration,
+            delay: 0,
+            options: .allowAnimatedContent,
+            animations: {
+                self.view.layoutIfNeeded()
+            }
+        )
     }
 }
 
 private extension LoginViewController {
     func setupUI() {
         view.addSubview(loginView)
-        loginView.frame = view.frame
+        view.addLayoutGuide(keyboardLayoutGuide)
+        loginView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            keyboardLayoutGuide.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            keyboardLayoutGuide.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            keyboardLayoutGuide.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            keyboardLayoutGuide.heightAnchor.constraint(equalToConstant: 0),
+            loginView.topAnchor.constraint(equalTo: view.topAnchor),
+            loginView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            loginView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loginView.bottomAnchor.constraint(equalTo: keyboardLayoutGuide.topAnchor)
+        ])
     }
 }
 
@@ -61,17 +92,8 @@ extension LoginViewController: LoginViewDelegate {
 }
 
 extension LoginViewController: KeyboardControllerDelegate {
-//    func keyboardController(_ controller: KeyboardLayoutController, didChangeConstraintValue constraint: Double, withDuration duration: Double?) {
-//        viewModel.changeYConstraint(with: constraint)
-//        if let duration = duration {
-//
-//            UIView.animate(withDuration: duration) {
-//                self.view.layoutIfNeeded()
-//            }
-//        }
-//    }
 
-    func keyboardController(_ controller: KeyboardLayoutController, didEndEditing editing: Bool) {
+    func keyboardController(_ controller: KeyboardLayoutObserver, didEndEditing editing: Bool) {
         self.view.endEditing(editing)
     }
 }

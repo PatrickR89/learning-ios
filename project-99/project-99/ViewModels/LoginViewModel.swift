@@ -22,6 +22,12 @@ class LoginViewModel {
         }
     }
 
+    @Published private(set) var viewCenterYConstraint: Double = 0 {
+        didSet {
+            print(viewCenterYConstraint)
+        }
+    }
+
     private var password: String?
 
     private var loginSuccess: Bool? {
@@ -56,6 +62,10 @@ extension LoginViewModel {
 
     func passwordChanged(_ password: String) {
         self.password = password
+    }
+
+    func changeYConstraint(with value: Double) {
+        self.viewCenterYConstraint = value
     }
 
     func createNewUser() {

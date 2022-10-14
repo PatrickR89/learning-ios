@@ -9,14 +9,14 @@ import Foundation
 import RealmSwift
 
 class SettingsViewModel {
-    private let realm: Realm
     private var user: User
     private var newUsername: String? {
         didSet {
             guard let newUsername = newUsername else {
                 return
             }
-            changeUsername(with: newUsername)
+            RealmDataService.shared.changeUsername(with: newUsername)
+            delegate?.settingsViewModel(self, didChangeUsername: newUsername)
         }
     }
     private var newPassword: String? {
@@ -24,7 +24,7 @@ class SettingsViewModel {
             guard let newPassword = newPassword else {
                 return
             }
-            changePassword(with: newPassword)
+            RealmDataService.shared.changePassword(with: newPassword)
         }
     }
 
@@ -33,7 +33,7 @@ class SettingsViewModel {
             themeDidChange()
             if let userTheme = userTheme {
                 ThemeContainer.shared.changeTheme(to: userTheme)
-                saveTheme(save: userTheme)
+                RealmDataService.shared.saveTheme(save: userTheme)
             }
         }
     }
@@ -42,7 +42,7 @@ class SettingsViewModel {
         didSet {
             multicolorDidChange()
             if let withMulticolor = withMulticolor {
-                saveMulticolorState(save: withMulticolor)
+                RealmDataService.shared.saveMulticolorState(save: withMulticolor)
             }
         }
     }
@@ -51,7 +51,7 @@ class SettingsViewModel {
         didSet {
             timerStateDidChange()
             if let withTimer = withTimer {
-                saveTimerState(save: withTimer)
+                RealmDataService.shared.saveTimerState(save: withTimer)
             }
         }
     }
@@ -62,18 +62,17 @@ class SettingsViewModel {
 
     weak var delegate: SettingsViewModelDelegate?
 
-    init(forUser user: User, in realm: Realm) {
+    init(forUser user: User) {
         self.user = user
-        self.realm = realm
         loadUserSettings()
     }
 
     func loadUserSettings() {
-        if let result = realm.object(ofType: UserSettings.self, forPrimaryKey: user.id) {
+        let result = RealmDataService.shared.loadUserSettings()
             self.userTheme = result.theme
             self.withMulticolor = result.withMulticolor
             self.withTimer = result.withTimer
-        }
+
     }
 }
 
@@ -162,45 +161,6 @@ extension SettingsViewModel {
 
     func userDidEditPassword(with password: String) {
         self.newPassword = password
-    }
-
-    // MARK: Save values to Realm
-
-    func saveTheme(save theme: ThemeChoice) {
-        if let result = realm.object(ofType: UserSettings.self, forPrimaryKey: user.id) {
-            try? realm.write {
-                result.theme = theme
-            }
-        }
-    }
-
-    func saveMulticolorState(save state: Bool) {
-        if let result = realm.object(ofType: UserSettings.self, forPrimaryKey: user.id) {
-            try? realm.write {
-                result.withMulticolor = state
-            }
-        }
-    }
-
-    func saveTimerState(save state: Bool) {
-        if let result = realm.object(ofType: UserSettings.self, forPrimaryKey: user.id) {
-            try? realm.write {
-                result.withTimer = state
-            }
-        }
-    }
-
-    func changeUsername(with newUsername: String) {
-        delegate?.settingsViewModel(self, didChangeUsername: newUsername)
-        try? realm.write {
-            user.name = newUsername
-        }
-    }
-
-    func changePassword(with newPassword: String) {
-        try? realm.write {
-            user.password = newPassword
-        }
     }
 
     func deleteAccount() {

@@ -18,7 +18,7 @@ class MainMenuViewController: UIViewController {
     init(with viewModel: MainMenuViewModel) {
         self.viewModel = viewModel
         self.menuView = MainMenuView(with: viewModel)
-        self.settingsViewModel = SettingsViewModel(forUser: viewModel.returnUser(), in: viewModel.realm)
+        self.settingsViewModel = SettingsViewModel(forUser: viewModel.returnUser())
         self.statsViewModel = StatsViewModel(for: viewModel.returnUser(), in: viewModel.realm)
 
         super.init(nibName: nil, bundle: nil)

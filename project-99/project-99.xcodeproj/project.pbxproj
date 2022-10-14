@@ -79,6 +79,8 @@
 		CD88B01D28F5402900EFCBBB /* RealmDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B01C28F5402900EFCBBB /* RealmDataService.swift */; };
 		CD88B02428F5500D00EFCBBB /* EndGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B02328F5500D00EFCBBB /* EndGame.swift */; };
 		CD88B02628F6984100EFCBBB /* Stopwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B02528F6984100EFCBBB /* Stopwatch.swift */; };
+		CD88B02828F9269200EFCBBB /* KeyboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B02728F9269200EFCBBB /* KeyboardController.swift */; };
+		CD88B02B28F92DAC00EFCBBB /* KeyboardControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B02A28F92DAC00EFCBBB /* KeyboardControllerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -156,6 +158,8 @@
 		CD88B01C28F5402900EFCBBB /* RealmDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataService.swift; sourceTree = "<group>"; };
 		CD88B02328F5500D00EFCBBB /* EndGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndGame.swift; sourceTree = "<group>"; };
 		CD88B02528F6984100EFCBBB /* Stopwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stopwatch.swift; sourceTree = "<group>"; };
+		CD88B02728F9269200EFCBBB /* KeyboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardController.swift; sourceTree = "<group>"; };
+		CD88B02A28F92DAC00EFCBBB /* KeyboardControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardControllerDelegate.swift; sourceTree = "<group>"; };
 		E9ED53374000A43727DB32F3 /* Pods-project-99.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-99.release.xcconfig"; path = "Target Support Files/Pods-project-99/Pods-project-99.release.xcconfig"; sourceTree = "<group>"; };
 		EE006DE768882589EA85F5B5 /* Pods-project-99.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-99.debug.xcconfig"; path = "Target Support Files/Pods-project-99/Pods-project-99.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -293,9 +297,11 @@
 		CD88AF8928D316C000EFCBBB /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				CD88B02928F92D8400EFCBBB /* Delegates */,
 				CD88AF9528D4510300EFCBBB /* FileManager+Extension.swift */,
 				CD88AFB028D4AE7D00EFCBBB /* ColorContainer.swift */,
 				CD88B02528F6984100EFCBBB /* Stopwatch.swift */,
+				CD88B02728F9269200EFCBBB /* KeyboardController.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -470,6 +476,14 @@
 			path = Realm;
 			sourceTree = "<group>";
 		};
+		CD88B02928F92D8400EFCBBB /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				CD88B02A28F92DAC00EFCBBB /* KeyboardControllerDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
 		EB75619A2A5DAE8CA72D994E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -616,6 +630,7 @@
 				CD88AFE528DB073000EFCBBB /* UserContainer.swift in Sources */,
 				CD88B01328DDB0DA00EFCBBB /* GameViewCell.swift in Sources */,
 				CD88AFEA28DC2E2800EFCBBB /* StatCellTopViewModel.swift in Sources */,
+				CD88B02828F9269200EFCBBB /* KeyboardController.swift in Sources */,
 				CD88AFC928D978D200EFCBBB /* StatsViewModel.swift in Sources */,
 				CD88AFB928D8644600EFCBBB /* UsernameViewCell.swift in Sources */,
 				CD88AFDF28DAFA5C00EFCBBB /* PairsViewCell.swift in Sources */,
@@ -625,6 +640,7 @@
 				CD88B00328DD9C0D00EFCBBB /* NewGameViewController.swift in Sources */,
 				CD88AFEF28DC49E400EFCBBB /* StatsViewModelDelegate.swift in Sources */,
 				CD88AFF828DC6D6B00EFCBBB /* TimesSubviewViewCell.swift in Sources */,
+				CD88B02B28F92DAC00EFCBBB /* KeyboardControllerDelegate.swift in Sources */,
 				CD88AFB128D4AE7D00EFCBBB /* ColorContainer.swift in Sources */,
 				CD88AFAF28D497E400EFCBBB /* SettingsViewModel.swift in Sources */,
 				CD88AF7628D306FB00EFCBBB /* User.swift in Sources */,

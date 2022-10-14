@@ -13,6 +13,11 @@ class LoginViewController: UIViewController {
 
     let viewModel: LoginViewModel
     let loginView: LoginView
+    lazy var keyboardController: KeyboardLayoutController = {
+        let keyboardController = KeyboardLayoutController(for: self)
+        return keyboardController
+    }()
+
     let realm: Realm
 
     init () {
@@ -22,6 +27,7 @@ class LoginViewController: UIViewController {
         self.loginView = LoginView(with: viewModel)
         super.init(nibName: nil, bundle: nil)
         ThemeManager.shared.currentTheme = ThemeContainer.shared.systemTheme
+        self.keyboardController.delegate = self
         loginView.delegate = self
     }
 
@@ -32,6 +38,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        keyboardController.hideKeyboardOnTap(for: self)
     }
 }
 
@@ -50,5 +57,21 @@ extension LoginViewController: LoginViewDelegate {
 
         navigationController?.pushViewController(viewController, animated: true)
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: nil, action: nil)
+    }
+}
+
+extension LoginViewController: KeyboardControllerDelegate {
+//    func keyboardController(_ controller: KeyboardLayoutController, didChangeConstraintValue constraint: Double, withDuration duration: Double?) {
+//        viewModel.changeYConstraint(with: constraint)
+//        if let duration = duration {
+//
+//            UIView.animate(withDuration: duration) {
+//                self.view.layoutIfNeeded()
+//            }
+//        }
+//    }
+
+    func keyboardController(_ controller: KeyboardLayoutController, didEndEditing editing: Bool) {
+        self.view.endEditing(editing)
     }
 }

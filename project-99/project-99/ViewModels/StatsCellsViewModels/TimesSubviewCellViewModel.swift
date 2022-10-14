@@ -6,10 +6,8 @@
 //
 
 import Foundation
-import RealmSwift
 
 class TimesCellBottomViewModel {
-    private var realm: Realm
 
     private var times = [BestTimes]() {
         didSet {
@@ -28,11 +26,6 @@ class TimesCellBottomViewModel {
     private var hiddenObserver: ((Bool) -> Void)?
 
     weak var delegate: TimesCellBottomViewModelDelegate?
-
-    init() {
-        self.realm = RealmDataProvider.shared.initiateRealm()
-
-    }
 
     private func valueDidChange() {
         guard let observer = observer else {
@@ -54,9 +47,7 @@ class TimesCellBottomViewModel {
     }
 
     func loadTimes() {
-        guard let result = realm.object(
-            ofType: LevelTimes.self,
-            forPrimaryKey: UserContainer.shared.loadUser()) else {return}
+        let result = RealmDataService.shared.loadLevelTimes()
 
         times = [BestTimes(title: .veryEasy, time: result.veryEasy), BestTimes(title: .easy, time: result.easy),
                  BestTimes(title: .mediumHard, time: result.mediumHard), BestTimes(title: .hard, time: result.hard),

@@ -18,12 +18,10 @@ class LoginViewController: UIViewController {
         return keyboardLayoutObserver
     }()
     let keyboardLayoutGuide = UILayoutGuide()
-    let realm: Realm
 
     init () {
         UserContainer.shared.saveUser(with: nil)
-        self.realm = RealmDataProvider.shared.initiateRealm()
-        self.viewModel = LoginViewModel(in: realm)
+        self.viewModel = LoginViewModel()
         self.loginView = LoginView(with: viewModel)
         super.init(nibName: nil, bundle: nil)
         ThemeManager.shared.currentTheme = ThemeContainer.shared.systemTheme
@@ -83,7 +81,7 @@ private extension LoginViewController {
 extension LoginViewController: LoginViewDelegate {
     func loginView(_ view: LoginView, didLogUser user: User, in viewModel: LoginViewModel) {
 
-        let mainMenuViewModel = MainMenuViewModel(for: user, in: realm)
+        let mainMenuViewModel = MainMenuViewModel(for: user)
         let viewController = MainMenuViewController(with: mainMenuViewModel)
         viewController.delegate = self
 

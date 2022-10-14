@@ -6,15 +6,12 @@
 //
 
 import Foundation
-import RealmSwift
 
 class MainMenuViewModel {
-    let realm: Realm
     private let user: User
 
-    init(for user: User, in realm: Realm) {
+    init(for user: User) {
         self.user = user
-        self.realm = realm
     }
 }
 

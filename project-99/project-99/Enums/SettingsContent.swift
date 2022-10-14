@@ -13,4 +13,5 @@ enum SettingsContent {
     case timer
     case username
     case password
+    case delete
 }

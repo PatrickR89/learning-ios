@@ -81,6 +81,8 @@
 		CD88B02628F6984100EFCBBB /* Stopwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B02528F6984100EFCBBB /* Stopwatch.swift */; };
 		CD88B02828F9269200EFCBBB /* KeyboardLayoutObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B02728F9269200EFCBBB /* KeyboardLayoutObserver.swift */; };
 		CD88B02B28F92DAC00EFCBBB /* KeyboardLayoutObserverDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B02A28F92DAC00EFCBBB /* KeyboardLayoutObserverDelegate.swift */; };
+		CD88B02D28F97F9E00EFCBBB /* DeleteAccViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B02C28F97F9E00EFCBBB /* DeleteAccViewCell.swift */; };
+		CD88B02F28F9888500EFCBBB /* MainMenuViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B02E28F9888500EFCBBB /* MainMenuViewControllerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -160,6 +162,8 @@
 		CD88B02528F6984100EFCBBB /* Stopwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stopwatch.swift; sourceTree = "<group>"; };
 		CD88B02728F9269200EFCBBB /* KeyboardLayoutObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutObserver.swift; sourceTree = "<group>"; };
 		CD88B02A28F92DAC00EFCBBB /* KeyboardLayoutObserverDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutObserverDelegate.swift; sourceTree = "<group>"; };
+		CD88B02C28F97F9E00EFCBBB /* DeleteAccViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccViewCell.swift; sourceTree = "<group>"; };
+		CD88B02E28F9888500EFCBBB /* MainMenuViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewControllerDelegate.swift; sourceTree = "<group>"; };
 		E9ED53374000A43727DB32F3 /* Pods-project-99.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-99.release.xcconfig"; path = "Target Support Files/Pods-project-99/Pods-project-99.release.xcconfig"; sourceTree = "<group>"; };
 		EE006DE768882589EA85F5B5 /* Pods-project-99.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-99.debug.xcconfig"; path = "Target Support Files/Pods-project-99/Pods-project-99.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -342,6 +346,7 @@
 				CD88AFB428D84D9C00EFCBBB /* MulticolorViewCell.swift */,
 				CD88AFB628D859E500EFCBBB /* TimerViewCell.swift */,
 				CD88AFB828D8644600EFCBBB /* UsernameViewCell.swift */,
+				CD88B02C28F97F9E00EFCBBB /* DeleteAccViewCell.swift */,
 			);
 			path = SettingsViewCells;
 			sourceTree = "<group>";
@@ -360,6 +365,7 @@
 			isa = PBXGroup;
 			children = (
 				CD88AFC428D8893800EFCBBB /* SettingsViewControllerDelegate.swift */,
+				CD88B02E28F9888500EFCBBB /* MainMenuViewControllerDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -655,6 +661,7 @@
 				CD88B00528DD9C1F00EFCBBB /* NewGameViewModel.swift in Sources */,
 				CD88B00A28DDA73700EFCBBB /* GameViewController.swift in Sources */,
 				CD88AF5D28D2F0B200EFCBBB /* AppDelegate.swift in Sources */,
+				CD88B02D28F97F9E00EFCBBB /* DeleteAccViewCell.swift in Sources */,
 				CD88AF7B28D308EF00EFCBBB /* Theme.swift in Sources */,
 				CD88B01528E30A5F00EFCBBB /* GameViewModel.swift in Sources */,
 				CD88AFA128D47A7E00EFCBBB /* UIStackView+Extension.swift in Sources */,
@@ -692,6 +699,7 @@
 				CD88AF8F28D3252D00EFCBBB /* LoginViewModel.swift in Sources */,
 				CD88B00128DD95B100EFCBBB /* TimesCellBottomViewModelDelegate.swift in Sources */,
 				CD88AFB528D84D9C00EFCBBB /* MulticolorViewCell.swift in Sources */,
+				CD88B02F28F9888500EFCBBB /* MainMenuViewControllerDelegate.swift in Sources */,
 				CD88B02428F5500D00EFCBBB /* EndGame.swift in Sources */,
 				CD88AFAB28D493DE00EFCBBB /* SettingsContent.swift in Sources */,
 				CD88AF9A28D4677F00EFCBBB /* LoginViewDelegate.swift in Sources */,

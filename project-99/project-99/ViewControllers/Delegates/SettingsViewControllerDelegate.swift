@@ -11,4 +11,7 @@ protocol SettingsViewControllerDelegate: AnyObject {
     func settingsViewController(
         _ viewController: SettingsViewController,
         didRecieveUpdatedName username: String)
+    func settingsViewController(
+        _ viewController: SettingsViewController,
+        didReciveAccountDeletionFrom viewModel: SettingsViewModel)
 }

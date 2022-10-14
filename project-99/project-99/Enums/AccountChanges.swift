@@ -10,4 +10,5 @@ import Foundation
 enum AccountChanges {
     case username
     case password
+    case delete
 }

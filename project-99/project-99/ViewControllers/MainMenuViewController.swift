@@ -13,6 +13,7 @@ class MainMenuViewController: UIViewController {
     private let menuView: MainMenuView
     private let settingsViewModel: SettingsViewModel
     private let statsViewModel: StatsViewModel
+    weak var delegate: MainMenuViewControllerDelegate?
 
     init(with viewModel: MainMenuViewModel) {
         self.viewModel = viewModel
@@ -70,6 +71,13 @@ extension MainMenuViewController: MainMenuViewDelegate {
 }
 
 extension MainMenuViewController: SettingsViewControllerDelegate {
+    func settingsViewController(
+        _ viewController: SettingsViewController,
+        didReciveAccountDeletionFrom viewModel: SettingsViewModel) {
+        print("Account deleted")
+        delegate?.mainMenuViewController(self, didReciveAccountDeletionFrom: viewController)
+    }
+
     func settingsViewController(_ viewController: SettingsViewController, didRecieveUpdatedName username: String) {
         title = "Welcome \(username)"
     }

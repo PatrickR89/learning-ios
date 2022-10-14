@@ -85,6 +85,7 @@ extension LoginViewController: LoginViewDelegate {
 
         let mainMenuViewModel = MainMenuViewModel(for: user, in: realm)
         let viewController = MainMenuViewController(with: mainMenuViewModel)
+        viewController.delegate = self
 
         navigationController?.pushViewController(viewController, animated: true)
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: nil, action: nil)
@@ -96,4 +97,12 @@ extension LoginViewController: KeyboardLayoutObserverDelegate {
     func keyboardLayoutObserver(_ layoutObserver: KeyboardLayoutObserver, didEndEditing editing: Bool) {
         self.view.endEditing(editing)
     }
+}
+
+extension LoginViewController: MainMenuViewControllerDelegate {
+    func mainMenuViewController(
+        _ viewController: MainMenuViewController,
+        didReciveAccountDeletionFrom settingsViewController: SettingsViewController) {
+            navigationController?.popViewController(animated: true)
+        }
 }

@@ -8,5 +8,5 @@
 import Foundation
 
 protocol KeyboardLayoutObserverDelegate: AnyObject {
-    func keyboardController(_ controller: KeyboardLayoutObserver, didEndEditing editing: Bool)
+    func keyboardLayoutObserver(_ layoutObserver: KeyboardLayoutObserver, didEndEditing editing: Bool)
 }

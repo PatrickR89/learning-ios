@@ -26,7 +26,7 @@ class KeyboardLayoutObserver {
     }
 
     @objc func dismissKeyboardOnTap() {
-        delegate?.keyboardController(self, didEndEditing: true)
+        delegate?.keyboardLayoutObserver(self, didEndEditing: true)
     }
 
     func enableKeyboardObserver(for viewController: LoginViewController) {

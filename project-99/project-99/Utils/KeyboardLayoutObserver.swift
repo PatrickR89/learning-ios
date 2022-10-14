@@ -12,7 +12,7 @@ class KeyboardLayoutObserver {
 
     private var cancellables: Set<AnyCancellable> = []
 
-    weak var delegate: KeyboardControllerDelegate?
+    weak var delegate: KeyboardLayoutObserverDelegate?
 
     init(for viewController: LoginViewController) {
         enableKeyboardObserver(for: viewController)

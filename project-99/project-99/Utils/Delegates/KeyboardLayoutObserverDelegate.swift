@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol KeyboardControllerDelegate: AnyObject {
+protocol KeyboardLayoutObserverDelegate: AnyObject {
     func keyboardController(_ controller: KeyboardLayoutObserver, didEndEditing editing: Bool)
 }

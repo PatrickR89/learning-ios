@@ -27,8 +27,8 @@ class Stopwatch {
             self.timer = Timer.publish(every: 0.05, on: .main, in: .common)
                 .autoconnect()
                 .sink { _ in
-                self.elapsedTime = self.getElapsedTime()
-            }
+                    self.elapsedTime = self.getElapsedTime()
+                }
         }
     }
 

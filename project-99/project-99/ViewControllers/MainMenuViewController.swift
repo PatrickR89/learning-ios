@@ -74,8 +74,8 @@ extension MainMenuViewController: SettingsViewControllerDelegate {
     func settingsViewController(
         _ viewController: SettingsViewController,
         didReciveAccountDeletionFrom viewModel: SettingsViewModel) {
-        delegate?.mainMenuViewController(self, didReciveAccountDeletionFrom: viewController)
-    }
+            delegate?.mainMenuViewController(self, didReciveAccountDeletionFrom: viewController)
+        }
 
     func settingsViewController(_ viewController: SettingsViewController, didRecieveUpdatedName username: String) {
         title = "Welcome \(username)"

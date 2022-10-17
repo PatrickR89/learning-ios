@@ -39,7 +39,7 @@ class LoginViewModel {
 
     private func loginStatusDidChange () {
         guard let observer = observer,
-        let loginSuccess = loginSuccess else {
+              let loginSuccess = loginSuccess else {
             return
         }
         observer(loginSuccess)

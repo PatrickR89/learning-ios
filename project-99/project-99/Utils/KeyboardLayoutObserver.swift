@@ -24,7 +24,7 @@ class KeyboardLayoutObserver {
 
             guard let rect = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
                   let duration = notification
-                    .userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else {
+                .userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else {
                 return
             }
             viewController.keyboardDidUpdate(with: rect.height, for: duration)
@@ -36,7 +36,7 @@ class KeyboardLayoutObserver {
         .sink(receiveValue: { notification in
 
             guard let duration = notification
-                    .userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else {
+                .userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else {
                 return
             }
             viewController.keyboardDidUpdate(with: 0, for: duration)

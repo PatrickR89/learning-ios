@@ -102,6 +102,7 @@ extension StatsViewController: UITableViewDataSource {
         }
     }
 }
+
 extension StatsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.toggleCellBottom(at: indexPath.row)

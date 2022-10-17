@@ -11,12 +11,12 @@ class GamesViewCell: UITableViewCell {
 
     private let stackView = UIStackView()
     private let topView: StatCellTopSubview
-    let cellBottomViewModel: StatCellBottomViewModel
     var bottomView: StatCellBottomSubview
+    let cellBottomViewModel: StatCellBottomViewModel
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        self.cellBottomViewModel = StatCellBottomViewModel(as: StatsContent.games)
 
+        self.cellBottomViewModel = StatCellBottomViewModel(as: StatsContent.games)
         self.bottomView = StatCellBottomSubview(
             with: cellBottomViewModel, as: StatsContent.games)
         self.topView = StatCellTopSubview(as: StatsContent.games, isExtended: self.bottomView.isHidden)
@@ -34,6 +34,7 @@ class GamesViewCell: UITableViewCell {
     private func setupUI() {
         stackView.arrangeView(asExpandableWith: topView, and: bottomView, bottomIsHidden: self.bottomView.isHidden)
         setupUI(withExpandableView: stackView, withBottomHidden: self.bottomView.isHidden)
+
         NSLayoutConstraint.activate([
             stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             stackView.widthAnchor.constraint(equalTo: self.widthAnchor)

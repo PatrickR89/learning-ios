@@ -137,7 +137,9 @@ extension GameView {
 
         viewModel.observeCardDeck { _ in
             DispatchQueue.main.async { [weak self] in
-                self?.collectionView.reloadData()
+                guard let cardOneIndex = self?.viewModel.cardOneIndex,
+                      let cardTwoIndex = self?.viewModel.cardTwoIndex else {return}
+                self?.collectionView.reloadItems(at: [cardOneIndex, cardTwoIndex])
             }
         }
 

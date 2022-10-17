@@ -29,6 +29,9 @@ class GameViewModel {
         }
     }
 
+    private(set) var cardOneIndex = IndexPath(item: 0, section: 0)
+    private(set) var cardTwoIndex = IndexPath(item: 0, section: 0)
+
     private var removedPairs: Int = 0
     private var turnsLeft: Int = 0 {
         didSet {
@@ -174,6 +177,7 @@ class GameViewModel {
             guard let index = cardsDeck.firstIndex(where: {$0.id == card.id}) else {return}
             cardsDeck[index].isVisible = true
             selectedCardOne = card
+            cardOneIndex = IndexPath(item: index, section: 0)
             return
         }
 
@@ -181,6 +185,7 @@ class GameViewModel {
             guard let index = cardsDeck.firstIndex(where: {$0.id == card.id}) else {return}
             cardsDeck[index].isVisible = true
             selectedCardTwo = card
+            cardTwoIndex = IndexPath(item: index, section: 0)
         }
     }
 
@@ -191,6 +196,8 @@ class GameViewModel {
               let secondIndex = cardsDeck.firstIndex(where: {$0.id == cardTwo.id}) else {return}
         cardsDeck[firstIndex].isVisible = false
         cardsDeck[secondIndex].isVisible = false
+        cardOneIndex = IndexPath(item: firstIndex, section: 0)
+        cardTwoIndex = IndexPath(item: secondIndex, section: 0)
         selectedCardOne = nil
         selectedCardTwo = nil
     }
@@ -209,11 +216,13 @@ class GameViewModel {
 
         if selectedCardOne.image == selectedCardTwo.image && selectedCardOne.color == selectedCardTwo.color {
             if let firstCardIndex = cardsDeck.firstIndex(where: {$0.id == selectedCardOne.id}) {
+                cardOneIndex = IndexPath(item: firstCardIndex, section: 0)
                 cardsDeck[firstCardIndex].isPaired = true
                 cardsDeck[firstCardIndex].color = .lightGray
             }
 
             if let secondCardIndex = cardsDeck.firstIndex(where: {$0.id == selectedCardTwo.id}) {
+                cardTwoIndex = IndexPath(item: secondCardIndex, section: 0)
                 cardsDeck[secondCardIndex].isPaired = true
                 cardsDeck[secondCardIndex].color = .lightGray
             }

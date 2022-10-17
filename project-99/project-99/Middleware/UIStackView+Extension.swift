@@ -28,7 +28,8 @@ extension UIStackView {
 
         NSLayoutConstraint.activate([
             topView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            topView.widthAnchor.constraint(equalTo: self.widthAnchor)
+            topView.widthAnchor.constraint(equalTo: self.widthAnchor),
+            topView.topAnchor.constraint(equalTo: self.topAnchor)
         ])
 
         if !hidden {

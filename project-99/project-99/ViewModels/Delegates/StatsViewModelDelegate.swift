@@ -8,5 +8,5 @@
 import Foundation
 
 protocol StatsViewModelDelegate: AnyObject {
-    func statsViewModel(_ viewModel: StatsViewModel, didChangeStateAtIndex index: Int)
+    func statsViewModel(_ viewModel: StatsViewModel, didChangeStateAtIndex index: Int, withState state: Bool)
 }

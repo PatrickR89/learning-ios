@@ -33,7 +33,7 @@ class GamesViewCell: UITableViewCell {
 
     private func setupUI() {
         stackView.arrangeView(asExpandableWith: topView, and: bottomView, bottomIsHidden: self.bottomView.isHidden)
-        setupUI(withExpandableView: stackView)
+        setupUI(withExpandableView: stackView, withBottomHidden: self.bottomView.isHidden)
         NSLayoutConstraint.activate([
             stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             stackView.widthAnchor.constraint(equalTo: self.widthAnchor)

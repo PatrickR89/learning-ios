@@ -85,16 +85,19 @@ extension StatsViewController: UITableViewDataSource {
             let cell = GamesViewCell.dequeue(in: tableView, for: indexPath)
             cell.bottomView.isHidden = viewModel.isCellBottomHidden[indexPath.row]
             cell.cellBottomViewModel.changeHiddenState(viewModel.isCellBottomHidden[indexPath.row])
+            cell.selectionStyle = .none
             return cell
         case .pairs:
             let cell = PairsViewCell.dequeue(in: tableView, for: indexPath)
             cell.bottomView.isHidden = viewModel.isCellBottomHidden[indexPath.row]
             cell.cellBottomViewModel.changeHiddenState(viewModel.isCellBottomHidden[indexPath.row])
+            cell.selectionStyle = .none
             return cell
         case .gameTimes:
             let cell = TimesViewCell.dequeue(in: tableView, for: indexPath)
             cell.bottomView.isHidden = viewModel.isCellBottomHidden[indexPath.row]
             cell.cellBottomViewModel.changeHiddenState(viewModel.isCellBottomHidden[indexPath.row])
+            cell.selectionStyle = .none
             return cell
         }
     }
@@ -106,8 +109,12 @@ extension StatsViewController: UITableViewDelegate {
 }
 
 extension StatsViewController: StatsViewModelDelegate {
-    func statsViewModel(_ viewModel: StatsViewModel, didChangeStateAtIndex index: Int) {
+    func statsViewModel(_ viewModel: StatsViewModel, didChangeStateAtIndex index: Int, withState state: Bool) {
         let indexPath = IndexPath(row: index, section: 0)
-        tableView.reloadRows(at: [indexPath], with: .none)
+        if state {
+            tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.top)
+        } else {
+            tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.bottom)
+        }
     }
 }

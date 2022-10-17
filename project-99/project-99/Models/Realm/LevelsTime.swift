@@ -33,5 +33,5 @@ class LevelTimes: Object {
             self.hard = hard
             self.veryHard = veryHard
             self.emotionalDamage = emotionalDamage
-    }
+        }
 }

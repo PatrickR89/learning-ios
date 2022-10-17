@@ -75,17 +75,17 @@ extension UIAlertController {
                 title: changeActionTitle,
                 style: changeActionStyle) { [weak viewModel, weak alertController] _ in
 
-                switch change {
-                case .username:
-                    guard let input = alertController?.textFields?[0].text else {return}
-                    viewModel?.userDidEditUsername(with: input)
-                case .password:
-                    guard let input = alertController?.textFields?[0].text else {return}
-                    viewModel?.userDidEditPassword(with: input)
-                case .delete:
-                    viewModel?.deleteAccount()
+                    switch change {
+                    case .username:
+                        guard let input = alertController?.textFields?[0].text else {return}
+                        viewModel?.userDidEditUsername(with: input)
+                    case .password:
+                        guard let input = alertController?.textFields?[0].text else {return}
+                        viewModel?.userDidEditPassword(with: input)
+                    case .delete:
+                        viewModel?.deleteAccount()
+                    }
                 }
-            }
 
             alertController.addAction(cancelAction)
             alertController.addAction(changeAction)

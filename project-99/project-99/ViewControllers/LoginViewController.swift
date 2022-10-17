@@ -17,6 +17,7 @@ class LoginViewController: UIViewController {
         let keyboardLayoutObserver = KeyboardLayoutObserver(for: self)
         return keyboardLayoutObserver
     }()
+
     let keyboardLayoutGuide = UILayoutGuide()
 
     init () {

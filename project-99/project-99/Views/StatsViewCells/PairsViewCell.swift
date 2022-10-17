@@ -15,6 +15,7 @@ class PairsViewCell: UITableViewCell {
     let cellBottomViewModel: StatCellBottomViewModel
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+
         self.cellBottomViewModel = StatCellBottomViewModel(as: StatsContent.pairs)
         self.bottomView = StatCellBottomSubview(
             with: cellBottomViewModel, as: StatsContent.pairs)

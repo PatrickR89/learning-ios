@@ -61,7 +61,26 @@ class TimesCellBottomViewModel {
     }
 
     func returnTimesElement(for index: Int) -> BestTimes {
+
         return times[index]
+    }
+
+    func converTimeTitle(for title: Level) -> String {
+
+        switch title {
+        case .veryEasy:
+            return "Very easy"
+        case .easy:
+            return "Easy"
+        case .mediumHard:
+            return "Medium"
+        case .hard:
+            return "Hard"
+        case .veryHard:
+            return "Very hard"
+        case .emotionalDamage:
+            return "Emotional damage"
+        }
     }
 
     func observeHiddenState(_ closure: @escaping (Bool) -> Void) {

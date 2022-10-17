@@ -42,6 +42,7 @@ class KeyboardLayoutObserver {
                 return
             }
             viewController.keyboardDidUpdate(with: 0, for: duration)
+
         }).store(in: &cancellables)
     }
 }

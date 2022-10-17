@@ -18,6 +18,6 @@ class StatsViewModel {
 
     func toggleCellBottom(at index: Int) {
         isCellBottomHidden[index] = !isCellBottomHidden[index]
-        delegate?.statsViewModel(self, didChangeStateAtIndex: index)
+        delegate?.statsViewModel(self, didChangeStateAtIndex: index, withState: isCellBottomHidden[index])
     }
 }

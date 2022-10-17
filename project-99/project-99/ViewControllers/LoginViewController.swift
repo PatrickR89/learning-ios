@@ -36,7 +36,6 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        keyboardLayoutObserver.hideKeyboardOnTap(for: self)
     }
 
     func keyboardDidUpdate(with height: Double, for duration: Double) {

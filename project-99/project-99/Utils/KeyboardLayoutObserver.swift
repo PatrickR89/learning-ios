@@ -18,17 +18,6 @@ class KeyboardLayoutObserver {
         enableKeyboardObserver(for: viewController)
     }
 
-    func hideKeyboardOnTap(for viewController: UIViewController) {
-
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboardOnTap))
-        tap.cancelsTouchesInView = false
-        viewController.view.addGestureRecognizer(tap)
-    }
-
-    @objc func dismissKeyboardOnTap() {
-        delegate?.keyboardLayoutObserver(self, didEndEditing: true)
-    }
-
     func enableKeyboardObserver(for viewController: LoginViewController) {
 
         NotificationCenter.default.publisher(

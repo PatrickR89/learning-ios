@@ -80,7 +80,6 @@
 		CD88B02428F5500D00EFCBBB /* EndGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B02328F5500D00EFCBBB /* EndGame.swift */; };
 		CD88B02628F6984100EFCBBB /* Stopwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B02528F6984100EFCBBB /* Stopwatch.swift */; };
 		CD88B02828F9269200EFCBBB /* KeyboardLayoutObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B02728F9269200EFCBBB /* KeyboardLayoutObserver.swift */; };
-		CD88B02B28F92DAC00EFCBBB /* KeyboardLayoutObserverDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B02A28F92DAC00EFCBBB /* KeyboardLayoutObserverDelegate.swift */; };
 		CD88B02D28F97F9E00EFCBBB /* DeleteAccViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B02C28F97F9E00EFCBBB /* DeleteAccViewCell.swift */; };
 		CD88B02F28F9888500EFCBBB /* MainMenuViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B02E28F9888500EFCBBB /* MainMenuViewControllerDelegate.swift */; };
 /* End PBXBuildFile section */
@@ -161,7 +160,6 @@
 		CD88B02328F5500D00EFCBBB /* EndGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndGame.swift; sourceTree = "<group>"; };
 		CD88B02528F6984100EFCBBB /* Stopwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stopwatch.swift; sourceTree = "<group>"; };
 		CD88B02728F9269200EFCBBB /* KeyboardLayoutObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutObserver.swift; sourceTree = "<group>"; };
-		CD88B02A28F92DAC00EFCBBB /* KeyboardLayoutObserverDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutObserverDelegate.swift; sourceTree = "<group>"; };
 		CD88B02C28F97F9E00EFCBBB /* DeleteAccViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccViewCell.swift; sourceTree = "<group>"; };
 		CD88B02E28F9888500EFCBBB /* MainMenuViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewControllerDelegate.swift; sourceTree = "<group>"; };
 		E9ED53374000A43727DB32F3 /* Pods-project-99.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-99.release.xcconfig"; path = "Target Support Files/Pods-project-99/Pods-project-99.release.xcconfig"; sourceTree = "<group>"; };
@@ -301,7 +299,6 @@
 		CD88AF8928D316C000EFCBBB /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				CD88B02928F92D8400EFCBBB /* Delegates */,
 				CD88B02528F6984100EFCBBB /* Stopwatch.swift */,
 				CD88B02728F9269200EFCBBB /* KeyboardLayoutObserver.swift */,
 			);
@@ -482,14 +479,6 @@
 			path = Realm;
 			sourceTree = "<group>";
 		};
-		CD88B02928F92D8400EFCBBB /* Delegates */ = {
-			isa = PBXGroup;
-			children = (
-				CD88B02A28F92DAC00EFCBBB /* KeyboardLayoutObserverDelegate.swift */,
-			);
-			path = Delegates;
-			sourceTree = "<group>";
-		};
 		EB75619A2A5DAE8CA72D994E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -646,7 +635,6 @@
 				CD88B00328DD9C0D00EFCBBB /* NewGameViewController.swift in Sources */,
 				CD88AFEF28DC49E400EFCBBB /* StatsViewModelDelegate.swift in Sources */,
 				CD88AFF828DC6D6B00EFCBBB /* TimesSubviewViewCell.swift in Sources */,
-				CD88B02B28F92DAC00EFCBBB /* KeyboardLayoutObserverDelegate.swift in Sources */,
 				CD88AFB128D4AE7D00EFCBBB /* ThemeContainer.swift in Sources */,
 				CD88AFAF28D497E400EFCBBB /* SettingsViewModel.swift in Sources */,
 				CD88AF7628D306FB00EFCBBB /* User.swift in Sources */,

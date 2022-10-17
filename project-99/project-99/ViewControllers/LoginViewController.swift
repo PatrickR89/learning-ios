@@ -25,7 +25,6 @@ class LoginViewController: UIViewController {
         self.loginView = LoginView(with: viewModel)
         super.init(nibName: nil, bundle: nil)
         ThemeManager.shared.currentTheme = ThemeContainer.shared.systemTheme
-        self.keyboardLayoutObserver.delegate = self
         loginView.delegate = self
     }
 
@@ -86,13 +85,6 @@ extension LoginViewController: LoginViewDelegate {
 
         navigationController?.pushViewController(viewController, animated: true)
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: nil, action: nil)
-    }
-}
-
-extension LoginViewController: KeyboardLayoutObserverDelegate {
-
-    func keyboardLayoutObserver(_ layoutObserver: KeyboardLayoutObserver, didEndEditing editing: Bool) {
-        self.view.endEditing(editing)
     }
 }
 

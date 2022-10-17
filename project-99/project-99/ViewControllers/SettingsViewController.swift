@@ -8,15 +8,15 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
-    
+
     private let viewModel: SettingsViewModel
     private let tableView: UITableView
     private let primaryContent: [SettingsContent] = [.theme, .multicolor, .timer]
     private let secondContent: [SettingsContent] = [.username, .password, .delete]
     private let sections: [[SettingsContent]]
-    
+
     weak var delegate: SettingsViewControllerDelegate?
-    
+
     init(with viewModel: SettingsViewModel) {
         self.tableView = UITableView()
         self.viewModel = viewModel
@@ -28,24 +28,24 @@ class SettingsViewController: UIViewController {
             $0.reloadInputViews()
         }
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .close,
             target: self,
             action: #selector(dismissSelf))
     }
-    
+
     @objc private func dismissSelf() {
         self.dismiss(animated: true)
     }
-    
+
     private func setupUI() {
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -58,10 +58,10 @@ class SettingsViewController: UIViewController {
         UsernameViewCell.register(in: tableView)
         PasswordViewCell.register(in: tableView)
         DeleteAccViewCell.register(in: tableView)
-        
+
         setupBindings()
     }
-    
+
     private func setupBindings() {
         viewModel.delegate = self
         viewModel.observeMulticolorState { _ in
@@ -72,7 +72,7 @@ class SettingsViewController: UIViewController {
                 }
             }
         }
-        
+
         viewModel.observerTimerState { _ in
             DispatchQueue.main.async { [weak self] in
                 if let index = self?.primaryContent.firstIndex(where: {$0.self == SettingsContent.timer}) {
@@ -81,7 +81,7 @@ class SettingsViewController: UIViewController {
                 }
             }
         }
-        
+
         viewModel.observeThemeState { _ in
             DispatchQueue.main.async { [weak self] in
                 self?.tableView.reloadData()
@@ -91,15 +91,15 @@ class SettingsViewController: UIViewController {
 }
 
 extension SettingsViewController: UITableViewDataSource {
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
-    
+
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
@@ -110,16 +110,16 @@ extension SettingsViewController: UITableViewDataSource {
             return ""
         }
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sections[section].count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let content = sections[indexPath.section][indexPath.row]
-        
+
         switch content {
-            
+
         case .theme:
             let cell = ThemeTableViewCell.dequeue(in: tableView, for: indexPath)
             if let theme = viewModel.returnTheme() {
@@ -154,9 +154,9 @@ extension SettingsViewController: UITableViewDataSource {
 extension SettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let content = sections[indexPath.section][indexPath.row]
-        
+
         switch content {
-            
+
         case .theme:
             viewModel.changeTheme()
         case .multicolor:
@@ -181,16 +181,16 @@ extension SettingsViewController: SettingsViewModelDelegate {
         delegate?.settingsViewController(self, didReciveAccountDeletionFrom: viewModel)
         self.dismiss(animated: true)
     }
-    
+
     func settingsViewModel(_ viewModel: SettingsViewModel, didChangeUsername username: String) {
         delegate?.settingsViewController(self, didRecieveUpdatedName: username)
     }
-    
+
     func settingsViewModel(
         _ viewModel: SettingsViewModel,
         didVerifyPasswordWithResult result: Bool,
         for change: AccountChanges) {
-            
+
             if !result {
                 let alertController = viewModel.addInvalidPasswordAlertController(in: self)
                 present(alertController, animated: true)

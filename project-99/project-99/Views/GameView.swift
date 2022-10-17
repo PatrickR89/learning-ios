@@ -12,9 +12,7 @@ class GameView: UIView {
 
     let viewModel: GameViewModel
     let stopwatch: Stopwatch
-    var elapsedTime: AnyCancellable?
-    var isTimerCountOn: AnyCancellable?
-    var isTimerTextOn: AnyCancellable?
+    var cancellables = [AnyCancellable]()
 
     lazy var collectionLayout: UICollectionViewFlowLayout = {
         let collectionLayout = UICollectionViewFlowLayout()
@@ -56,15 +54,19 @@ class GameView: UIView {
     }
 
     func bindElapsedTime() {
-        self.elapsedTime = stopwatch.$timeString
+
+        stopwatch.$timeString
             .receive(on: DispatchQueue.main)
             .assign(to: \.text!, on: timerCountLabel)
-        self.isTimerCountOn = stopwatch.$isTimerOff
+            .store(in: &cancellables)
+        stopwatch.$isTimerOff
             .receive(on: DispatchQueue.main)
             .assign(to: \.isHidden, on: timerCountLabel)
-        self.isTimerTextOn = stopwatch.$isTimerOff
+            .store(in: &cancellables)
+        stopwatch.$isTimerOff
             .receive(on: DispatchQueue.main)
             .assign(to: \.isHidden, on: timerTextLabel)
+            .store(in: &cancellables)
     }
 }
 
@@ -179,3 +181,25 @@ extension GameView: UICollectionViewDelegate {
         viewModel.selectCard(card: card, at: indexPath.item)
     }
 }
+
+//func flipCard(for card: GameCard, toReveal reveal: Bool) {
+//    if card.isPaired {return}
+//
+//    if reveal {
+//        let animation: UIView.AnimationOptions = .transitionFlipFromRight
+//        UIView.transition(with: self.contentView, duration: 0.5, options: animation, animations: { [weak self] in
+//            guard let self = self else {return}
+//            self.backLabel.isHidden = true
+//            self.imageView.isHidden = false
+//            print("flip to image")
+//        })
+//    } else {
+//        let animation: UIView.AnimationOptions = .transitionFlipFromLeft
+//        UIView.transition(with: self.contentView, duration: 0.5, options: animation, animations: { [weak self] in
+//            guard let self = self else {return}
+//            self.imageView.isHidden = true
+//            self.backLabel.isHidden = false
+//            print("flip from image")
+//        })
+//    }
+//}

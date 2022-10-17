@@ -16,7 +16,7 @@ class GameViewModel {
             setupCards()
         }
     }
-    private var cardsDeck = [GameCard]() {
+    private(set) var cardsDeck = [GameCard]() {
         didSet {
             cardsValueInDeckDidChange()
         }
@@ -29,8 +29,8 @@ class GameViewModel {
         }
     }
 
-    private(set) var cardOneIndex = IndexPath(item: 0, section: 0)
-    private(set) var cardTwoIndex = IndexPath(item: 0, section: 0)
+    @Published private(set) var cardOneIndex: IndexPath?
+    @Published private(set) var cardTwoIndex: IndexPath?
 
     private var removedPairs: Int = 0
     private var turnsLeft: Int = 0 {
@@ -166,25 +166,23 @@ class GameViewModel {
         return index
     }
 
-    func selectCard(card: GameCard, at index: Int) {
+    func selectCard( at index: Int) {
 
         if turnsCountdown && turnsLeft <= 0 {return}
 
-        if card.isPaired == true {return}
-        if card.isVisible == true {return}
+        if cardsDeck[index].isPaired == true {return}
+        if cardsDeck[index].isVisible == true {return}
 
         if selectedCardOne == nil {
-            guard let index = cardsDeck.firstIndex(where: {$0.id == card.id}) else {return}
             cardsDeck[index].isVisible = true
-            selectedCardOne = card
+            selectedCardOne = cardsDeck[index]
             cardOneIndex = IndexPath(item: index, section: 0)
             return
         }
 
-        if selectedCardTwo == nil && selectedCardOne?.id != card.id {
-            guard let index = cardsDeck.firstIndex(where: {$0.id == card.id}) else {return}
+        if selectedCardTwo == nil && selectedCardOne?.id != cardsDeck[index].id {
             cardsDeck[index].isVisible = true
-            selectedCardTwo = card
+            selectedCardTwo = cardsDeck[index]
             cardTwoIndex = IndexPath(item: index, section: 0)
         }
     }
@@ -236,7 +234,7 @@ class GameViewModel {
                 turnsLeft -= 1
             }
 
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + 0.5) { [weak self] in
                 self?.resetCardsSelection()
             }
         }

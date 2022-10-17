@@ -67,6 +67,22 @@ class GameView: UIView {
             .receive(on: DispatchQueue.main)
             .assign(to: \.isHidden, on: timerTextLabel)
             .store(in: &cancellables)
+        viewModel.$cardOneIndex
+            .sink(receiveValue: { [weak self] indexPath in
+                guard let indexPath = indexPath else {return}
+                DispatchQueue.main.async {
+                    self?.collectionView.reloadItems(at: [indexPath])
+                }
+            })
+            .store(in: &cancellables)
+        viewModel.$cardTwoIndex
+            .sink(receiveValue: { [weak self] indexPath in
+                guard let indexPath = indexPath else {return}
+                DispatchQueue.main.async {
+                    self?.collectionView.reloadItems(at: [indexPath])
+                }
+            })
+            .store(in: &cancellables)
     }
 }
 
@@ -135,14 +151,6 @@ extension GameView {
 
     private func bindObservers() {
 
-        viewModel.observeCardDeck { _ in
-            DispatchQueue.main.async { [weak self] in
-                guard let cardOneIndex = self?.viewModel.cardOneIndex,
-                      let cardTwoIndex = self?.viewModel.cardTwoIndex else {return}
-                self?.collectionView.reloadItems(at: [cardOneIndex, cardTwoIndex])
-            }
-        }
-
         viewModel.observeRemainigTurns { isTurnsCountdown, turnsValue in
             DispatchQueue.main.async { [weak self] in
                 if !isTurnsCountdown {
@@ -157,7 +165,7 @@ extension GameView {
 
 extension GameView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.countCardsLength()
+        return viewModel.cardsDeck.count
     }
 
     func collectionView(
@@ -167,11 +175,12 @@ extension GameView: UICollectionViewDataSource {
                 withReuseIdentifier: "image",
                 for: indexPath) as? GameViewCell else {fatalError("No cell!")}
             cell.configCellBasicLayout()
-            let card = viewModel.returnCardForIndex(at: indexPath.item)
-            if viewModel.keepCardRevealed(for: card) {
-                cell.revealCardFace(with: card)
+            let card = viewModel.cardsDeck[indexPath.item]
+            cell.setupUI(with: card)
+            if !viewModel.keepCardRevealed(for: card) {
+                cell.hideCardVisual()
             } else {
-                cell.hideCardFace()
+//                cell.showCardVisual(for: card)
             }
             return cell
         }
@@ -179,29 +188,9 @@ extension GameView: UICollectionViewDataSource {
 
 extension GameView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let card = viewModel.returnCardForIndex(at: indexPath.item)
-        viewModel.selectCard(card: card, at: indexPath.item)
+        viewModel.selectCard(at: indexPath.item)
+        guard let cell = collectionView.cellForItem(at: indexPath) as? GameViewCell else {return}
+        cell.showCardVisual(for: viewModel.cardsDeck[indexPath.item])
+        print(viewModel.cardsDeck[indexPath.item])
     }
 }
-
-//func flipCard(for card: GameCard, toReveal reveal: Bool) {
-//    if card.isPaired {return}
-//
-//    if reveal {
-//        let animation: UIView.AnimationOptions = .transitionFlipFromRight
-//        UIView.transition(with: self.contentView, duration: 0.5, options: animation, animations: { [weak self] in
-//            guard let self = self else {return}
-//            self.backLabel.isHidden = true
-//            self.imageView.isHidden = false
-//            print("flip to image")
-//        })
-//    } else {
-//        let animation: UIView.AnimationOptions = .transitionFlipFromLeft
-//        UIView.transition(with: self.contentView, duration: 0.5, options: animation, animations: { [weak self] in
-//            guard let self = self else {return}
-//            self.imageView.isHidden = true
-//            self.backLabel.isHidden = false
-//            print("flip from image")
-//        })
-//    }
-//}

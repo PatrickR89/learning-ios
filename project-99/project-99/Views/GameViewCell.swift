@@ -31,11 +31,10 @@ class GameViewCell: UICollectionViewCell {
         contentView.layer.borderWidth = 2
     }
 
-    func revealCardFace(with card: GameCard) {
-        backLabel.removeFromSuperview()
+    func setupUI(with card: GameCard) {
         contentView.addSubview(imageView)
-        imageView.image = UIImage(systemName: card.image)
         imageView.tintColor = card.color
+        imageView.image = UIImage(systemName: card.image)
 
         imageView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -45,10 +44,7 @@ class GameViewCell: UICollectionViewCell {
             imageView.widthAnchor.constraint(equalToConstant: contentView.frame.width * 0.9),
             imageView.heightAnchor.constraint(equalToConstant: contentView.frame.height * 0.9)
         ])
-    }
 
-    func hideCardFace() {
-        imageView.removeFromSuperview()
         contentView.addSubview(backLabel)
         backLabel.translatesAutoresizingMaskIntoConstraints = false
 
@@ -61,5 +57,33 @@ class GameViewCell: UICollectionViewCell {
             backLabel.heightAnchor.constraint(equalToConstant: 40),
             backLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor)
         ])
+    }
+
+    @objc func showCard() {
+        let animation: UIView.AnimationOptions = .transitionFlipFromRight
+        UIView.transition(with: self.contentView, duration: 0.5, options: animation, animations: { [weak self] in
+            guard let self = self else {return}
+            self.backLabel.isHidden = true
+            self.imageView.isHidden = false
+        })
+
+    }
+
+    @objc func hideCard() {
+        let animation: UIView.AnimationOptions = .transitionFlipFromLeft
+        UIView.transition(with: self.contentView, duration: 0.5, options: animation, animations: { [weak self] in
+            guard let self = self else {return}
+            self.imageView.isHidden = true
+            self.backLabel.isHidden = false
+        })
+
+    }
+
+    func showCardVisual(for card: GameCard) {
+        perform(#selector(showCard), with: nil)
+    }
+
+    func hideCardVisual() {
+        perform(#selector(hideCard), with: nil)
     }
 }

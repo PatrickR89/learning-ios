@@ -82,6 +82,7 @@
 		CD88B02828F9269200EFCBBB /* KeyboardLayoutObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B02728F9269200EFCBBB /* KeyboardLayoutObserver.swift */; };
 		CD88B02D28F97F9E00EFCBBB /* DeleteAccViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B02C28F97F9E00EFCBBB /* DeleteAccViewCell.swift */; };
 		CD88B02F28F9888500EFCBBB /* MainMenuViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B02E28F9888500EFCBBB /* MainMenuViewControllerDelegate.swift */; };
+		CD88B03628FFCD4B00EFCBBB /* GameViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B03528FFCD4B00EFCBBB /* GameViewCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -162,6 +163,7 @@
 		CD88B02728F9269200EFCBBB /* KeyboardLayoutObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutObserver.swift; sourceTree = "<group>"; };
 		CD88B02C28F97F9E00EFCBBB /* DeleteAccViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccViewCell.swift; sourceTree = "<group>"; };
 		CD88B02E28F9888500EFCBBB /* MainMenuViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewControllerDelegate.swift; sourceTree = "<group>"; };
+		CD88B03528FFCD4B00EFCBBB /* GameViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewCellViewModel.swift; sourceTree = "<group>"; };
 		E9ED53374000A43727DB32F3 /* Pods-project-99.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-99.release.xcconfig"; path = "Target Support Files/Pods-project-99/Pods-project-99.release.xcconfig"; sourceTree = "<group>"; };
 		EE006DE768882589EA85F5B5 /* Pods-project-99.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-99.debug.xcconfig"; path = "Target Support Files/Pods-project-99/Pods-project-99.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -264,6 +266,7 @@
 				CD88B00428DD9C1F00EFCBBB /* NewGameViewModel.swift */,
 				CD88B00B28DDA74C00EFCBBB /* GameVCViewModel.swift */,
 				CD88B01428E30A5F00EFCBBB /* GameViewModel.swift */,
+				CD88B03528FFCD4B00EFCBBB /* GameViewCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -684,6 +687,7 @@
 				CD88AFC728D9781200EFCBBB /* StatsViewController.swift in Sources */,
 				CD88AFDD28DAEEB600EFCBBB /* Statistics.swift in Sources */,
 				CD88B00828DD9D1200EFCBBB /* NewGameViewCell.swift in Sources */,
+				CD88B03628FFCD4B00EFCBBB /* GameViewCellViewModel.swift in Sources */,
 				CD88AF8F28D3252D00EFCBBB /* LoginViewModel.swift in Sources */,
 				CD88B00128DD95B100EFCBBB /* TimesCellBottomViewModelDelegate.swift in Sources */,
 				CD88AFB528D84D9C00EFCBBB /* MulticolorViewCell.swift in Sources */,

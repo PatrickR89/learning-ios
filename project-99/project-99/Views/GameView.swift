@@ -180,7 +180,7 @@ extension GameView: UICollectionViewDataSource {
             if !viewModel.keepCardRevealed(for: card) {
                 cell.hideCardVisual()
             } else {
-//                cell.showCardVisual(for: card)
+                cell.showCardVisual(for: card)
             }
             return cell
         }
@@ -189,8 +189,5 @@ extension GameView: UICollectionViewDataSource {
 extension GameView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel.selectCard(at: indexPath.item)
-        guard let cell = collectionView.cellForItem(at: indexPath) as? GameViewCell else {return}
-        cell.showCardVisual(for: viewModel.cardsDeck[indexPath.item])
-        print(viewModel.cardsDeck[indexPath.item])
     }
 }

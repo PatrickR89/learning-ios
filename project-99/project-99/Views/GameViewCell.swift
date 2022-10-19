@@ -6,15 +6,18 @@
 //
 
 import UIKit
+import Combine
 
 class GameViewCell: UICollectionViewCell {
 
     lazy var imageView = UIImageView()
     lazy var backLabel = UILabel()
+    var viewModel = GameViewCellViewModel()
+    var image: AnyCancellable?
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
-
+        bindObserver()
         use(AppTheme.self) {
             $0.backgroundColor = $1.backgroundColor
             $0.backLabel.textColor = $1.textColor
@@ -25,6 +28,19 @@ class GameViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    private func bindObserver() {
+        image = viewModel.$image
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] image in
+                self?.imageView.image = image
+                if image != nil {
+                    self?.perform(#selector(self?.showCard), with: nil)
+                } else {
+                    self?.perform(#selector(self?.hideCard), with: nil)
+                }
+            })
+    }
+
     func configCellBasicLayout() {
         contentView.layer.cornerRadius = 5
         contentView.layer.borderColor = UIColor.lightGray.cgColor
@@ -33,10 +49,10 @@ class GameViewCell: UICollectionViewCell {
 
     func setupUI(with card: GameCard) {
         contentView.addSubview(imageView)
-        imageView.tintColor = card.color
-        imageView.image = UIImage(systemName: card.image)
 
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.tintColor = card.color
+        imageView.image = UIImage(systemName: card.image)
 
         NSLayoutConstraint.activate([
             imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
@@ -80,10 +96,12 @@ class GameViewCell: UICollectionViewCell {
     }
 
     func showCardVisual(for card: GameCard) {
-        perform(#selector(showCard), with: nil)
+        imageView.tintColor = card.color
+        imageView.image = UIImage(systemName: card.image)
+        viewModel.setupImageName(card.image)
     }
 
     func hideCardVisual() {
-        perform(#selector(hideCard), with: nil)
+        viewModel.removeImage()
     }
 }

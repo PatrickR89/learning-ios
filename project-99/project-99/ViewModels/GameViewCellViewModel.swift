@@ -9,13 +9,14 @@ import UIKit
 import Combine
 
 class GameViewCellViewModel {
-    @Published private(set) var image: UIImage?
+    @Published private(set) var gameCard: GameCard = GameCard(
+        id: 0,
+        image: "",
+        color: .systemBlue,
+        isVisible: false,
+        isPaired: false)
 
-    func setupImageName(_ name: String) {
-        self.image = UIImage(systemName: name)
-    }
-
-    func removeImage() {
-        self.image = nil
+    func flipCard(for card: GameCard) {
+        self.gameCard = card
     }
 }

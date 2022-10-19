@@ -6,17 +6,13 @@
 //
 
 import UIKit
-import RealmSwift
 import Themes
 
 class LoginViewController: UIViewController {
 
     let viewModel: LoginViewModel
     let loginView: LoginView
-    lazy var keyboardLayoutObserver: KeyboardLayoutObserver = {
-        let keyboardLayoutObserver = KeyboardLayoutObserver(for: self)
-        return keyboardLayoutObserver
-    }()
+    let keyboardLayoutObserver = KeyboardLayoutObserver()
 
     let keyboardLayoutGuide = UILayoutGuide()
 
@@ -25,6 +21,7 @@ class LoginViewController: UIViewController {
         self.viewModel = LoginViewModel()
         self.loginView = LoginView(with: viewModel)
         super.init(nibName: nil, bundle: nil)
+        keyboardLayoutObserver.enableKeyboardObserver(for: self)
         ThemeManager.shared.currentTheme = ThemeContainer.shared.systemTheme
         loginView.delegate = self
     }

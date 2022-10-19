@@ -13,7 +13,7 @@ class GameViewCell: UICollectionViewCell {
     lazy var imageView = UIImageView()
     lazy var backLabel = UILabel()
     var viewModel = GameViewCellViewModel()
-    var image: AnyCancellable?
+    var card =  [AnyCancellable]()
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -29,16 +29,24 @@ class GameViewCell: UICollectionViewCell {
     }
 
     private func bindObserver() {
-        image = viewModel.$image
+        viewModel.$gameCard
             .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] image in
-                self?.imageView.image = image
-                if image != nil {
-                    self?.perform(#selector(self?.showCard), with: nil)
+            .sink(receiveValue: { [weak self] card in
+                guard let self = self else {return}
+
+                self.imageView.tintColor = card.color
+                self.imageView.image = UIImage(systemName: card.image)
+
+                if card.isVisible && !card.isPaired {
+                    self.perform(#selector(self.showCard), with: nil)
+                } else if card.isPaired {
+                    self.backLabel.isHidden = true
+                    self.imageView.isHidden = false
                 } else {
-                    self?.perform(#selector(self?.hideCard), with: nil)
+                    self.perform(#selector(self.hideCard), with: nil)
                 }
             })
+            .store(in: &card)
     }
 
     func configCellBasicLayout() {
@@ -51,8 +59,8 @@ class GameViewCell: UICollectionViewCell {
         contentView.addSubview(imageView)
 
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.tintColor = card.color
-        imageView.image = UIImage(systemName: card.image)
+        imageView.tintColor = .white
+        imageView.image = nil
 
         NSLayoutConstraint.activate([
             imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
@@ -77,7 +85,7 @@ class GameViewCell: UICollectionViewCell {
 
     @objc func showCard() {
         let animation: UIView.AnimationOptions = .transitionFlipFromRight
-        UIView.transition(with: self.contentView, duration: 0.5, options: animation, animations: { [weak self] in
+        UIView.transition(with: self.contentView, duration: 0.3, options: animation, animations: { [weak self] in
             guard let self = self else {return}
             self.backLabel.isHidden = true
             self.imageView.isHidden = false
@@ -87,21 +95,11 @@ class GameViewCell: UICollectionViewCell {
 
     @objc func hideCard() {
         let animation: UIView.AnimationOptions = .transitionFlipFromLeft
-        UIView.transition(with: self.contentView, duration: 0.5, options: animation, animations: { [weak self] in
+        UIView.transition(with: self.contentView, duration: 0.3, options: animation, animations: { [weak self] in
             guard let self = self else {return}
             self.imageView.isHidden = true
             self.backLabel.isHidden = false
         })
 
-    }
-
-    func showCardVisual(for card: GameCard) {
-        imageView.tintColor = card.color
-        imageView.image = UIImage(systemName: card.image)
-        viewModel.setupImageName(card.image)
-    }
-
-    func hideCardVisual() {
-        viewModel.removeImage()
     }
 }

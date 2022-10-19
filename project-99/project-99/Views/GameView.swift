@@ -38,7 +38,7 @@ class GameView: UIView {
 
         super.init(frame: .zero)
         self.bindObservers()
-        self.bindElapsedTime()
+        self.bindPublishedElements()
         use(AppTheme.self) {
             $0.backgroundColor = $1.backgroundColor
             $0.collectionView.backgroundColor = $1.backgroundColor
@@ -53,7 +53,7 @@ class GameView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func bindElapsedTime() {
+    func bindPublishedElements() {
 
         stopwatch.$timeString
             .receive(on: DispatchQueue.main)
@@ -177,11 +177,7 @@ extension GameView: UICollectionViewDataSource {
             cell.configCellBasicLayout()
             let card = viewModel.cardsDeck[indexPath.item]
             cell.setupUI(with: card)
-            if !viewModel.keepCardRevealed(for: card) {
-                cell.hideCardVisual()
-            } else {
-                cell.showCardVisual(for: card)
-            }
+            cell.viewModel.flipCard(for: card)
             return cell
         }
 }

@@ -12,10 +12,6 @@ class KeyboardLayoutObserver {
 
     private var cancellables: Set<AnyCancellable> = []
 
-    init(for viewController: LoginViewController) {
-        enableKeyboardObserver(for: viewController)
-    }
-
     func enableKeyboardObserver(for viewController: LoginViewController) {
 
         NotificationCenter.default.publisher(

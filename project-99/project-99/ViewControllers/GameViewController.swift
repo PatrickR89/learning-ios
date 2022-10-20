@@ -35,6 +35,7 @@ class GameViewController: UIViewController {
 
     deinit {
         stopwatch.resetTimer()
+        isGameStopped?.cancel()
     }
 
     override func viewDidLoad() {

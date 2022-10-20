@@ -13,7 +13,7 @@ class GameViewCell: UICollectionViewCell {
     lazy var imageView = UIImageView()
     lazy var backLabel = UILabel()
     var viewModel = GameViewCellViewModel()
-    var card =  [AnyCancellable]()
+    var card:  AnyCancellable?
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -24,12 +24,16 @@ class GameViewCell: UICollectionViewCell {
         }
     }
 
+    deinit {
+        card?.cancel()
+    }
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     private func bindObserver() {
-        viewModel.$gameCard
+        card = viewModel.$gameCard
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] card in
                 guard let self = self else {return}
@@ -46,7 +50,6 @@ class GameViewCell: UICollectionViewCell {
                     self.perform(#selector(self.hideCard), with: nil)
                 }
             })
-            .store(in: &card)
     }
 
     func configCellBasicLayout() {

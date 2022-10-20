@@ -49,6 +49,12 @@ class GameView: UIView {
         }
     }
 
+    deinit {
+        cancellables.forEach {
+            $0.cancel()
+        }
+    }
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

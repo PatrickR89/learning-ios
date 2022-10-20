@@ -49,6 +49,7 @@ class SettingsViewController: UIViewController {
     }
 
     deinit {
+        viewModel.saveSettings()
         cancellables.forEach {
             $0.cancel()
         }

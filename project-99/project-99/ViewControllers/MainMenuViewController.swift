@@ -23,7 +23,6 @@ class MainMenuViewController: UIViewController {
 
         super.init(nibName: nil, bundle: nil)
         setupUI()
-        settingsViewModel.loadUserSettings()
         title = "Welcome \(viewModel.setUsername())"
     }
 

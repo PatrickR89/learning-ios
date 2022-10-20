@@ -21,8 +21,16 @@ class RealmDataService {
         bindUserId()
     }
 
+    deinit {
+        cancellable?.cancel()
+    }
+
     private func bindUserId() {
-        self.cancellable = UserContainer.shared.$userId.receive(on: DispatchQueue.main).assign(to: \.userId, on: self)
+        self.cancellable = UserContainer.shared.$userId
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] userId in
+            self?.userId = userId
+        })
     }
 
     func loadStatistics() -> UserGamesStats {
@@ -224,6 +232,7 @@ class RealmDataService {
         }
 
         let result = loadUserSettings(forUser: userId)
+        print(result.theme)
         try? realm.write {
             result.theme = theme
         }
@@ -265,5 +274,14 @@ class RealmDataService {
         }
 
         return result.withTimer
+    }
+
+    func loadTheme() -> ThemeChoice {
+        guard let userId = userId,
+              let result = realm.object(ofType: UserSettings.self, forPrimaryKey: userId) else {
+            return .system
+        }
+
+        return result.theme
     }
 }

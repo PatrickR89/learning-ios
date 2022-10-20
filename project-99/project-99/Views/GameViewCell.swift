@@ -13,7 +13,7 @@ class GameViewCell: UICollectionViewCell {
     lazy var imageView = UIImageView()
     lazy var backLabel = UILabel()
     var viewModel = GameViewCellViewModel()
-    var card:  AnyCancellable?
+    private var card: AnyCancellable?
 
     override init(frame: CGRect) {
         super.init(frame: .zero)

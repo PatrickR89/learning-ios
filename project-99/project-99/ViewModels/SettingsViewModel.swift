@@ -31,26 +31,13 @@ class SettingsViewModel {
         didSet {
             if let userTheme = userTheme {
                 ThemeContainer.shared.changeTheme(to: userTheme)
-                RealmDataService.shared.saveTheme(save: userTheme)
             }
         }
     }
 
-    @Published private(set) var withMulticolor: Bool? {
-        didSet {
-            if let withMulticolor = withMulticolor {
-                RealmDataService.shared.saveMulticolorState(save: withMulticolor)
-            }
-        }
-    }
+    @Published private(set) var withMulticolor: Bool?
 
-    @Published private(set) var withTimer: Bool? {
-        didSet {
-            if let withTimer = withTimer {
-                RealmDataService.shared.saveTimerState(save: withTimer)
-            }
-        }
-    }
+    @Published private(set) var withTimer: Bool?
 
     weak var delegate: SettingsViewModelDelegate?
 
@@ -59,12 +46,23 @@ class SettingsViewModel {
         loadUserSettings()
     }
 
+    func saveSettings() {
+        if let withTimer = withTimer {
+            RealmDataService.shared.saveTimerState(save: withTimer)
+        }
+        if let withMulticolor = withMulticolor {
+            RealmDataService.shared.saveMulticolorState(save: withMulticolor)
+        }
+        if let userTheme = userTheme {
+            RealmDataService.shared.saveTheme(save: userTheme)
+        }
+    }
+
     func loadUserSettings() {
         let result = RealmDataService.shared.loadUserSettings(forUser: user.id)
         self.userTheme = result.theme
         self.withMulticolor = result.withMulticolor
         self.withTimer = result.withTimer
-
     }
 }
 

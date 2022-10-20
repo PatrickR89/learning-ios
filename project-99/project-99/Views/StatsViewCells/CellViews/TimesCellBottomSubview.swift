@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import Combine
 
 class TimesCellBottomSubview: UIView {
 
     private let tableView = UITableView()
     private let viewModel: TimesCellBottomViewModel
+    private var timesUpdate: AnyCancellable?
 
     init(with viewModel: TimesCellBottomViewModel, cellType: StatsContent) {
         self.viewModel = viewModel
@@ -25,6 +27,10 @@ class TimesCellBottomSubview: UIView {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    deinit {
+        timesUpdate?.cancel()
     }
 
     func setupUI(as cellType: StatsContent) {
@@ -42,11 +48,13 @@ class TimesCellBottomSubview: UIView {
     }
 
     private func setupBindings() {
-        viewModel.observeTimes { _ in
-            DispatchQueue.main.async { [weak self] in
+
+        timesUpdate = viewModel.$times
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] _ in
                 self?.tableView.reloadData()
-            }
-        }
+            })
+
     }
 }
 

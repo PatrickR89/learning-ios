@@ -6,45 +6,19 @@
 //
 
 import Foundation
+import Combine
 
 class TimesCellBottomViewModel {
 
-    private var times = [BestTimes]() {
-        didSet {
-            valueDidChange()
-        }
-    }
+    @Published private(set) var times = [BestTimes]()
 
     private var isViewHidden: Bool = true {
         didSet {
-            hideValueDidChange()
             delegate?.timesCellBottomViewModel(self, didChangeViewHiddenState: isViewHidden)
         }
     }
 
-    private var observer: (([BestTimes]) -> Void)?
-    private var hiddenObserver: ((Bool) -> Void)?
-
     weak var delegate: TimesCellBottomViewModelDelegate?
-
-    private func valueDidChange() {
-        guard let observer = observer else {
-            return
-        }
-        observer(times)
-    }
-
-    private func hideValueDidChange() {
-        guard let hiddenObserver = hiddenObserver else {
-            return
-        }
-        hiddenObserver(isViewHidden)
-    }
-
-    func observeTimes(_ closure: @escaping ([BestTimes]) -> Void) {
-        self.observer = closure
-        valueDidChange()
-    }
 
     func loadTimes() {
         let result = RealmDataService.shared.loadLevelTimes()
@@ -81,11 +55,6 @@ class TimesCellBottomViewModel {
         case .emotionalDamage:
             return "Emotional damage"
         }
-    }
-
-    func observeHiddenState(_ closure: @escaping (Bool) -> Void) {
-        self.hiddenObserver = closure
-        hideValueDidChange()
     }
 
     func changeHiddenState(_ state: Bool) {

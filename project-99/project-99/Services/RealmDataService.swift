@@ -232,7 +232,6 @@ class RealmDataService {
         }
 
         let result = loadUserSettings(forUser: userId)
-        print(result.theme)
         try? realm.write {
             result.theme = theme
         }

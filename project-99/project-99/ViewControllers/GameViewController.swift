@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import Combine
 
 class GameViewController: UIViewController {
 
     private let viewModel: GameVCViewModel
     private let gameView: GameView?
     private let stopwatch: Stopwatch
+    private var isGameStopped: AnyCancellable?
 
     init(with viewModel: GameVCViewModel, and stopwatch: Stopwatch) {
         self.stopwatch = stopwatch
@@ -45,8 +47,10 @@ class GameViewController: UIViewController {
     }
 
     private func bindObserver() {
-        viewModel.observeGameState { isGameOver in
-            DispatchQueue.main.async { [weak self] in
+
+        isGameStopped = viewModel.$isGameOver
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] isGameOver in
                 guard let self = self else {return}
                 if isGameOver == .gameLost {
                     let alertController = self.viewModel.addGameOverAlertController(in: self)
@@ -55,14 +59,14 @@ class GameViewController: UIViewController {
                     let alertController = self.viewModel.addGameFinishedAlertController(in: self)
                     self.present(alertController, animated: true)
                 }
-            }
-        }
+            })
     }
 
     func setupUI() {
         guard let gameView = gameView else {
             return
         }
+
         view.addSubview(gameView)
         gameView.frame = view.frame
         gameView.configCollectionViewLayout(for: viewModel.sendGameLevel())

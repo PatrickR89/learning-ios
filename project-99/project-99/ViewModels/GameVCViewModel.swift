@@ -6,35 +6,18 @@
 //
 
 import UIKit
+import Combine
 
 class GameVCViewModel {
     private let game: Level
     private var playGameViewModel: GameViewModel
 
-    private var isGameOver: EndGame = .inGame {
-        didSet {
-            gameOverValueDidChange()
-        }
-    }
-
-    private var gameObserver: ((EndGame) -> Void)?
+    @Published private(set) var isGameOver: EndGame = .inGame
 
     init(for level: Level, with stopwatch: Stopwatch) {
         self.game = level
         self.playGameViewModel = GameViewModel(for: level, with: stopwatch)
         self.playGameViewModel.delegate = self
-    }
-
-    private func gameOverValueDidChange() {
-        guard let observeGame = gameObserver else {
-            return
-        }
-        observeGame(isGameOver)
-    }
-
-    func observeGameState(_ closure: @escaping (EndGame) -> Void) {
-        self.gameObserver = closure
-        gameOverValueDidChange()
     }
 
     func sendGameLevel() -> Level {

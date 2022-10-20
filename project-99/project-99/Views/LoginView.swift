@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Themes
+import Combine
 
 class LoginView: UIView {
     private var warningLabel = UILabel()
@@ -15,6 +15,7 @@ class LoginView: UIView {
     private var loginButton = UIButton()
     private var createAccBtn = UIButton()
     private var viewModel: LoginViewModel
+    private var isLoggedIn: AnyCancellable?
 
     weak var delegate: LoginViewDelegate?
 
@@ -36,6 +37,10 @@ class LoginView: UIView {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    deinit {
+        isLoggedIn?.cancel()
     }
 }
 
@@ -128,16 +133,18 @@ private extension LoginView {
     }
 
     func setupBindings() {
-        viewModel.observeLoginStatus { loginStatus in
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else {return}
+
+        isLoggedIn = viewModel.$loginSuccess
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] loginStatus in
+                guard let self = self,
+                      let loginStatus = loginStatus  else {return}
                 if !loginStatus {
                     self.loginFailed()
                 } else {
                     self.delegate?.loginView(self, didLogUser: self.viewModel.sendUser(), in: self.viewModel)
                 }
-            }
-        }
+            })
     }
 
     func loginFailed() {

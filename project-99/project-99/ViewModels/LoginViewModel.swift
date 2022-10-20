@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import Combine
 
 class LoginViewModel {
     private var user: User = User(id: UUID(), name: "", password: "")
@@ -29,28 +30,11 @@ class LoginViewModel {
 
     private var password: String?
 
-    private var loginSuccess: Bool? {
-        didSet {
-            loginStatusDidChange()
-        }
-    }
-
-    private var observer: ((Bool) -> Void)?
-
-    private func loginStatusDidChange () {
-        guard let observer = observer,
-              let loginSuccess = loginSuccess else {
-            return
-        }
-        observer(loginSuccess)
-    }
+    @Published private(set) var loginSuccess: Bool?
 }
 
 extension LoginViewModel {
-    func observeLoginStatus(_ closure: @escaping ((Bool) -> Void)) {
-        self.observer = closure
-        loginStatusDidChange()
-    }
+
     func usernameChanged(_ username: String) {
         self.username = username
     }

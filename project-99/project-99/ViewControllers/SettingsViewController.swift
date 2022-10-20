@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class SettingsViewController: UIViewController {
 
@@ -14,6 +15,7 @@ class SettingsViewController: UIViewController {
     private let primaryContent: [SettingsContent] = [.theme, .multicolor, .timer]
     private let secondContent: [SettingsContent] = [.username, .password, .delete]
     private let sections: [[SettingsContent]]
+    private var cancellables = [AnyCancellable]()
 
     weak var delegate: SettingsViewControllerDelegate?
 
@@ -46,6 +48,12 @@ class SettingsViewController: UIViewController {
         self.dismiss(animated: true)
     }
 
+    deinit {
+        cancellables.forEach {
+            $0.cancel()
+        }
+    }
+
     private func setupUI() {
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -64,29 +72,42 @@ class SettingsViewController: UIViewController {
 
     private func setupBindings() {
         viewModel.delegate = self
-        viewModel.observeMulticolorState { _ in
-            DispatchQueue.main.async { [weak self] in
+
+        viewModel.$withMulticolor
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] _ in
                 if let index = self?.primaryContent.firstIndex(where: {$0.self == SettingsContent.multicolor}) {
                     let indexPath = IndexPath(row: index, section: 0)
                     self?.tableView.reloadRows(at: [indexPath], with: .fade)
                 }
-            }
-        }
+            })
+            .store(in: &cancellables)
 
-        viewModel.observerTimerState { _ in
-            DispatchQueue.main.async { [weak self] in
+        viewModel.$withTimer
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: {[weak self] _ in
                 if let index = self?.primaryContent.firstIndex(where: {$0.self == SettingsContent.timer}) {
                     let indexPath = IndexPath(row: index, section: 0)
                     self?.tableView.reloadRows(at: [indexPath], with: .fade)
                 }
-            }
-        }
+            })
+            .store(in: &cancellables)
 
-        viewModel.observeThemeState { _ in
-            DispatchQueue.main.async { [weak self] in
+        viewModel.$userTheme
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] _ in
                 self?.tableView.reloadData()
-            }
-        }
+            })
+            .store(in: &cancellables)
+
+        viewModel.$newUsername
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] name in
+                guard let self = self,
+                      let name = name else {return}
+                self.delegate?.settingsViewController(self, didRecieveUpdatedName: name)
+            })
+            .store(in: &cancellables)
     }
 }
 
@@ -180,10 +201,6 @@ extension SettingsViewController: SettingsViewModelDelegate {
     func settingsViewModelDidDeleteAccount(_ viewModel: SettingsViewModel) {
         delegate?.settingsViewController(self, didReciveAccountDeletionFrom: viewModel)
         self.dismiss(animated: true)
-    }
-
-    func settingsViewModel(_ viewModel: SettingsViewModel, didChangeUsername username: String) {
-        delegate?.settingsViewController(self, didRecieveUpdatedName: username)
     }
 
     func settingsViewModel(

@@ -12,6 +12,5 @@ protocol SettingsViewModelDelegate: AnyObject {
         _ viewModel: SettingsViewModel,
         didVerifyPasswordWithResult result: Bool,
         for change: AccountChanges)
-    func settingsViewModel(_ viewModel: SettingsViewModel, didChangeUsername username: String)
     func settingsViewModelDidDeleteAccount(_ viewModel: SettingsViewModel)
 }

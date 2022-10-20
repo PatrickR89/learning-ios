@@ -5,18 +5,17 @@
 //  Created by Patrick on 16.09.2022..
 //
 
-import Foundation
-import RealmSwift
+import UIKit
+import Combine
 
 class SettingsViewModel {
     private var user: User
-    private var newUsername: String? {
+    @Published private(set) var newUsername: String? {
         didSet {
             guard let newUsername = newUsername else {
                 return
             }
             RealmDataService.shared.changeUsername(with: newUsername)
-            delegate?.settingsViewModel(self, didChangeUsername: newUsername)
         }
     }
     private var newPassword: String? {
@@ -28,9 +27,8 @@ class SettingsViewModel {
         }
     }
 
-    private var userTheme: ThemeChoice? {
+    @Published private(set) var userTheme: ThemeChoice? {
         didSet {
-            themeDidChange()
             if let userTheme = userTheme {
                 ThemeContainer.shared.changeTheme(to: userTheme)
                 RealmDataService.shared.saveTheme(save: userTheme)
@@ -38,27 +36,21 @@ class SettingsViewModel {
         }
     }
 
-    private var withMulticolor: Bool? {
+    @Published private(set) var withMulticolor: Bool? {
         didSet {
-            multicolorDidChange()
             if let withMulticolor = withMulticolor {
                 RealmDataService.shared.saveMulticolorState(save: withMulticolor)
             }
         }
     }
 
-    private var withTimer: Bool? {
+    @Published private(set) var withTimer: Bool? {
         didSet {
-            timerStateDidChange()
             if let withTimer = withTimer {
                 RealmDataService.shared.saveTimerState(save: withTimer)
             }
         }
     }
-
-    private var themeObserver: ((ThemeChoice) -> Void)?
-    private var multicolorStateObserver: ((Bool) -> Void)?
-    private var timerStateObserver: ((Bool) -> Void)?
 
     weak var delegate: SettingsViewModelDelegate?
 
@@ -73,32 +65,6 @@ class SettingsViewModel {
         self.withMulticolor = result.withMulticolor
         self.withTimer = result.withTimer
 
-    }
-}
-
-private extension SettingsViewModel {
-    func themeDidChange() {
-        guard let themeObserver = themeObserver,
-              let userTheme = userTheme else {
-            return
-        }
-        themeObserver(userTheme)
-    }
-
-    func multicolorDidChange() {
-        guard let multicolorObserver = multicolorStateObserver,
-              let withMulticolor = withMulticolor else {
-            return
-        }
-        multicolorObserver(withMulticolor)
-    }
-
-    func timerStateDidChange() {
-        guard let timerStateObserver = timerStateObserver,
-              let withTimer = withTimer else {
-            return
-        }
-        timerStateObserver(withTimer)
     }
 }
 
@@ -165,23 +131,6 @@ extension SettingsViewModel {
 
     func deleteAccount() {
         delegate?.settingsViewModelDidDeleteAccount(self)
-    }
-
-    // MARK: Observe values
-
-    func observeMulticolorState(_ closure: @escaping (Bool) -> Void) {
-        self.multicolorStateObserver = closure
-        multicolorDidChange()
-    }
-
-    func observerTimerState(_ closure: @escaping (Bool) -> Void) {
-        self.timerStateObserver = closure
-        timerStateDidChange()
-    }
-
-    func observeThemeState(_ closure: @escaping(ThemeChoice) -> Void) {
-        self.themeObserver = closure
-        themeDidChange()
     }
 
     // MARK: Account verification

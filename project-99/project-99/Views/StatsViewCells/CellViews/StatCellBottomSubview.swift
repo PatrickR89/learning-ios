@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class StatCellBottomSubview: UIView {
 
@@ -13,6 +14,7 @@ class StatCellBottomSubview: UIView {
     private let winsView = LabelLayoutView()
     private let rateView = LabelLayoutView()
     private let labelStack = UIStackView()
+    private var cancellables = [AnyCancellable]()
 
     let viewModel: StatCellBottomViewModel
 
@@ -30,15 +32,24 @@ class StatCellBottomSubview: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setupBindings() {
-        viewModel.observeValues { value in
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else {return}
-                self.totalsView.addValue("\(value.totalValue)")
-                self.winsView.addValue("\(value.positiveValue)")
+    deinit {
+        cancellables.forEach {
+            $0.cancel()
+        }
+    }
 
-                if value.totalValue != 0 {
-                    let rate: Double = (Double(value.positiveValue) / Double(value.totalValue)) * 100.00
+    func setupBindings() {
+
+        viewModel.$values
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] values in
+                guard let self = self,
+                      let values = values else {return}
+                self.totalsView.addValue("\(values.totalValue)")
+                self.winsView.addValue("\(values.positiveValue)")
+
+                if values.totalValue != 0 {
+                    let rate: Double = (Double(values.positiveValue) / Double(values.totalValue)) * 100.00
                     let formatter = NumberFormatter()
                     formatter.numberStyle = .decimal
                     formatter.maximumFractionDigits = 2
@@ -48,14 +59,15 @@ class StatCellBottomSubview: UIView {
                 } else {
                     self.rateView.addValue("0.00%")
                 }
-            }
-        }
+            })
+            .store(in: &cancellables)
 
-        viewModel.observeHiddenState { state in
-            DispatchQueue.main.async { [weak self] in
-                self?.isHidden = state
-            }
-        }
+        viewModel.$isViewHidden
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] hiddenState in
+                self?.isHidden = hiddenState
+            })
+            .store(in: &cancellables)
     }
 
     func setupUI(as cellType: StatsContent) {

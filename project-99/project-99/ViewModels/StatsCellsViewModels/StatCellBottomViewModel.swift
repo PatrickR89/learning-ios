@@ -6,46 +6,24 @@
 //
 
 import Foundation
+import Combine
 
 class StatCellBottomViewModel {
 
     private var currentType: StatsContent
-    private var values: Statistics? {
-        didSet {
-            valueDidChange()
-        }
-    }
+    @Published private(set) var values: Statistics?
 
-    private var isViewHidden: Bool = true {
+    @Published private(set) var isViewHidden: Bool = true {
         didSet {
-            hideValueDidChange()
             delegate?.statCellBottomViewModel(self, didChangeViewHiddenState: isViewHidden)
         }
     }
-
-    private var observer: ((Statistics) -> Void)?
-    private var hiddenObserver: ((Bool) -> Void)?
 
     weak var delegate: StatCellBottomViewModelDelegate?
 
     init(as currentType: StatsContent) {
         self.currentType = currentType
         retrieveData(with: currentType)
-    }
-
-    private func valueDidChange() {
-        guard let observer = observer,
-              let values = values else {
-            return
-        }
-        observer(values)
-    }
-
-    private func hideValueDidChange() {
-        guard let hiddenObserver = hiddenObserver else {
-            return
-        }
-        hiddenObserver(isViewHidden)
     }
 
     private func retrieveData(with currentType: StatsContent) {
@@ -63,16 +41,6 @@ class StatCellBottomViewModel {
         case .gameTimes:
             break
         }
-    }
-
-    func observeValues(_ closure: @escaping (Statistics) -> Void) {
-        self.observer = closure
-        valueDidChange()
-    }
-
-    func observeHiddenState(_ closure: @escaping (Bool) -> Void) {
-        self.hiddenObserver = closure
-        hideValueDidChange()
     }
 
     func changeHiddenState(_ state: Bool) {

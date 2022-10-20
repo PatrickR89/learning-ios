@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import Combine
 
 class StatCellTopSubview: UIView {
 
     private let titleLabel = UILabel()
     private let arrowView = UIImageView()
     let viewModel: StatCellTopViewModel
+    private var cancellables = [AnyCancellable]()
 
     init(as cellType: StatsContent, isExtended bottomView: Bool) {
         self.viewModel = StatCellTopViewModel(with: cellType, for: bottomView)
@@ -29,6 +31,12 @@ class StatCellTopSubview: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    deinit {
+        cancellables.forEach {
+            $0.cancel()
+        }
+    }
+
     func setupUI() {
         self.setupCellViewUI(withLabels: titleLabel, and: nil)
         self.setupCellArrowImageView(for: arrowView)
@@ -38,8 +46,10 @@ class StatCellTopSubview: UIView {
     }
 
     func setupBindings() {
-        viewModel.observeCellType { value in
-            DispatchQueue.main.async { [weak self] in
+
+        viewModel.$cellType
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] value in
                 switch value {
                 case .games:
                     self?.titleLabel.text = "Games"
@@ -48,17 +58,18 @@ class StatCellTopSubview: UIView {
                 case .gameTimes:
                     self?.titleLabel.text = "Time"
                 }
-            }
-        }
+            })
+            .store(in: &cancellables)
 
-        viewModel.observeCellExtension { isExtended in
-            DispatchQueue.main.async { [weak self] in
+        viewModel.$extendedCell
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] isExtended in
                 if !isExtended {
                     self?.arrowView.image = UIImage(systemName: "chevron.up")
                 } else {
                     self?.arrowView.image = UIImage(systemName: "chevron.down")
                 }
-            }
-        }
+            })
+            .store(in: &cancellables)
     }
 }

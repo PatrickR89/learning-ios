@@ -258,7 +258,7 @@ class RealmDataService {
         }
     }
 
-    func loadMulticolorValue() -> Bool {
+    func loadMulticolorState() -> Bool {
         guard let userId = userId,
               let result = realm.object(ofType: UserSettings.self, forPrimaryKey: userId) else {
             return false
@@ -266,7 +266,7 @@ class RealmDataService {
         return result.withMulticolor
     }
 
-    func loadTimerValue() -> Bool {
+    func loadTimerState() -> Bool {
         guard let userId = userId,
               let result = realm.object(ofType: UserSettings.self, forPrimaryKey: userId) else {
             return false

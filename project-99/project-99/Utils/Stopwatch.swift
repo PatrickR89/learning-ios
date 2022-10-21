@@ -18,7 +18,7 @@ class Stopwatch {
         }
     }
     @Published private(set) var timeString: String = "0.0"
-    @Published private(set) var isTimerOff: Bool = !RealmDataService.shared.loadTimerValue()
+    @Published private(set) var isTimerOff: Bool = !RealmDataService.shared.loadTimerState()
 
     func startTimer() {
         timer?.cancel()

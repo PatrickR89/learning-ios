@@ -125,7 +125,7 @@ class GameViewModel {
         for symbol in currentSymbols {
             var color: UIColor = .systemBlue
 
-            if RealmDataService.shared.loadMulticolorValue() {
+            if RealmDataService.shared.loadMulticolorState() {
                 if let index = symbols.firstIndex(where: {$0 == symbol}) {
                     color = colors[index]
                 }

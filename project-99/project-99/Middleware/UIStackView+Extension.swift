@@ -94,4 +94,12 @@ extension UIStackView {
             }
         }
     }
+
+    func setupConstraints(forView view: UIView) {
+        NSLayoutConstraint.activate([
+            self.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            self.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.75)
+        ])
+    }
 }

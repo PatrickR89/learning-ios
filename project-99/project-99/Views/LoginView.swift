@@ -69,12 +69,7 @@ private extension LoginView {
         loginStackView.arrangeView(
             asColumnWithViews: [warningStackView, textFieldsStackView, buttonsStackView],
             withSpacing: 35)
-
-        NSLayoutConstraint.activate([
-            loginStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            loginStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            loginStackView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.75)
-        ])
+        loginStackView.setupConstraints(forView: self)
     }
 
     @objc func createUser() {
@@ -97,7 +92,7 @@ private extension LoginView {
 
     func setupTextField(for textField: UITextField ) {
 
-        textField.setupForInput()
+        textField.setupInView()
         textField.delegate = self
 
         if textField == nameTextField {

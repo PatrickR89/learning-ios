@@ -34,20 +34,14 @@ class MainMenuView: UIView {
     }
 
     func setupUI() {
+        self.addSubview(stackView)
         gameButton.setupInView(forView: self, withName: "New Game", andAction: #selector(openNewGame))
         statsButton.setupInView(forView: self, withName: "Stats", andAction: #selector(openStats))
         settingsButton.setupInView(forView: self, withName: "Settings", andAction: #selector(openSettings))
 
         let buttons: [UIButton] = [gameButton, statsButton, settingsButton]
-        self.addSubview(stackView)
-
         stackView.arrangeView(withButtons: buttons)
-
-        NSLayoutConstraint.activate([
-            stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            stackView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.75)
-        ])
+        stackView.setupConstraints(forView: self)
     }
 
     @objc func openSettings() {

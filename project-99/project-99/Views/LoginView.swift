@@ -51,6 +51,8 @@ class LoginView: UIView {
 private extension LoginView {
     func setupUI() {
 
+        self.addSubview(loginStackView)
+
         setupTextField(for: nameTextField)
         setupTextField(for: passwordTextField)
 
@@ -61,7 +63,6 @@ private extension LoginView {
         warningLabel.isHidden = true
         warningLabel.text = ""
 
-        self.addSubview(loginStackView)
         warningStackView.arrangeView(asColumnWithViews: [warningLabel], withSpacing: 20)
         textFieldsStackView.arrangeView(asColumnWithViews: [nameTextField, passwordTextField], withSpacing: 20)
         buttonsStackView.arrangeView(withButtons: [loginButton, createAccBtn])

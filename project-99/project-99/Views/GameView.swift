@@ -114,14 +114,7 @@ extension GameView {
             width: self.frame.width / dimensionDependance,
             height: self.frame.width / dimensionDependance)
 
-        self.addSubview(collectionView)
-        self.addSubview(remainingChancesLabel)
-        self.addSubview(timerTextLabel)
-        self.addSubview(timerCountLabel)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        remainingChancesLabel.translatesAutoresizingMaskIntoConstraints = false
-        timerTextLabel.translatesAutoresizingMaskIntoConstraints = false
-        timerCountLabel.translatesAutoresizingMaskIntoConstraints = false
+        addViews([collectionView, remainingChancesLabel, timerTextLabel, timerCountLabel])
 
         collectionView.register(GameViewCell.self, forCellWithReuseIdentifier: "image")
         collectionView.delegate = self

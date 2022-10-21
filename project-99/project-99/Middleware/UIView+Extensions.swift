@@ -43,4 +43,11 @@ extension UIView {
             imageView.centerYAnchor.constraint(equalTo: self.centerYAnchor)
         ])
     }
+
+    func addViews(_ views: [UIView]) {
+        views.forEach { view in
+            self.addSubview(view)
+            view.translatesAutoresizingMaskIntoConstraints = false
+        }
+    }
 }

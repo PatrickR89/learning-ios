@@ -44,13 +44,12 @@ class StatsViewController: UIViewController {
     }
 
     private func setupUI() {
-        view.addSubview(tableView)
+        view.addViews([tableView])
         GamesViewCell.register(in: tableView)
         PairsViewCell.register(in: tableView)
         TimesViewCell.register(in: tableView)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 20),

@@ -58,9 +58,8 @@ class LoginViewController: UIViewController {
 
 private extension LoginViewController {
     func setupUI() {
-        view.addSubview(loginView)
+        view.addViews([loginView])
         view.addLayoutGuide(keyboardLayoutGuide)
-        loginView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             keyboardLayoutGuide.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             keyboardLayoutGuide.bottomAnchor.constraint(equalTo: view.bottomAnchor),

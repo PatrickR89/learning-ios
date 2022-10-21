@@ -59,26 +59,19 @@ class GameViewCell: UICollectionViewCell {
     }
 
     func setupUI(with card: GameCard) {
-        contentView.addSubview(imageView)
+        contentView.addViews([imageView, backLabel])
 
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.tintColor = .white
         imageView.image = nil
-
-        NSLayoutConstraint.activate([
-            imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            imageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            imageView.widthAnchor.constraint(equalToConstant: contentView.frame.width * 0.9),
-            imageView.heightAnchor.constraint(equalToConstant: contentView.frame.height * 0.9)
-        ])
-
-        contentView.addSubview(backLabel)
-        backLabel.translatesAutoresizingMaskIntoConstraints = false
 
         backLabel.text = "MEMO"
         backLabel.textAlignment = .center
 
         NSLayoutConstraint.activate([
+            imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            imageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            imageView.widthAnchor.constraint(equalToConstant: contentView.frame.width * 0.9),
+            imageView.heightAnchor.constraint(equalToConstant: contentView.frame.height * 0.9),
             backLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             backLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             backLabel.heightAnchor.constraint(equalToConstant: 40),

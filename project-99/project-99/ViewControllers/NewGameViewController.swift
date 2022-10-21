@@ -42,9 +42,7 @@ class NewGameViewController: UIViewController {
     }
 
     private func setupUI() {
-        view.addSubview(tableView)
-
-        tableView.translatesAutoresizingMaskIntoConstraints = false
+        view.addViews([tableView])
         tableView.dataSource = self
         tableView.delegate = self
         NewGameViewCell.register(in: tableView)

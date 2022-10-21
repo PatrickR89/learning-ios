@@ -34,13 +34,9 @@ class MainMenuView: UIView {
     }
 
     func setupUI() {
-        gameButton.setTitle("New Game", for: .normal)
-        statsButton.setTitle("Stats", for: .normal)
-        settingsButton.setTitle("Settings", for: .normal)
-
-        settingsButton.addTarget(self, action: #selector(openSettings), for: .touchUpInside)
-        statsButton.addTarget(self, action: #selector(openStats), for: .touchUpInside)
-        gameButton.addTarget(self, action: #selector(openNewGame), for: .touchUpInside)
+        gameButton.setupInView(forView: self, withName: "New Game", andAction: #selector(openNewGame))
+        statsButton.setupInView(forView: self, withName: "Stats", andAction: #selector(openStats))
+        settingsButton.setupInView(forView: self, withName: "Settings", andAction: #selector(openSettings))
 
         let buttons: [UIButton] = [gameButton, statsButton, settingsButton]
         self.addSubview(stackView)

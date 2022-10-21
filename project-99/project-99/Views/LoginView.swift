@@ -50,20 +50,12 @@ class LoginView: UIView {
 
 private extension LoginView {
     func setupUI() {
-        let subviews = [nameTextField, passwordTextField, loginButton, createAccBtn, warningLabel]
-        for subview in subviews {
-            self.addSubview(subview)
-            subview.translatesAutoresizingMaskIntoConstraints = false
-        }
 
-        setupTextView(for: nameTextField)
-        setupTextView(for: passwordTextField)
+        setupTextField(for: nameTextField)
+        setupTextField(for: passwordTextField)
 
-        loginButton.setTitle("Login", for: .normal)
-        createAccBtn.setTitle("Create user", for: .normal)
-
-        createAccBtn.addTarget(self, action: #selector(createUser), for: .touchUpInside)
-        loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
+        loginButton.setupInView(forView: self, withName: "Login", andAction: #selector(login))
+        createAccBtn.setupInView(forView: self, withName: "Create user", andAction: #selector(createUser))
 
         warningLabel.textColor = .red
         warningLabel.isHidden = true
@@ -102,7 +94,7 @@ private extension LoginView {
         self.warningLabel.isHidden = true
     }
 
-    func setupTextView(for textField: UITextField ) {
+    func setupTextField(for textField: UITextField ) {
 
         textField.setupForInput()
         textField.delegate = self

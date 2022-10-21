@@ -10,6 +10,7 @@
 		5116A7E557C2E736DFDA53F0 /* Pods_project_99.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9513C54497AD86A08D7E801 /* Pods_project_99.framework */; };
 		CD5563F329028ACC00945A87 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5563F229028ACB00945A87 /* UITextField+Extension.swift */; };
 		CD5563F529028E5400945A87 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5563F429028E5400945A87 /* UIButton+Extension.swift */; };
+		CD5563F729029BC900945A87 /* FetchSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5563F629029BC900945A87 /* FetchSymbols.swift */; };
 		CD88AF5D28D2F0B200EFCBBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF5C28D2F0B200EFCBBB /* AppDelegate.swift */; };
 		CD88AF5F28D2F0B200EFCBBB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF5E28D2F0B200EFCBBB /* SceneDelegate.swift */; };
 		CD88AF6128D2F0B200EFCBBB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF6028D2F0B200EFCBBB /* LoginViewController.swift */; };
@@ -91,6 +92,7 @@
 		C9513C54497AD86A08D7E801 /* Pods_project_99.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_project_99.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD5563F229028ACB00945A87 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		CD5563F429028E5400945A87 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		CD5563F629029BC900945A87 /* FetchSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchSymbols.swift; sourceTree = "<group>"; };
 		CD88AF5928D2F0B200EFCBBB /* project-99.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "project-99.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD88AF5C28D2F0B200EFCBBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD88AF5E28D2F0B200EFCBBB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 			children = (
 				CD88B02528F6984100EFCBBB /* Stopwatch.swift */,
 				CD88B02728F9269200EFCBBB /* KeyboardLayoutObserver.swift */,
+				CD5563F629029BC900945A87 /* FetchSymbols.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -642,6 +645,7 @@
 				CD88AF8328D30F9600EFCBBB /* Levels.swift in Sources */,
 				CD88AFFC28DD825F00EFCBBB /* LevelsTime.swift in Sources */,
 				CD88B00328DD9C0D00EFCBBB /* NewGameViewController.swift in Sources */,
+				CD5563F729029BC900945A87 /* FetchSymbols.swift in Sources */,
 				CD88AFEF28DC49E400EFCBBB /* StatsViewModelDelegate.swift in Sources */,
 				CD88AFF828DC6D6B00EFCBBB /* TimesSubviewViewCell.swift in Sources */,
 				CD88AFB128D4AE7D00EFCBBB /* ThemeContainer.swift in Sources */,

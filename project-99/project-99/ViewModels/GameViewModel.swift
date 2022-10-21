@@ -36,7 +36,7 @@ class GameViewModel {
     private var turnsLeft: Int = 0 {
         didSet {
             remainingTurnsValueDidChange()
-            endGameWithLose()
+            endGameIfTurnsDepleted()
         }
     }
     private var turnsCountdown: Bool = false {
@@ -71,16 +71,9 @@ class GameViewModel {
         turnsLeftObserver(turnsCountdown, turnsLeft)
     }
 
-    private func fetchSymbols() -> [String] {
-        guard let symbolUrl = Bundle.main.url(forResource: "symbolList", withExtension: ".txt"),
-              let symbols = try? String(contentsOf: symbolUrl) else {fatalError("Symbols for game not found")}
-        let cardSymbols = symbols.components(separatedBy: "\n").shuffled()
-        return cardSymbols
-    }
-
     private func setupSymbols(gameDifficulty: Level) {
 
-        let cardSymbols = fetchSymbols()
+        let cardSymbols = FetchSymbols.getSymbolsFromResource()
         switch gameDifficulty {
 
         case .veryEasy:
@@ -153,7 +146,7 @@ class GameViewModel {
         remainingTurnsValueDidChange()
     }
 
-    func countCardsLength() -> Int {
+    func provideNumberOfCards() -> Int {
         return cardsDeck.count
     }
 
@@ -200,10 +193,6 @@ class GameViewModel {
         selectedCardTwo = nil
     }
 
-    func keepCardRevealed(for card: GameCard) -> Bool {
-        return card.isVisible || card.isPaired
-    }
-
     func compareCards() {
         guard let selectedCardOne = selectedCardOne,
               let selectedCardTwo = selectedCardTwo else {
@@ -227,7 +216,7 @@ class GameViewModel {
             removedPairs += 1
             RealmDataService.shared.updatePairedCards()
             resetCardsSelection()
-            endGameIfWin()
+            endGameIfCardsDepleted()
         } else {
 
             if turnsCountdown {
@@ -240,14 +229,14 @@ class GameViewModel {
         }
     }
 
-    private func endGameWithLose() {
+    private func endGameIfTurnsDepleted() {
         if turnsCountdown && turnsLeft <= 0 {
             stopwatch.resetTimer()
             delegate?.gameViewModelDidEndGame(self, with: .gameLost)
         }
     }
 
-    private func endGameIfWin() {
+    private func endGameIfCardsDepleted() {
         if removedPairs == cardsDeck.count / 2 && removedPairs != 0 {
             RealmDataService.shared.updateGamesWon()
             stopwatch.stopAndSaveTime(for: gameLevel)

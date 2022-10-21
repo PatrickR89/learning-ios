@@ -149,7 +149,7 @@ extension SettingsViewModel {
             let alertController = UIAlertController().createPasswordVerificationAlertController(
                 in: viewController,
                 with: self,
-                for: change)
+                forChangeInAccount: change)
             return alertController
         }
 
@@ -161,7 +161,7 @@ extension SettingsViewModel {
     func addChangeAccountAlertController(
         in viewController: UIViewController,
         for change: AccountChanges) -> UIAlertController {
-            let alertController = UIAlertController().editAccountAlertController(
+            let alertController = UIAlertController().createEditAccountAlertController(
                 in: viewController,
                 with: self,
                 for: change)

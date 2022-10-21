@@ -11,7 +11,7 @@ extension UIAlertController {
     func createPasswordVerificationAlertController(
         in viewController: UIViewController,
         with viewModel: SettingsViewModel,
-        for change: AccountChanges) -> UIAlertController {
+        forChangeInAccount change: AccountChanges) -> UIAlertController {
 
             let alertController = UIAlertController(
                 title: "Enter your password",
@@ -45,7 +45,7 @@ extension UIAlertController {
         return alertController
     }
 
-    func editAccountAlertController(
+    func createEditAccountAlertController(
         in viewController: UIViewController,
         with viewModel: SettingsViewModel,
         for change: AccountChanges) -> UIAlertController {

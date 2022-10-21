@@ -75,7 +75,7 @@ class StatCellBottomSubview: UIView {
 
         let views: [UIView] = [totalsView, winsView, rateView]
 
-        labelStack.arrangeView(asColumnWith: views)
+        labelStack.arrangeView(asColumnWithViews: views)
 
         switch cellType {
         case .games:

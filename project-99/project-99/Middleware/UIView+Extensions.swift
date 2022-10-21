@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIView {
-    func setupCellViewUI(withLabels titleLabel: UILabel, and valueLabel: UILabel?) {
+    func setupViewInCell(withLabels titleLabel: UILabel, and valueLabel: UILabel?) {
         self.addSubview(titleLabel)
 
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -32,7 +32,7 @@ extension UIView {
         }
     }
 
-    func setupCellArrowImageView(for imageView: UIImageView) {
+    func setupArrowImageViewInCell(for imageView: UIImageView) {
         self.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
 

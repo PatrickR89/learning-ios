@@ -49,26 +49,26 @@ extension UITableViewCell {
         ])
     }
 
-    func setupUI(withExpandableView stack: UIStackView, withBottomHidden hidden: Bool) {
-        stack.removeFromSuperview()
-        self.addSubview(stack)
-        stack.translatesAutoresizingMaskIntoConstraints = false
+    func setupUI(withExpandableView stackView: UIStackView, withBottomHiddenState isHidden: Bool) {
+        stackView.removeFromSuperview()
+        self.addSubview(stackView)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
 
-        if hidden {
-            stack.distribution = .fillEqually
-            stack.spacing = 0
+        if isHidden {
+            stackView.distribution = .fillEqually
+            stackView.spacing = 0
         } else {
-            stack.distribution = .equalSpacing
-            stack.spacing = 30
+            stackView.distribution = .equalSpacing
+            stackView.spacing = 30
         }
 
-        stack.axis = .vertical
-        stack.alignment = .top
+        stackView.axis = .vertical
+        stackView.alignment = .top
 
         NSLayoutConstraint.activate([
-            stack.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            stack.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
-            stack.widthAnchor.constraint(equalTo: self.widthAnchor)
+            stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            stackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
+            stackView.widthAnchor.constraint(equalTo: self.widthAnchor)
         ])
     }
 }

@@ -32,7 +32,7 @@ class NewGameViewCell: UITableViewCell {
         livesLabel.text = "Lives: Unlimited"
     }
 
-    func setupLevelLabel(with level: Level) {
+    func setupLevelLabelText(with level: Level) {
         switch level {
         case .veryEasy:
             levelLabel.text = "Very Easy"

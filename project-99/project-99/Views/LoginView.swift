@@ -10,10 +10,14 @@ import Combine
 
 class LoginView: UIView {
     private var warningLabel = UILabel()
-    private var nameField = UITextField()
-    private var passwordField = UITextField()
+    private var nameTextField = UITextField()
+    private var passwordTextField = UITextField()
     private var loginButton = UIButton()
     private var createAccBtn = UIButton()
+    private var loginStackView = UIStackView()
+    private var textFieldsStackView = UIStackView()
+    private var buttonsStackView = UIStackView()
+    private var warningStackView = UIStackView()
     private var viewModel: LoginViewModel
     private var isLoggedIn: AnyCancellable?
 
@@ -27,10 +31,10 @@ class LoginView: UIView {
 
         use(AppTheme.self) {
             $0.backgroundColor = $1.backgroundColor
-            $0.passwordField.backgroundColor = $1.textFieldBackground
-            $0.nameField.backgroundColor = $1.textFieldBackground
-            $0.passwordField.textColor = $1.textColor
-            $0.nameField.textColor = $1.textColor
+            $0.passwordTextField.backgroundColor = $1.textFieldBackground
+            $0.nameTextField.backgroundColor = $1.textFieldBackground
+            $0.passwordTextField.textColor = $1.textColor
+            $0.nameTextField.textColor = $1.textColor
             $0.reloadInputViews()
         }
     }
@@ -46,14 +50,14 @@ class LoginView: UIView {
 
 private extension LoginView {
     func setupUI() {
-        let subviews = [nameField, passwordField, loginButton, createAccBtn, warningLabel]
+        let subviews = [nameTextField, passwordTextField, loginButton, createAccBtn, warningLabel]
         for subview in subviews {
             self.addSubview(subview)
             subview.translatesAutoresizingMaskIntoConstraints = false
         }
 
-        setupTextView(for: nameField)
-        setupTextView(for: passwordField)
+        setupTextView(for: nameTextField)
+        setupTextView(for: passwordTextField)
 
         loginButton.setTitle("Login", for: .normal)
         createAccBtn.setTitle("Create user", for: .normal)
@@ -61,70 +65,49 @@ private extension LoginView {
         createAccBtn.addTarget(self, action: #selector(createUser), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
 
-        loginButton.backgroundColor = .systemBlue
-        createAccBtn.backgroundColor = .systemBlue
-
-        loginButton.layer.cornerRadius = 4
-        createAccBtn.layer.cornerRadius = 4
-
         warningLabel.textColor = .red
         warningLabel.isHidden = true
         warningLabel.text = ""
 
-        activateConstraints()
-    }
+        self.addSubview(loginStackView)
+        warningStackView.arrangeView(asColumnWithViews: [warningLabel], withSpacing: 20)
+        textFieldsStackView.arrangeView(asColumnWithViews: [nameTextField, passwordTextField], withSpacing: 20)
+        buttonsStackView.arrangeView(withButtons: [loginButton, createAccBtn])
+        loginStackView.arrangeView(
+            asColumnWithViews: [warningStackView, textFieldsStackView, buttonsStackView],
+            withSpacing: 35)
 
-    func activateConstraints() {
         NSLayoutConstraint.activate([
-            nameField.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -50),
-            nameField.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            nameField.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.75),
-            nameField.heightAnchor.constraint(equalToConstant: 35),
-            passwordField.topAnchor.constraint(equalTo: nameField.bottomAnchor, constant: 20),
-            passwordField.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            passwordField.widthAnchor.constraint(equalTo: nameField.widthAnchor),
-            passwordField.heightAnchor.constraint(equalToConstant: 35),
-            loginButton.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant: 40),
-            loginButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            loginButton.widthAnchor.constraint(equalTo: nameField.widthAnchor),
-            createAccBtn.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 20),
-            createAccBtn.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            createAccBtn.widthAnchor.constraint(equalTo: nameField.widthAnchor),
-            warningLabel.bottomAnchor.constraint(equalTo: nameField.topAnchor, constant: -30),
-            warningLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            warningLabel.widthAnchor.constraint(equalTo: nameField.widthAnchor),
-            warningLabel.heightAnchor.constraint(equalTo: nameField.heightAnchor)
+            loginStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            loginStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            loginStackView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.75)
         ])
     }
 
     @objc func createUser() {
-        self.nameField.endEditing(true)
-        self.passwordField.endEditing(true)
+        self.nameTextField.endEditing(true)
+        self.passwordTextField.endEditing(true)
         viewModel.createNewUser()
-        self.nameField.text = ""
-        self.passwordField.text = ""
+        self.nameTextField.text = ""
+        self.passwordTextField.text = ""
+        self.warningLabel.isHidden = true
     }
 
     @objc func login() {
-        self.nameField.endEditing(true)
-        self.passwordField.endEditing(true)
+        self.nameTextField.endEditing(true)
+        self.passwordTextField.endEditing(true)
         viewModel.login()
-        self.nameField.text = ""
-        self.passwordField.text = ""
+        self.nameTextField.text = ""
+        self.passwordTextField.text = ""
+        self.warningLabel.isHidden = true
     }
 
     func setupTextView(for textField: UITextField ) {
 
-        textField.textAlignment = .left
-        textField.textColor = .black
+        textField.setupForInput()
         textField.delegate = self
-        textField.autocorrectionType = .no
-        textField.autocapitalizationType = .none
-        textField.layer.cornerRadius = 4
-        textField.layer.borderWidth = 1
-        textField.layer.borderColor = UIColor.lightGray.cgColor
 
-        if textField == nameField {
+        if textField == nameTextField {
             textField.placeholder = " Enter username..."
         } else {
             textField.placeholder = " Enter password..."
@@ -155,18 +138,18 @@ private extension LoginView {
 
 extension LoginView {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.nameField.endEditing(true)
-        self.passwordField.endEditing(true)
+        self.nameTextField.endEditing(true)
+        self.passwordTextField.endEditing(true)
     }
 }
 
 extension LoginView: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if textField == nameField {
+        if textField == nameTextField {
             viewModel.usernameChanged(textField.text ?? "")
         }
 
-        if textField == passwordField {
+        if textField == passwordTextField {
             viewModel.passwordChanged(textField.text ?? "")
         }
     }

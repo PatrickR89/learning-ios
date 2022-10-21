@@ -35,7 +35,7 @@ class TimesSubviewViewCell: UITableViewCell {
     }
 
     func addLabel(with title: String, and value: String) {
-        labels.addTitle(title)
-        labels.addValue(value)
+        labels.addTitleLabelText(title)
+        labels.addValueLabelText(value)
     }
 }

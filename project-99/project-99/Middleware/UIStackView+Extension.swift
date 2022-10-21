@@ -10,6 +10,13 @@ import UIKit
 extension UIStackView {
     func arrangeView(withButtons buttons: [UIButton]) {
 
+        self.translatesAutoresizingMaskIntoConstraints = false
+
+        self.axis = .vertical
+        self.distribution = .equalCentering
+        self.alignment = .top
+        self.spacing = 20
+
         for button in buttons {
             button.backgroundColor = .systemBlue
             button.layer.cornerRadius = 4
@@ -62,23 +69,32 @@ extension UIStackView {
         ])
     }
 
-    func arrangeView(asColumnWithViews viewRows: [UIView]) {
+    func arrangeView(asColumnWithViews viewRows: [UIView], withSpacing spacing: CGFloat) {
 
         self.translatesAutoresizingMaskIntoConstraints = false
 
         self.axis = .vertical
-        self.distribution = .equalCentering
-        self.alignment = .top
-        self.spacing = 20
+        self.distribution = .fillEqually
+        self.spacing = spacing
+
+        if viewRows.count < 2 {
+            self.alignment = .center
+        } else {
+            self.alignment = .top
+        }
 
         for row in viewRows {
             self.addArrangedSubview(row)
 
             NSLayoutConstraint.activate([
                 row.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-                row.widthAnchor.constraint(equalTo: self.widthAnchor),
-                row.heightAnchor.constraint(equalToConstant: 30)
+                row.widthAnchor.constraint(equalTo: self.widthAnchor)
             ])
+
+            if let row = row as? UITextField {
+                NSLayoutConstraint.activate([
+                    row.heightAnchor.constraint(equalToConstant: 35)])
+            }
         }
     }
 }

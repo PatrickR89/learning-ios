@@ -151,13 +151,13 @@ extension SettingsViewController: UITableViewDataSource {
         case .multicolor:
             let cell = MulticolorViewCell.dequeue(in: tableView, for: indexPath)
             if let withMulticolor = viewModel.returnMulticolorState() {
-                cell.changeMulticolorState(withMulticolor)
+                cell.multicolorStateDidChange(withNewState: withMulticolor)
             }
             return cell
         case .timer:
             let cell = TimerViewCell.dequeue(in: tableView, for: indexPath)
             if let withTimer = viewModel.returnTimerState() {
-                cell.changeTimerState(withTimer)
+                cell.timerStateDidChange(withNewState: withTimer)
             }
             return cell
         case .username:

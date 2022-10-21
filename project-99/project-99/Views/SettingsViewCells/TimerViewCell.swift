@@ -32,8 +32,8 @@ class TimerViewCell: UITableViewCell {
         valueLabel.text = "off"
     }
 
-    func changeTimerState(_ withTimer: Bool) {
-        if withTimer {
+    func timerStateDidChange(withNewState state: Bool) {
+        if state {
             valueLabel.text = "on"
         } else {
             valueLabel.text = "off"

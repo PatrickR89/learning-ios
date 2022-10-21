@@ -69,7 +69,7 @@ extension StatsViewController: UITableViewDataSource {
             if (tableView.cellForRow(at: indexPath) as? TimesViewCell) != nil {
                 return 350
             } else {
-                return 200
+                return 180
             }
         }
     }

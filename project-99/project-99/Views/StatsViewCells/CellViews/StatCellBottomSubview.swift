@@ -45,8 +45,8 @@ class StatCellBottomSubview: UIView {
             .sink(receiveValue: { [weak self] values in
                 guard let self = self,
                       let values = values else {return}
-                self.totalsView.addValue("\(values.totalValue)")
-                self.winsView.addValue("\(values.positiveValue)")
+                self.totalsView.addValueLabelText("\(values.totalValue)")
+                self.winsView.addValueLabelText("\(values.positiveValue)")
 
                 if values.totalValue != 0 {
                     let rate: Double = (Double(values.positiveValue) / Double(values.totalValue)) * 100.00
@@ -54,10 +54,10 @@ class StatCellBottomSubview: UIView {
                     formatter.numberStyle = .decimal
                     formatter.maximumFractionDigits = 2
                     if let formattedRate = formatter.string(from: rate as NSNumber) {
-                        self.rateView.addValue("\(formattedRate)%")
+                        self.rateView.addValueLabelText("\(formattedRate)%")
                     }
                 } else {
-                    self.rateView.addValue("0.00%")
+                    self.rateView.addValueLabelText("0.00%")
                 }
             })
             .store(in: &cancellables)
@@ -75,17 +75,17 @@ class StatCellBottomSubview: UIView {
 
         let views: [UIView] = [totalsView, winsView, rateView]
 
-        labelStack.arrangeView(asColumnWithViews: views)
+        labelStack.arrangeView(asColumnWithViews: views, withSpacing: 35)
 
         switch cellType {
         case .games:
-            totalsView.addTitle("Games played:")
-            winsView.addTitle("Games won:")
-            rateView.addTitle("Success rate:")
+            totalsView.addTitleLabelText("Games played:")
+            winsView.addTitleLabelText("Games won:")
+            rateView.addTitleLabelText("Success rate:")
         case .pairs:
-            totalsView.addTitle("Total pairs:")
-            winsView.addTitle("Pairs removed:")
-            rateView.addTitle("Success rate:")
+            totalsView.addTitleLabelText("Total pairs:")
+            winsView.addTitleLabelText("Pairs removed:")
+            rateView.addTitleLabelText("Success rate:")
         case .gameTimes:
             break
         }

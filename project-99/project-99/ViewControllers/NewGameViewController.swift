@@ -69,7 +69,7 @@ extension NewGameViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = NewGameViewCell.dequeue(in: tableView, for: indexPath)
-        cell.setupLevelLabel(with: viewModel.loadLevel(at: indexPath.row))
+        cell.setupLevelLabelText(with: viewModel.loadLevel(at: indexPath.row))
         return cell
     }
 }

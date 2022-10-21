@@ -32,8 +32,8 @@ class MulticolorViewCell: UITableViewCell {
         valueLabel.text = "no"
     }
 
-    func changeMulticolorState(_ withMulticolor: Bool) {
-        if withMulticolor {
+    func multicolorStateDidChange(withNewState state: Bool) {
+        if state {
             valueLabel.text = "yes"
         } else {
             valueLabel.text = "no"

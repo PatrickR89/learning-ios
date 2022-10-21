@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5116A7E557C2E736DFDA53F0 /* Pods_project_99.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9513C54497AD86A08D7E801 /* Pods_project_99.framework */; };
+		CD5563F329028ACC00945A87 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5563F229028ACB00945A87 /* UITextField+Extension.swift */; };
 		CD88AF5D28D2F0B200EFCBBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF5C28D2F0B200EFCBBB /* AppDelegate.swift */; };
 		CD88AF5F28D2F0B200EFCBBB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF5E28D2F0B200EFCBBB /* SceneDelegate.swift */; };
 		CD88AF6128D2F0B200EFCBBB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF6028D2F0B200EFCBBB /* LoginViewController.swift */; };
@@ -87,6 +88,7 @@
 
 /* Begin PBXFileReference section */
 		C9513C54497AD86A08D7E801 /* Pods_project_99.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_project_99.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD5563F229028ACB00945A87 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		CD88AF5928D2F0B200EFCBBB /* project-99.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "project-99.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD88AF5C28D2F0B200EFCBBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD88AF5E28D2F0B200EFCBBB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 				CD88AFA528D490DC00EFCBBB /* UITableViewCell+Extension.swift */,
 				CD88AFBC28D86ED700EFCBBB /* UIAlertController+Extensions.swift */,
 				CD88AFD428D9950700EFCBBB /* UIView+Extensions.swift */,
+				CD5563F229028ACB00945A87 /* UITextField+Extension.swift */,
 			);
 			path = Middleware;
 			sourceTree = "<group>";
@@ -641,6 +644,7 @@
 				CD88AFB128D4AE7D00EFCBBB /* ThemeContainer.swift in Sources */,
 				CD88AFAF28D497E400EFCBBB /* SettingsViewModel.swift in Sources */,
 				CD88AF7628D306FB00EFCBBB /* User.swift in Sources */,
+				CD5563F329028ACC00945A87 /* UITextField+Extension.swift in Sources */,
 				CD88AF9F28D46C9200EFCBBB /* MainMenuView.swift in Sources */,
 				CD88AF9D28D46C7A00EFCBBB /* MainMenuViewModel.swift in Sources */,
 				CD88AFBB28D864EF00EFCBBB /* PasswordViewCell.swift in Sources */,

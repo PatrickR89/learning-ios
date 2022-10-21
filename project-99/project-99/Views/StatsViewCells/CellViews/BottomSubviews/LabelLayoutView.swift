@@ -37,11 +37,11 @@ class LabelLayoutView: UIView {
         ])
     }
 
-    func addTitle(_ title: String) {
+    func addTitleLabelText(_ title: String) {
         self.titleLabel.text = title
     }
 
-    func addValue(_ value: String) {
+    func addValueLabelText(_ value: String) {
         self.valueLabel.text = value
     }
 }

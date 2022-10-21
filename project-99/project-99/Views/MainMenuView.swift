@@ -44,12 +44,7 @@ class MainMenuView: UIView {
 
         let buttons: [UIButton] = [gameButton, statsButton, settingsButton]
         self.addSubview(stackView)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
 
-        stackView.axis = .vertical
-        stackView.distribution = .equalCentering
-        stackView.alignment = .top
-        stackView.spacing = 20
         stackView.arrangeView(withButtons: buttons)
 
         NSLayoutConstraint.activate([

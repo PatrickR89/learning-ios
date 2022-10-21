@@ -11,7 +11,7 @@ import Combine
 class StatCellTopSubview: UIView {
 
     private let titleLabel = UILabel()
-    private let arrowView = UIImageView()
+    private let arrowImageView = UIImageView()
     let viewModel: StatCellTopViewModel
     private var cancellables = [AnyCancellable]()
 
@@ -39,9 +39,9 @@ class StatCellTopSubview: UIView {
 
     func setupUI() {
         self.setupViewInCell(withLabels: titleLabel, and: nil)
-        self.setupArrowImageViewInCell(for: arrowView)
+        self.setupArrowImageViewInCell(for: arrowImageView)
         titleLabel.text = "Games"
-        arrowView.image = UIImage(systemName: "chevron.down")
+        arrowImageView.image = UIImage(systemName: "chevron.down")
 
     }
 
@@ -65,9 +65,9 @@ class StatCellTopSubview: UIView {
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] isExtended in
                 if !isExtended {
-                    self?.arrowView.image = UIImage(systemName: "chevron.up")
+                    self?.arrowImageView.image = UIImage(systemName: "chevron.up")
                 } else {
-                    self?.arrowView.image = UIImage(systemName: "chevron.down")
+                    self?.arrowImageView.image = UIImage(systemName: "chevron.down")
                 }
             })
             .store(in: &cancellables)

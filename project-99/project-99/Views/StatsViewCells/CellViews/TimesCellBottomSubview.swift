@@ -61,11 +61,11 @@ class TimesCellBottomSubview: UIView {
 extension TimesCellBottomSubview: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.countTimesLength()
+        return viewModel.provideTimesLength()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let time = viewModel.returnTimesElement(for: indexPath.row)
+        let time = viewModel.provideSingleTimeByIndex(for: indexPath.row)
         let cell = TimesSubviewViewCell.dequeue(in: tableView, for: indexPath)
         let tempTime = String(format: "%.2f", time.time)
         cell.addLabel(with: viewModel.converTimeTitle(for: time.title), and: "\(tempTime)")

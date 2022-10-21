@@ -20,7 +20,7 @@ class GameVCViewModel {
         self.playGameViewModel.delegate = self
     }
 
-    func sendGameLevel() -> Level {
+    func provideGameLevel() -> Level {
         return game
     }
 

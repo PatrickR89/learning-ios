@@ -1,5 +1,5 @@
 //
-//  BestTimes.swift
+//  BestTime.swift
 //  project-99
 //
 //  Created by Patrick on 22.09.2022..
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct BestTimes {
+struct BestTime {
     var title: Level
     var time: Double
 }

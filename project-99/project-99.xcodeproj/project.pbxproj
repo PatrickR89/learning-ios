@@ -64,7 +64,7 @@
 		CD88AFF328DC5F6F00EFCBBB /* TimesCellBottomSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFF228DC5F6F00EFCBBB /* TimesCellBottomSubview.swift */; };
 		CD88AFF628DC601500EFCBBB /* LabelLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFF528DC601500EFCBBB /* LabelLayoutView.swift */; };
 		CD88AFF828DC6D6B00EFCBBB /* TimesSubviewViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFF728DC6D6B00EFCBBB /* TimesSubviewViewCell.swift */; };
-		CD88AFFA28DC71D500EFCBBB /* BestTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFF928DC71D500EFCBBB /* BestTimes.swift */; };
+		CD88AFFA28DC71D500EFCBBB /* BestTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFF928DC71D500EFCBBB /* BestTime.swift */; };
 		CD88AFFC28DD825F00EFCBBB /* LevelsTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFFB28DD825F00EFCBBB /* LevelsTime.swift */; };
 		CD88AFFF28DD877A00EFCBBB /* TimesSubviewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFFE28DD877A00EFCBBB /* TimesSubviewCellViewModel.swift */; };
 		CD88B00128DD95B100EFCBBB /* TimesCellBottomViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B00028DD95B100EFCBBB /* TimesCellBottomViewModelDelegate.swift */; };
@@ -148,7 +148,7 @@
 		CD88AFF228DC5F6F00EFCBBB /* TimesCellBottomSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesCellBottomSubview.swift; sourceTree = "<group>"; };
 		CD88AFF528DC601500EFCBBB /* LabelLayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelLayoutView.swift; sourceTree = "<group>"; };
 		CD88AFF728DC6D6B00EFCBBB /* TimesSubviewViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesSubviewViewCell.swift; sourceTree = "<group>"; };
-		CD88AFF928DC71D500EFCBBB /* BestTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestTimes.swift; sourceTree = "<group>"; };
+		CD88AFF928DC71D500EFCBBB /* BestTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestTime.swift; sourceTree = "<group>"; };
 		CD88AFFB28DD825F00EFCBBB /* LevelsTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelsTime.swift; sourceTree = "<group>"; };
 		CD88AFFE28DD877A00EFCBBB /* TimesSubviewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesSubviewCellViewModel.swift; sourceTree = "<group>"; };
 		CD88B00028DD95B100EFCBBB /* TimesCellBottomViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesCellBottomViewModelDelegate.swift; sourceTree = "<group>"; };
@@ -405,7 +405,7 @@
 			isa = PBXGroup;
 			children = (
 				CD88AFDC28DAEEB600EFCBBB /* Statistics.swift */,
-				CD88AFF928DC71D500EFCBBB /* BestTimes.swift */,
+				CD88AFF928DC71D500EFCBBB /* BestTime.swift */,
 			);
 			path = Stats;
 			sourceTree = "<group>";
@@ -691,7 +691,7 @@
 				CD88AFFF28DD877A00EFCBBB /* TimesSubviewCellViewModel.swift in Sources */,
 				CD88AF9128D3254500EFCBBB /* LoginView.swift in Sources */,
 				CD88AFB328D83E0700EFCBBB /* AppTheme.swift in Sources */,
-				CD88AFFA28DC71D500EFCBBB /* BestTimes.swift in Sources */,
+				CD88AFFA28DC71D500EFCBBB /* BestTime.swift in Sources */,
 				CD88B01D28F5402900EFCBBB /* RealmDataService.swift in Sources */,
 				CD88B00C28DDA74C00EFCBBB /* GameVCViewModel.swift in Sources */,
 				CD88AF9428D450D300EFCBBB /* RealmDataProvider.swift in Sources */,

@@ -10,7 +10,7 @@ import Combine
 
 class TimesCellBottomViewModel {
 
-    @Published private(set) var times = [BestTimes]()
+    @Published private(set) var times = [BestTime]()
 
     private var isViewHidden: Bool = true {
         didSet {
@@ -23,18 +23,18 @@ class TimesCellBottomViewModel {
     func loadTimes() {
         let result = RealmDataService.shared.loadLevelTimes()
 
-        times = [BestTimes(title: .veryEasy, time: result.veryEasy), BestTimes(title: .easy, time: result.easy),
-                 BestTimes(title: .mediumHard, time: result.mediumHard), BestTimes(title: .hard, time: result.hard),
-                 BestTimes(title: .veryHard, time: result.veryHard),
-                 BestTimes(title: .emotionalDamage, time: result.emotionalDamage)
+        times = [BestTime(title: .veryEasy, time: result.veryEasy), BestTime(title: .easy, time: result.easy),
+                 BestTime(title: .mediumHard, time: result.mediumHard), BestTime(title: .hard, time: result.hard),
+                 BestTime(title: .veryHard, time: result.veryHard),
+                 BestTime(title: .emotionalDamage, time: result.emotionalDamage)
         ]
     }
 
-    func countTimesLength() -> Int {
+    func provideTimesLength() -> Int {
         return times.count
     }
 
-    func returnTimesElement(for index: Int) -> BestTimes {
+    func provideSingleTimeByIndex(for index: Int) -> BestTime {
 
         return times[index]
     }

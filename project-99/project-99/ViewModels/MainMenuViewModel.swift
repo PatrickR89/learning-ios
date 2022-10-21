@@ -20,7 +20,7 @@ extension MainMenuViewModel {
         return user.name
     }
 
-    func returnUser() -> User {
+    func provideUser() -> User {
         return user
     }
 }

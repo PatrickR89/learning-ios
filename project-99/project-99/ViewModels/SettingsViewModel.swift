@@ -10,6 +10,7 @@ import Combine
 
 class SettingsViewModel {
     private var user: User
+
     @Published private(set) var newUsername: String? {
         didSet {
             guard let newUsername = newUsername else {
@@ -18,6 +19,7 @@ class SettingsViewModel {
             RealmDataService.shared.changeUsername(with: newUsername)
         }
     }
+
     private var newPassword: String? {
         didSet {
             guard let newPassword = newPassword else {
@@ -69,23 +71,19 @@ class SettingsViewModel {
 extension SettingsViewModel {
     // MARK: Return values
 
-    func returnId() -> UUID {
-        return user.id
-    }
-
-    func returnTheme() -> ThemeChoice? {
+    func provideUserTheme() -> ThemeChoice? {
         guard let theme = userTheme else {return nil}
         return theme
     }
 
-    func returnMulticolorState() -> Bool? {
+    func provideUserMulticolorState() -> Bool? {
         guard let withMulticolor = withMulticolor else {
             return nil
         }
         return withMulticolor
     }
 
-    func returnTimerState() -> Bool? {
+    func provideUserTimerState() -> Bool? {
         guard let withTimer = withTimer else {
             return nil
         }
@@ -127,7 +125,7 @@ extension SettingsViewModel {
         self.newPassword = password
     }
 
-    func deleteAccount() {
+    func userDidDeleteAccount() {
         delegate?.settingsViewModelDidDeleteAccount(self)
     }
 

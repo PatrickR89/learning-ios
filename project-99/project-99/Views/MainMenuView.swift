@@ -45,14 +45,14 @@ class MainMenuView: UIView {
     }
 
     @objc func openSettings() {
-        delegate?.mainMenuView(self, didTapOnSettingsForUser: viewModel.returnUser())
+        delegate?.mainMenuView(self, didTapOnSettingsForUser: viewModel.provideUser())
     }
 
     @objc func openStats() {
-        delegate?.mainMenuView(self, didTapOnStatsForUser: viewModel.returnUser())
+        delegate?.mainMenuView(self, didTapOnStatsForUser: viewModel.provideUser())
     }
 
     @objc func openNewGame() {
-        delegate?.mainMenuView(self, didTapOnNewGameForUser: viewModel.returnUser())
+        delegate?.mainMenuView(self, didTapOnNewGameForUser: viewModel.provideUser())
     }
 }

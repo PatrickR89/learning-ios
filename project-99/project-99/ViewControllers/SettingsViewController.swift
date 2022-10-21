@@ -143,19 +143,19 @@ extension SettingsViewController: UITableViewDataSource {
 
         case .theme:
             let cell = ThemeTableViewCell.dequeue(in: tableView, for: indexPath)
-            if let theme = viewModel.returnTheme() {
+            if let theme = viewModel.provideUserTheme() {
                 cell.changeValue(with: theme)
             }
             return cell
         case .multicolor:
             let cell = MulticolorViewCell.dequeue(in: tableView, for: indexPath)
-            if let withMulticolor = viewModel.returnMulticolorState() {
+            if let withMulticolor = viewModel.provideUserMulticolorState() {
                 cell.multicolorStateDidChange(withNewState: withMulticolor)
             }
             return cell
         case .timer:
             let cell = TimerViewCell.dequeue(in: tableView, for: indexPath)
-            if let withTimer = viewModel.returnTimerState() {
+            if let withTimer = viewModel.provideUserTimerState() {
                 cell.timerStateDidChange(withNewState: withTimer)
             }
             return cell

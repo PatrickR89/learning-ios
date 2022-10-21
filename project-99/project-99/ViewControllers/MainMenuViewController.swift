@@ -18,8 +18,8 @@ class MainMenuViewController: UIViewController {
     init(with viewModel: MainMenuViewModel) {
         self.viewModel = viewModel
         self.menuView = MainMenuView(with: viewModel)
-        self.settingsViewModel = SettingsViewModel(forUser: viewModel.returnUser())
-        self.statsViewModel = StatsViewModel(for: viewModel.returnUser())
+        self.settingsViewModel = SettingsViewModel(forUser: viewModel.provideUser())
+        self.statsViewModel = StatsViewModel(for: viewModel.provideUser())
 
         super.init(nibName: nil, bundle: nil)
         setupUI()

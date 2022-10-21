@@ -83,7 +83,7 @@ extension UIAlertController {
                         guard let input = alertController?.textFields?[0].text else {return}
                         viewModel?.userDidEditPassword(with: input)
                     case .delete:
-                        viewModel?.deleteAccount()
+                        viewModel?.userDidDeleteAccount()
                     }
                 }
 

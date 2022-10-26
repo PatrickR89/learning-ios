@@ -10,13 +10,13 @@ import Combine
 
 class GameVCViewModel {
     private let game: Level
-    private var playGameViewModel: GameViewModel
+    private var playGameViewModel: GamePlayViewModel
 
     @Published private(set) var isGameOver: EndGame = .inGame
 
     init(for level: Level, with stopwatch: Stopwatch) {
         self.game = level
-        self.playGameViewModel = GameViewModel(for: level, with: stopwatch)
+        self.playGameViewModel = GamePlayViewModel(for: level, with: stopwatch)
         self.playGameViewModel.delegate = self
     }
 
@@ -24,7 +24,7 @@ class GameVCViewModel {
         return game
     }
 
-    func provideGameViewModel() -> GameViewModel {
+    func provideGameViewModel() -> GamePlayViewModel {
         return playGameViewModel
     }
 

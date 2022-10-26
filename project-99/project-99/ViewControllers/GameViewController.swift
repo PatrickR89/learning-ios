@@ -11,14 +11,14 @@ import Combine
 class GameViewController: UIViewController {
 
     private let viewModel: GameVCViewModel
-    private let gameView: GameView?
+    private let gameView: GamePlayView?
     private let stopwatch: Stopwatch
     private var isGameStopped: AnyCancellable?
 
     init(with viewModel: GameVCViewModel, and stopwatch: Stopwatch) {
         self.stopwatch = stopwatch
         self.viewModel = viewModel
-        self.gameView = GameView(with: viewModel.provideGameViewModel(), and: stopwatch)
+        self.gameView = GamePlayView(with: viewModel.provideGameViewModel(), and: stopwatch)
 
         super.init(nibName: nil, bundle: nil)
         setupUI()

@@ -1,38 +1,25 @@
 //
-//  GameView.swift
+//  GamePlayView.swift
 //  project-99
 //
-//  Created by Patrick on 23.09.2022..
+//  Created by Patrick on 24.10.2022..
 //
 
 import UIKit
 import Combine
 
-class GameView: UIView {
+class GamePlayView: UIView {
 
-    let viewModel: GameViewModel
+    let viewModel: GamePlayViewModel
     let stopwatch: Stopwatch
     var cancellables = [AnyCancellable]()
-
-    lazy var collectionLayout: UICollectionViewFlowLayout = {
-        let collectionLayout = UICollectionViewFlowLayout()
-        collectionLayout.scrollDirection = .vertical
-        collectionLayout.minimumInteritemSpacing = 0
-        collectionLayout.minimumLineSpacing = 0
-
-        return collectionLayout
-    }()
-
-    lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: self.frame, collectionViewLayout: collectionLayout)
-        return collectionView
-    }()
 
     let remainingChancesLabel = UILabel()
     let timerTextLabel = UILabel()
     let timerCountLabel = UILabel()
+    let gridView = GridLayoutView()
 
-    init(with viewModel: GameViewModel, and stopwatch: Stopwatch) {
+    init(with viewModel: GamePlayViewModel, and stopwatch: Stopwatch) {
         self.viewModel = viewModel
         self.stopwatch = stopwatch
 
@@ -41,7 +28,6 @@ class GameView: UIView {
         self.bindPublishedElements()
         use(AppTheme.self) {
             $0.backgroundColor = $1.backgroundColor
-            $0.collectionView.backgroundColor = $1.backgroundColor
             $0.remainingChancesLabel.textColor = $1.textColor
             $0.timerTextLabel.textColor = $1.textColor
             $0.timerCountLabel.textColor = $1.textColor
@@ -77,7 +63,7 @@ class GameView: UIView {
             .sink(receiveValue: { [weak self] indexPath in
                 guard let indexPath = indexPath else {return}
                 DispatchQueue.main.async {
-                    self?.collectionView.reloadItems(at: [indexPath])
+//                    self?.collectionView.reloadItems(at: [indexPath])
                 }
             })
             .store(in: &cancellables)
@@ -85,40 +71,17 @@ class GameView: UIView {
             .sink(receiveValue: { [weak self] indexPath in
                 guard let indexPath = indexPath else {return}
                 DispatchQueue.main.async {
-                    self?.collectionView.reloadItems(at: [indexPath])
+//                    self?.collectionView.reloadItems(at: [indexPath])
                 }
             })
             .store(in: &cancellables)
     }
 }
 
-extension GameView {
+extension GamePlayView {
     func configCollectionViewLayout(for level: Level) {
-        var dimensionDependance: Double
-        switch level {
-        case .veryEasy:
-            dimensionDependance = 2.3
-        case .easy:
-            dimensionDependance = 3.3
-        case .mediumHard:
-            dimensionDependance = 4.3
-        case .hard:
-            dimensionDependance = 3.5
-        case .veryHard:
-            dimensionDependance = 4.3
-        case .emotionalDamage:
-            dimensionDependance = 4.55
-        }
 
-        collectionLayout.itemSize = CGSize(
-            width: self.frame.width / dimensionDependance,
-            height: self.frame.width / dimensionDependance)
-
-        addViews([collectionView, remainingChancesLabel, timerTextLabel, timerCountLabel])
-
-        collectionView.register(GameViewCell.self, forCellWithReuseIdentifier: "image")
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        addViews([remainingChancesLabel, timerTextLabel, timerCountLabel, gridView])
 
         remainingChancesLabel.text = "Remaning chances: 0"
         remainingChancesLabel.textAlignment = .center
@@ -127,6 +90,7 @@ extension GameView {
         timerCountLabel.text = "00.0"
         timerTextLabel.textAlignment = .right
         timerCountLabel.textAlignment = .right
+        gridView.setupUI(with: viewModel.assignedCardsDeck, in: level)
 
         setupConstraints()
     }
@@ -141,10 +105,10 @@ extension GameView {
             timerTextLabel.centerYAnchor.constraint(equalTo: remainingChancesLabel.centerYAnchor),
             timerTextLabel.trailingAnchor.constraint(equalTo: timerCountLabel.leadingAnchor, constant: -5),
             timerTextLabel.widthAnchor.constraint(equalTo: self.layoutMarginsGuide.widthAnchor, multiplier: 0.35),
-            collectionView.topAnchor.constraint(equalTo: remainingChancesLabel.bottomAnchor, constant: 5),
-            collectionView.bottomAnchor.constraint(equalTo: self.layoutMarginsGuide.bottomAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor)
+            gridView.topAnchor.constraint(equalTo: self.layoutMarginsGuide.topAnchor, constant: 30),
+            gridView.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor),
+            gridView.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor),
+            gridView.bottomAnchor.constraint(equalTo: self.layoutMarginsGuide.bottomAnchor)
         ])
     }
 
@@ -159,30 +123,5 @@ extension GameView {
                 }
             }
         }
-    }
-}
-
-extension GameView: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.cardsDeck.count
-    }
-
-    func collectionView(
-        _ collectionView: UICollectionView,
-        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: "image",
-                for: indexPath) as? GameViewCell else {fatalError("No cell!")}
-            cell.configCellBasicLayout()
-            let card = viewModel.cardsDeck[indexPath.item]
-            cell.setupUI(with: card)
-            cell.viewModel.flipCard(for: card)
-            return cell
-        }
-}
-
-extension GameView: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.selectCard(at: indexPath.item)
     }
 }

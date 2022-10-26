@@ -18,6 +18,7 @@ class GameCardView: UIView {
     init() {
         super.init(frame: .zero)
         bindObserver()
+        addTapFunctionality()
         use(AppTheme.self) {
             $0.backgroundColor = $1.backgroundColor
             $0.backLabel.textColor = $1.textColor
@@ -32,24 +33,31 @@ class GameCardView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    func addTapFunctionality() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(toggleCardVisibility))
+        self.isUserInteractionEnabled = true
+        self.addGestureRecognizer(tap)
+    }
+
     private func bindObserver() {
         card = viewModel.$gameCard
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] card in
                 guard let self = self else {return}
 
-//                self.imageView.tintColor = card.color
-//                self.imageView.image = UIImage(systemName: card.image)
-
-//                if card.isVisible && !card.isPaired {
-//                    self.perform(#selector(self.showCard), with: nil)
-//                } else if card.isPaired {
-//                    self.backLabel.isHidden = true
-//                    self.imageView.isHidden = false
-//                } else {
-//                    self.perform(#selector(self.hideCard), with: nil)
-//                }
+                if card.isVisible && !card.isPaired {
+                    self.perform(#selector(self.showCard), with: nil)
+                } else if card.isPaired {
+                    self.backLabel.isHidden = true
+                    self.imageView.isHidden = false
+                } else {
+                    self.perform(#selector(self.hideCard), with: nil)
+                }
             })
+    }
+
+    @objc func toggleCardVisibility() {
+        viewModel.cardFlipped()
     }
 
     func configCellBasicLayout() {
@@ -66,9 +74,8 @@ class GameCardView: UIView {
         imageView.tintColor = card.color
         backLabel.text = "MEMO"
         backLabel.textAlignment = .center
-//        self.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
-//        backLabel.translatesAutoresizingMaskIntoConstraints = false
-//        imageView.translatesAutoresizingMaskIntoConstraints = false
+        backLabel.translatesAutoresizingMaskIntoConstraints = false
+        imageView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
             imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),

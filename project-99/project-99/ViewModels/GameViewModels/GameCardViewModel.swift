@@ -19,4 +19,8 @@ class GameCardViewModel {
     func flipCard(for card: GameCard) {
         self.gameCard = card
     }
+
+    func cardFlipped() {
+        self.gameCard.isVisible = true
+    }
 }

@@ -48,9 +48,7 @@ class GameCardView: UIView {
                 if card.isVisible && !card.isPaired {
                     self.perform(#selector(self.showCard), with: nil)
                 } else if card.isPaired {
-                    self.backLabel.isHidden = true
-                    self.imageView.isHidden = false
-                    self.imageView.tintColor = .lightGray
+                    self.perform(#selector(self.cardsPaired), with: nil)
                 } else {
                     self.perform(#selector(self.hideCard), with: nil)
                 }
@@ -100,7 +98,6 @@ class GameCardView: UIView {
             self.backLabel.isHidden = true
             self.imageView.isHidden = false
         })
-
     }
 
     @objc func hideCard() {
@@ -110,6 +107,15 @@ class GameCardView: UIView {
             self.imageView.isHidden = true
             self.backLabel.isHidden = false
         })
+    }
 
+    @objc func cardsPaired() {
+        let animation: UIView.AnimationOptions = .transitionCrossDissolve
+        UIView.transition(with: self, duration: 0.3, options: animation, animations: { [weak self] in
+            guard let self = self else {return}
+            self.backLabel.isHidden = true
+            self.imageView.isHidden = false
+            self.imageView.tintColor = .lightGray
+        })
     }
 }

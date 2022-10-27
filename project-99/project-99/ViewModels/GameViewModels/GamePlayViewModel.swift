@@ -16,14 +16,9 @@ class GamePlayViewModel {
             setupCards()
         }
     }
-    private(set) var cardsDeck = [GameCard]() {
-        didSet {
-            cardsValueInDeckDidChange()
-        }
-    }
+    private(set) var cardsDeck = [GameCard]()
 
     var assignedCardsDeck = [[GameCard]]()
-    var gridLayout: GridLayout
 
     private var selectedCardOne: GameCard?
     private var selectedCardTwo: GameCard? {
@@ -31,9 +26,6 @@ class GamePlayViewModel {
             compareCards()
         }
     }
-
-    @Published private(set) var cardOneIndex: IndexPath?
-    @Published private(set) var cardTwoIndex: IndexPath?
 
     private var removedPairs: Int = 0
     private var turnsLeft: Int = 0 {
@@ -47,7 +39,6 @@ class GamePlayViewModel {
             remainingTurnsValueDidChange()
         }
     }
-    private var cardsDeckObserver: (([GameCard]) -> Void)?
     private var turnsLeftObserver: ((Bool, Int) -> Void)?
 
     weak var delegate: GamePlayViewModelDelegate?
@@ -55,18 +46,12 @@ class GamePlayViewModel {
     init(for level: Level, with stopwatch: Stopwatch) {
         self.gameLevel = level
         self.stopwatch = stopwatch
-        self.gridLayout = GridLayout(level)
         setupSymbols(gameDifficulty: level)
         RealmDataService.shared.updateTotalGames()
         GameCardContext.shared.delegate = self
+        GameCardContext.shared.setCards(with: nil, in: .first)
+        GameCardContext.shared.setCards(with: nil, in: .second)
         self.stopwatch.startTimer()
-    }
-
-    private func cardsValueInDeckDidChange() {
-        guard let cardsDeckObserver = cardsDeckObserver else {
-            return
-        }
-        cardsDeckObserver(cardsDeck)
     }
 
     private func remainingTurnsValueDidChange() {
@@ -144,7 +129,7 @@ class GamePlayViewModel {
 
     func assignCards() {
         let tempCards = cardsDeck.shuffled()
-
+        let gridLayout = GridLayout(gameLevel)
         switch gridLayout.columns {
         case 2:
             self.assignedCardsDeck.append(Array(tempCards[0..<gridLayout.rows]))
@@ -163,27 +148,9 @@ class GamePlayViewModel {
         }
     }
 
-    func observeCardDeck(_ closure: @escaping ([GameCard]) -> Void) {
-        cardsDeckObserver = closure
-        cardsValueInDeckDidChange()
-    }
-
     func observeRemainigTurns(_ closure: @escaping (Bool, Int) -> Void) {
         turnsLeftObserver = closure
         remainingTurnsValueDidChange()
-    }
-
-    func provideNumberOfCards() -> Int {
-        return cardsDeck.count
-    }
-
-    func returnCardForIndex(at index: Int) -> GameCard {
-        return cardsDeck[index]
-    }
-
-    func returnIndexForCard(card: GameCard) -> Int {
-        guard let index = cardsDeck.firstIndex(where: {$0.id == card.id}) else {return 0}
-        return index
     }
 
     func selectCard( at index: Int) {
@@ -232,14 +199,12 @@ class GamePlayViewModel {
 
         if selectedCardOne.image == selectedCardTwo.image && selectedCardOne.color == selectedCardTwo.color {
             if let firstCardIndex = cardsDeck.firstIndex(where: {$0.id == selectedCardOne.id}) {
-                cardOneIndex = IndexPath(item: firstCardIndex, section: 0)
                 cardsDeck[firstCardIndex].isPaired = true
                 cardsDeck[firstCardIndex].color = .lightGray
                 GameCardContext.shared.setCards(with: cardsDeck[firstCardIndex], in: .first)
             }
 
             if let secondCardIndex = cardsDeck.firstIndex(where: {$0.id == selectedCardTwo.id}) {
-                cardTwoIndex = IndexPath(item: secondCardIndex, section: 0)
                 cardsDeck[secondCardIndex].isPaired = true
                 cardsDeck[secondCardIndex].color = .lightGray
                 GameCardContext.shared.setCards(with: cardsDeck[secondCardIndex], in: .second)

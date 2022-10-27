@@ -59,22 +59,6 @@ class GamePlayView: UIView {
             .receive(on: DispatchQueue.main)
             .assign(to: \.isHidden, on: timerTextLabel)
             .store(in: &cancellables)
-        viewModel.$cardOneIndex
-            .sink(receiveValue: { [weak self] indexPath in
-                guard let indexPath = indexPath else {return}
-                DispatchQueue.main.async {
-//                    self?.collectionView.reloadItems(at: [indexPath])
-                }
-            })
-            .store(in: &cancellables)
-        viewModel.$cardTwoIndex
-            .sink(receiveValue: { [weak self] indexPath in
-                guard let indexPath = indexPath else {return}
-                DispatchQueue.main.async {
-//                    self?.collectionView.reloadItems(at: [indexPath])
-                }
-            })
-            .store(in: &cancellables)
     }
 }
 

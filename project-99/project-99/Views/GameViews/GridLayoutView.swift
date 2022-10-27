@@ -27,7 +27,7 @@ class GridLayoutView: UIView {
             self.columns[index].translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
                 self.columns[index].topAnchor.constraint(equalTo: self.layoutMarginsGuide.topAnchor),
-                self.columns[index].bottomAnchor.constraint(equalTo: self.layoutMarginsGuide.bottomAnchor)
+                self.columns[index].bottomAnchor.constraint(lessThanOrEqualTo: self.layoutMarginsGuide.bottomAnchor)
             ])
 
             if index == 0 {

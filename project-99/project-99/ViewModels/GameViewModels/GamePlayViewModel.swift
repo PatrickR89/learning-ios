@@ -58,6 +58,7 @@ class GamePlayViewModel {
         self.gridLayout = GridLayout(level)
         setupSymbols(gameDifficulty: level)
         RealmDataService.shared.updateTotalGames()
+        GameCardContext.shared.delegate = self
         self.stopwatch.startTimer()
     }
 
@@ -268,5 +269,16 @@ class GamePlayViewModel {
             stopwatch.stopAndSaveTime(for: gameLevel)
             //            delegate?.gameViewModelDidEndGame(self, with: .gameWon)
         }
+    }
+}
+
+extension GamePlayViewModel: GameCardContextDelegate {
+    func gameCardsContext(_ context: GameCardContext, didReceiveTapForCard card: GameCard) -> (Int, GameCard) {
+        guard let index = cardsDeck.firstIndex(where: {$0.id == card.id}) else {
+            fatalError("error in cards")
+        }
+        selectCard(at: index)
+        print(selectedCardOne, selectedCardTwo)
+        return (cardsDeck[index].id, cardsDeck[index])
     }
 }

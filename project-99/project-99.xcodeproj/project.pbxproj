@@ -96,6 +96,7 @@
 		CD88B02D28F97F9E00EFCBBB /* DeleteAccViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B02C28F97F9E00EFCBBB /* DeleteAccViewCell.swift */; };
 		CD88B02F28F9888500EFCBBB /* MainMenuViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B02E28F9888500EFCBBB /* MainMenuViewControllerDelegate.swift */; };
 		CD88B03628FFCD4B00EFCBBB /* GameViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B03528FFCD4B00EFCBBB /* GameViewCellViewModel.swift */; };
+		CD98D279290A79FE004FA47C /* GameCardContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98D278290A79FE004FA47C /* GameCardContext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -201,6 +202,7 @@
 		CD88B02C28F97F9E00EFCBBB /* DeleteAccViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccViewCell.swift; sourceTree = "<group>"; };
 		CD88B02E28F9888500EFCBBB /* MainMenuViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewControllerDelegate.swift; sourceTree = "<group>"; };
 		CD88B03528FFCD4B00EFCBBB /* GameViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewCellViewModel.swift; sourceTree = "<group>"; };
+		CD98D278290A79FE004FA47C /* GameCardContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCardContext.swift; sourceTree = "<group>"; };
 		E9ED53374000A43727DB32F3 /* Pods-project-99.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-99.release.xcconfig"; path = "Target Support Files/Pods-project-99/Pods-project-99.release.xcconfig"; sourceTree = "<group>"; };
 		EE006DE768882589EA85F5B5 /* Pods-project-99.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-99.debug.xcconfig"; path = "Target Support Files/Pods-project-99/Pods-project-99.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -439,6 +441,7 @@
 				CD88AFD428D9950700EFCBBB /* UIView+Extensions.swift */,
 				CD5563F229028ACB00945A87 /* UITextField+Extension.swift */,
 				CD5563F429028E5400945A87 /* UIButton+Extension.swift */,
+				CD98D278290A79FE004FA47C /* GameCardContext.swift */,
 			);
 			path = Middleware;
 			sourceTree = "<group>";
@@ -818,6 +821,7 @@
 				CD88B00E28DDAF9C00EFCBBB /* GameView.swift in Sources */,
 				CD88AFF128DC5F1F00EFCBBB /* TimesViewCell.swift in Sources */,
 				CD88B02628F6984100EFCBBB /* Stopwatch.swift in Sources */,
+				CD98D279290A79FE004FA47C /* GameCardContext.swift in Sources */,
 				CD88AFDA28DADE6600EFCBBB /* StatsContent.swift in Sources */,
 				CD88AFC228D8744200EFCBBB /* SettingsViewModelDelegate.swift in Sources */,
 				CD88AF7D28D30BAC00EFCBBB /* UserGamesStats.swift in Sources */,

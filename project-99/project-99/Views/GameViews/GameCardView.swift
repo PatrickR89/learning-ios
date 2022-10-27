@@ -68,6 +68,7 @@ class GameCardView: UIView {
     }
 
     func setupUI(with card: GameCard) {
+        viewModel.setupCard(for: card)
         self.addViews([imageView, backLabel])
 
         imageView.image = UIImage(systemName: card.image)

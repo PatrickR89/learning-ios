@@ -194,6 +194,8 @@ extension SettingsViewController: UITableViewDelegate {
             let alertController = viewModel.addPasswordVerificationAlertController(in: self, for: .delete)
             present(alertController, animated: true)
         }
+
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

@@ -17,9 +17,7 @@ class MainNavigationController: UINavigationController {
     func setupLoginViewController() {
         let loginViewController = LoginViewController()
         loginViewController.delegate = self
-        let viewControllers = [loginViewController]
-        self.viewControllers = viewControllers
-        self.setViewControllers(viewControllers, animated: true)
+        self.setViewControllers([loginViewController], animated: true)
     }
 }
 
@@ -27,11 +25,10 @@ extension MainNavigationController: LoginViewControllerDelegate {
     func loginViewController(
         _ viewController: LoginViewController,
         didLogUserInViewModel viewModel: MainMenuViewModel) {
+
             let mainMenuViewController = MainMenuViewController(with: viewModel)
             mainMenuViewController.delegate = self
-            let viewControllers = [mainMenuViewController]
-            self.viewControllers = viewControllers
-            self.setViewControllers(viewControllers, animated: true)
+            self.setViewControllers([mainMenuViewController], animated: true)
         }
 }
 

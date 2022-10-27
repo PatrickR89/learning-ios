@@ -97,6 +97,8 @@
 		CD88B02F28F9888500EFCBBB /* MainMenuViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B02E28F9888500EFCBBB /* MainMenuViewControllerDelegate.swift */; };
 		CD88B03628FFCD4B00EFCBBB /* GameViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B03528FFCD4B00EFCBBB /* GameViewCellViewModel.swift */; };
 		CD98D279290A79FE004FA47C /* GameCardContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98D278290A79FE004FA47C /* GameCardContext.swift */; };
+		CD98D27B290A8BC7004FA47C /* CardsPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98D27A290A8BC7004FA47C /* CardsPair.swift */; };
+		CD98D27E290A9098004FA47C /* GamePlayViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98D27D290A9098004FA47C /* GamePlayViewModelDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -203,6 +205,8 @@
 		CD88B02E28F9888500EFCBBB /* MainMenuViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewControllerDelegate.swift; sourceTree = "<group>"; };
 		CD88B03528FFCD4B00EFCBBB /* GameViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewCellViewModel.swift; sourceTree = "<group>"; };
 		CD98D278290A79FE004FA47C /* GameCardContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCardContext.swift; sourceTree = "<group>"; };
+		CD98D27A290A8BC7004FA47C /* CardsPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsPair.swift; sourceTree = "<group>"; };
+		CD98D27D290A9098004FA47C /* GamePlayViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayViewModelDelegate.swift; sourceTree = "<group>"; };
 		E9ED53374000A43727DB32F3 /* Pods-project-99.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-99.release.xcconfig"; path = "Target Support Files/Pods-project-99/Pods-project-99.release.xcconfig"; sourceTree = "<group>"; };
 		EE006DE768882589EA85F5B5 /* Pods-project-99.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-99.debug.xcconfig"; path = "Target Support Files/Pods-project-99/Pods-project-99.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -274,6 +278,7 @@
 		CD5564172906799E00945A87 /* GameViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				CD98D27C290A9085004FA47C /* Delegates */,
 				CD5564122906739700945A87 /* GamePlayViewModel.swift */,
 				CD556419290679E000945A87 /* GameCardViewModel.swift */,
 				CD55641B2906971500945A87 /* CardsColumnViewModel.swift */,
@@ -568,6 +573,7 @@
 			children = (
 				CD88B01628E42B5900EFCBBB /* GameCard.swift */,
 				CD55641029066F6500945A87 /* GridLayout.swift */,
+				CD98D27A290A8BC7004FA47C /* CardsPair.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -589,6 +595,14 @@
 				CD88AFFB28DD825F00EFCBBB /* LevelsTime.swift */,
 			);
 			path = Realm;
+			sourceTree = "<group>";
+		};
+		CD98D27C290A9085004FA47C /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				CD98D27D290A9098004FA47C /* GamePlayViewModelDelegate.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 		EB75619A2A5DAE8CA72D994E /* Frameworks */ = {
@@ -785,6 +799,7 @@
 				CD88AF8328D30F9600EFCBBB /* Levels.swift in Sources */,
 				CD88AFFC28DD825F00EFCBBB /* LevelsTime.swift in Sources */,
 				CD88B00328DD9C0D00EFCBBB /* NewGameViewController.swift in Sources */,
+				CD98D27E290A9098004FA47C /* GamePlayViewModelDelegate.swift in Sources */,
 				CD5563F729029BC900945A87 /* FetchSymbols.swift in Sources */,
 				CD88AFEF28DC49E400EFCBBB /* StatsViewModelDelegate.swift in Sources */,
 				CD88AFF828DC6D6B00EFCBBB /* TimesSubviewViewCell.swift in Sources */,
@@ -800,6 +815,7 @@
 				CD88AFB728D859E500EFCBBB /* TimerViewCell.swift in Sources */,
 				CD88AF6128D2F0B200EFCBBB /* LoginViewController.swift in Sources */,
 				CD88AFBD28D86ED700EFCBBB /* UIAlertController+Extensions.swift in Sources */,
+				CD98D27B290A8BC7004FA47C /* CardsPair.swift in Sources */,
 				CD88AFAD28D496A800EFCBBB /* MainMenuViewDelegate.swift in Sources */,
 				CD88B01B28F3F7DB00EFCBBB /* GameViewModelDelegate.swift in Sources */,
 				CD55640A2906635E00945A87 /* GameCardView.swift in Sources */,

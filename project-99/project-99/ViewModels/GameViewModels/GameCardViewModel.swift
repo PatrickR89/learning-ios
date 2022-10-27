@@ -9,6 +9,7 @@ import Foundation
 import Combine
 
 class GameCardViewModel {
+    private var cancellable: AnyCancellable?
     @Published private(set) var gameCard: GameCard = GameCard(
         id: 0,
         image: "",
@@ -16,16 +17,33 @@ class GameCardViewModel {
         isVisible: false,
         isPaired: false)
 
+    init() {
+        setupBindings()
+    }
+
     func setupCard(for card: GameCard) {
         self.gameCard = card
     }
 
+    func setupBindings() {
+        cancellable = GameCardContext.shared.$cardsPair
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] cardsPair in
+                if let cardOne = cardsPair.one {
+                    if self?.gameCard.id == cardOne.id {
+                        self?.gameCard = cardOne
+                    }
+                }
+
+                if let cardTwo = cardsPair.two {
+                    if self?.gameCard.id == cardTwo.id {
+                        self?.gameCard = cardTwo
+                    }
+                }
+            })
+    }
+
     func cardFlipped() {
         let response = GameCardContext.shared.gameCardViewModel(self, didTapCard: gameCard)
-        if response.0 == gameCard.id {
-            gameCard.isVisible = response.1.isVisible
-            gameCard.isPaired = response.1.isPaired
-            gameCard.color = response.1.color
-        }
     }
 }

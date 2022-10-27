@@ -39,8 +39,8 @@ class GameVCViewModel {
     }
 }
 
-extension GameVCViewModel: GameViewModelDelegate {
-    func gameViewModelDidEndGame(_ viewModel: GameViewModel, with result: EndGame) {
+extension GameVCViewModel: GamePlayViewModelDelegate {
+    func gamePlayViewModelDidEndGame(_ viewModel: GamePlayViewModel, with result: EndGame) {
         self.isGameOver = result
     }
 }

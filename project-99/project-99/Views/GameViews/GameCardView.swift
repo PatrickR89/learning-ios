@@ -50,6 +50,7 @@ class GameCardView: UIView {
                 } else if card.isPaired {
                     self.backLabel.isHidden = true
                     self.imageView.isHidden = false
+                    self.imageView.tintColor = .lightGray
                 } else {
                     self.perform(#selector(self.hideCard), with: nil)
                 }
@@ -57,7 +58,9 @@ class GameCardView: UIView {
     }
 
     @objc func toggleCardVisibility() {
-        viewModel.cardFlipped()
+        if !viewModel.gameCard.isVisible && !viewModel.gameCard.isPaired {
+            viewModel.cardFlipped()
+        }
     }
 
     func configCellBasicLayout() {

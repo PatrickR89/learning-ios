@@ -50,7 +50,7 @@ class GamePlayViewModel {
     private var cardsDeckObserver: (([GameCard]) -> Void)?
     private var turnsLeftObserver: ((Bool, Int) -> Void)?
 
-    weak var delegate: GameViewModelDelegate?
+    weak var delegate: GamePlayViewModelDelegate?
 
     init(for level: Level, with stopwatch: Stopwatch) {
         self.gameLevel = level
@@ -196,14 +196,14 @@ class GamePlayViewModel {
         if selectedCardOne == nil {
             cardsDeck[index].isVisible = true
             selectedCardOne = cardsDeck[index]
-            cardOneIndex = IndexPath(item: index, section: 0)
+            GameCardContext.shared.setCards(with: cardsDeck[index], in: .first)
             return
         }
 
         if selectedCardTwo == nil && selectedCardOne?.id != cardsDeck[index].id {
             cardsDeck[index].isVisible = true
             selectedCardTwo = cardsDeck[index]
-            cardTwoIndex = IndexPath(item: index, section: 0)
+            GameCardContext.shared.setCards(with: cardsDeck[index], in: .first)
         }
     }
 
@@ -214,10 +214,12 @@ class GamePlayViewModel {
               let secondIndex = cardsDeck.firstIndex(where: {$0.id == cardTwo.id}) else {return}
         cardsDeck[firstIndex].isVisible = false
         cardsDeck[secondIndex].isVisible = false
-        cardOneIndex = IndexPath(item: firstIndex, section: 0)
-        cardTwoIndex = IndexPath(item: secondIndex, section: 0)
+        GameCardContext.shared.setCards(with: cardsDeck[firstIndex], in: .first)
+        GameCardContext.shared.setCards(with: cardsDeck[secondIndex], in: .second)
         selectedCardOne = nil
         selectedCardTwo = nil
+        GameCardContext.shared.setCards(with: nil, in: .first)
+        GameCardContext.shared.setCards(with: nil, in: .second)
     }
 
     func compareCards() {
@@ -233,12 +235,14 @@ class GamePlayViewModel {
                 cardOneIndex = IndexPath(item: firstCardIndex, section: 0)
                 cardsDeck[firstCardIndex].isPaired = true
                 cardsDeck[firstCardIndex].color = .lightGray
+                GameCardContext.shared.setCards(with: cardsDeck[firstCardIndex], in: .first)
             }
 
             if let secondCardIndex = cardsDeck.firstIndex(where: {$0.id == selectedCardTwo.id}) {
                 cardTwoIndex = IndexPath(item: secondCardIndex, section: 0)
                 cardsDeck[secondCardIndex].isPaired = true
                 cardsDeck[secondCardIndex].color = .lightGray
+                GameCardContext.shared.setCards(with: cardsDeck[secondCardIndex], in: .second)
             }
             removedPairs += 1
             RealmDataService.shared.updatePairedCards()
@@ -259,7 +263,8 @@ class GamePlayViewModel {
     private func endGameIfTurnsDepleted() {
         if turnsCountdown && turnsLeft <= 0 {
             stopwatch.resetTimer()
-            //            delegate?.gameViewModelDidEndGame(self, with: .gameLost)
+            self.resetCardsSelection()
+            delegate?.gamePlayViewModelDidEndGame(self, with: .gameLost)
         }
     }
 
@@ -267,18 +272,17 @@ class GamePlayViewModel {
         if removedPairs == cardsDeck.count / 2 && removedPairs != 0 {
             RealmDataService.shared.updateGamesWon()
             stopwatch.stopAndSaveTime(for: gameLevel)
-            //            delegate?.gameViewModelDidEndGame(self, with: .gameWon)
+            self.resetCardsSelection()
+            delegate?.gamePlayViewModelDidEndGame(self, with: .gameWon)
         }
     }
 }
 
 extension GamePlayViewModel: GameCardContextDelegate {
-    func gameCardsContext(_ context: GameCardContext, didReceiveTapForCard card: GameCard) -> (Int, GameCard) {
+    func gameCardsContext(_ context: GameCardContext, didReceiveTapForCard card: GameCard) {
         guard let index = cardsDeck.firstIndex(where: {$0.id == card.id}) else {
             fatalError("error in cards")
         }
         selectCard(at: index)
-        print(selectedCardOne, selectedCardTwo)
-        return (cardsDeck[index].id, cardsDeck[index])
     }
 }

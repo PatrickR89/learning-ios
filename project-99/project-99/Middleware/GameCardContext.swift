@@ -6,16 +6,34 @@
 //
 
 import Foundation
+import Combine
+
+enum CardPosition {
+    case first
+    case second
+}
 
 class GameCardContext {
     static let shared = GameCardContext()
+
+    @Published private(set) var cardsPair = CardsPair(one: nil, two: nil)
+
     weak var delegate: GameCardContextDelegate?
-    func gameCardViewModel(_ viewModel: GameCardViewModel, didTapCard card: GameCard) -> (Int, GameCard) {
-        guard let response = delegate?.gameCardsContext(self, didReceiveTapForCard: card) else { fatalError("error in card middleware")}
-        return response
+
+    func gameCardViewModel(_ viewModel: GameCardViewModel, didTapCard card: GameCard) {
+        delegate?.gameCardsContext( self, didReceiveTapForCard: card)
+    }
+
+    func setCards(with card: GameCard?, in position: CardPosition) {
+        switch position {
+        case .first:
+            self.cardsPair.one = card
+        case .second:
+            self.cardsPair.two = card
+        }
     }
 }
 
 protocol GameCardContextDelegate: AnyObject {
-    func gameCardsContext(_ context: GameCardContext, didReceiveTapForCard card: GameCard) -> (Int, GameCard)
+    func gameCardsContext(_ context: GameCardContext, didReceiveTapForCard card: GameCard)
 }

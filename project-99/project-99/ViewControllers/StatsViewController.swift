@@ -40,6 +40,7 @@ class StatsViewController: UIViewController {
     }
 
     @objc private func dismissSelf() {
+        viewModel.hideAllCellBottoms()
         self.dismiss(animated: true)
     }
 

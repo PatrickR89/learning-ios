@@ -20,4 +20,11 @@ class StatsViewModel {
         isCellBottomHidden[index] = !isCellBottomHidden[index]
         delegate?.statsViewModel(self, didChangeStateAtIndex: index, withState: isCellBottomHidden[index])
     }
+
+    func hideAllCellBottoms() {
+        for (index, _) in isCellBottomHidden.enumerated() {
+            isCellBottomHidden[index] = true
+            delegate?.statsViewModel(self, didChangeStateAtIndex: index, withState: isCellBottomHidden[index])
+        }
+    }
 }

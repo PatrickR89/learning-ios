@@ -44,6 +44,6 @@ class GameCardViewModel {
     }
 
     func cardFlipped() {
-        let response = GameCardContext.shared.gameCardViewModel(self, didTapCard: gameCard)
+        GameCardContext.shared.gameCardViewModel(self, didTapCard: gameCard)
     }
 }

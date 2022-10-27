@@ -43,6 +43,10 @@ class MainMenuViewController: UIViewController {
 }
 
 extension MainMenuViewController: MainMenuViewDelegate {
+    func mainMenuViewDidLogout(_ view: MainMenuView) {
+        delegate?.mainMenuViewControllerDidRecieveLogout(self)
+    }
+
     func mainMenuView(_ view: MainMenuView, didTapOnStatsForUser user: User?) {
         let viewController = StatsViewController(with: statsViewModel)
         let navController = UINavigationController()

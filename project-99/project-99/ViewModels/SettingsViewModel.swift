@@ -61,7 +61,7 @@ class SettingsViewModel {
     }
 
     func loadUserSettings() {
-        let result = RealmDataService.shared.loadUserSettings(forUser: user.id)
+        guard let result = RealmDataService.shared.loadUserSettings(forUser: user.id) else {return}
         self.userTheme = result.theme
         self.withMulticolor = result.withMulticolor
         self.withTimer = result.withTimer

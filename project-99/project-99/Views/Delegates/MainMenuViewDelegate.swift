@@ -11,4 +11,5 @@ protocol MainMenuViewDelegate: AnyObject {
     func mainMenuView(_ view: MainMenuView, didTapOnSettingsForUser user: User?)
     func mainMenuView(_ view: MainMenuView, didTapOnStatsForUser user: User?)
     func mainMenuView(_ view: MainMenuView, didTapOnNewGameForUser user: User?)
+    func mainMenuViewDidLogout(_ view: MainMenuView)
 }

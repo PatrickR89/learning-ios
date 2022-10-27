@@ -95,6 +95,8 @@
 		CD98D27B290A8BC7004FA47C /* CardsPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98D27A290A8BC7004FA47C /* CardsPair.swift */; };
 		CD98D27E290A9098004FA47C /* GamePlayViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98D27D290A9098004FA47C /* GamePlayViewModelDelegate.swift */; };
 		CD98D280290A991F004FA47C /* TurnsCountdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98D27F290A991F004FA47C /* TurnsCountdown.swift */; };
+		CD98D282290AAF56004FA47C /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98D281290AAF56004FA47C /* MainNavigationController.swift */; };
+		CD98D284290AB074004FA47C /* LoginViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98D283290AB074004FA47C /* LoginViewControllerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -199,6 +201,8 @@
 		CD98D27A290A8BC7004FA47C /* CardsPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsPair.swift; sourceTree = "<group>"; };
 		CD98D27D290A9098004FA47C /* GamePlayViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayViewModelDelegate.swift; sourceTree = "<group>"; };
 		CD98D27F290A991F004FA47C /* TurnsCountdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnsCountdown.swift; sourceTree = "<group>"; };
+		CD98D281290AAF56004FA47C /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
+		CD98D283290AB074004FA47C /* LoginViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerDelegate.swift; sourceTree = "<group>"; };
 		E9ED53374000A43727DB32F3 /* Pods-project-99.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-99.release.xcconfig"; path = "Target Support Files/Pods-project-99/Pods-project-99.release.xcconfig"; sourceTree = "<group>"; };
 		EE006DE768882589EA85F5B5 /* Pods-project-99.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-99.debug.xcconfig"; path = "Target Support Files/Pods-project-99/Pods-project-99.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -308,6 +312,7 @@
 				CD88AF6528D2F0B400EFCBBB /* Assets.xcassets */,
 				CD88AF6728D2F0B400EFCBBB /* LaunchScreen.storyboard */,
 				CD88AF6A28D2F0B400EFCBBB /* Info.plist */,
+				CD98D281290AAF56004FA47C /* MainNavigationController.swift */,
 			);
 			path = "project-99";
 			sourceTree = "<group>";
@@ -450,6 +455,7 @@
 			children = (
 				CD88AFC428D8893800EFCBBB /* SettingsViewControllerDelegate.swift */,
 				CD88B02E28F9888500EFCBBB /* MainMenuViewControllerDelegate.swift */,
+				CD98D283290AB074004FA47C /* LoginViewControllerDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -790,6 +796,8 @@
 				CD88AFAD28D496A800EFCBBB /* MainMenuViewDelegate.swift in Sources */,
 				CD55640A2906635E00945A87 /* GameCardView.swift in Sources */,
 				CD88B00528DD9C1F00EFCBBB /* NewGameViewModel.swift in Sources */,
+				CD98D282290AAF56004FA47C /* MainNavigationController.swift in Sources */,
+				CD98D284290AB074004FA47C /* LoginViewControllerDelegate.swift in Sources */,
 				CD88B00A28DDA73700EFCBBB /* GameViewController.swift in Sources */,
 				CD88AF5D28D2F0B200EFCBBB /* AppDelegate.swift in Sources */,
 				CD88B02D28F97F9E00EFCBBB /* DeleteAccViewCell.swift in Sources */,

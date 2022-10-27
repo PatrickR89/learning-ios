@@ -14,6 +14,8 @@ class LoginViewController: UIViewController {
     let loginView: LoginView
     let keyboardLayoutObserver = KeyboardLayoutObserver()
 
+    weak var delegate: LoginViewControllerDelegate?
+
     let keyboardLayoutGuide = UILayoutGuide()
 
     init () {
@@ -77,22 +79,6 @@ extension LoginViewController: LoginViewDelegate {
     func loginView(_ view: LoginView, didLogUser user: User, in viewModel: LoginViewModel) {
 
         let mainMenuViewModel = MainMenuViewModel(for: user)
-        let viewController = MainMenuViewController(with: mainMenuViewModel)
-        viewController.delegate = self
-
-        navigationController?.pushViewController(viewController, animated: true)
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: nil, action: nil)
+        delegate?.loginViewController(self, didLogUserInViewModel: mainMenuViewModel)
     }
-}
-
-extension LoginViewController: MainMenuViewControllerDelegate {
-    func mainMenuViewController(
-        _ viewController: MainMenuViewController,
-        didReciveAccountDeletionFrom settingsViewController: SettingsViewController) {
-            navigationController?.popViewController(animated: true)
-            RealmDataService.shared.deleteAccount()
-            viewModel.usernameChanged("")
-            viewModel.passwordChanged("")
-            viewModel.userDeleted()
-        }
 }

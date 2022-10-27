@@ -17,10 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         options connectionOptions: UIScene.ConnectionOptions) {
 
         guard let windowScene: UIWindowScene = (scene as? UIWindowScene) else {return}
-        let navController = UINavigationController()
-        let viewController = LoginViewController()
+        let navController = MainNavigationController()
 
-        navController.viewControllers = [viewController]
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         window?.rootViewController = navController

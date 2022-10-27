@@ -13,6 +13,7 @@ class MainMenuView: UIView {
     private let gameButton = UIButton()
     private let statsButton = UIButton()
     private let settingsButton = UIButton()
+    private let logoutButton = UIButton()
     private let stackView = UIStackView()
     private let viewModel: MainMenuViewModel
 
@@ -38,8 +39,9 @@ class MainMenuView: UIView {
         gameButton.setupInView(forView: self, withName: "New Game", andAction: #selector(openNewGame))
         statsButton.setupInView(forView: self, withName: "Stats", andAction: #selector(openStats))
         settingsButton.setupInView(forView: self, withName: "Settings", andAction: #selector(openSettings))
+        logoutButton.setupInView(forView: self, withName: "Logout", andAction: #selector(logout))
 
-        let buttons: [UIButton] = [gameButton, statsButton, settingsButton]
+        let buttons: [UIButton] = [gameButton, statsButton, settingsButton, logoutButton]
         stackView.arrangeView(withButtons: buttons)
         stackView.setupConstraints(forView: self)
     }
@@ -54,5 +56,9 @@ class MainMenuView: UIView {
 
     @objc func openNewGame() {
         delegate?.mainMenuView(self, didTapOnNewGameForUser: viewModel.provideUser())
+    }
+
+    @objc func logout() {
+        delegate?.mainMenuViewDidLogout(self)
     }
 }

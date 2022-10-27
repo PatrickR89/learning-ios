@@ -10,4 +10,5 @@ import Foundation
 protocol MainMenuViewControllerDelegate: AnyObject {
     func mainMenuViewController(_ viewController: MainMenuViewController,
                                 didReciveAccountDeletionFrom settingsViewController: SettingsViewController)
+    func mainMenuViewControllerDidRecieveLogout(_ viewController: MainMenuViewController)
 }

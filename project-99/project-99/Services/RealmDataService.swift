@@ -216,32 +216,32 @@ class RealmDataService {
 
     // MARK: UserSettings
 
-    func loadUserSettings(forUser id: UUID) -> UserSettings {
+    func loadUserSettings(forUser id: UUID) -> UserSettings? {
         guard let result = realm.object(
             ofType: UserSettings.self,
             forPrimaryKey: id) else {
-            fatalError("user settings could not be loaded")
+            return nil
         }
 
         return result
     }
 
     func saveTheme(save theme: ThemeChoice) {
-        guard let userId = userId else {
+        guard let userId = userId,
+              let result = loadUserSettings(forUser: userId) else {
             return
         }
 
-        let result = loadUserSettings(forUser: userId)
         try? realm.write {
             result.theme = theme
         }
     }
 
     func saveMulticolorState(save state: Bool) {
-        guard let userId = userId else {
+        guard let userId = userId,
+              let result = loadUserSettings(forUser: userId) else {
             return
         }
-        let result = loadUserSettings(forUser: userId)
         try? realm.write {
             result.withMulticolor = state
         }
@@ -249,10 +249,10 @@ class RealmDataService {
     }
 
     func saveTimerState(save state: Bool) {
-        guard let userId = userId else {
+        guard let userId = userId,
+              let result = loadUserSettings(forUser: userId) else {
             return
         }
-        let result = loadUserSettings(forUser: userId)
         try? realm.write {
             result.withTimer = state
         }

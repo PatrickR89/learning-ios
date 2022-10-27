@@ -33,6 +33,12 @@ extension MainNavigationController: LoginViewControllerDelegate {
 }
 
 extension MainNavigationController: MainMenuViewControllerDelegate {
+    func mainMenuViewControllerDidOpenNewGame(_ viewController: MainMenuViewController) {
+        let viewController = NewGameViewController()
+        viewController.delegate = self
+        self.pushViewController(viewController, animated: true)
+    }
+
     func mainMenuViewController(
         _ viewController: MainMenuViewController,
         didReciveAccountDeletionFrom settingsViewController: SettingsViewController) {
@@ -44,5 +50,11 @@ extension MainNavigationController: MainMenuViewControllerDelegate {
     func mainMenuViewControllerDidRecieveLogout(_ viewController: MainMenuViewController) {
         UserContainer.shared.saveUser(with: nil)
         setupLoginViewController()
+    }
+}
+
+extension MainNavigationController: NewGameViewControllerDelegate {
+    func newGameViewControllerDidRequestDismiss(_ viewController: NewGameViewController) {
+        self.popViewController(animated: true)
     }
 }

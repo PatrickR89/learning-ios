@@ -11,6 +11,7 @@ class NewGameViewController: UIViewController {
 
     private let viewModel = NewGameViewModel()
     private let tableView = UITableView()
+    weak var delegate: NewGameViewControllerDelegate?
 
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -38,7 +39,7 @@ class NewGameViewController: UIViewController {
     }
 
     @objc private func dismissSelf() {
-        self.dismiss(animated: true)
+        delegate?.newGameViewControllerDidRequestDismiss(self)
     }
 
     private func setupUI() {

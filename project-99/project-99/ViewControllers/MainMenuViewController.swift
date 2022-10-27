@@ -65,11 +65,7 @@ extension MainMenuViewController: MainMenuViewDelegate {
     }
 
     func mainMenuView(_ view: MainMenuView, didTapOnNewGameForUser user: User?) {
-        let navController = UINavigationController()
-        let viewController = NewGameViewController()
-
-        navController.viewControllers = [viewController]
-        present(navController, animated: true)
+        delegate?.mainMenuViewControllerDidOpenNewGame(self)
     }
 }
 

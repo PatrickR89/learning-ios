@@ -97,6 +97,7 @@
 		CD98D280290A991F004FA47C /* TurnsCountdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98D27F290A991F004FA47C /* TurnsCountdown.swift */; };
 		CD98D282290AAF56004FA47C /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98D281290AAF56004FA47C /* MainNavigationController.swift */; };
 		CD98D284290AB074004FA47C /* LoginViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98D283290AB074004FA47C /* LoginViewControllerDelegate.swift */; };
+		CD98D286290ABB89004FA47C /* NewGameViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98D285290ABB89004FA47C /* NewGameViewControllerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -203,6 +204,7 @@
 		CD98D27F290A991F004FA47C /* TurnsCountdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnsCountdown.swift; sourceTree = "<group>"; };
 		CD98D281290AAF56004FA47C /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		CD98D283290AB074004FA47C /* LoginViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerDelegate.swift; sourceTree = "<group>"; };
+		CD98D285290ABB89004FA47C /* NewGameViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameViewControllerDelegate.swift; sourceTree = "<group>"; };
 		E9ED53374000A43727DB32F3 /* Pods-project-99.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-99.release.xcconfig"; path = "Target Support Files/Pods-project-99/Pods-project-99.release.xcconfig"; sourceTree = "<group>"; };
 		EE006DE768882589EA85F5B5 /* Pods-project-99.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-99.debug.xcconfig"; path = "Target Support Files/Pods-project-99/Pods-project-99.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -456,6 +458,7 @@
 				CD88AFC428D8893800EFCBBB /* SettingsViewControllerDelegate.swift */,
 				CD88B02E28F9888500EFCBBB /* MainMenuViewControllerDelegate.swift */,
 				CD98D283290AB074004FA47C /* LoginViewControllerDelegate.swift */,
+				CD98D285290ABB89004FA47C /* NewGameViewControllerDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -835,6 +838,7 @@
 				CD88AF9428D450D300EFCBBB /* RealmDataProvider.swift in Sources */,
 				CD88AFF628DC601500EFCBBB /* LabelLayoutView.swift in Sources */,
 				CD55641129066F6500945A87 /* GridLayout.swift in Sources */,
+				CD98D286290ABB89004FA47C /* NewGameViewControllerDelegate.swift in Sources */,
 				CD88AFC728D9781200EFCBBB /* StatsViewController.swift in Sources */,
 				CD88AFDD28DAEEB600EFCBBB /* Statistics.swift in Sources */,
 				CD88B00828DD9D1200EFCBBB /* NewGameViewCell.swift in Sources */,

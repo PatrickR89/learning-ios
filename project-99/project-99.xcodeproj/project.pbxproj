@@ -83,19 +83,14 @@
 		CD88B00828DD9D1200EFCBBB /* NewGameViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B00728DD9D1200EFCBBB /* NewGameViewCell.swift */; };
 		CD88B00A28DDA73700EFCBBB /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B00928DDA73700EFCBBB /* GameViewController.swift */; };
 		CD88B00C28DDA74C00EFCBBB /* GameVCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B00B28DDA74C00EFCBBB /* GameVCViewModel.swift */; };
-		CD88B00E28DDAF9C00EFCBBB /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B00D28DDAF9C00EFCBBB /* GameView.swift */; };
 		CD88B01128DDB05900EFCBBB /* symbolList.txt in Resources */ = {isa = PBXBuildFile; fileRef = CD88B01028DDB05900EFCBBB /* symbolList.txt */; };
-		CD88B01328DDB0DA00EFCBBB /* GameViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B01228DDB0DA00EFCBBB /* GameViewCell.swift */; };
-		CD88B01528E30A5F00EFCBBB /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B01428E30A5F00EFCBBB /* GameViewModel.swift */; };
 		CD88B01728E42B5900EFCBBB /* GameCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B01628E42B5900EFCBBB /* GameCard.swift */; };
-		CD88B01B28F3F7DB00EFCBBB /* GameViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B01A28F3F7DB00EFCBBB /* GameViewModelDelegate.swift */; };
 		CD88B01D28F5402900EFCBBB /* RealmDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B01C28F5402900EFCBBB /* RealmDataService.swift */; };
 		CD88B02428F5500D00EFCBBB /* EndGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B02328F5500D00EFCBBB /* EndGame.swift */; };
 		CD88B02628F6984100EFCBBB /* Stopwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B02528F6984100EFCBBB /* Stopwatch.swift */; };
 		CD88B02828F9269200EFCBBB /* KeyboardLayoutObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B02728F9269200EFCBBB /* KeyboardLayoutObserver.swift */; };
 		CD88B02D28F97F9E00EFCBBB /* DeleteAccViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B02C28F97F9E00EFCBBB /* DeleteAccViewCell.swift */; };
 		CD88B02F28F9888500EFCBBB /* MainMenuViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B02E28F9888500EFCBBB /* MainMenuViewControllerDelegate.swift */; };
-		CD88B03628FFCD4B00EFCBBB /* GameViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B03528FFCD4B00EFCBBB /* GameViewCellViewModel.swift */; };
 		CD98D279290A79FE004FA47C /* GameCardContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98D278290A79FE004FA47C /* GameCardContext.swift */; };
 		CD98D27B290A8BC7004FA47C /* CardsPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98D27A290A8BC7004FA47C /* CardsPair.swift */; };
 		CD98D27E290A9098004FA47C /* GamePlayViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98D27D290A9098004FA47C /* GamePlayViewModelDelegate.swift */; };
@@ -192,19 +187,14 @@
 		CD88B00728DD9D1200EFCBBB /* NewGameViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameViewCell.swift; sourceTree = "<group>"; };
 		CD88B00928DDA73700EFCBBB /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		CD88B00B28DDA74C00EFCBBB /* GameVCViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVCViewModel.swift; sourceTree = "<group>"; };
-		CD88B00D28DDAF9C00EFCBBB /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		CD88B01028DDB05900EFCBBB /* symbolList.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = symbolList.txt; sourceTree = "<group>"; };
-		CD88B01228DDB0DA00EFCBBB /* GameViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewCell.swift; sourceTree = "<group>"; };
-		CD88B01428E30A5F00EFCBBB /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		CD88B01628E42B5900EFCBBB /* GameCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCard.swift; sourceTree = "<group>"; };
-		CD88B01A28F3F7DB00EFCBBB /* GameViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModelDelegate.swift; sourceTree = "<group>"; };
 		CD88B01C28F5402900EFCBBB /* RealmDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataService.swift; sourceTree = "<group>"; };
 		CD88B02328F5500D00EFCBBB /* EndGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndGame.swift; sourceTree = "<group>"; };
 		CD88B02528F6984100EFCBBB /* Stopwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stopwatch.swift; sourceTree = "<group>"; };
 		CD88B02728F9269200EFCBBB /* KeyboardLayoutObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutObserver.swift; sourceTree = "<group>"; };
 		CD88B02C28F97F9E00EFCBBB /* DeleteAccViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccViewCell.swift; sourceTree = "<group>"; };
 		CD88B02E28F9888500EFCBBB /* MainMenuViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewControllerDelegate.swift; sourceTree = "<group>"; };
-		CD88B03528FFCD4B00EFCBBB /* GameViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewCellViewModel.swift; sourceTree = "<group>"; };
 		CD98D278290A79FE004FA47C /* GameCardContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCardContext.swift; sourceTree = "<group>"; };
 		CD98D27A290A8BC7004FA47C /* CardsPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsPair.swift; sourceTree = "<group>"; };
 		CD98D27D290A9098004FA47C /* GamePlayViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayViewModelDelegate.swift; sourceTree = "<group>"; };
@@ -268,15 +258,6 @@
 			path = GameViews;
 			sourceTree = "<group>";
 		};
-		CD5564162906798700945A87 /* OldGameViews */ = {
-			isa = PBXGroup;
-			children = (
-				CD88B01228DDB0DA00EFCBBB /* GameViewCell.swift */,
-				CD88B00D28DDAF9C00EFCBBB /* GameView.swift */,
-			);
-			path = OldGameViews;
-			sourceTree = "<group>";
-		};
 		CD5564172906799E00945A87 /* GameViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -286,15 +267,6 @@
 				CD55641B2906971500945A87 /* CardsColumnViewModel.swift */,
 			);
 			path = GameViewModels;
-			sourceTree = "<group>";
-		};
-		CD556418290679B100945A87 /* OldGameViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				CD88B03528FFCD4B00EFCBBB /* GameViewCellViewModel.swift */,
-				CD88B01428E30A5F00EFCBBB /* GameViewModel.swift */,
-			);
-			path = OldGameViewModels;
 			sourceTree = "<group>";
 		};
 		CD88AF5028D2F0B200EFCBBB = {
@@ -368,7 +340,6 @@
 		CD88AF7328D306DE00EFCBBB /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				CD556418290679B100945A87 /* OldGameViewModels */,
 				CD5564172906799E00945A87 /* GameViewModels */,
 				CD88AFE028DAFC4400EFCBBB /* StatsCellsViewModels */,
 				CD88AFC028D8742E00EFCBBB /* Delegates */,
@@ -385,7 +356,6 @@
 		CD88AF7428D306E500EFCBBB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CD5564162906798700945A87 /* OldGameViews */,
 				CD55640D29066EB500945A87 /* GameViews */,
 				CD88B00628DD9CF100EFCBBB /* NewGameCells */,
 				CD88AFCC28D9814D00EFCBBB /* StatsViewCells */,
@@ -471,7 +441,6 @@
 			children = (
 				CD88AFC128D8744200EFCBBB /* SettingsViewModelDelegate.swift */,
 				CD88AFEE28DC49E400EFCBBB /* StatsViewModelDelegate.swift */,
-				CD88B01A28F3F7DB00EFCBBB /* GameViewModelDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -791,7 +760,6 @@
 			files = (
 				CD88AFF328DC5F6F00EFCBBB /* TimesCellBottomSubview.swift in Sources */,
 				CD88AFE528DB073000EFCBBB /* UserContainer.swift in Sources */,
-				CD88B01328DDB0DA00EFCBBB /* GameViewCell.swift in Sources */,
 				CD88AFEA28DC2E2800EFCBBB /* StatCellTopViewModel.swift in Sources */,
 				CD88B02828F9269200EFCBBB /* KeyboardLayoutObserver.swift in Sources */,
 				CD88AFC928D978D200EFCBBB /* StatsViewModel.swift in Sources */,
@@ -820,14 +788,12 @@
 				CD88AFBD28D86ED700EFCBBB /* UIAlertController+Extensions.swift in Sources */,
 				CD98D27B290A8BC7004FA47C /* CardsPair.swift in Sources */,
 				CD88AFAD28D496A800EFCBBB /* MainMenuViewDelegate.swift in Sources */,
-				CD88B01B28F3F7DB00EFCBBB /* GameViewModelDelegate.swift in Sources */,
 				CD55640A2906635E00945A87 /* GameCardView.swift in Sources */,
 				CD88B00528DD9C1F00EFCBBB /* NewGameViewModel.swift in Sources */,
 				CD88B00A28DDA73700EFCBBB /* GameViewController.swift in Sources */,
 				CD88AF5D28D2F0B200EFCBBB /* AppDelegate.swift in Sources */,
 				CD88B02D28F97F9E00EFCBBB /* DeleteAccViewCell.swift in Sources */,
 				CD88AF7B28D308EF00EFCBBB /* Theme.swift in Sources */,
-				CD88B01528E30A5F00EFCBBB /* GameViewModel.swift in Sources */,
 				CD88AFA128D47A7E00EFCBBB /* UIStackView+Extension.swift in Sources */,
 				CD88B01728E42B5900EFCBBB /* GameCard.swift in Sources */,
 				CD88AF9628D4510300EFCBBB /* FileManager+Extension.swift in Sources */,
@@ -837,7 +803,6 @@
 				CD88AFCE28D9819400EFCBBB /* GamesViewCell.swift in Sources */,
 				CD88AF5F28D2F0B200EFCBBB /* SceneDelegate.swift in Sources */,
 				CD55641A290679E000945A87 /* GameCardViewModel.swift in Sources */,
-				CD88B00E28DDAF9C00EFCBBB /* GameView.swift in Sources */,
 				CD88AFF128DC5F1F00EFCBBB /* TimesViewCell.swift in Sources */,
 				CD88B02628F6984100EFCBBB /* Stopwatch.swift in Sources */,
 				CD98D279290A79FE004FA47C /* GameCardContext.swift in Sources */,
@@ -865,7 +830,6 @@
 				CD88AFC728D9781200EFCBBB /* StatsViewController.swift in Sources */,
 				CD88AFDD28DAEEB600EFCBBB /* Statistics.swift in Sources */,
 				CD88B00828DD9D1200EFCBBB /* NewGameViewCell.swift in Sources */,
-				CD88B03628FFCD4B00EFCBBB /* GameViewCellViewModel.swift in Sources */,
 				CD556415290674AF00945A87 /* CardsColumn.swift in Sources */,
 				CD88AF8F28D3252D00EFCBBB /* LoginViewModel.swift in Sources */,
 				CD88B00128DD95B100EFCBBB /* TimesCellBottomViewModelDelegate.swift in Sources */,

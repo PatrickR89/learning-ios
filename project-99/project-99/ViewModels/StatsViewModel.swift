@@ -22,7 +22,7 @@ class StatsViewModel {
     }
 
     func hideAllCellBottoms() {
-        for (index, _) in isCellBottomHidden.enumerated() {
+        for index in isCellBottomHidden.indices {
             isCellBottomHidden[index] = true
             delegate?.statsViewModel(self, didChangeStateAtIndex: index, withState: isCellBottomHidden[index])
         }

@@ -26,20 +26,12 @@ class GamePlayViewModel {
             compareCards()
         }
     }
-
-    private var removedPairs: Int = 0
-    private var turnsLeft: Int = 0 {
+    @Published private(set) var turns = TurnsCountdown(isActive: false, value: 0) {
         didSet {
-            remainingTurnsValueDidChange()
             endGameIfTurnsDepleted()
         }
     }
-    private var turnsCountdown: Bool = false {
-        didSet {
-            remainingTurnsValueDidChange()
-        }
-    }
-    private var turnsLeftObserver: ((Bool, Int) -> Void)?
+    private var removedPairs: Int = 0
 
     weak var delegate: GamePlayViewModelDelegate?
 
@@ -54,13 +46,6 @@ class GamePlayViewModel {
         self.stopwatch.startTimer()
     }
 
-    private func remainingTurnsValueDidChange() {
-        guard let turnsLeftObserver = turnsLeftObserver else {
-            return
-        }
-        turnsLeftObserver(turnsCountdown, turnsLeft)
-    }
-
     private func setupSymbols(gameDifficulty: Level) {
 
         let cardSymbols = FetchSymbols.getSymbolsFromResource()
@@ -72,20 +57,20 @@ class GamePlayViewModel {
             currentSymbols = Array(cardSymbols[0..<6]) + Array(cardSymbols[0..<6])
         case .mediumHard:
             currentSymbols = Array(cardSymbols[0..<8]) + Array(cardSymbols[0..<8])
-            turnsLeft = 30
-            turnsCountdown = true
+            turns.isActive = true
+            turns.value = 30
         case .hard:
             currentSymbols = Array(cardSymbols[0..<9]) + Array(cardSymbols[0..<9])
-            turnsLeft = 30
-            turnsCountdown = true
+            turns.isActive = true
+            turns.value = 30
         case .veryHard:
             currentSymbols = Array(cardSymbols[0..<12]) + Array(cardSymbols[0..<12])
-            turnsLeft = 15
-            turnsCountdown = true
+            turns.isActive = true
+            turns.value = 15
         case .emotionalDamage:
             currentSymbols = Array(cardSymbols[0..<16]) + Array(cardSymbols[0..<16])
-            turnsLeft = 10
-            turnsCountdown = true
+            turns.isActive = true
+            turns.value = 10
         }
     }
 
@@ -148,14 +133,9 @@ class GamePlayViewModel {
         }
     }
 
-    func observeRemainigTurns(_ closure: @escaping (Bool, Int) -> Void) {
-        turnsLeftObserver = closure
-        remainingTurnsValueDidChange()
-    }
-
     func selectCard( at index: Int) {
 
-        if turnsCountdown && turnsLeft <= 0 {return}
+        if turns.isActive && turns.value <= 0 {return}
 
         if cardsDeck[index].isPaired == true {return}
         if cardsDeck[index].isVisible == true {return}
@@ -200,13 +180,11 @@ class GamePlayViewModel {
         if selectedCardOne.image == selectedCardTwo.image && selectedCardOne.color == selectedCardTwo.color {
             if let firstCardIndex = cardsDeck.firstIndex(where: {$0.id == selectedCardOne.id}) {
                 cardsDeck[firstCardIndex].isPaired = true
-                cardsDeck[firstCardIndex].color = .lightGray
                 GameCardContext.shared.setCards(with: cardsDeck[firstCardIndex], in: .first)
             }
 
             if let secondCardIndex = cardsDeck.firstIndex(where: {$0.id == selectedCardTwo.id}) {
                 cardsDeck[secondCardIndex].isPaired = true
-                cardsDeck[secondCardIndex].color = .lightGray
                 GameCardContext.shared.setCards(with: cardsDeck[secondCardIndex], in: .second)
             }
             removedPairs += 1
@@ -214,9 +192,8 @@ class GamePlayViewModel {
             resetCardsSelection()
             endGameIfCardsDepleted()
         } else {
-
-            if turnsCountdown {
-                turnsLeft -= 1
+            if turns.isActive {
+                turns.value -= 1
             }
 
             DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + 0.5) { [weak self] in
@@ -226,7 +203,7 @@ class GamePlayViewModel {
     }
 
     private func endGameIfTurnsDepleted() {
-        if turnsCountdown && turnsLeft <= 0 {
+        if turns.isActive && turns.value <= 0 {
             stopwatch.resetTimer()
             self.resetCardsSelection()
             delegate?.gamePlayViewModelDidEndGame(self, with: .gameLost)

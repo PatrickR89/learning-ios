@@ -24,7 +24,6 @@ class GamePlayView: UIView {
         self.stopwatch = stopwatch
 
         super.init(frame: .zero)
-        self.bindObservers()
         self.bindPublishedElements()
         use(AppTheme.self) {
             $0.backgroundColor = $1.backgroundColor
@@ -58,6 +57,16 @@ class GamePlayView: UIView {
         stopwatch.$isTimerOff
             .receive(on: DispatchQueue.main)
             .assign(to: \.isHidden, on: timerTextLabel)
+            .store(in: &cancellables)
+        viewModel.$turns
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] turns in
+                if !turns.isActive {
+                    self?.remainingChancesLabel.isHidden = true
+                } else {
+                    self?.remainingChancesLabel.text = "Remainig chances: \(turns.value)"
+                }
+            })
             .store(in: &cancellables)
     }
 }
@@ -94,18 +103,5 @@ extension GamePlayView {
             gridView.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor),
             gridView.bottomAnchor.constraint(equalTo: self.layoutMarginsGuide.bottomAnchor)
         ])
-    }
-
-    private func bindObservers() {
-
-        viewModel.observeRemainigTurns { isTurnsCountdown, turnsValue in
-            DispatchQueue.main.async { [weak self] in
-                if !isTurnsCountdown {
-                    self?.remainingChancesLabel.isHidden = true
-                } else {
-                    self?.remainingChancesLabel.text = "Remainig chances: \(turnsValue)"
-                }
-            }
-        }
     }
 }

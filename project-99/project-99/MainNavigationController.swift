@@ -42,10 +42,10 @@ extension MainNavigationController: MainMenuViewControllerDelegate {
     func mainMenuViewController(
         _ viewController: MainMenuViewController,
         didReciveAccountDeletionFrom settingsViewController: SettingsViewController) {
-        RealmDataService.shared.deleteAccount()
-        UserContainer.shared.saveUser(with: nil)
-        setupLoginViewController()
-    }
+            RealmDataService.shared.deleteAccount()
+            UserContainer.shared.saveUser(with: nil)
+            setupLoginViewController()
+        }
 
     func mainMenuViewControllerDidRecieveLogout(_ viewController: MainMenuViewController) {
         UserContainer.shared.saveUser(with: nil)
@@ -54,7 +54,23 @@ extension MainNavigationController: MainMenuViewControllerDelegate {
 }
 
 extension MainNavigationController: NewGameViewControllerDelegate {
+    func newGameViewController(
+        _ viewController: NewGameViewController,
+        didStartNewGameWithViewModel viewModel: GameVCViewModel,
+        and stopwatch: Stopwatch) {
+
+            let viewController = GameViewController(with: viewModel, and: stopwatch)
+            viewController.delegate = self
+            self.pushViewController(viewController, animated: true)
+        }
+
     func newGameViewControllerDidRequestDismiss(_ viewController: NewGameViewController) {
+        self.popViewController(animated: true)
+    }
+}
+
+extension MainNavigationController: GameViewControllerDelegate {
+    func gameViewControllerDidRequestDismiss(_ viewController: GameViewController) {
         self.popViewController(animated: true)
     }
 }

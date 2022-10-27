@@ -75,13 +75,11 @@ extension NewGameViewController: UITableViewDataSource {
 
 extension NewGameViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let navController = UINavigationController()
+
         let stopwatch = Stopwatch()
         let gameViewModel = GameVCViewModel(for: viewModel.loadLevel(at: indexPath.row), with: stopwatch)
-        let viewController = GameViewController(with: gameViewModel, and: stopwatch)
 
-        navController.viewControllers = [viewController]
-        navController.modalPresentationStyle = .fullScreen
-        present(navController, animated: true)
+        delegate?.newGameViewController(self, didStartNewGameWithViewModel: gameViewModel, and: stopwatch)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

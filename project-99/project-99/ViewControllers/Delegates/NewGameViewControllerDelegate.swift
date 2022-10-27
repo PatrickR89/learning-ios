@@ -9,4 +9,8 @@ import Foundation
 
 protocol NewGameViewControllerDelegate: AnyObject {
     func newGameViewControllerDidRequestDismiss(_ viewController: NewGameViewController)
+    func newGameViewController(
+        _ viewController: NewGameViewController,
+        didStartNewGameWithViewModel viewModel: GameVCViewModel,
+        and stopwatch: Stopwatch)
 }

@@ -105,7 +105,8 @@ extension UIAlertController {
             let alertAction = UIAlertAction(
                 title: "Ok",
                 style: .default) { [weak viewController] _ in
-                    viewController?.dismiss(animated: true)
+                    guard let viewController = viewController else {return}
+                    viewController.delegate?.gameViewControllerDidRequestDismiss(viewController)
                 }
             alertController.addAction(alertAction)
 
@@ -124,7 +125,8 @@ extension UIAlertController {
             let alertAction = UIAlertAction(
                 title: "Ok",
                 style: .default) { [weak viewController] _ in
-                    viewController?.dismiss(animated: true)
+                    guard let viewController = viewController else {return}
+                    viewController.delegate?.gameViewControllerDidRequestDismiss(viewController)
                 }
             alertController.addAction(alertAction)
 

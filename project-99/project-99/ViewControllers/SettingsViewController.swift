@@ -12,9 +12,7 @@ class SettingsViewController: UIViewController {
 
     private let viewModel: SettingsViewModel
     private let tableView: UITableView
-    private let primaryContent: [SettingsContent] = [.theme, .multicolor, .timer]
-    private let secondContent: [SettingsContent] = [.username, .password, .delete]
-    private let sections: [[SettingsContent]]
+    let tableViewDataSource: SettingsTableViewDataSource
     private var cancellables = [AnyCancellable]()
 
     weak var delegate: SettingsViewControllerDelegate?
@@ -22,7 +20,7 @@ class SettingsViewController: UIViewController {
     init(with viewModel: SettingsViewModel) {
         self.tableView = UITableView()
         self.viewModel = viewModel
-        self.sections = [primaryContent, secondContent]
+        self.tableViewDataSource = SettingsTableViewDataSource(tableView, with: viewModel)
         super.init(nibName: nil, bundle: nil)
         setupUI()
         use(AppTheme.self) {
@@ -37,7 +35,7 @@ class SettingsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        viewModel.populateTableView(true, in: self)
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .close,
             target: self,
@@ -57,16 +55,12 @@ class SettingsViewController: UIViewController {
 
     private func setupUI() {
         view.addViews([tableView])
-        tableView.dataSource = self
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.frame = view.frame
         ThemeTableViewCell.register(in: tableView)
-        MulticolorViewCell.register(in: tableView)
-        TimerViewCell.register(in: tableView)
-        UsernameViewCell.register(in: tableView)
-        PasswordViewCell.register(in: tableView)
-        DeleteAccViewCell.register(in: tableView)
-
+        GameOptionViewCell.register(in: tableView)
+        AccountOptionViewCell.register(in: tableView)
         setupBindings()
     }
 
@@ -76,27 +70,24 @@ class SettingsViewController: UIViewController {
         viewModel.$withMulticolor
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] _ in
-                if let index = self?.primaryContent.firstIndex(where: {$0.self == SettingsContent.multicolor}) {
-                    let indexPath = IndexPath(row: index, section: 0)
-                    self?.tableView.reloadRows(at: [indexPath], with: .fade)
-                }
+                guard let self =  self else {return}
+                self.viewModel.populateTableView(false, in: self)
             })
             .store(in: &cancellables)
 
         viewModel.$withTimer
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: {[weak self] _ in
-                if let index = self?.primaryContent.firstIndex(where: {$0.self == SettingsContent.timer}) {
-                    let indexPath = IndexPath(row: index, section: 0)
-                    self?.tableView.reloadRows(at: [indexPath], with: .fade)
-                }
+                guard let self =  self else {return}
+                self.viewModel.populateTableView(false, in: self)
             })
             .store(in: &cancellables)
 
         viewModel.$userTheme
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] _ in
-                self?.tableView.reloadData()
+                guard let self =  self else {return}
+                self.viewModel.populateTableView(false, in: self)
             })
             .store(in: &cancellables)
 
@@ -111,88 +102,30 @@ class SettingsViewController: UIViewController {
     }
 }
 
-extension SettingsViewController: UITableViewDataSource {
-
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
-    }
+extension SettingsViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
 
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0:
-            return "Game settings"
-        case 1:
-            return "Account settings"
-        default:
-            return ""
-        }
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sections[section].count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let content = sections[indexPath.section][indexPath.row]
-
-        switch content {
-
-        case .theme:
-            let cell = ThemeTableViewCell.dequeue(in: tableView, for: indexPath)
-            if let theme = viewModel.provideUserTheme() {
-                cell.changeValue(with: theme)
-            }
-            return cell
-        case .multicolor:
-            let cell = MulticolorViewCell.dequeue(in: tableView, for: indexPath)
-            if let withMulticolor = viewModel.provideUserMulticolorState() {
-                cell.multicolorStateDidChange(withNewState: withMulticolor)
-            }
-            return cell
-        case .timer:
-            let cell = TimerViewCell.dequeue(in: tableView, for: indexPath)
-            if let withTimer = viewModel.provideUserTimerState() {
-                cell.timerStateDidChange(withNewState: withTimer)
-            }
-            return cell
-        case .username:
-            let cell = UsernameViewCell.dequeue(in: tableView, for: indexPath)
-            return cell
-        case .password:
-            let cell = PasswordViewCell.dequeue(in: tableView, for: indexPath)
-            return cell
-        case .delete:
-            let cell = DeleteAccViewCell.dequeue(in: tableView, for: indexPath)
-            return cell
-        }
-    }
-}
-
-extension SettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let content = sections[indexPath.section][indexPath.row]
+        let content = tableViewDataSource.itemIdentifier(for: indexPath)
 
         switch content {
-
         case .theme:
             viewModel.changeTheme()
-        case .multicolor:
-            viewModel.toggleMulticolor()
-        case .timer:
-            viewModel.toggleTimer()
-        case .username:
-            let alertController = viewModel.addPasswordVerificationAlertController(in: self, for: .username)
+        case .gameOption(let model):
+            switch model.cellType {
+            case .multicolor:
+                viewModel.toggleMulticolor()
+            case .timer:
+                viewModel.toggleTimer()
+            }
+        case .accountOption(let model):
+            let alertController = viewModel.addPasswordVerificationAlertController(in: self, for: model.type)
             present(alertController, animated: true)
-        case .password:
-            let alertController = viewModel.addPasswordVerificationAlertController(in: self, for: .password)
-            present(alertController, animated: true)
-        case .delete:
-            let alertController = viewModel.addPasswordVerificationAlertController(in: self, for: .delete)
-            present(alertController, animated: true)
+        case .none:
+            return
         }
 
         tableView.deselectRow(at: indexPath, animated: true)
@@ -208,7 +141,7 @@ extension SettingsViewController: SettingsViewModelDelegate {
     func settingsViewModel(
         _ viewModel: SettingsViewModel,
         didVerifyPasswordWithResult result: Bool,
-        for change: AccountChanges) {
+        for change: AccountOption) {
 
             if !result {
                 let alertController = viewModel.addInvalidPasswordAlertController(in: self)

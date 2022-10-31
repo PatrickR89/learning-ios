@@ -14,7 +14,7 @@ class ThemeTableViewCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupUI()
+        setupUI(withLabels: titleLabel, and: valueLabel)
         use(AppTheme.self) {
             $0.backgroundColor = $1.backgroundColor
             $0.titleLabel.textColor = $1.textColor
@@ -25,13 +25,8 @@ class ThemeTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func setupUI() {
-        setupUI(withLabels: titleLabel, and: valueLabel)
-        titleLabel.text = "Current theme:"
-        valueLabel.text = "dark"
-    }
-
-    func changeValue(with newValue: ThemeChoice) {
-        valueLabel.text = newValue.rawValue
+    func updateCellData(with model: ThemeTableViewCellModel) {
+        titleLabel.text = model.title
+        valueLabel.text = model.value.rawValue
     }
 }

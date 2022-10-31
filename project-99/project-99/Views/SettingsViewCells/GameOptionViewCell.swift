@@ -7,14 +7,14 @@
 
 import UIKit
 
-class MulticolorViewCell: UITableViewCell {
+class GameOptionViewCell: UITableViewCell {
 
     private let titleLabel = UILabel()
     private let valueLabel = UILabel()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupUI()
+        self.setupUI(withLabels: titleLabel, and: valueLabel)
 
         use(AppTheme.self) {
             $0.backgroundColor = $1.backgroundColor
@@ -26,17 +26,21 @@ class MulticolorViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func setupUI() {
-        self.setupUI(withLabels: titleLabel, and: valueLabel)
-        titleLabel.text = "Multicolored game:"
-        valueLabel.text = "no"
-    }
-
-    func multicolorStateDidChange(withNewState state: Bool) {
-        if state {
-            valueLabel.text = "yes"
-        } else {
-            valueLabel.text = "no"
+    func updateCellData(with model: GameOptionViewCellModel) {
+        titleLabel.text = model.title
+        switch model.cellType {
+        case .multicolor:
+            if model.value {
+                valueLabel.text = "yes"
+            } else {
+                valueLabel.text = "no"
+            }
+        case .timer:
+            if model.value {
+                valueLabel.text = "on"
+            } else {
+                valueLabel.text = "off"
+            }
         }
     }
 }

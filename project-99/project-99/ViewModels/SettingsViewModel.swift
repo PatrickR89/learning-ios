@@ -66,6 +66,31 @@ class SettingsViewModel {
         self.withMulticolor = result.withMulticolor
         self.withTimer = result.withTimer
     }
+
+    func populateTableView(_ isInitial: Bool, in viewController: SettingsViewController) {
+        let theme = SettingsTableViewLayoutItems.theme(ThemeTableViewCellModel(with: self))
+        let multicolor = SettingsTableViewLayoutItems.gameOption(GameOptionViewCellModel(with: .multicolor, and: self))
+        let timer = SettingsTableViewLayoutItems.gameOption(GameOptionViewCellModel(with: .timer, and: self))
+        let username = SettingsTableViewLayoutItems.accountOption(AccountOptionViewCellModel(.username))
+        let password = SettingsTableViewLayoutItems.accountOption(AccountOptionViewCellModel(.password))
+        let delete = SettingsTableViewLayoutItems.accountOption(AccountOptionViewCellModel(.delete))
+
+        let gameOptions: [SettingsTableViewLayoutItems] = [theme, multicolor, timer]
+        let userOptions: [SettingsTableViewLayoutItems] = [username, password, delete]
+
+        var snapshot = NSDiffableDataSourceSnapshot<SettingsTableViewLayoutSections, SettingsTableViewLayoutItems>()
+        snapshot.appendSections([.gameSettings, .accountSettings])
+        snapshot.appendItems(gameOptions, toSection: .gameSettings)
+        snapshot.appendItems(userOptions, toSection: .accountSettings)
+
+        if isInitial {
+            viewController.tableViewDataSource.apply(snapshot)
+        } else {
+            viewController.tableViewDataSource.defaultRowAnimation = .fade
+            viewController.tableViewDataSource.apply(snapshot, animatingDifferences: true)
+        }
+
+    }
 }
 
 extension SettingsViewModel {
@@ -131,7 +156,7 @@ extension SettingsViewModel {
 
     // MARK: Account verification
 
-    func verifyPassword(_ password: String, for change: AccountChanges) {
+    func verifyPassword(_ password: String, for change: AccountOption) {
         if password == user.password {
             delegate?.settingsViewModel(self, didVerifyPasswordWithResult: true, for: change)
         } else {
@@ -143,7 +168,7 @@ extension SettingsViewModel {
 
     func addPasswordVerificationAlertController(
         in viewController: UIViewController,
-        for change: AccountChanges) -> UIAlertController {
+        for change: AccountOption) -> UIAlertController {
             let alertController = UIAlertController().createPasswordVerificationAlertController(
                 in: viewController,
                 with: self,
@@ -158,7 +183,7 @@ extension SettingsViewModel {
 
     func addChangeAccountAlertController(
         in viewController: UIViewController,
-        for change: AccountChanges) -> UIAlertController {
+        for change: AccountOption) -> UIAlertController {
             let alertController = UIAlertController().createEditAccountAlertController(
                 in: viewController,
                 with: self,

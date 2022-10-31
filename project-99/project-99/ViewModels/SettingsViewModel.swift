@@ -71,9 +71,9 @@ class SettingsViewModel {
         let theme = SettingsTableViewLayoutItems.theme(ThemeTableViewCellModel(with: self))
         let multicolor = SettingsTableViewLayoutItems.gameOption(GameOptionViewCellModel(with: .multicolor, and: self))
         let timer = SettingsTableViewLayoutItems.gameOption(GameOptionViewCellModel(with: .timer, and: self))
-        let username = SettingsTableViewLayoutItems.accountOption(AccountOptionViewCellModel(.username))
-        let password = SettingsTableViewLayoutItems.accountOption(AccountOptionViewCellModel(.password))
-        let delete = SettingsTableViewLayoutItems.accountOption(AccountOptionViewCellModel(.delete))
+        let username = SettingsTableViewLayoutItems.accountOption(AccountOptionViewCellModel(AccountOption.username))
+        let password = SettingsTableViewLayoutItems.accountOption(AccountOptionViewCellModel(AccountOption.password))
+        let delete = SettingsTableViewLayoutItems.accountOption(AccountOptionViewCellModel(AccountOption.delete))
 
         let gameOptions: [SettingsTableViewLayoutItems] = [theme, multicolor, timer]
         let userOptions: [SettingsTableViewLayoutItems] = [username, password, delete]

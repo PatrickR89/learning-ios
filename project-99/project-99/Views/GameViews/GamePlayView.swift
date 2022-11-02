@@ -72,7 +72,7 @@ class GamePlayView: UIView {
 }
 
 extension GamePlayView {
-    func configCollectionViewLayout(for level: Level) {
+    func setupLevelLayout(_ level: Level) {
 
         addViews([remainingChancesLabel, timerTextLabel, timerCountLabel, gridView])
 

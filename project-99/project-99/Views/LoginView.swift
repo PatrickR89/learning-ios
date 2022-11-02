@@ -56,8 +56,8 @@ private extension LoginView {
         setupTextField(for: nameTextField)
         setupTextField(for: passwordTextField)
 
-        loginButton.setupInView(forView: self, withName: "Login", andAction: #selector(login))
-        createAccBtn.setupInView(forView: self, withName: "Create user", andAction: #selector(createUser))
+        loginButton.setupInView(self, withName: "Login", andAction: #selector(login))
+        createAccBtn.setupInView(self, withName: "Create user", andAction: #selector(createUser))
 
         warningLabel.textColor = .red
         warningLabel.isHidden = true
@@ -69,7 +69,7 @@ private extension LoginView {
         loginStackView.arrangeView(
             asColumnWithViews: [warningStackView, textFieldsStackView, buttonsStackView],
             withSpacing: 35)
-        loginStackView.setupConstraints(forView: self)
+        loginStackView.setupConstraints(self)
     }
 
     @objc func createUser() {

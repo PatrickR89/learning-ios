@@ -86,7 +86,7 @@ class RealmDataService {
         return result
     }
 
-    func changeUsername(with newUsername: String) {
+    func changeUsername(_ newUsername: String) {
         guard let userId = userId,
               let user = realm.object(ofType: User.self, forPrimaryKey: userId) else {
             return
@@ -97,7 +97,7 @@ class RealmDataService {
         }
     }
 
-    func changePassword(with newPassword: String) {
+    func changePassword(_ newPassword: String) {
         guard let userId = userId,
               let user = realm.object(ofType: User.self, forPrimaryKey: userId) else {
             return
@@ -193,7 +193,7 @@ class RealmDataService {
         }
     }
 
-    func saveNewTime(save time: Double, for level: Level) {
+    func saveNewTime(_ time: Double, for level: Level) {
         guard let userId = userId,
               let result = realm.object(ofType: LevelTimes.self, forPrimaryKey: userId) else {
             return
@@ -216,7 +216,7 @@ class RealmDataService {
 
     // MARK: UserSettings
 
-    func loadUserSettings(forUser id: UUID) -> UserSettings? {
+    func loadUserSettingsById(_ id: UUID) -> UserSettings? {
         guard let result = realm.object(
             ofType: UserSettings.self,
             forPrimaryKey: id) else {
@@ -226,9 +226,9 @@ class RealmDataService {
         return result
     }
 
-    func saveTheme(save theme: ThemeChoice) {
+    func saveTheme(_ theme: ThemeChoice) {
         guard let userId = userId,
-              let result = loadUserSettings(forUser: userId) else {
+              let result = loadUserSettingsById(userId) else {
             return
         }
 
@@ -237,9 +237,9 @@ class RealmDataService {
         }
     }
 
-    func saveMulticolorState(save state: Bool) {
+    func saveMulticolorState(_ state: Bool) {
         guard let userId = userId,
-              let result = loadUserSettings(forUser: userId) else {
+              let result = loadUserSettingsById(userId) else {
             return
         }
         try? realm.write {
@@ -248,9 +248,9 @@ class RealmDataService {
 
     }
 
-    func saveTimerState(save state: Bool) {
+    func saveTimerState(_ state: Bool) {
         guard let userId = userId,
-              let result = loadUserSettings(forUser: userId) else {
+              let result = loadUserSettingsById(userId) else {
             return
         }
         try? realm.write {

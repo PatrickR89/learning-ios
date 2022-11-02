@@ -44,7 +44,7 @@ class Stopwatch {
         timer = nil
         startTime = nil
         if !isTimerOff {
-            RealmDataService.shared.saveNewTime(save: self.elapsedTime, for: game)
+            RealmDataService.shared.saveNewTime(self.elapsedTime, for: game)
         }
         elapsedTime = 0
     }

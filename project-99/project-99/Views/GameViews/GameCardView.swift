@@ -68,7 +68,7 @@ class GameCardView: UIView {
         self.backgroundColor = .black
     }
 
-    func setupUI(with card: GameCard) {
+    func setupCardUI(_ card: GameCard) {
         viewModel.setupCard(for: card)
         self.addViews([imageView, backLabel])
 

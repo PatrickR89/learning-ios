@@ -95,7 +95,7 @@ extension UIStackView {
         }
     }
 
-    func setupConstraints(forView view: UIView) {
+    func setupConstraints(_ view: UIView) {
         NSLayoutConstraint.activate([
             self.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             self.centerYAnchor.constraint(equalTo: view.centerYAnchor),

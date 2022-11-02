@@ -71,7 +71,7 @@ class GameViewController: UIViewController {
 
         view.addSubview(gameView)
         gameView.frame = view.frame
-        gameView.configCollectionViewLayout(for: viewModel.provideGameLevel())
+        gameView.setupLevelLayout(viewModel.provideGameLevel())
     }
 
     @objc func closeGame() {

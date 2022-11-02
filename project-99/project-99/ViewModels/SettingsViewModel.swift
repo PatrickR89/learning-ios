@@ -16,7 +16,7 @@ class SettingsViewModel {
             guard let newUsername = newUsername else {
                 return
             }
-            RealmDataService.shared.changeUsername(with: newUsername)
+            RealmDataService.shared.changeUsername(newUsername)
         }
     }
 
@@ -25,7 +25,7 @@ class SettingsViewModel {
             guard let newPassword = newPassword else {
                 return
             }
-            RealmDataService.shared.changePassword(with: newPassword)
+            RealmDataService.shared.changePassword(newPassword)
         }
     }
 
@@ -50,18 +50,18 @@ class SettingsViewModel {
 
     func saveSettings() {
         if let withTimer = withTimer {
-            RealmDataService.shared.saveTimerState(save: withTimer)
+            RealmDataService.shared.saveTimerState(withTimer)
         }
         if let withMulticolor = withMulticolor {
-            RealmDataService.shared.saveMulticolorState(save: withMulticolor)
+            RealmDataService.shared.saveMulticolorState(withMulticolor)
         }
         if let userTheme = userTheme {
-            RealmDataService.shared.saveTheme(save: userTheme)
+            RealmDataService.shared.saveTheme(userTheme)
         }
     }
 
     func loadUserSettings() {
-        guard let result = RealmDataService.shared.loadUserSettings(forUser: user.id) else {return}
+        guard let result = RealmDataService.shared.loadUserSettingsById(user.id) else {return}
         self.userTheme = result.theme
         self.withMulticolor = result.withMulticolor
         self.withTimer = result.withTimer

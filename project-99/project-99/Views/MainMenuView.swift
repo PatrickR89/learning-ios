@@ -36,14 +36,14 @@ class MainMenuView: UIView {
 
     func setupUI() {
         self.addSubview(stackView)
-        gameButton.setupInView(forView: self, withName: "New Game", andAction: #selector(openNewGame))
-        statsButton.setupInView(forView: self, withName: "Stats", andAction: #selector(openStats))
-        settingsButton.setupInView(forView: self, withName: "Settings", andAction: #selector(openSettings))
-        logoutButton.setupInView(forView: self, withName: "Logout", andAction: #selector(logout))
+        gameButton.setupInView(self, withName: "New Game", andAction: #selector(openNewGame))
+        statsButton.setupInView(self, withName: "Stats", andAction: #selector(openStats))
+        settingsButton.setupInView(self, withName: "Settings", andAction: #selector(openSettings))
+        logoutButton.setupInView(self, withName: "Logout", andAction: #selector(logout))
 
         let buttons: [UIButton] = [gameButton, statsButton, settingsButton, logoutButton]
         stackView.arrangeView(withButtons: buttons)
-        stackView.setupConstraints(forView: self)
+        stackView.setupConstraints(self)
     }
 
     @objc func openSettings() {

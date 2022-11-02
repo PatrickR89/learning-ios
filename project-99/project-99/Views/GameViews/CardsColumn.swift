@@ -34,14 +34,14 @@ class CardsColumn: UIStackView {
                 for (index, card) in cards.enumerated() {
                     tempCards.insert(GameCardView(), at: index)
                     tempCards[index].configCellBasicLayout()
-                    tempCards[index].setupUI(with: card)
+                    tempCards[index].setupCardUI(card)
                 }
 
-                self?.setupCards(withCards: tempCards)
+                self?.setupCards(tempCards)
             })
     }
 
-    func setupCards(withCards cards: [GameCardView]) {
+    func setupCards(_ cards: [GameCardView]) {
         self.cards = cards
         self.axis = .vertical
 

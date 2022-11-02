@@ -23,16 +23,19 @@ class MainMenuViewController: UIViewController {
 
         super.init(nibName: nil, bundle: nil)
         setupUI()
-        title = "Welcome \(viewModel.setUsername())"
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         title = "Welcome \(viewModel.setUsername())"
+        use(AppTheme.self) {
+            $0.navigationController?.navigationBar.titleTextAttributes =
+            [NSAttributedString.Key.foregroundColor: $1.textColor]
+        }
     }
 
     private func setupUI() {

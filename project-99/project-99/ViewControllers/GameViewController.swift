@@ -26,6 +26,7 @@ class GameViewController: UIViewController {
         bindObserver()
         use(AppTheme.self) {
             $0.view.backgroundColor = $1.backgroundColor
+            $0.navigationItem.leftBarButtonItem?.tintColor = $1.textColor
             $0.reloadInputViews()
         }
     }
@@ -41,9 +42,9 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         navigationItem.leftBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .close,
+            image: UIImage(systemName: "xmark.circle"),
+            style: .plain,
             target: self,
             action: #selector(closeGame))
     }

@@ -19,6 +19,7 @@ class NewGameViewController: UIViewController {
         use(AppTheme.self) {
             $0.view.backgroundColor = $1.backgroundColor
             $0.tableView.backgroundColor = $1.backgroundColor
+            $0.navigationItem.leftBarButtonItem?.tintColor = $1.textColor
             $0.tableView.reloadData()
             $0.reloadInputViews()
         }
@@ -33,7 +34,8 @@ class NewGameViewController: UIViewController {
         setupUI()
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .close,
+            image: UIImage(systemName: "xmark.circle"),
+            style: .plain,
             target: self,
             action: #selector(dismissSelf))
     }

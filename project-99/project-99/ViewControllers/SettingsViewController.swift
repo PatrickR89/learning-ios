@@ -25,6 +25,7 @@ class SettingsViewController: UIViewController {
         setupUI()
         use(AppTheme.self) {
             $0.tableView.backgroundColor = $1.backgroundColor
+            $0.navigationItem.leftBarButtonItem?.tintColor = $1.textColor
             $0.reloadInputViews()
         }
     }
@@ -36,8 +37,10 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.populateTableView(true, in: self)
+
         navigationItem.leftBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .close,
+            image: UIImage(systemName: "xmark.circle"),
+            style: .plain,
             target: self,
             action: #selector(dismissSelf))
     }

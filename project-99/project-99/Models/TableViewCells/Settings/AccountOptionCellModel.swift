@@ -1,5 +1,5 @@
 //
-//  AccountOptionViewCellModel.swift
+//  AccountOptionCellModel.swift
 //  project-99
 //
 //  Created by Patrick on 31.10.2022..
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AccountOptionViewCellModel: Hashable {
+struct AccountOptionCellModel: Hashable {
     var type: AccountOption
     var title: String
     var destructive: Bool

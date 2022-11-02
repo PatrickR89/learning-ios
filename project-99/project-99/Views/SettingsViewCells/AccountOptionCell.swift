@@ -1,23 +1,22 @@
 //
-//  ThemeTableViewCell.swift
+//  AccountOptionCell.swift
 //  project-99
 //
-//  Created by Patrick on 16.09.2022..
+//  Created by Patrick on 19.09.2022..
 //
 
 import UIKit
 
-class ThemeTableViewCell: UITableViewCell {
+class AccountOptionCell: UITableViewCell {
 
     private let titleLabel = UILabel()
-    private let valueLabel = UILabel()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupUI(withLabels: titleLabel, and: valueLabel)
+        self.setupUI(withSingleLabel: titleLabel)
+
         use(AppTheme.self) {
             $0.backgroundColor = $1.backgroundColor
-            $0.titleLabel.textColor = $1.textColor
         }
     }
 
@@ -25,8 +24,12 @@ class ThemeTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func updateCellData(with model: ThemeTableViewCellModel) {
+    func updateCellData(with model: AccountOptionCellModel) {
         titleLabel.text = model.title
-        valueLabel.text = model.value.rawValue
+        if model.destructive {
+            titleLabel.textColor = .red
+        } else {
+            titleLabel.textColor = .systemBlue
+        }
     }
 }

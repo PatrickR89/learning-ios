@@ -46,9 +46,9 @@ class StatsViewController: UIViewController {
 
     private func setupUI() {
         view.appendViews([tableView])
-        GamesViewCell.register(in: tableView)
-        PairsViewCell.register(in: tableView)
-        TimesViewCell.register(in: tableView)
+        GamesCell.register(in: tableView)
+        PairsCell.register(in: tableView)
+        TimesCell.register(in: tableView)
         tableView.delegate = self
         tableView.dataSource = self
 
@@ -66,7 +66,7 @@ extension StatsViewController: UITableViewDataSource {
         if viewModel.isCellBottomHidden[indexPath.row] {
             return 40
         } else {
-            if (tableView.cellForRow(at: indexPath) as? TimesViewCell) != nil {
+            if (tableView.cellForRow(at: indexPath) as? TimesCell) != nil {
                 return 350
             } else {
                 return 180
@@ -82,19 +82,19 @@ extension StatsViewController: UITableViewDataSource {
         let cellContent = content[indexPath.row]
         switch cellContent {
         case .games:
-            let cell = GamesViewCell.dequeue(in: tableView, for: indexPath)
+            let cell = GamesCell.dequeue(in: tableView, for: indexPath)
             cell.bottomView.isHidden = viewModel.isCellBottomHidden[indexPath.row]
             cell.cellBottomViewModel.changeHiddenState(viewModel.isCellBottomHidden[indexPath.row])
             cell.selectionStyle = .none
             return cell
         case .pairs:
-            let cell = PairsViewCell.dequeue(in: tableView, for: indexPath)
+            let cell = PairsCell.dequeue(in: tableView, for: indexPath)
             cell.bottomView.isHidden = viewModel.isCellBottomHidden[indexPath.row]
             cell.cellBottomViewModel.changeHiddenState(viewModel.isCellBottomHidden[indexPath.row])
             cell.selectionStyle = .none
             return cell
         case .gameTimes:
-            let cell = TimesViewCell.dequeue(in: tableView, for: indexPath)
+            let cell = TimesCell.dequeue(in: tableView, for: indexPath)
             cell.bottomView.isHidden = viewModel.isCellBottomHidden[indexPath.row]
             cell.cellBottomViewModel.changeHiddenState(viewModel.isCellBottomHidden[indexPath.row])
             cell.selectionStyle = .none

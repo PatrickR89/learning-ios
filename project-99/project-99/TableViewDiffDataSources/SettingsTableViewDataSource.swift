@@ -13,15 +13,15 @@ class SettingsTableViewDataSource:
         super.init(tableView: tableView) {tableView, indexPath, itemIdentifier in
             switch itemIdentifier {
             case .theme(let model):
-                let cell = ThemeTableViewCell.dequeue(in: tableView, for: indexPath)
+                let cell = ThemeCell.dequeue(in: tableView, for: indexPath)
                 cell.updateCellData(with: model)
                 return cell
             case .gameOption(let model):
-                let cell = GameOptionViewCell.dequeue(in: tableView, for: indexPath)
+                let cell = GameOptionCell.dequeue(in: tableView, for: indexPath)
                 cell.updateCellData(with: model)
                 return cell
             case .accountOption(let model):
-                let cell = AccountOptionViewCell.dequeue(in: tableView, for: indexPath)
+                let cell = AccountOptionCell.dequeue(in: tableView, for: indexPath)
                 cell.updateCellData(with: model)
                 return cell
             }

@@ -1,13 +1,13 @@
 //
-//  GamesViewCell.swift
+//  PairsCell.swift
 //  project-99
 //
-//  Created by Patrick on 20.09.2022..
+//  Created by Patrick on 21.09.2022..
 //
 
 import UIKit
 
-class GamesViewCell: UITableViewCell {
+class PairsCell: UITableViewCell {
 
     private let stackView = UIStackView()
     private let topView: StatCellTopSubview
@@ -16,10 +16,10 @@ class GamesViewCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 
-        self.cellBottomViewModel = StatCellBottomViewModel(as: StatsContent.games)
+        self.cellBottomViewModel = StatCellBottomViewModel(as: StatsContent.pairs)
         self.bottomView = StatCellBottomSubview(
-            with: cellBottomViewModel, as: StatsContent.games)
-        self.topView = StatCellTopSubview(as: StatsContent.games, isExtended: self.bottomView.isHidden)
+            with: cellBottomViewModel, as: StatsContent.pairs)
+        self.topView = StatCellTopSubview(as: StatsContent.pairs, isExtended: self.bottomView.isHidden)
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.cellBottomViewModel.delegate = self
         use(AppTheme.self) {
@@ -42,7 +42,7 @@ class GamesViewCell: UITableViewCell {
     }
 }
 
-extension GamesViewCell: StatCellBottomViewModelDelegate {
+extension PairsCell: StatCellBottomViewModelDelegate {
     func statCellBottomViewModel(_ viewModel: StatCellBottomViewModel, didChangeViewHiddenState: Bool) {
         stackView.removeFromSuperview()
         setupUI()

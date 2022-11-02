@@ -43,10 +43,10 @@ class NewGameViewController: UIViewController {
     }
 
     private func setupUI() {
-        view.addViews([tableView])
+        view.appendViews([tableView])
         tableView.dataSource = self
         tableView.delegate = self
-        NewGameViewCell.register(in: tableView)
+        NewGameCell.register(in: tableView)
 
         NSLayoutConstraint.activate([
             tableView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -67,8 +67,8 @@ extension NewGameViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = NewGameViewCell.dequeue(in: tableView, for: indexPath)
-        cell.setupLevelLabelText(with: viewModel.loadLevel(at: indexPath.row))
+        let cell = NewGameCell.dequeue(in: tableView, for: indexPath)
+        cell.updateCellData(with: NewGameCellViewModel(viewModel.loadLevel(at: indexPath.row)))
         return cell
     }
 }

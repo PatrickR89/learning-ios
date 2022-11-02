@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ThemeTableViewCellModel: Hashable {
+struct ThemeTableCellModel: Hashable {
     var title: String
     var value: ThemeChoice
 

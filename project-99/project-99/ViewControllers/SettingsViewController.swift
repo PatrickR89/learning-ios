@@ -58,9 +58,9 @@ class SettingsViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.frame = view.frame
-        ThemeTableViewCell.register(in: tableView)
-        GameOptionViewCell.register(in: tableView)
-        AccountOptionViewCell.register(in: tableView)
+        ThemeCell.register(in: tableView)
+        GameOptionCell.register(in: tableView)
+        AccountOptionCell.register(in: tableView)
         setupBindings()
     }
 

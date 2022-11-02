@@ -13,7 +13,7 @@ enum SettingsTableViewLayoutSections: Hashable {
 }
 
 enum SettingsTableViewLayoutItems: Hashable {
-    case theme(ThemeTableViewCellModel)
-    case gameOption(GameOptionViewCellModel)
-    case accountOption(AccountOptionViewCellModel)
+    case theme(ThemeTableCellModel)
+    case gameOption(GameOptionCellModel)
+    case accountOption(AccountOptionCellModel)
 }

@@ -1,5 +1,5 @@
 //
-//  MulticolorViewCell.swift
+//  GameOptionCell.swift
 //  project-99
 //
 //  Created by Patrick on 19.09.2022..
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GameOptionViewCell: UITableViewCell {
+class GameOptionCell: UITableViewCell {
 
     private let titleLabel = UILabel()
     private let valueLabel = UILabel()
@@ -26,7 +26,7 @@ class GameOptionViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func updateCellData(with model: GameOptionViewCellModel) {
+    func updateCellData(with model: GameOptionCellModel) {
         titleLabel.text = model.title
         switch model.cellType {
         case .multicolor:

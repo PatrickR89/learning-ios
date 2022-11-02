@@ -1,5 +1,5 @@
 //
-//  GameOptionViewCellModel.swift
+//  GameOptionCellModel.swift
 //  project-99
 //
 //  Created by Patrick on 31.10.2022..
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GameOptionViewCellModel: Hashable {
+struct GameOptionCellModel: Hashable {
     var cellType: GameOption
     var title: String
     var value: Bool

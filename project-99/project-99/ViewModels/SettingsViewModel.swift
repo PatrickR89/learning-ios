@@ -68,12 +68,12 @@ class SettingsViewModel {
     }
 
     func populateTableView(_ isInitial: Bool, in viewController: SettingsViewController) {
-        let theme = SettingsTableViewLayoutItems.theme(ThemeTableViewCellModel(with: self))
-        let multicolor = SettingsTableViewLayoutItems.gameOption(GameOptionViewCellModel(with: .multicolor, and: self))
-        let timer = SettingsTableViewLayoutItems.gameOption(GameOptionViewCellModel(with: .timer, and: self))
-        let username = SettingsTableViewLayoutItems.accountOption(AccountOptionViewCellModel(AccountOption.username))
-        let password = SettingsTableViewLayoutItems.accountOption(AccountOptionViewCellModel(AccountOption.password))
-        let delete = SettingsTableViewLayoutItems.accountOption(AccountOptionViewCellModel(AccountOption.delete))
+        let theme = SettingsTableViewLayoutItems.theme(ThemeTableCellModel(with: self))
+        let multicolor = SettingsTableViewLayoutItems.gameOption(GameOptionCellModel(with: .multicolor, and: self))
+        let timer = SettingsTableViewLayoutItems.gameOption(GameOptionCellModel(with: .timer, and: self))
+        let username = SettingsTableViewLayoutItems.accountOption(AccountOptionCellModel(AccountOption.username))
+        let password = SettingsTableViewLayoutItems.accountOption(AccountOptionCellModel(AccountOption.password))
+        let delete = SettingsTableViewLayoutItems.accountOption(AccountOptionCellModel(AccountOption.delete))
 
         let gameOptions: [SettingsTableViewLayoutItems] = [theme, multicolor, timer]
         let userOptions: [SettingsTableViewLayoutItems] = [username, password, delete]

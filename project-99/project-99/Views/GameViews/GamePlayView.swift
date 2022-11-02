@@ -74,7 +74,7 @@ class GamePlayView: UIView {
 extension GamePlayView {
     func setupLevelLayout(_ level: Level) {
 
-        addViews([remainingChancesLabel, timerTextLabel, timerCountLabel, gridView])
+        appendViews([remainingChancesLabel, timerTextLabel, timerCountLabel, gridView])
 
         remainingChancesLabel.text = "Remaning chances: 0"
         remainingChancesLabel.textAlignment = .center

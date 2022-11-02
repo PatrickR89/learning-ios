@@ -54,7 +54,7 @@ class SettingsViewController: UIViewController {
     }
 
     private func setupUI() {
-        view.addViews([tableView])
+        view.appendViews([tableView])
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.frame = view.frame

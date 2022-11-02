@@ -45,7 +45,7 @@ class StatsViewController: UIViewController {
     }
 
     private func setupUI() {
-        view.addViews([tableView])
+        view.appendViews([tableView])
         GamesViewCell.register(in: tableView)
         PairsViewCell.register(in: tableView)
         TimesViewCell.register(in: tableView)

@@ -70,7 +70,7 @@ class GameCardView: UIView {
 
     func setupCardUI(_ card: GameCard) {
         viewModel.setupCard(for: card)
-        self.addViews([imageView, backLabel])
+        self.appendViews([imageView, backLabel])
 
         imageView.image = UIImage(systemName: card.image)
         imageView.tintColor = card.color

@@ -60,7 +60,7 @@ class LoginViewController: UIViewController {
 
 private extension LoginViewController {
     func setupUI() {
-        view.addViews([loginView])
+        view.appendViews([loginView])
         view.addLayoutGuide(keyboardLayoutGuide)
         NSLayoutConstraint.activate([
             keyboardLayoutGuide.leadingAnchor.constraint(equalTo: view.leadingAnchor),

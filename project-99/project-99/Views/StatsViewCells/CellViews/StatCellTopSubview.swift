@@ -38,8 +38,8 @@ class StatCellTopSubview: UIView {
     }
 
     func setupUI() {
-        self.setupViewInCell(withLabels: titleLabel, and: nil)
-        self.setupArrowImageViewInCell(for: arrowImageView)
+        self.setupLabelViews(titleLabel, and: nil)
+        self.setupImageView(arrowImageView)
         titleLabel.text = "Games"
         arrowImageView.image = UIImage(systemName: "chevron.down")
 

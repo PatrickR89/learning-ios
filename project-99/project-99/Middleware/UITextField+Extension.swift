@@ -9,7 +9,7 @@ import UIKit
 
 extension UITextField {
 
-    func setupInView() {
+    func setupTextView() {
 
         self.textAlignment = .left
         self.textColor = .black

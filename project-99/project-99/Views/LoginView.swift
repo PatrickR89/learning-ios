@@ -92,7 +92,7 @@ private extension LoginView {
 
     func setupTextField(for textField: UITextField ) {
 
-        textField.setupInView()
+        textField.setupTextView()
         textField.delegate = self
 
         if textField == nameTextField {

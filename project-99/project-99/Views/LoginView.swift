@@ -63,11 +63,11 @@ private extension LoginView {
         warningLabel.isHidden = true
         warningLabel.text = ""
 
-        warningStackView.arrangeView(asColumnWithViews: [warningLabel], withSpacing: 20)
-        textFieldsStackView.arrangeView(asColumnWithViews: [nameTextField, passwordTextField], withSpacing: 20)
-        buttonsStackView.arrangeView(withButtons: [loginButton, createAccBtn])
-        loginStackView.arrangeView(
-            asColumnWithViews: [warningStackView, textFieldsStackView, buttonsStackView],
+        warningStackView.arrangeColumn([warningLabel], withSpacing: 20)
+        textFieldsStackView.arrangeColumn([nameTextField, passwordTextField], withSpacing: 20)
+        buttonsStackView.arrangeButtons([loginButton, createAccBtn])
+        loginStackView.arrangeColumn(
+            [warningStackView, textFieldsStackView, buttonsStackView],
             withSpacing: 35)
         loginStackView.setupConstraints(self)
     }

@@ -42,7 +42,7 @@ class MainMenuView: UIView {
         logoutButton.setupInView(self, withName: "Logout", andAction: #selector(logout))
 
         let buttons: [UIButton] = [gameButton, statsButton, settingsButton, logoutButton]
-        stackView.arrangeView(withButtons: buttons)
+        stackView.arrangeButtons(buttons)
         stackView.setupConstraints(self)
     }
 

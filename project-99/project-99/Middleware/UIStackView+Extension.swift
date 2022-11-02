@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIStackView {
-    func arrangeView(withButtons buttons: [UIButton]) {
+    func arrangeButtons(_ buttons: [UIButton]) {
 
         self.translatesAutoresizingMaskIntoConstraints = false
 
@@ -27,26 +27,26 @@ extension UIStackView {
         }
     }
 
-    func arrangeView(asExpandableWith topView: UIView, and bottomView: UIView, bottomIsHidden hidden: Bool) {
-        self.addArrangedSubview(topView)
+    func arrangeExpandableViews(top: UIView, bottom: UIView, isBottomHidden: Bool) {
+        self.addArrangedSubview(top)
 
         NSLayoutConstraint.activate([
-            topView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            topView.widthAnchor.constraint(equalTo: self.widthAnchor),
-            topView.topAnchor.constraint(equalTo: self.topAnchor)
+            top.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            top.widthAnchor.constraint(equalTo: self.widthAnchor),
+            top.topAnchor.constraint(equalTo: self.topAnchor)
         ])
 
-        if !hidden {
-            self.addArrangedSubview(bottomView)
-            bottomView.translatesAutoresizingMaskIntoConstraints = false
+        if !isBottomHidden {
+            self.addArrangedSubview(bottom)
+            bottom.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
-                bottomView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-                bottomView.widthAnchor.constraint(equalTo: self.widthAnchor)
+                bottom.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+                bottom.widthAnchor.constraint(equalTo: self.widthAnchor)
             ])
         }
     }
 
-    func arrangeView(asRowWith titleLable: UILabel, and valueLabel: UILabel) {
+    func arrangeRow(with titleLable: UILabel, and valueLabel: UILabel) {
 
         valueLabel.textColor = .systemBlue
 
@@ -66,7 +66,7 @@ extension UIStackView {
         ])
     }
 
-    func arrangeView(asColumnWithViews viewRows: [UIView], withSpacing spacing: CGFloat) {
+    func arrangeColumn(_ rows: [UIView], withSpacing spacing: CGFloat) {
 
         self.translatesAutoresizingMaskIntoConstraints = false
 
@@ -74,13 +74,13 @@ extension UIStackView {
         self.distribution = .fillEqually
         self.spacing = spacing
 
-        if viewRows.count < 2 {
+        if rows.count < 2 {
             self.alignment = .center
         } else {
             self.alignment = .top
         }
 
-        for row in viewRows {
+        for row in rows {
             self.addArrangedSubview(row)
 
             NSLayoutConstraint.activate([

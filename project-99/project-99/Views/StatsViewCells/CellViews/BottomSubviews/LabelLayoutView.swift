@@ -29,7 +29,7 @@ class LabelLayoutView: UIView {
 
     private func setupUI() {
         self.addSubview(rowStack)
-        rowStack.arrangeView(asRowWith: titleLabel, and: valueLabel)
+        rowStack.arrangeRow(with: titleLabel, and: valueLabel)
         valueLabel.textColor = .systemBlue
 
         NSLayoutConstraint.activate([

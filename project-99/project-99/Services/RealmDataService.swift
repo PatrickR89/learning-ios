@@ -29,8 +29,8 @@ class RealmDataService {
         self.cancellable = UserContainer.shared.$userId
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] userId in
-            self?.userId = userId
-        })
+                self?.userId = userId
+            })
     }
 
     func loadStatistics() -> UserGamesStats {
@@ -68,11 +68,15 @@ class RealmDataService {
             veryHard: 0.0,
             emotionalDamage: 0.0)
 
-        try? realm.write {
-            realm.add(newUser)
-            realm.add(newSettings)
-            realm.add(newStats)
-            realm.add(initialTimes)
+        do {
+            try realm.write {
+                realm.add(newUser)
+                realm.add(newSettings)
+                realm.add(newStats)
+                realm.add(initialTimes)
+            }
+        } catch {
+            fatalError("App crashed trying to save new user")
         }
     }
 
@@ -92,9 +96,14 @@ class RealmDataService {
             return
         }
 
-        try? realm.write {
-            user.name = newUsername
+        do {
+            try realm.write {
+                user.name = newUsername
+            }
+        } catch {
+            fatalError("Game crashed while updating username")
         }
+
     }
 
     func changePassword(_ newPassword: String) {
@@ -103,39 +112,50 @@ class RealmDataService {
             return
         }
 
-        try? realm.write {
-            user.password = newPassword
+        do {
+            try realm.write {
+                user.password = newPassword
+            }
+        } catch {
+            fatalError("Game crashed while updating password")
         }
+
     }
 
     func deleteAccount() {
         guard let userId = userId else {
             return
         }
+        do {
+            if let levelTimes = realm.object(ofType: LevelTimes.self, forPrimaryKey: userId) {
 
-        if let levelTimes = realm.object(ofType: LevelTimes.self, forPrimaryKey: userId) {
-            try? realm.write {
-                realm.delete(levelTimes)
+                try realm.write {
+                    realm.delete(levelTimes)
+                }
             }
+
+            if let userSettings = realm.object(ofType: UserSettings.self, forPrimaryKey: userId) {
+                try realm.write {
+                    realm.delete(userSettings)
+                }
+            }
+
+            if let userGameStats = realm.object(ofType: UserGamesStats.self, forPrimaryKey: userId) {
+                try realm.write {
+                    realm.delete(userGameStats)
+                }
+            }
+
+            if let user = realm.object(ofType: User.self, forPrimaryKey: userId) {
+
+                try realm.write {
+                    realm.delete(user)
+                }
+            }
+        } catch {
+            fatalError("Game crashed while trying to delete user and their content")
         }
 
-        if let userSettings = realm.object(ofType: UserSettings.self, forPrimaryKey: userId) {
-            try? realm.write {
-                realm.delete(userSettings)
-            }
-        }
-
-        if let userGameStats = realm.object(ofType: UserGamesStats.self, forPrimaryKey: userId) {
-            try? realm.write {
-                realm.delete(userGameStats)
-            }
-        }
-
-        if let user = realm.object(ofType: User.self, forPrimaryKey: userId) {
-            try? realm.write {
-                realm.delete(user)
-            }
-        }
     }
 
     // MARK: Game stats
@@ -164,32 +184,49 @@ class RealmDataService {
     func updateTotalGames() {
         let result = loadGameStats()
 
-        try? realm.write {
-            result.numberOfGames += 1
+        do {
+            try realm.write {
+                result.numberOfGames += 1
+            }
+        } catch {
+            fatalError("Game crashed while updating number of games started")
         }
+
     }
 
     func updateGamesWon() {
         let result = loadGameStats()
 
-        try? realm.write {
-            result.numOfGamesWon += 1
+        do {
+            try realm.write {
+                result.numOfGamesWon += 1
+            }
+        } catch {
+            fatalError("Game crashed while updating number of games won")
         }
     }
 
     func updateTotalSelectedPairs() {
         let result = loadGameStats()
 
-        try? realm.write {
-            result.cardsClicked += 1
+        do {
+            try realm.write {
+                result.cardsClicked += 1
+            }
+        } catch {
+            fatalError("Game crashed while updating count of pairs selected")
         }
     }
 
     func updatePairedCards() {
         let result = loadGameStats()
 
-        try? realm.write {
-            result.pairsRevealed += 1
+        do {
+            try realm.write {
+                result.pairsRevealed += 1
+            }
+        } catch {
+            fatalError("Game crashed while updating count of pairs revealed")
         }
     }
 
@@ -200,16 +237,26 @@ class RealmDataService {
         }
 
         if result.value(forKey: level.rawValue) as? Double == 0.0 {
-            try? realm.write {
-                result.setValue(time, forKey: level.rawValue)
+            do {
+                try realm.write {
+                    result.setValue(time, forKey: level.rawValue)
+                }
+            } catch {
+                fatalError("Game crashed while saving new time for level \(level.rawValue)")
             }
+
         }
 
         if let levelTime = result.value(forKey: level.rawValue) as? Double {
             if time < levelTime {
-                try? realm.write {
-                    result.setValue(time, forKey: level.rawValue)
+                do {
+                    try realm.write {
+                        result.setValue(time, forKey: level.rawValue)
+                    }
+                } catch {
+                    fatalError("Game crashed while saving new time for level \(level.rawValue)")
                 }
+
             }
         }
     }
@@ -232,9 +279,14 @@ class RealmDataService {
             return
         }
 
-        try? realm.write {
-            result.theme = theme
+        do {
+            try realm.write {
+                result.theme = theme
+            }
+        } catch {
+            fatalError("Game crashed while saving chosen theme")
         }
+
     }
 
     func saveMulticolorState(_ state: Bool) {
@@ -242,9 +294,14 @@ class RealmDataService {
               let result = loadUserSettingsById(userId) else {
             return
         }
-        try? realm.write {
-            result.withMulticolor = state
+        do {
+            try realm.write {
+                result.withMulticolor = state
+            }
+        } catch {
+            fatalError("Game crashed while saving multicolor state")
         }
+
 
     }
 
@@ -253,9 +310,15 @@ class RealmDataService {
               let result = loadUserSettingsById(userId) else {
             return
         }
-        try? realm.write {
-            result.withTimer = state
+
+        do {
+            try realm.write {
+                result.withTimer = state
+            }
+        } catch {
+            fatalError("Game crashed while saving timer state")
         }
+
     }
 
     func loadMulticolorState() -> Bool {

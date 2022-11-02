@@ -48,7 +48,10 @@ class GamePlayViewModel {
 
     private func setupSymbols(gameDifficulty: Level) {
 
-        let cardSymbols = FetchSymbols.getSymbolsFromResource()
+        let cardSymbols = FetchSymbols.getSymbolsFromResource().filter {
+            $0 != ""
+        }
+
         switch gameDifficulty {
 
         case .veryEasy:
@@ -79,8 +82,8 @@ class GamePlayViewModel {
                                  .orange, .yellow, .orange,
                                  .red, .magenta, .purple,
                                  .brown, .systemIndigo, .systemMint,
-                                 .systemTeal, .black, .darkGray,
-                                 .systemPink]
+                                 .systemTeal, .darkGray,
+                                 .systemPink, .systemRed]
         colors.shuffle()
         return colors
     }

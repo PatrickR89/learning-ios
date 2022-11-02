@@ -19,7 +19,7 @@ class LoginViewController: UIViewController {
     let keyboardLayoutGuide = UILayoutGuide()
 
     init () {
-        UserContainer.shared.saveUser(with: nil)
+        UserContainer.shared.setUserId(nil)
         self.viewModel = LoginViewModel()
         self.loginView = LoginView(with: viewModel)
         super.init(nibName: nil, bundle: nil)

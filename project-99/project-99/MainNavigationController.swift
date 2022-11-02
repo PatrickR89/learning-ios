@@ -43,12 +43,12 @@ extension MainNavigationController: MainMenuViewControllerDelegate {
         _ viewController: MainMenuViewController,
         didReciveAccountDeletionFrom settingsViewController: SettingsViewController) {
             RealmDataService.shared.deleteAccount()
-            UserContainer.shared.saveUser(with: nil)
+            UserContainer.shared.setUserId(nil)
             setupLoginViewController()
         }
 
     func mainMenuViewControllerDidRecieveLogout(_ viewController: MainMenuViewController) {
-        UserContainer.shared.saveUser(with: nil)
+        UserContainer.shared.setUserId(nil)
         setupLoginViewController()
     }
 }

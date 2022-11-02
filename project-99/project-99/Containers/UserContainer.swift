@@ -13,19 +13,11 @@ class UserContainer {
 
     @Published private(set) var userId: UUID?
 
-    func saveUser(with id: UUID?) {
+    func setUserId(_ id: UUID?) {
         guard let id = id else {
             return
         }
 
         self.userId = id
-    }
-
-    func loadUser() -> UUID? {
-        guard let userId = userId else {
-            return nil
-        }
-
-        return userId
     }
 }

@@ -57,7 +57,7 @@ extension LoginViewModel {
 
         self.loginSuccess = true
         self.user = newUser
-        UserContainer.shared.saveUser(with: newUser.id)
+        UserContainer.shared.setUserId(newUser.id)
     }
 
     func sendUser() -> User {
@@ -77,7 +77,7 @@ extension LoginViewModel {
               let password = password else {return }
         if username == user.name && password == user.password {
             self.loginSuccess = true
-            UserContainer.shared.saveUser(with: user.id)
+            UserContainer.shared.setUserId(user.id)
             self.username = ""
             self.password = ""
         } else {
@@ -87,6 +87,6 @@ extension LoginViewModel {
 
     func userDeleted() {
         self.user = User(id: UUID(), name: "", password: "")
-        UserContainer.shared.saveUser(with: nil)
+        UserContainer.shared.setUserId(nil)
     }
 }

@@ -16,7 +16,6 @@ class RealmDataService {
     private var userId: UUID?
 
     init() {
-        self.userId = UserContainer.shared.loadUser()
         self.realm = RealmDataProvider.shared.initiateRealm()
         bindUserId()
     }
@@ -301,8 +300,6 @@ class RealmDataService {
         } catch {
             fatalError("Game crashed while saving multicolor state")
         }
-
-
     }
 
     func saveTimerState(_ state: Bool) {

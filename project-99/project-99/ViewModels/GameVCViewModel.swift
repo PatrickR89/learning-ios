@@ -29,12 +29,12 @@ class GameVCViewModel {
     }
 
     func addGameOverAlertController(in viewController: GameViewController) -> UIAlertController {
-        let alertController = UIAlertController().createGameOverAlertController(in: viewController, with: self)
+        let alertController = UIAlertController().createGameOverAlertController(in: viewController)
         return alertController
     }
 
     func addGameFinishedAlertController(in viewController: GameViewController) -> UIAlertController {
-        let alertController = UIAlertController().createGameWonAlertController(in: viewController, with: self)
+        let alertController = UIAlertController().createGameWonAlertController(in: viewController)
         return alertController
     }
 }

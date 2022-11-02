@@ -92,8 +92,7 @@ extension UIAlertController {
         }
 
     func createGameOverAlertController(
-        in viewController: GameViewController,
-        with viewModel: GameVCViewModel) -> UIAlertController {
+        in viewController: GameViewController) -> UIAlertController {
 
             let alertController = UIAlertController(
                 title: "Game Over",
@@ -112,8 +111,7 @@ extension UIAlertController {
         }
 
     func createGameWonAlertController(
-        in viewController: GameViewController,
-        with viewModel: GameVCViewModel) -> UIAlertController {
+        in viewController: GameViewController) -> UIAlertController {
 
             let alertController = UIAlertController(
                 title: "You win!",

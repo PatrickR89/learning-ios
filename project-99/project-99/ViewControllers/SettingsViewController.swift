@@ -122,7 +122,7 @@ extension SettingsViewController: UITableViewDelegate {
                 viewModel.toggleTimer()
             }
         case .accountOption(let model):
-            let alertController = viewModel.addPasswordVerificationAlertController(in: self, for: model.type)
+            let alertController = viewModel.addPasswordVerificationAlertController(for: model.type)
             present(alertController, animated: true)
         case .none:
             return
@@ -144,7 +144,7 @@ extension SettingsViewController: SettingsViewModelDelegate {
         for change: AccountOption) {
 
             if !result {
-                let alertController = viewModel.addInvalidPasswordAlertController(in: self)
+                let alertController = viewModel.addInvalidPasswordAlertController()
                 present(alertController, animated: true)
             } else {
                 let alertController = viewModel.addChangeAccountAlertController(in: self, for: change)

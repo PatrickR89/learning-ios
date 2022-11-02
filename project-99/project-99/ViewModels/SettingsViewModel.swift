@@ -167,17 +167,15 @@ extension SettingsViewModel {
     // MARK: AlertControllers
 
     func addPasswordVerificationAlertController(
-        in viewController: UIViewController,
-        for change: AccountOption) -> UIAlertController {
+        for option: AccountOption) -> UIAlertController {
             let alertController = UIAlertController().createPasswordVerificationAlertController(
-                in: viewController,
-                with: self,
-                forChangeInAccount: change)
+                self,
+                forChangeInAccount: option)
             return alertController
         }
 
-    func addInvalidPasswordAlertController(in viewController: UIViewController) -> UIAlertController {
-        let alertController = UIAlertController().createInvalidPasswordAlertController(in: viewController)
+    func addInvalidPasswordAlertController() -> UIAlertController {
+        let alertController = UIAlertController().createInvalidPasswordAlertController()
         return alertController
     }
 
@@ -185,8 +183,7 @@ extension SettingsViewModel {
         in viewController: UIViewController,
         for change: AccountOption) -> UIAlertController {
             let alertController = UIAlertController().createEditAccountAlertController(
-                in: viewController,
-                with: self,
+                self,
                 for: change)
             return alertController
         }

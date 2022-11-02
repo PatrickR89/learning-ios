@@ -9,8 +9,7 @@ import UIKit
 
 extension UIAlertController {
     func createPasswordVerificationAlertController(
-        in viewController: UIViewController,
-        with viewModel: SettingsViewModel,
+        _ viewModel: SettingsViewModel,
         forChangeInAccount change: AccountOption) -> UIAlertController {
 
             let alertController = UIAlertController(
@@ -37,7 +36,7 @@ extension UIAlertController {
             return alertController
         }
 
-    func createInvalidPasswordAlertController(in viewController: UIViewController) -> UIAlertController {
+    func createInvalidPasswordAlertController() -> UIAlertController {
         let alertController = UIAlertController(title: "Invalid password", message: nil, preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "OK", style: .default)
 
@@ -46,8 +45,7 @@ extension UIAlertController {
     }
 
     func createEditAccountAlertController(
-        in viewController: UIViewController,
-        with viewModel: SettingsViewModel,
+        _ viewModel: SettingsViewModel,
         for change: AccountOption) -> UIAlertController {
             var title: String
             var changeActionTitle: String

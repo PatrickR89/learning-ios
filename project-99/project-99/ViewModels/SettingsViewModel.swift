@@ -66,31 +66,6 @@ class SettingsViewModel {
         self.withMulticolor = result.withMulticolor
         self.withTimer = result.withTimer
     }
-
-    func populateTableView(_ isInitial: Bool, in viewController: SettingsViewController) {
-        let theme = SettingsTableViewLayoutItems.theme(ThemeTableCellModel(with: self))
-        let multicolor = SettingsTableViewLayoutItems.gameOption(GameOptionCellModel(with: .multicolor, and: self))
-        let timer = SettingsTableViewLayoutItems.gameOption(GameOptionCellModel(with: .timer, and: self))
-        let username = SettingsTableViewLayoutItems.accountOption(AccountOptionCellModel(AccountOption.username))
-        let password = SettingsTableViewLayoutItems.accountOption(AccountOptionCellModel(AccountOption.password))
-        let delete = SettingsTableViewLayoutItems.accountOption(AccountOptionCellModel(AccountOption.delete))
-
-        let gameOptions: [SettingsTableViewLayoutItems] = [theme, multicolor, timer]
-        let userOptions: [SettingsTableViewLayoutItems] = [username, password, delete]
-
-        var snapshot = NSDiffableDataSourceSnapshot<SettingsTableViewLayoutSections, SettingsTableViewLayoutItems>()
-        snapshot.appendSections([.gameSettings, .accountSettings])
-        snapshot.appendItems(gameOptions, toSection: .gameSettings)
-        snapshot.appendItems(userOptions, toSection: .accountSettings)
-
-        if isInitial {
-            viewController.tableViewDataSource.apply(snapshot)
-        } else {
-            viewController.tableViewDataSource.defaultRowAnimation = .fade
-            viewController.tableViewDataSource.apply(snapshot, animatingDifferences: true)
-        }
-
-    }
 }
 
 extension SettingsViewModel {

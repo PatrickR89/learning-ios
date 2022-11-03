@@ -9,7 +9,8 @@ import UIKit
 
 class SettingsTableViewDataSource:
     UITableViewDiffableDataSource<SettingsTableViewLayoutSections, SettingsTableViewLayoutItems> {
-    init(_ tableView: UITableView, with viewModel: SettingsViewModel) {
+
+    init(_ tableView: UITableView) {
         super.init(tableView: tableView) {tableView, indexPath, itemIdentifier in
             switch itemIdentifier {
             case .theme(let model):
@@ -26,6 +27,31 @@ class SettingsTableViewDataSource:
                 return cell
             }
         }
+    }
+
+    func reloadData(_ isInitial: Bool, with viewModel: SettingsViewModel) {
+        let theme = SettingsTableViewLayoutItems.theme(ThemeTableCellModel(with: viewModel))
+        let multicolor = SettingsTableViewLayoutItems.gameOption(GameOptionCellModel(with: .multicolor, and: viewModel))
+        let timer = SettingsTableViewLayoutItems.gameOption(GameOptionCellModel(with: .timer, and: viewModel))
+        let username = SettingsTableViewLayoutItems.accountOption(AccountOptionCellModel(AccountOption.username))
+        let password = SettingsTableViewLayoutItems.accountOption(AccountOptionCellModel(AccountOption.password))
+        let delete = SettingsTableViewLayoutItems.accountOption(AccountOptionCellModel(AccountOption.delete))
+
+        let gameOptions: [SettingsTableViewLayoutItems] = [theme, multicolor, timer]
+        let userOptions: [SettingsTableViewLayoutItems] = [username, password, delete]
+
+        var snapshot = NSDiffableDataSourceSnapshot<SettingsTableViewLayoutSections, SettingsTableViewLayoutItems>()
+        snapshot.appendSections([.gameSettings, .accountSettings])
+        snapshot.appendItems(gameOptions, toSection: .gameSettings)
+        snapshot.appendItems(userOptions, toSection: .accountSettings)
+
+        if isInitial {
+            self.apply(snapshot)
+        } else {
+            self.defaultRowAnimation = .fade
+            self.apply(snapshot, animatingDifferences: true)
+        }
+
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

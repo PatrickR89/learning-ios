@@ -12,7 +12,7 @@ class SettingsViewController: UIViewController {
 
     private let viewModel: SettingsViewModel
     private let tableView: UITableView
-    let tableViewDataSource: SettingsTableViewDataSource
+    var tableViewDataSource: SettingsTableViewDataSource
     private var cancellables = [AnyCancellable]()
 
     weak var delegate: SettingsViewControllerDelegate?
@@ -20,9 +20,10 @@ class SettingsViewController: UIViewController {
     init(with viewModel: SettingsViewModel) {
         self.tableView = UITableView()
         self.viewModel = viewModel
-        self.tableViewDataSource = SettingsTableViewDataSource(tableView, with: viewModel)
+        self.tableViewDataSource = SettingsTableViewDataSource(tableView)
         super.init(nibName: nil, bundle: nil)
         setupUI()
+
         use(AppTheme.self) {
             $0.tableView.backgroundColor = $1.backgroundColor
             $0.navigationItem.leftBarButtonItem?.tintColor = $1.textColor
@@ -36,7 +37,7 @@ class SettingsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.populateTableView(true, in: self)
+        tableViewDataSource.reloadData(true, with: viewModel)
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "xmark.circle"),
@@ -74,7 +75,7 @@ class SettingsViewController: UIViewController {
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] _ in
                 guard let self =  self else {return}
-                self.viewModel.populateTableView(false, in: self)
+                self.tableViewDataSource.reloadData(false, with: self.viewModel)
             })
             .store(in: &cancellables)
 
@@ -82,7 +83,7 @@ class SettingsViewController: UIViewController {
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: {[weak self] _ in
                 guard let self =  self else {return}
-                self.viewModel.populateTableView(false, in: self)
+                self.tableViewDataSource.reloadData(false, with: self.viewModel)
             })
             .store(in: &cancellables)
 
@@ -90,7 +91,7 @@ class SettingsViewController: UIViewController {
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] _ in
                 guard let self =  self else {return}
-                self.viewModel.populateTableView(false, in: self)
+                self.tableViewDataSource.reloadData(false, with: self.viewModel)
             })
             .store(in: &cancellables)
 

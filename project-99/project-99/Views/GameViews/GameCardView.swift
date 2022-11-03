@@ -78,6 +78,7 @@ class GameCardView: UIView {
         backLabel.textAlignment = .center
         backLabel.translatesAutoresizingMaskIntoConstraints = false
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.isHidden = true
 
         NSLayoutConstraint.activate([
             imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),

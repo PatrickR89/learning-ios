@@ -12,5 +12,5 @@ enum NewGameTableViewSections: Hashable {
 }
 
 enum NewGameTableViewItems: Hashable {
-    case game(NewGameCellViewModel)
+    case game(NewGameCellModel)
 }

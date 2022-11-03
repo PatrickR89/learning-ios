@@ -11,6 +11,20 @@ class NewGameViewController: UIViewController {
 
     private let viewModel = NewGameViewModel()
     private let tableView = UITableView()
+    lazy var tableViewDataSource: UITableViewDiffableDataSource<NewGameTableViewSections, NewGameTableViewItems> = {
+        let tableViewDataSource =
+        UITableViewDiffableDataSource<NewGameTableViewSections, NewGameTableViewItems>(tableView: tableView) { tableView, indexPath, itemIdentifier in
+            let cell = NewGameCell.dequeue(in: tableView, for: indexPath)
+
+            switch itemIdentifier {
+            case .game(let model):
+                cell.updateCellData(with: model)
+            }
+            return cell
+        }
+        return tableViewDataSource
+    }()
+
     weak var delegate: NewGameViewControllerDelegate?
 
     init() {
@@ -46,9 +60,9 @@ class NewGameViewController: UIViewController {
 
     private func setupUI() {
         view.appendViews([tableView])
-        tableView.dataSource = self
         tableView.delegate = self
         NewGameCell.register(in: tableView)
+        reloadData()
 
         NSLayoutConstraint.activate([
             tableView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -57,21 +71,17 @@ class NewGameViewController: UIViewController {
             tableView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5)
         ])
     }
-}
 
-extension NewGameViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.countLevels()
-    }
+    func reloadData() {
+        var gameOptions = [NewGameTableViewItems]()
+        Level.allCases.forEach {
+            gameOptions.append(NewGameTableViewItems.game(NewGameCellModel($0)))
+        }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = NewGameCell.dequeue(in: tableView, for: indexPath)
-        cell.updateCellData(with: NewGameCellViewModel(viewModel.loadLevel(at: indexPath.row)))
-        return cell
+        var snapshot = NSDiffableDataSourceSnapshot<NewGameTableViewSections, NewGameTableViewItems>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(gameOptions, toSection: .main)
+        tableViewDataSource.apply(snapshot)
     }
 }
 
@@ -83,5 +93,9 @@ extension NewGameViewController: UITableViewDelegate {
 
         delegate?.newGameViewController(self, didStartNewGameWithViewModel: gameViewModel, and: stopwatch)
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
     }
 }

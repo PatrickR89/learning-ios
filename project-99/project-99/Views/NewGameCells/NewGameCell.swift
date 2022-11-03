@@ -27,7 +27,7 @@ class NewGameCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func updateCellData(with model: NewGameCellViewModel) {
+    func updateCellData(with model: NewGameCellModel) {
         levelLabel.text = model.title
         livesLabel.text = model.chances
     }

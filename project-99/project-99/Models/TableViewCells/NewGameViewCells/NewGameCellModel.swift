@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct NewGameCellViewModel: Hashable {
+struct NewGameCellModel: Hashable {
     var level: Level
     var title: String
     var chances: String

@@ -11,19 +11,13 @@ import UIKit
 
 class StatCell: UITableViewCell {
 
-    private let stackView = UIStackView()
-    private let topView: StatCellTopSubview
-    var bottomView: StatCellBottomSubview
-    let cellBottomViewModel: StatCellBottomViewModel
+    private var stackView: UIStackView?
+    private var topView: StatCellTopSubview?
+    var bottomView: UIView?
+    var cellBottomViewModel: StatCellBottomViewModel?
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-
-        self.cellBottomViewModel = StatCellBottomViewModel(as: StatsContent.games)
-        self.bottomView = StatCellBottomSubview(
-            with: cellBottomViewModel, as: StatsContent.games)
-        self.topView = StatCellTopSubview(as: StatsContent.games, isExtended: self.bottomView.isHidden)
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.cellBottomViewModel.delegate = self
         use(AppTheme.self) {
             $0.backgroundColor = $1.backgroundColor
         }
@@ -34,20 +28,45 @@ class StatCell: UITableViewCell {
     }
 
     private func setupUI() {
-        stackView.arrangeExpandableViews(top: topView, bottom: bottomView, isBottomHidden: self.bottomView.isHidden)
-        setupUI(withExpandableView: stackView, withBottomHiddenState: self.bottomView.isHidden)
+        self.stackView = UIStackView()
+        guard let topView = topView,
+              let bottomView = bottomView,
+        let stackView = stackView else {return}
+
+        contentView.removeFromSuperview()
+
+        stackView.arrangeExpandableViews(top: topView, bottom: bottomView, isBottomHidden: bottomView.isHidden)
+        setupUI(withExpandableView: stackView, withBottomHiddenState: bottomView.isHidden)
 
         NSLayoutConstraint.activate([
             stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             stackView.widthAnchor.constraint(equalTo: self.widthAnchor)
         ])
     }
+
+    func updateCellData(_ model: StatCellModel) {
+        self.topView = model.topView
+        self.bottomView = model.bottomView
+        self.cellBottomViewModel = model.viewModel
+
+        self.cellBottomViewModel?.delegate = self
+    }
+
+    func changeBottomState(with value: Bool) {
+        bottomView?.isHidden = value
+        cellBottomViewModel?.changeHiddenState(value)
+    }
 }
 
 extension StatCell: StatCellBottomViewModelDelegate {
     func statCellBottomViewModel(_ viewModel: StatCellBottomViewModel, didChangeViewHiddenState: Bool) {
-        stackView.removeFromSuperview()
+        guard let topView = topView,
+              let bottomView = bottomView else {return}
+        if let stackView = stackView {
+            stackView.removeFromSuperview()
+        }
+
         setupUI()
-        topView.viewModel.toggleExtension(with: self.bottomView.isHidden)
+        topView.viewModel.toggleExtension(with: bottomView.isHidden)
     }
 }

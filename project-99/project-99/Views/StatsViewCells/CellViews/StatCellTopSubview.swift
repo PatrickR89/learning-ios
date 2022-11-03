@@ -15,7 +15,7 @@ class StatCellTopSubview: UIView {
     let viewModel: StatCellTopViewModel
     private var cancellables = [AnyCancellable]()
 
-    init(as cellType: StatsContent, isExtended bottomView: Bool) {
+    init(as cellType: StatsContent, isExtended bottomView: Bool = false) {
         self.viewModel = StatCellTopViewModel(with: cellType, for: bottomView)
         super.init(frame: .zero)
         setupUI()

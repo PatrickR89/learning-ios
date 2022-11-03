@@ -28,6 +28,9 @@ extension UIStackView {
     }
 
     func arrangeExpandableViews(top: UIView, bottom: UIView, isBottomHidden: Bool) {
+        self.removeArrangedSubview(top)
+        self.removeArrangedSubview(bottom)
+
         self.addArrangedSubview(top)
 
         NSLayoutConstraint.activate([

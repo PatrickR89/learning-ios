@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum StatsContent {
+enum StatsContent: CaseIterable {
     case games
     case pairs
     case gameTimes

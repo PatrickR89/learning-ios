@@ -92,6 +92,7 @@
 		CD98D288290ABD70004FA47C /* GameViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98D287290ABD70004FA47C /* GameViewControllerDelegate.swift */; };
 		CD9E7CCE2913AD7B00BF24D1 /* StatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9E7CCD2913AD7B00BF24D1 /* StatCell.swift */; };
 		CD9E7CD02913B94100BF24D1 /* StatCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9E7CCF2913B94100BF24D1 /* StatCellModel.swift */; };
+		CD9E7CD22913DE2E00BF24D1 /* StatsTableViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9E7CD12913DE2E00BF24D1 /* StatsTableViewLayout.swift */; };
 		CDA1CE33290FE5610032A5E8 /* SettingsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1CE32290FE5610032A5E8 /* SettingsTableViewDataSource.swift */; };
 		CDA1CE37290FE7020032A5E8 /* SettingsTableViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1CE36290FE7020032A5E8 /* SettingsTableViewLayout.swift */; };
 		CDA1CE3A290FE9E60032A5E8 /* ThemeTableCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1CE39290FE9E60032A5E8 /* ThemeTableCellModel.swift */; };
@@ -201,6 +202,7 @@
 		CD98D287290ABD70004FA47C /* GameViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewControllerDelegate.swift; sourceTree = "<group>"; };
 		CD9E7CCD2913AD7B00BF24D1 /* StatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatCell.swift; sourceTree = "<group>"; };
 		CD9E7CCF2913B94100BF24D1 /* StatCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatCellModel.swift; sourceTree = "<group>"; };
+		CD9E7CD12913DE2E00BF24D1 /* StatsTableViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsTableViewLayout.swift; sourceTree = "<group>"; };
 		CDA1CE32290FE5610032A5E8 /* SettingsTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewDataSource.swift; sourceTree = "<group>"; };
 		CDA1CE36290FE7020032A5E8 /* SettingsTableViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewLayout.swift; sourceTree = "<group>"; };
 		CDA1CE39290FE9E60032A5E8 /* ThemeTableCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTableCellModel.swift; sourceTree = "<group>"; };
@@ -606,6 +608,7 @@
 			children = (
 				CDA1CE36290FE7020032A5E8 /* SettingsTableViewLayout.swift */,
 				CDA1CE47291009CA0032A5E8 /* NewGameTableViewLayout.swift */,
+				CD9E7CD12913DE2E00BF24D1 /* StatsTableViewLayout.swift */,
 			);
 			path = Layouts;
 			sourceTree = "<group>";
@@ -850,6 +853,7 @@
 				CD88AFB128D4AE7D00EFCBBB /* ThemeContainer.swift in Sources */,
 				CD88AFAF28D497E400EFCBBB /* SettingsViewModel.swift in Sources */,
 				CD55640C290665B700945A87 /* GamePlayView.swift in Sources */,
+				CD9E7CD22913DE2E00BF24D1 /* StatsTableViewLayout.swift in Sources */,
 				CD88AF7628D306FB00EFCBBB /* User.swift in Sources */,
 				CD5563F329028ACC00945A87 /* UITextField+Extension.swift in Sources */,
 				CD88AF9F28D46C9200EFCBBB /* MainMenuView.swift in Sources */,

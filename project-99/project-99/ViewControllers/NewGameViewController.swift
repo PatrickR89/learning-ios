@@ -13,7 +13,9 @@ class NewGameViewController: UIViewController {
     private let tableView = UITableView()
     lazy var tableViewDataSource: UITableViewDiffableDataSource<NewGameTableViewSections, NewGameTableViewItems> = {
         let tableViewDataSource =
-        UITableViewDiffableDataSource<NewGameTableViewSections, NewGameTableViewItems>(tableView: tableView) { tableView, indexPath, itemIdentifier in
+        UITableViewDiffableDataSource<
+            NewGameTableViewSections, NewGameTableViewItems
+        >(tableView: tableView) { tableView, indexPath, itemIdentifier in
             let cell = NewGameCell.dequeue(in: tableView, for: indexPath)
 
             switch itemIdentifier {

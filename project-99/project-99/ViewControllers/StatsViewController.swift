@@ -13,6 +13,27 @@ class StatsViewController: UIViewController {
     private let tableView = UITableView()
     private let content: [StatsContent] = [.games, .pairs, .gameTimes]
 
+    lazy var tableViewDataSource: UITableViewDiffableDataSource<
+        StatsTableViewLayoutSections, StatsTableViewLayoutItems
+    > = {
+        let dataSource = UITableViewDiffableDataSource<
+            StatsTableViewLayoutSections, StatsTableViewLayoutItems
+        >(tableView: tableView) { [weak self] tableView, indexPath, itemIdentifier in
+            let cell = StatCell.dequeue(in: tableView, for: indexPath)
+
+            switch itemIdentifier {
+            case .item(let model):
+                cell.updateCellData(model)
+                cell.changeBottomState(with: self?.viewModel.isCellBottomHidden[indexPath.row] ?? true)
+                cell.selectionStyle = .none
+            }
+
+            return cell
+        }
+
+        return dataSource
+    }()
+
     init(with viewModel: StatsViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -50,7 +71,7 @@ class StatsViewController: UIViewController {
         view.appendViews([tableView])
         StatCell.register(in: tableView)
         tableView.delegate = self
-        tableView.dataSource = self
+        reloadTableView(isInitial: true)
 
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 20),
@@ -58,22 +79,24 @@ class StatsViewController: UIViewController {
             tableView.widthAnchor.constraint(equalTo: view.widthAnchor)
         ])
     }
-}
 
-extension StatsViewController: UITableViewDataSource {
+    func reloadTableView(isInitial: Bool) {
+        var content = [StatsTableViewLayoutItems]()
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return content.count
-    }
+        for (index, value) in StatsContent.allCases.enumerated() {
+            content.append(StatsTableViewLayoutItems.item(
+                StatCellModel(content: value, isExtended: viewModel.isCellBottomHidden[index])))
+        }
+        var snapshot = NSDiffableDataSourceSnapshot<StatsTableViewLayoutSections, StatsTableViewLayoutItems>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(content, toSection: .main)
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellContent = content[indexPath.row]
-
-        let cell = StatCell.dequeue(in: tableView, for: indexPath)
-        cell.updateCellData(StatCellModel(content: cellContent))
-        cell.changeBottomState(with: viewModel.isCellBottomHidden[indexPath.row])
-        cell.selectionStyle = .none
-        return cell
+        tableViewDataSource.defaultRowAnimation = .top
+        if isInitial {
+            tableViewDataSource.applySnapshotUsingReloadData(snapshot)
+        } else {
+            tableViewDataSource.apply(snapshot)
+        }
     }
 }
 
@@ -97,11 +120,6 @@ extension StatsViewController: UITableViewDelegate {
 
 extension StatsViewController: StatsViewModelDelegate {
     func statsViewModel(_ viewModel: StatsViewModel, didChangeStateAtIndex index: Int, withState state: Bool) {
-        let indexPath = IndexPath(row: index, section: 0)
-        if state {
-            tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.top)
-        } else {
-            tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.bottom)
-        }
+        reloadTableView(isInitial: false)
     }
 }

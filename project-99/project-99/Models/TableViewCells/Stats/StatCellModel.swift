@@ -8,14 +8,14 @@
 import UIKit
 
 struct StatCellModel: Hashable {
-    var id: UUID
+    var isExtended: Bool
     var content: StatsContent
     var viewModel: StatCellBottomViewModel
     var bottomView: UIView
     var topView: StatCellTopSubview
 
-    init(content: StatsContent) {
-        self.id = UUID()
+    init(content: StatsContent, isExtended: Bool) {
+        self.isExtended = isExtended
         self.content = content
         var bottomView: UIView
         switch content {
@@ -29,16 +29,16 @@ struct StatCellModel: Hashable {
             bottomView = StatCellBottomSubview(with: viewModel, as: content)
         }
         self.bottomView = bottomView
-        self.topView = StatCellTopSubview(as: content, isExtended: bottomView.isHidden)
+        self.topView = StatCellTopSubview(as: content, isExtended: isExtended)
     }
 
     func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
+        hasher.combine(content)
     }
 }
 
 extension StatCellModel: Equatable {
     static func == (lhs: StatCellModel, rhs: StatCellModel) -> Bool {
-        return lhs.id == rhs.id
+        return lhs.content == rhs.content && lhs.isExtended == rhs.isExtended
     }
 }

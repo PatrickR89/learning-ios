@@ -7,8 +7,8 @@
 
 import UIKit
 
-class SettingsTableViewDataSource:
-    UITableViewDiffableDataSource<SettingsTableViewLayoutSections, SettingsTableViewLayoutItems> {
+class SettingsTableViewDataSource: UITableViewDiffableDataSource<
+SettingsTableViewLayoutSections, SettingsTableViewLayoutItems> {
 
     init(_ tableView: UITableView) {
         super.init(tableView: tableView) {tableView, indexPath, itemIdentifier in

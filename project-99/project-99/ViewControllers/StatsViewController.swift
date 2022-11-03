@@ -64,18 +64,6 @@ class StatsViewController: UIViewController {
 
 extension StatsViewController: UITableViewDataSource {
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if viewModel.isCellBottomHidden[indexPath.row] {
-            return 40
-        } else {
-            if (tableView.cellForRow(at: indexPath) as? TimesCell) != nil {
-                return 350
-            } else {
-                return 180
-            }
-        }
-    }
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return content.count
     }
@@ -108,6 +96,18 @@ extension StatsViewController: UITableViewDataSource {
 extension StatsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.toggleCellBottom(at: indexPath.row)
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if viewModel.isCellBottomHidden[indexPath.row] {
+            return 40
+        } else {
+            if (tableView.cellForRow(at: indexPath) as? TimesCell) != nil {
+                return 350
+            } else {
+                return 180
+            }
+        }
     }
 }
 

@@ -74,7 +74,6 @@
 		CD88AFFA28DC71D500EFCBBB /* BestTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFF928DC71D500EFCBBB /* BestTime.swift */; };
 		CD88AFFC28DD825F00EFCBBB /* LevelsTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFFB28DD825F00EFCBBB /* LevelsTime.swift */; };
 		CD88AFFF28DD877A00EFCBBB /* TimesSubviewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFFE28DD877A00EFCBBB /* TimesSubviewCellViewModel.swift */; };
-		CD88B00128DD95B100EFCBBB /* TimesCellBottomViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B00028DD95B100EFCBBB /* TimesCellBottomViewModelDelegate.swift */; };
 		CD88B00328DD9C0D00EFCBBB /* NewGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B00228DD9C0D00EFCBBB /* NewGameViewController.swift */; };
 		CD88B00528DD9C1F00EFCBBB /* NewGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B00428DD9C1F00EFCBBB /* NewGameViewModel.swift */; };
 		CD88B00828DD9D1200EFCBBB /* NewGameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B00728DD9D1200EFCBBB /* NewGameCell.swift */; };
@@ -94,6 +93,7 @@
 		CD98D284290AB074004FA47C /* LoginViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98D283290AB074004FA47C /* LoginViewControllerDelegate.swift */; };
 		CD98D286290ABB89004FA47C /* NewGameViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98D285290ABB89004FA47C /* NewGameViewControllerDelegate.swift */; };
 		CD98D288290ABD70004FA47C /* GameViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98D287290ABD70004FA47C /* GameViewControllerDelegate.swift */; };
+		CD9E7CCE2913AD7B00BF24D1 /* StatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9E7CCD2913AD7B00BF24D1 /* StatCell.swift */; };
 		CDA1CE33290FE5610032A5E8 /* SettingsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1CE32290FE5610032A5E8 /* SettingsTableViewDataSource.swift */; };
 		CDA1CE37290FE7020032A5E8 /* SettingsTableViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1CE36290FE7020032A5E8 /* SettingsTableViewLayout.swift */; };
 		CDA1CE3A290FE9E60032A5E8 /* ThemeTableCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1CE39290FE9E60032A5E8 /* ThemeTableCellModel.swift */; };
@@ -185,7 +185,6 @@
 		CD88AFF928DC71D500EFCBBB /* BestTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestTime.swift; sourceTree = "<group>"; };
 		CD88AFFB28DD825F00EFCBBB /* LevelsTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelsTime.swift; sourceTree = "<group>"; };
 		CD88AFFE28DD877A00EFCBBB /* TimesSubviewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesSubviewCellViewModel.swift; sourceTree = "<group>"; };
-		CD88B00028DD95B100EFCBBB /* TimesCellBottomViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesCellBottomViewModelDelegate.swift; sourceTree = "<group>"; };
 		CD88B00228DD9C0D00EFCBBB /* NewGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameViewController.swift; sourceTree = "<group>"; };
 		CD88B00428DD9C1F00EFCBBB /* NewGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameViewModel.swift; sourceTree = "<group>"; };
 		CD88B00728DD9D1200EFCBBB /* NewGameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameCell.swift; sourceTree = "<group>"; };
@@ -205,6 +204,7 @@
 		CD98D283290AB074004FA47C /* LoginViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerDelegate.swift; sourceTree = "<group>"; };
 		CD98D285290ABB89004FA47C /* NewGameViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameViewControllerDelegate.swift; sourceTree = "<group>"; };
 		CD98D287290ABD70004FA47C /* GameViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewControllerDelegate.swift; sourceTree = "<group>"; };
+		CD9E7CCD2913AD7B00BF24D1 /* StatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatCell.swift; sourceTree = "<group>"; };
 		CDA1CE32290FE5610032A5E8 /* SettingsTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewDataSource.swift; sourceTree = "<group>"; };
 		CDA1CE36290FE7020032A5E8 /* SettingsTableViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewLayout.swift; sourceTree = "<group>"; };
 		CDA1CE39290FE9E60032A5E8 /* ThemeTableCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTableCellModel.swift; sourceTree = "<group>"; };
@@ -475,6 +475,7 @@
 				CD88AFCD28D9819400EFCBBB /* GamesCell.swift */,
 				CD88AFDE28DAFA5C00EFCBBB /* PairsCell.swift */,
 				CD88AFF028DC5F1F00EFCBBB /* TimesCell.swift */,
+				CD9E7CCD2913AD7B00BF24D1 /* StatCell.swift */,
 			);
 			path = StatsViewCells;
 			sourceTree = "<group>";
@@ -523,7 +524,6 @@
 			isa = PBXGroup;
 			children = (
 				CD88AFEC28DC44DC00EFCBBB /* StatCellBottomViewModelDelegate.swift */,
-				CD88B00028DD95B100EFCBBB /* TimesCellBottomViewModelDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -591,6 +591,13 @@
 			path = Delegates;
 			sourceTree = "<group>";
 		};
+		CD9E7CCC2913AACB00BF24D1 /* Stats */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Stats;
+			sourceTree = "<group>";
+		};
 		CDA1CE31290FE5450032A5E8 /* TableViewDiffDataSources */ = {
 			isa = PBXGroup;
 			children = (
@@ -612,6 +619,7 @@
 		CDA1CE38290FE93A0032A5E8 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				CD9E7CCC2913AACB00BF24D1 /* Stats */,
 				CDA1CE44291007B60032A5E8 /* NewGameViewCells */,
 				CDA1CE3B290FEB130032A5E8 /* Settings */,
 			);
@@ -884,6 +892,7 @@
 				CD88AF7D28D30BAC00EFCBBB /* UserGamesStats.swift in Sources */,
 				CD88AFBF28D8717B00EFCBBB /* AccountOption.swift in Sources */,
 				CD88AF9828D466E500EFCBBB /* MainMenuViewController.swift in Sources */,
+				CD9E7CCE2913AD7B00BF24D1 /* StatCell.swift in Sources */,
 				CD88AFE228DAFC6D00EFCBBB /* StatCellBottomViewModel.swift in Sources */,
 				CD88AFA928D4920300EFCBBB /* ThemeCell.swift in Sources */,
 				CD88AFA628D490DC00EFCBBB /* UITableViewCell+Extension.swift in Sources */,
@@ -907,7 +916,6 @@
 				CD88B00828DD9D1200EFCBBB /* NewGameCell.swift in Sources */,
 				CD556415290674AF00945A87 /* CardsColumn.swift in Sources */,
 				CD88AF8F28D3252D00EFCBBB /* LoginViewModel.swift in Sources */,
-				CD88B00128DD95B100EFCBBB /* TimesCellBottomViewModelDelegate.swift in Sources */,
 				CDA1CE3D290FEBA00032A5E8 /* GameOptionCellModel.swift in Sources */,
 				CDA1CE33290FE5610032A5E8 /* SettingsTableViewDataSource.swift in Sources */,
 				CD88AFB528D84D9C00EFCBBB /* GameOptionCell.swift in Sources */,

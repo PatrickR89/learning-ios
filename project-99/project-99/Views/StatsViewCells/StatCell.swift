@@ -1,23 +1,27 @@
 //
-//  TimesCell.swift
+//  StatCell.swift
 //  project-99
 //
-//  Created by Patrick on 22.09.2022..
+//  Created by Patrick on 03.11.2022..
 //
+
+import Foundation
 
 import UIKit
 
-class TimesCell: UITableViewCell {
+class StatCell: UITableViewCell {
 
     private let stackView = UIStackView()
     private let topView: StatCellTopSubview
-    var bottomView: TimesCellBottomSubview
-    var cellBottomViewModel: TimesCellBottomViewModel
+    var bottomView: StatCellBottomSubview
+    let cellBottomViewModel: StatCellBottomViewModel
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        self.cellBottomViewModel = TimesCellBottomViewModel(as: .gameTimes)
-        self.bottomView = TimesCellBottomSubview(with: cellBottomViewModel, cellType: .gameTimes)
-        self.topView = StatCellTopSubview(as: StatsContent.gameTimes, isExtended: !self.bottomView.isHidden)
+
+        self.cellBottomViewModel = StatCellBottomViewModel(as: StatsContent.games)
+        self.bottomView = StatCellBottomSubview(
+            with: cellBottomViewModel, as: StatsContent.games)
+        self.topView = StatCellTopSubview(as: StatsContent.games, isExtended: self.bottomView.isHidden)
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.cellBottomViewModel.delegate = self
         use(AppTheme.self) {
@@ -40,8 +44,9 @@ class TimesCell: UITableViewCell {
     }
 }
 
-extension TimesCell: StatCellBottomViewModelDelegate {
+extension StatCell: StatCellBottomViewModelDelegate {
     func statCellBottomViewModel(_ viewModel: StatCellBottomViewModel, didChangeViewHiddenState: Bool) {
+        stackView.removeFromSuperview()
         setupUI()
         topView.viewModel.toggleExtension(with: self.bottomView.isHidden)
     }

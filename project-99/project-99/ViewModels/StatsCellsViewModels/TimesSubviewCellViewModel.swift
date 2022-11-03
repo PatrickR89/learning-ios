@@ -8,17 +8,9 @@
 import Foundation
 import Combine
 
-class TimesCellBottomViewModel {
+class TimesCellBottomViewModel: StatCellBottomViewModel {
 
     @Published private(set) var times = [BestTime]()
-
-    private var isViewHidden: Bool = true {
-        didSet {
-            delegate?.timesCellBottomViewModel(self, didChangeViewHiddenState: isViewHidden)
-        }
-    }
-
-    weak var delegate: TimesCellBottomViewModelDelegate?
 
     func loadTimes() {
         let result = RealmDataService.shared.loadLevelTimes()
@@ -55,9 +47,5 @@ class TimesCellBottomViewModel {
         case .emotionalDamage:
             return "Emotional damage"
         }
-    }
-
-    func changeHiddenState(_ state: Bool) {
-        self.isViewHidden = state
     }
 }

@@ -20,7 +20,6 @@ class MainMenuViewController: UIViewController {
 
         super.init(nibName: nil, bundle: nil)
         setupUI()
-        ThemeContainer.shared.changeTheme(to: RealmDataService.shared.loadTheme())
         use(AppTheme.self) {
             $0.navigationController?.navigationBar.titleTextAttributes =
             [NSAttributedString.Key.foregroundColor: $1.textColor]

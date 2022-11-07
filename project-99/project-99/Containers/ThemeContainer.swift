@@ -7,9 +7,24 @@
 
 import UIKit
 import Themes
+import Combine
 
 class ThemeContainer {
     static var shared = ThemeContainer()
+    private var cancellable: AnyCancellable?
+
+    init() {
+        bindUser()
+    }
+
+    func bindUser() {
+        cancellable = UserContainer.shared.$userId
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] _ in
+                let theme = RealmDataService.shared.loadTheme()
+                self?.changeTheme(to: theme)
+            })
+    }
 
     let lightTheme = AppTheme(
         name: "lightTheme",

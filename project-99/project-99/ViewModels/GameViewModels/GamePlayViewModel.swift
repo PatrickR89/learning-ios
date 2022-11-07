@@ -9,7 +9,7 @@ import UIKit
 
 class GamePlayViewModel {
 
-    private var stopwatch: StopwatchTimer
+    private var stopwatch: StopwatchContainer
     private(set) var gameLevel: Level
     private var currentSymbols = [String]() {
         didSet {
@@ -35,7 +35,7 @@ class GamePlayViewModel {
 
     weak var delegate: GamePlayViewModelDelegate?
 
-    init(for level: Level, with stopwatch: StopwatchTimer) {
+    init(for level: Level, with stopwatch: StopwatchContainer) {
         self.gameLevel = level
         self.stopwatch = stopwatch
         setupSymbols(gameDifficulty: level)
@@ -43,7 +43,12 @@ class GamePlayViewModel {
         GameCardContext.shared.delegate = self
         GameCardContext.shared.setCards(with: nil, in: .first)
         GameCardContext.shared.setCards(with: nil, in: .second)
-        self.stopwatch.startTimer()
+        self.stopwatch.toggleTimer()
+        self.stopwatch.stopwatchTimer?.startTimer()
+    }
+
+    deinit {
+        self.stopwatch.dismissTimer()
     }
 
     private func setupSymbols(gameDifficulty: Level) {
@@ -207,7 +212,7 @@ class GamePlayViewModel {
 
     private func endGameIfTurnsDepleted() {
         if turns.isActive && turns.value <= 0 {
-            stopwatch.resetTimer()
+            stopwatch.stopwatchTimer?.resetTimer()
             self.resetCardsSelection()
             delegate?.gamePlayViewModelDidEndGame(self, with: .gameLost)
         }
@@ -216,7 +221,7 @@ class GamePlayViewModel {
     private func endGameIfCardsDepleted() {
         if removedPairs == cardsDeck.count / 2 && removedPairs != 0 {
             RealmDataService.shared.updateGamesWon()
-            stopwatch.stopAndSaveTime(for: gameLevel)
+            stopwatch.stopwatchTimer?.stopAndSaveTime(for: gameLevel)
             self.resetCardsSelection()
             delegate?.gamePlayViewModelDidEndGame(self, with: .gameWon)
         }

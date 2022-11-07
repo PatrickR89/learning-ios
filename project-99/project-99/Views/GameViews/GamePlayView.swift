@@ -11,7 +11,7 @@ import Combine
 class GamePlayView: UIView {
 
     let viewModel: GamePlayViewModel
-    let stopwatch: StopwatchTimer
+    let stopwatch: StopwatchContainer
     var cancellables = [AnyCancellable]()
 
     let remainingChancesLabel = UILabel()
@@ -19,7 +19,7 @@ class GamePlayView: UIView {
     let timerCountLabel = UILabel()
     let gridView = GridLayoutView()
 
-    init(with viewModel: GamePlayViewModel, and stopwatch: StopwatchTimer) {
+    init(with viewModel: GamePlayViewModel, and stopwatch: StopwatchContainer) {
         self.viewModel = viewModel
         self.stopwatch = stopwatch
 
@@ -45,19 +45,27 @@ class GamePlayView: UIView {
     }
 
     func bindPublishedElements() {
+        stopwatch.$stopwatchTimer
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] stopwatchTimer in
+                guard let self = self else {return}
+                if stopwatchTimer != nil {
+                    self.timerCountLabel.isHidden = false
+                    self.timerTextLabel.isHidden = false
+                } else {
+                    self.timerCountLabel.isHidden = true
+                    self.timerTextLabel.isHidden = true
+                }
 
-        stopwatch.$timeString
-            .receive(on: DispatchQueue.main)
-            .assign(to: \.text!, on: timerCountLabel)
+                if let stopwatchTimer = stopwatchTimer {
+                    stopwatchTimer.$timeString
+                        .receive(on: DispatchQueue.main)
+                        .assign(to: \.text!, on: self.timerCountLabel)
+                        .store(in: &self.cancellables)
+                }
+            })
             .store(in: &cancellables)
-        stopwatch.$isTimerOff
-            .receive(on: DispatchQueue.main)
-            .assign(to: \.isHidden, on: timerCountLabel)
-            .store(in: &cancellables)
-        stopwatch.$isTimerOff
-            .receive(on: DispatchQueue.main)
-            .assign(to: \.isHidden, on: timerTextLabel)
-            .store(in: &cancellables)
+
         viewModel.$turns
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] turns in

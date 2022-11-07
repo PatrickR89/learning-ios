@@ -84,10 +84,9 @@ extension MenuCoordinator: NewGameViewModelDelegate {
     }
 
     func newGameViewModel(_ viewModel: NewGameViewModel, didStartNewLevel level: Level) {
-        let stopwatch = StopwatchTimer()
-        let viewModel = GameVCViewModel(for: level, with: stopwatch)
+        let viewModel = GameVCViewModel(for: level)
 
-        let viewController = GameViewController(with: viewModel, and: stopwatch)
+        let viewController = GameViewController(with: viewModel, and: viewModel.stopwatch)
         viewController.delegate = self
         navController.pushViewController(viewController, animated: true)
     }

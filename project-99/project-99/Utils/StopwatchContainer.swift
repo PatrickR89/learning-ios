@@ -10,4 +10,16 @@ import Combine
 
 class StopwatchContainer {
     @Published private(set) var stopwatchTimer: StopwatchTimer?
+
+    func toggleTimer() {
+        let isTimer = RealmDataService.shared.loadTimerState()
+
+        if isTimer {
+            self.stopwatchTimer = StopwatchTimer()
+        }
+    }
+
+    func dismissTimer() {
+        self.stopwatchTimer = nil
+    }
 }

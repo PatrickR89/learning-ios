@@ -12,11 +12,11 @@ class GameViewController: UIViewController {
 
     private let viewModel: GameVCViewModel
     private let gameView: GamePlayView?
-    private let stopwatch: StopwatchTimer
+    private let stopwatch: StopwatchContainer
     private var isGameStopped: AnyCancellable?
     weak var delegate: GameViewControllerDelegate?
 
-    init(with viewModel: GameVCViewModel, and stopwatch: StopwatchTimer) {
+    init(with viewModel: GameVCViewModel, and stopwatch: StopwatchContainer) {
         self.stopwatch = stopwatch
         self.viewModel = viewModel
         self.gameView = GamePlayView(with: viewModel.provideGameViewModel(), and: stopwatch)
@@ -36,7 +36,7 @@ class GameViewController: UIViewController {
     }
 
     deinit {
-        stopwatch.resetTimer()
+        stopwatch.stopwatchTimer?.resetTimer()
         isGameStopped?.cancel()
     }
 
@@ -76,7 +76,7 @@ class GameViewController: UIViewController {
     }
 
     @objc func closeGame() {
-        stopwatch.resetTimer()
+        stopwatch.stopwatchTimer?.resetTimer()
         delegate?.gameViewControllerDidRequestDismiss(self)
     }
 }

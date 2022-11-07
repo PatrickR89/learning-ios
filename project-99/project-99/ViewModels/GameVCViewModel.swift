@@ -10,11 +10,12 @@ import Combine
 
 class GameVCViewModel {
     private let game: Level
+    private(set) var stopwatch = StopwatchContainer()
     private var playGameViewModel: GamePlayViewModel
 
     @Published private(set) var isGameOver: EndGame = .inGame
 
-    init(for level: Level, with stopwatch: StopwatchTimer) {
+    init(for level: Level) {
         self.game = level
         self.playGameViewModel = GamePlayViewModel(for: level, with: stopwatch)
         self.playGameViewModel.delegate = self

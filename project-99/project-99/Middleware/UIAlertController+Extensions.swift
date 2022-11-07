@@ -92,7 +92,7 @@ extension UIAlertController {
         }
 
     func createGameOverAlertController(
-        in viewController: GameViewController) -> UIAlertController {
+        with viewModel: GameVCViewModel) -> UIAlertController {
 
             let alertController = UIAlertController(
                 title: "Game Over",
@@ -101,9 +101,9 @@ extension UIAlertController {
 
             let alertAction = UIAlertAction(
                 title: "Ok",
-                style: .default) { [weak viewController] _ in
-                    guard let viewController = viewController else {return}
-                    viewController.delegate?.gameViewControllerDidRequestDismiss(viewController)
+                style: .default) { [weak viewModel] _ in
+                    guard let viewModel = viewModel else {return}
+                    viewModel.action?.gameVCViewModelDidRequestDismiss(viewModel)
                 }
             alertController.addAction(alertAction)
 
@@ -111,7 +111,7 @@ extension UIAlertController {
         }
 
     func createGameWonAlertController(
-        in viewController: GameViewController) -> UIAlertController {
+        in viewModel: GameVCViewModel) -> UIAlertController {
 
             let alertController = UIAlertController(
                 title: "You win!",
@@ -120,9 +120,9 @@ extension UIAlertController {
 
             let alertAction = UIAlertAction(
                 title: "Ok",
-                style: .default) { [weak viewController] _ in
-                    guard let viewController = viewController else {return}
-                    viewController.delegate?.gameViewControllerDidRequestDismiss(viewController)
+                style: .default) { [weak viewModel] _ in
+                    guard let viewModel = viewModel else {return}
+                    viewModel.action?.gameVCViewModelDidRequestDismiss(viewModel)
                 }
             alertController.addAction(alertAction)
 

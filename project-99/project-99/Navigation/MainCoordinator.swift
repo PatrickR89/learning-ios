@@ -47,12 +47,12 @@ extension MainCoordinator: UINavigationControllerDelegate {
         _ navigationController: UINavigationController,
         didShow viewController: UIViewController,
         animated: Bool) {
-        guard let fromViewController = navigationController
-            .transitionCoordinator?
-            .viewController(forKey: .from) else {return}
-        if navigationController.viewControllers.contains(fromViewController) {return}
-        if let menuViewController = fromViewController as? MainMenuViewController {
-            childDidFinish(menuViewController.coordinator)
+            guard let fromViewController = navigationController
+                .transitionCoordinator?
+                .viewController(forKey: .from) else {return}
+            if navigationController.viewControllers.contains(fromViewController) {return}
+            if let menuViewController = fromViewController as? MainMenuViewController {
+                childDidFinish(menuViewController.coordinator)
+            }
         }
-    }
 }

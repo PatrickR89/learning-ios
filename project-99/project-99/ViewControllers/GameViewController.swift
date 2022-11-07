@@ -14,7 +14,6 @@ class GameViewController: UIViewController {
     private let gameView: GamePlayView?
     private let stopwatch: StopwatchContainer
     private var isGameStopped: AnyCancellable?
-    weak var delegate: GameViewControllerDelegate?
 
     init(with viewModel: GameVCViewModel, and stopwatch: StopwatchContainer) {
         self.stopwatch = stopwatch
@@ -77,6 +76,6 @@ class GameViewController: UIViewController {
 
     @objc func closeGame() {
         stopwatch.stopwatchTimer?.resetTimer()
-        delegate?.gameViewControllerDidRequestDismiss(self)
+        viewModel.requestDismiss()
     }
 }

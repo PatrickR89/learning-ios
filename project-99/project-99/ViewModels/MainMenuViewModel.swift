@@ -9,7 +9,7 @@ import Foundation
 
 class MainMenuViewModel {
     private let user: User
-    weak var action: MainMenuViewModelDelegate?
+    weak var action: MainMenuViewModelActions?
 
     init(for user: User) {
         self.user = user

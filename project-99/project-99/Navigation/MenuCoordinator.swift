@@ -30,7 +30,7 @@ class MenuCoordinator: Coordinator {
     }
 }
 
-extension MenuCoordinator: MainMenuViewModelDelegate {
+extension MenuCoordinator: MainMenuViewModelActions {
     func viewModel(_ viewModel: MainMenuViewModel, didOpenStatsFor user: User) {
         let viewModel = StatsViewModel(for: user)
         let viewController = StatsViewController(with: viewModel)
@@ -51,7 +51,7 @@ extension MenuCoordinator: MainMenuViewModelDelegate {
 
     func viewModelDidOpenNewGame(_ viewModel: MainMenuViewModel) {
         let gameViewModel = NewGameViewModel()
-        gameViewModel.delegate = self
+        gameViewModel.actions = self
         let viewController = NewGameViewController(with: gameViewModel)
         navController.pushViewController(viewController, animated: true)
     }
@@ -78,22 +78,21 @@ extension MenuCoordinator: SettingsViewModelActions {
     }
 }
 
-extension MenuCoordinator: NewGameViewModelDelegate {
+extension MenuCoordinator: NewGameViewModelActions {
     func newGameViewModelDidRequestDismiss(_ viewModel: NewGameViewModel) {
         navController.popViewController(animated: true)
     }
 
     func newGameViewModel(_ viewModel: NewGameViewModel, didStartNewLevel level: Level) {
         let viewModel = GameVCViewModel(for: level)
-
+        viewModel.action = self
         let viewController = GameViewController(with: viewModel, and: viewModel.stopwatch)
-        viewController.delegate = self
         navController.pushViewController(viewController, animated: true)
     }
 }
 
-extension MenuCoordinator: GameViewControllerDelegate {
-    func gameViewControllerDidRequestDismiss(_ viewController: GameViewController) {
+extension MenuCoordinator: GameVCViewModelActions {
+    func gameVCViewModelDidRequestDismiss(_ viewModel: GameVCViewModel) {
         navController.popViewController(animated: true)
     }
 }

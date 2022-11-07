@@ -17,7 +17,7 @@ class MainMenuView: UIView {
     private let stackView = UIStackView()
     private let viewModel: MainMenuViewModel
 
-    weak var action: MainMenuViewModelDelegate?
+    weak var action: MainMenuViewModelActions?
 
     init(with viewModel: MainMenuViewModel) {
         self.viewModel = viewModel

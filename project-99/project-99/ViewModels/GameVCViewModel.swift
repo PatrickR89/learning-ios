@@ -12,6 +12,7 @@ class GameVCViewModel {
     private let game: Level
     private(set) var stopwatch = StopwatchContainer()
     private var playGameViewModel: GamePlayViewModel
+    weak var action: GameVCViewModelActions?
 
     @Published private(set) var isGameOver: EndGame = .inGame
 
@@ -37,6 +38,10 @@ class GameVCViewModel {
     func addGameFinishedAlertController(in viewController: GameViewController) -> UIAlertController {
         let alertController = UIAlertController().createGameWonAlertController(in: viewController)
         return alertController
+    }
+
+    func requestDismiss() {
+        action?.gameVCViewModelDidRequestDismiss(self)
     }
 }
 

@@ -414,7 +414,6 @@
 				CD88B02528F6984100EFCBBB /* StopwatchTimer.swift */,
 				CD88B02728F9269200EFCBBB /* KeyboardLayoutObserver.swift */,
 				CD5563F629029BC900945A87 /* FetchSymbols.swift */,
-				CD5BCF002918F16E0004E690 /* StopwatchContainer.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -508,6 +507,7 @@
 			children = (
 				CD88AFB028D4AE7D00EFCBBB /* ThemeContainer.swift */,
 				CD88AFE428DB073000EFCBBB /* UserContainer.swift */,
+				CD5BCF002918F16E0004E690 /* StopwatchContainer.swift */,
 			);
 			path = Containers;
 			sourceTree = "<group>";

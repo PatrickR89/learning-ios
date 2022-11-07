@@ -68,15 +68,17 @@ private extension LoginView {
         self.nameTextField.endEditing(true)
         self.passwordTextField.endEditing(true)
         viewModel.createNewUser()
-        self.nameTextField.text = ""
-        self.passwordTextField.text = ""
-        self.warningLabel.isHidden = true
+        resetInput()
     }
 
     @objc func login() {
         self.nameTextField.endEditing(true)
         self.passwordTextField.endEditing(true)
         viewModel.login()
+        resetInput()
+    }
+
+    private func resetInput() {
         self.nameTextField.text = ""
         self.passwordTextField.text = ""
         self.warningLabel.isHidden = true

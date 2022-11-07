@@ -9,6 +9,7 @@ import Foundation
 
 class MainMenuViewModel {
     private let user: User
+    weak var action: MainMenuViewModelDelegate?
 
     init(for user: User) {
         self.user = user
@@ -20,7 +21,19 @@ extension MainMenuViewModel {
         return user.name
     }
 
-    func provideUser() -> User {
-        return user
+    func openSettings() {
+        action?.viewModel(self, didOpenSettingsFor: user)
+    }
+
+    func openStats() {
+        action?.viewModel(self, didOpenStatsFor: user)
+    }
+
+    func openNewGame() {
+        action?.viewModelDidOpenNewGame(self)
+    }
+
+    func logout() {
+        action?.viewModelDidLogOut(self)
     }
 }

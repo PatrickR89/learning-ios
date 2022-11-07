@@ -15,8 +15,6 @@ class SettingsViewController: UIViewController {
     var tableViewDataSource: SettingsTableViewDataSource
     private var cancellables = [AnyCancellable]()
 
-    weak var delegate: SettingsViewControllerDelegate?
-
     init(with viewModel: SettingsViewModel) {
         self.tableView = UITableView()
         self.viewModel = viewModel
@@ -94,15 +92,6 @@ class SettingsViewController: UIViewController {
                 self.tableViewDataSource.reloadData(false, with: self.viewModel)
             })
             .store(in: &cancellables)
-
-        viewModel.$newUsername
-            .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] name in
-                guard let self = self,
-                      let name = name else {return}
-                self.delegate?.settingsViewController(self, didRecieveUpdatedName: name)
-            })
-            .store(in: &cancellables)
     }
 }
 
@@ -137,11 +126,6 @@ extension SettingsViewController: UITableViewDelegate {
 }
 
 extension SettingsViewController: SettingsViewModelDelegate {
-    func settingsViewModelDidDeleteAccount(_ viewModel: SettingsViewModel) {
-        delegate?.settingsViewController(self, didReciveAccountDeletionFrom: viewModel)
-        self.dismiss(animated: true)
-    }
-
     func settingsViewModel(
         _ viewModel: SettingsViewModel,
         didVerifyPasswordWithResult result: Bool,

@@ -17,6 +17,7 @@ class SettingsViewModel {
                 return
             }
             RealmDataService.shared.changeUsername(newUsername)
+            action?.viewModel(self, didChangeUsernameWith: newUsername)
         }
     }
 
@@ -42,6 +43,7 @@ class SettingsViewModel {
     @Published private(set) var withTimer: Bool?
 
     weak var delegate: SettingsViewModelDelegate?
+    weak var action: SettingsViewModelActions?
 
     init(forUser user: User) {
         self.user = user
@@ -126,17 +128,15 @@ extension SettingsViewModel {
     }
 
     func userDidDeleteAccount() {
-        delegate?.settingsViewModelDidDeleteAccount(self)
+        action?.viewModelDidRecieveAccountDeletion(self)
     }
 
     // MARK: Account verification
 
     func verifyPassword(_ password: String, for change: AccountOption) {
-        if password == user.password {
-            delegate?.settingsViewModel(self, didVerifyPasswordWithResult: true, for: change)
-        } else {
-            delegate?.settingsViewModel(self, didVerifyPasswordWithResult: false, for: change)
-        }
+
+        let passwordCheck = password == user.password
+        delegate?.settingsViewModel(self, didVerifyPasswordWithResult: passwordCheck, for: change)
     }
 
     // MARK: AlertControllers

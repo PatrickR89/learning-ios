@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Combine
 
 class LoginView: UIView {
     private var warningLabel = UILabel()
@@ -19,15 +18,12 @@ class LoginView: UIView {
     private var buttonsStackView = UIStackView()
     private var warningStackView = UIStackView()
     private var viewModel: LoginViewModel
-    private var isLoggedIn: AnyCancellable?
-
-    weak var delegate: LoginViewDelegate?
 
     init(with viewModel: LoginViewModel) {
         self.viewModel = viewModel
         super.init(frame: .zero)
         setupUI()
-        setupBindings()
+        viewModel.delegate = self
 
         use(AppTheme.self) {
             $0.backgroundColor = $1.backgroundColor
@@ -41,10 +37,6 @@ class LoginView: UIView {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    deinit {
-        isLoggedIn?.cancel()
     }
 }
 
@@ -103,21 +95,6 @@ private extension LoginView {
         }
     }
 
-    func setupBindings() {
-
-        isLoggedIn = viewModel.$loginSuccess
-            .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] loginStatus in
-                guard let self = self,
-                      let loginStatus = loginStatus  else {return}
-                if !loginStatus {
-                    self.loginFailed()
-                } else {
-                    self.delegate?.loginView(self, didLogUser: self.viewModel.sendUser(), in: self.viewModel)
-                }
-            })
-    }
-
     func loginFailed() {
         warningLabel.text = "! Incorrect user name and/or password"
         warningLabel.isHidden = false
@@ -140,5 +117,11 @@ extension LoginView: UITextFieldDelegate {
         if textField == passwordTextField {
             viewModel.passwordChanged(textField.text ?? "")
         }
+    }
+}
+
+extension LoginView: LoginViewModelDelegate {
+    func viewModelDidFailLogin(_ viewModel: LoginViewModel) {
+        loginFailed()
     }
 }

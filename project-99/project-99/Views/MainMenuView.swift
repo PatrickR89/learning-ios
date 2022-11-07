@@ -17,7 +17,7 @@ class MainMenuView: UIView {
     private let stackView = UIStackView()
     private let viewModel: MainMenuViewModel
 
-    weak var delegate: MainMenuViewDelegate?
+    weak var action: MainMenuViewModelDelegate?
 
     init(with viewModel: MainMenuViewModel) {
         self.viewModel = viewModel
@@ -47,18 +47,18 @@ class MainMenuView: UIView {
     }
 
     @objc func openSettings() {
-        delegate?.mainMenuView(self, didTapOnSettingsForUser: viewModel.provideUser())
+        viewModel.openSettings()
     }
 
     @objc func openStats() {
-        delegate?.mainMenuView(self, didTapOnStatsForUser: viewModel.provideUser())
+        viewModel.openStats()
     }
 
     @objc func openNewGame() {
-        delegate?.mainMenuView(self, didTapOnNewGameForUser: viewModel.provideUser())
+        viewModel.openNewGame()
     }
 
     @objc func logout() {
-        delegate?.mainMenuViewDidLogout(self)
+        viewModel.logout()
     }
 }

@@ -14,8 +14,6 @@ class LoginViewController: UIViewController {
     let loginView: LoginView
     let keyboardLayoutObserver = KeyboardLayoutObserver()
 
-    weak var delegate: LoginViewControllerDelegate?
-
     let keyboardLayoutGuide = UILayoutGuide()
 
     init () {
@@ -25,7 +23,6 @@ class LoginViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         keyboardLayoutObserver.enableKeyboardObserver(for: self)
         ThemeManager.shared.currentTheme = ThemeContainer.shared.systemTheme
-        loginView.delegate = self
     }
 
     required init?(coder: NSCoder) {
@@ -72,13 +69,5 @@ private extension LoginViewController {
             loginView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             loginView.bottomAnchor.constraint(equalTo: keyboardLayoutGuide.topAnchor)
         ])
-    }
-}
-
-extension LoginViewController: LoginViewDelegate {
-    func loginView(_ view: LoginView, didLogUser user: User, in viewModel: LoginViewModel) {
-
-        let mainMenuViewModel = MainMenuViewModel(for: user)
-        delegate?.loginViewController(self, didLogUserInViewModel: mainMenuViewModel)
     }
 }

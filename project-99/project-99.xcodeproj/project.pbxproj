@@ -21,6 +21,13 @@
 		CD556415290674AF00945A87 /* CardsColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD556414290674AF00945A87 /* CardsColumn.swift */; };
 		CD55641A290679E000945A87 /* GameCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD556419290679E000945A87 /* GameCardViewModel.swift */; };
 		CD55641C2906971500945A87 /* CardsColumnViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD55641B2906971500945A87 /* CardsColumnViewModel.swift */; };
+		CD5BCEF0291527F90004E690 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5BCEEF291527F90004E690 /* Coordinator.swift */; };
+		CD5BCEF22915285C0004E690 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5BCEF12915285C0004E690 /* MainCoordinator.swift */; };
+		CD5BCEF6291530CA0004E690 /* MenuCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5BCEF5291530CA0004E690 /* MenuCoordinator.swift */; };
+		CD5BCEF8291536D50004E690 /* MainMenuViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5BCEF7291536D50004E690 /* MainMenuViewModelDelegate.swift */; };
+		CD5BCEFB291546950004E690 /* SettingsViewModelActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5BCEFA291546950004E690 /* SettingsViewModelActions.swift */; };
+		CD5BCEFD2918D92A0004E690 /* LoginViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5BCEFC2918D92A0004E690 /* LoginViewModelDelegate.swift */; };
+		CD5BCEFF2918D9B30004E690 /* LoginViewModelActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5BCEFE2918D9B30004E690 /* LoginViewModelActions.swift */; };
 		CD88AF5D28D2F0B200EFCBBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF5C28D2F0B200EFCBBB /* AppDelegate.swift */; };
 		CD88AF5F28D2F0B200EFCBBB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF5E28D2F0B200EFCBBB /* SceneDelegate.swift */; };
 		CD88AF6128D2F0B200EFCBBB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF6028D2F0B200EFCBBB /* LoginViewController.swift */; };
@@ -36,14 +43,12 @@
 		CD88AF9428D450D300EFCBBB /* RealmDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF9328D450D300EFCBBB /* RealmDataProvider.swift */; };
 		CD88AF9628D4510300EFCBBB /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF9528D4510300EFCBBB /* FileManager+Extension.swift */; };
 		CD88AF9828D466E500EFCBBB /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF9728D466E500EFCBBB /* MainMenuViewController.swift */; };
-		CD88AF9A28D4677F00EFCBBB /* LoginViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF9928D4677F00EFCBBB /* LoginViewDelegate.swift */; };
 		CD88AF9D28D46C7A00EFCBBB /* MainMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF9C28D46C7A00EFCBBB /* MainMenuViewModel.swift */; };
 		CD88AF9F28D46C9200EFCBBB /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF9E28D46C9200EFCBBB /* MainMenuView.swift */; };
 		CD88AFA128D47A7E00EFCBBB /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFA028D47A7E00EFCBBB /* UIStackView+Extension.swift */; };
 		CD88AFA428D4815000EFCBBB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFA328D4815000EFCBBB /* SettingsViewController.swift */; };
 		CD88AFA628D490DC00EFCBBB /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFA528D490DC00EFCBBB /* UITableViewCell+Extension.swift */; };
 		CD88AFA928D4920300EFCBBB /* ThemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFA828D4920300EFCBBB /* ThemeCell.swift */; };
-		CD88AFAD28D496A800EFCBBB /* MainMenuViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFAC28D496A800EFCBBB /* MainMenuViewDelegate.swift */; };
 		CD88AFAF28D497E400EFCBBB /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFAE28D497E400EFCBBB /* SettingsViewModel.swift */; };
 		CD88AFB128D4AE7D00EFCBBB /* ThemeContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFB028D4AE7D00EFCBBB /* ThemeContainer.swift */; };
 		CD88AFB328D83E0700EFCBBB /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFB228D83E0700EFCBBB /* AppTheme.swift */; };
@@ -52,7 +57,6 @@
 		CD88AFBD28D86ED700EFCBBB /* UIAlertController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFBC28D86ED700EFCBBB /* UIAlertController+Extensions.swift */; };
 		CD88AFBF28D8717B00EFCBBB /* AccountOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFBE28D8717B00EFCBBB /* AccountOption.swift */; };
 		CD88AFC228D8744200EFCBBB /* SettingsViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFC128D8744200EFCBBB /* SettingsViewModelDelegate.swift */; };
-		CD88AFC528D8893800EFCBBB /* SettingsViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFC428D8893800EFCBBB /* SettingsViewControllerDelegate.swift */; };
 		CD88AFC728D9781200EFCBBB /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFC628D9781200EFCBBB /* StatsViewController.swift */; };
 		CD88AFC928D978D200EFCBBB /* StatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFC828D978D200EFCBBB /* StatsViewModel.swift */; };
 		CD88AFD128D9858000EFCBBB /* StatCellTopSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AFD028D9858000EFCBBB /* StatCellTopSubview.swift */; };
@@ -82,12 +86,10 @@
 		CD88B02428F5500D00EFCBBB /* EndGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B02328F5500D00EFCBBB /* EndGame.swift */; };
 		CD88B02628F6984100EFCBBB /* Stopwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B02528F6984100EFCBBB /* Stopwatch.swift */; };
 		CD88B02828F9269200EFCBBB /* KeyboardLayoutObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B02728F9269200EFCBBB /* KeyboardLayoutObserver.swift */; };
-		CD88B02F28F9888500EFCBBB /* MainMenuViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B02E28F9888500EFCBBB /* MainMenuViewControllerDelegate.swift */; };
 		CD98D279290A79FE004FA47C /* GameCardContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98D278290A79FE004FA47C /* GameCardContext.swift */; };
 		CD98D27B290A8BC7004FA47C /* CardsPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98D27A290A8BC7004FA47C /* CardsPair.swift */; };
 		CD98D27E290A9098004FA47C /* GamePlayViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98D27D290A9098004FA47C /* GamePlayViewModelDelegate.swift */; };
 		CD98D280290A991F004FA47C /* TurnsCountdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98D27F290A991F004FA47C /* TurnsCountdown.swift */; };
-		CD98D284290AB074004FA47C /* LoginViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98D283290AB074004FA47C /* LoginViewControllerDelegate.swift */; };
 		CD98D286290ABB89004FA47C /* NewGameViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98D285290ABB89004FA47C /* NewGameViewControllerDelegate.swift */; };
 		CD98D288290ABD70004FA47C /* GameViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98D287290ABD70004FA47C /* GameViewControllerDelegate.swift */; };
 		CD9E7CCE2913AD7B00BF24D1 /* StatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9E7CCD2913AD7B00BF24D1 /* StatCell.swift */; };
@@ -129,6 +131,13 @@
 		CD556414290674AF00945A87 /* CardsColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsColumn.swift; sourceTree = "<group>"; };
 		CD556419290679E000945A87 /* GameCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCardViewModel.swift; sourceTree = "<group>"; };
 		CD55641B2906971500945A87 /* CardsColumnViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsColumnViewModel.swift; sourceTree = "<group>"; };
+		CD5BCEEF291527F90004E690 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		CD5BCEF12915285C0004E690 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		CD5BCEF5291530CA0004E690 /* MenuCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCoordinator.swift; sourceTree = "<group>"; };
+		CD5BCEF7291536D50004E690 /* MainMenuViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewModelDelegate.swift; sourceTree = "<group>"; };
+		CD5BCEFA291546950004E690 /* SettingsViewModelActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelActions.swift; sourceTree = "<group>"; };
+		CD5BCEFC2918D92A0004E690 /* LoginViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelDelegate.swift; sourceTree = "<group>"; };
+		CD5BCEFE2918D9B30004E690 /* LoginViewModelActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelActions.swift; sourceTree = "<group>"; };
 		CD88AF5928D2F0B200EFCBBB /* project-99.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "project-99.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD88AF5C28D2F0B200EFCBBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD88AF5E28D2F0B200EFCBBB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -146,14 +155,12 @@
 		CD88AF9328D450D300EFCBBB /* RealmDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataProvider.swift; sourceTree = "<group>"; };
 		CD88AF9528D4510300EFCBBB /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
 		CD88AF9728D466E500EFCBBB /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainMenuViewController.swift; path = "project-99/ViewControllers/MainMenuViewController.swift"; sourceTree = SOURCE_ROOT; };
-		CD88AF9928D4677F00EFCBBB /* LoginViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewDelegate.swift; path = "../New Group/LoginViewDelegate.swift"; sourceTree = "<group>"; };
 		CD88AF9C28D46C7A00EFCBBB /* MainMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewModel.swift; sourceTree = "<group>"; };
 		CD88AF9E28D46C9200EFCBBB /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		CD88AFA028D47A7E00EFCBBB /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
 		CD88AFA328D4815000EFCBBB /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CD88AFA528D490DC00EFCBBB /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 		CD88AFA828D4920300EFCBBB /* ThemeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCell.swift; sourceTree = "<group>"; };
-		CD88AFAC28D496A800EFCBBB /* MainMenuViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewDelegate.swift; sourceTree = "<group>"; };
 		CD88AFAE28D497E400EFCBBB /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		CD88AFB028D4AE7D00EFCBBB /* ThemeContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeContainer.swift; sourceTree = "<group>"; };
 		CD88AFB228D83E0700EFCBBB /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
@@ -162,7 +169,6 @@
 		CD88AFBC28D86ED700EFCBBB /* UIAlertController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extensions.swift"; sourceTree = "<group>"; };
 		CD88AFBE28D8717B00EFCBBB /* AccountOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountOption.swift; sourceTree = "<group>"; };
 		CD88AFC128D8744200EFCBBB /* SettingsViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelDelegate.swift; sourceTree = "<group>"; };
-		CD88AFC428D8893800EFCBBB /* SettingsViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewControllerDelegate.swift; sourceTree = "<group>"; };
 		CD88AFC628D9781200EFCBBB /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		CD88AFC828D978D200EFCBBB /* StatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewModel.swift; sourceTree = "<group>"; };
 		CD88AFD028D9858000EFCBBB /* StatCellTopSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatCellTopSubview.swift; sourceTree = "<group>"; };
@@ -192,12 +198,10 @@
 		CD88B02328F5500D00EFCBBB /* EndGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndGame.swift; sourceTree = "<group>"; };
 		CD88B02528F6984100EFCBBB /* Stopwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stopwatch.swift; sourceTree = "<group>"; };
 		CD88B02728F9269200EFCBBB /* KeyboardLayoutObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutObserver.swift; sourceTree = "<group>"; };
-		CD88B02E28F9888500EFCBBB /* MainMenuViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewControllerDelegate.swift; sourceTree = "<group>"; };
 		CD98D278290A79FE004FA47C /* GameCardContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCardContext.swift; sourceTree = "<group>"; };
 		CD98D27A290A8BC7004FA47C /* CardsPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsPair.swift; sourceTree = "<group>"; };
 		CD98D27D290A9098004FA47C /* GamePlayViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayViewModelDelegate.swift; sourceTree = "<group>"; };
 		CD98D27F290A991F004FA47C /* TurnsCountdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnsCountdown.swift; sourceTree = "<group>"; };
-		CD98D283290AB074004FA47C /* LoginViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerDelegate.swift; sourceTree = "<group>"; };
 		CD98D285290ABB89004FA47C /* NewGameViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameViewControllerDelegate.swift; sourceTree = "<group>"; };
 		CD98D287290ABD70004FA47C /* GameViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewControllerDelegate.swift; sourceTree = "<group>"; };
 		CD9E7CCD2913AD7B00BF24D1 /* StatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatCell.swift; sourceTree = "<group>"; };
@@ -281,6 +285,16 @@
 			path = GameViewModels;
 			sourceTree = "<group>";
 		};
+		CD5BCEEE291527DD0004E690 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				CD5BCEEF291527F90004E690 /* Coordinator.swift */,
+				CD5BCEF12915285C0004E690 /* MainCoordinator.swift */,
+				CD5BCEF5291530CA0004E690 /* MenuCoordinator.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
 		CD88AF5028D2F0B200EFCBBB = {
 			isa = PBXGroup;
 			children = (
@@ -305,6 +319,7 @@
 		CD88AF5B28D2F0B200EFCBBB /* project-99 */ = {
 			isa = PBXGroup;
 			children = (
+				CD5BCEEE291527DD0004E690 /* Navigation */,
 				CDA1CE31290FE5450032A5E8 /* TableViewDiffDataSources */,
 				CD88B00F28DDB03B00EFCBBB /* Source */,
 				CD88AFE328DB072200EFCBBB /* Containers */,
@@ -374,7 +389,6 @@
 				CD88B00628DD9CF100EFCBBB /* NewGameCells */,
 				CD88AFCC28D9814D00EFCBBB /* StatsViewCells */,
 				CD88AFA728D491E100EFCBBB /* SettingsViewCells */,
-				CD88AF9B28D467FB00EFCBBB /* Delegates */,
 				CD88AF9028D3254500EFCBBB /* LoginView.swift */,
 				CD88AF9E28D46C9200EFCBBB /* MainMenuView.swift */,
 			);
@@ -411,15 +425,6 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		CD88AF9B28D467FB00EFCBBB /* Delegates */ = {
-			isa = PBXGroup;
-			children = (
-				CD88AF9928D4677F00EFCBBB /* LoginViewDelegate.swift */,
-				CD88AFAC28D496A800EFCBBB /* MainMenuViewDelegate.swift */,
-			);
-			path = Delegates;
-			sourceTree = "<group>";
-		};
 		CD88AFA228D47A8600EFCBBB /* Middleware */ = {
 			isa = PBXGroup;
 			children = (
@@ -448,8 +453,12 @@
 		CD88AFC028D8742E00EFCBBB /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
+				CD5BCEF7291536D50004E690 /* MainMenuViewModelDelegate.swift */,
 				CD88AFC128D8744200EFCBBB /* SettingsViewModelDelegate.swift */,
+				CD5BCEFA291546950004E690 /* SettingsViewModelActions.swift */,
 				CD88AFEE28DC49E400EFCBBB /* StatsViewModelDelegate.swift */,
+				CD5BCEFC2918D92A0004E690 /* LoginViewModelDelegate.swift */,
+				CD5BCEFE2918D9B30004E690 /* LoginViewModelActions.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -457,9 +466,6 @@
 		CD88AFC328D8892100EFCBBB /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
-				CD88AFC428D8893800EFCBBB /* SettingsViewControllerDelegate.swift */,
-				CD88B02E28F9888500EFCBBB /* MainMenuViewControllerDelegate.swift */,
-				CD98D283290AB074004FA47C /* LoginViewControllerDelegate.swift */,
 				CD98D285290ABB89004FA47C /* NewGameViewControllerDelegate.swift */,
 				CD98D287290ABD70004FA47C /* GameViewControllerDelegate.swift */,
 			);
@@ -844,6 +850,7 @@
 				CDA1CE37290FE7020032A5E8 /* SettingsTableViewLayout.swift in Sources */,
 				CD88AFFC28DD825F00EFCBBB /* LevelsTime.swift in Sources */,
 				CDA1CE46291007DB0032A5E8 /* NewGameCellModel.swift in Sources */,
+				CD5BCEF6291530CA0004E690 /* MenuCoordinator.swift in Sources */,
 				CDA1CE3F290FEBF60032A5E8 /* AccountOptionCellModel.swift in Sources */,
 				CD88B00328DD9C0D00EFCBBB /* NewGameViewController.swift in Sources */,
 				CD98D27E290A9098004FA47C /* GamePlayViewModelDelegate.swift in Sources */,
@@ -851,22 +858,22 @@
 				CD88AFEF28DC49E400EFCBBB /* StatsViewModelDelegate.swift in Sources */,
 				CD88AFF828DC6D6B00EFCBBB /* TimesSubviewViewCell.swift in Sources */,
 				CD88AFB128D4AE7D00EFCBBB /* ThemeContainer.swift in Sources */,
+				CD5BCEFB291546950004E690 /* SettingsViewModelActions.swift in Sources */,
 				CD88AFAF28D497E400EFCBBB /* SettingsViewModel.swift in Sources */,
 				CD55640C290665B700945A87 /* GamePlayView.swift in Sources */,
 				CD9E7CD22913DE2E00BF24D1 /* StatsTableViewLayout.swift in Sources */,
 				CD88AF7628D306FB00EFCBBB /* User.swift in Sources */,
 				CD5563F329028ACC00945A87 /* UITextField+Extension.swift in Sources */,
 				CD88AF9F28D46C9200EFCBBB /* MainMenuView.swift in Sources */,
+				CD5BCEFF2918D9B30004E690 /* LoginViewModelActions.swift in Sources */,
 				CD88AF9D28D46C7A00EFCBBB /* MainMenuViewModel.swift in Sources */,
 				CD88AFBB28D864EF00EFCBBB /* AccountOptionCell.swift in Sources */,
 				CD5563F529028E5400945A87 /* UIButton+Extension.swift in Sources */,
 				CD88AF6128D2F0B200EFCBBB /* LoginViewController.swift in Sources */,
 				CD88AFBD28D86ED700EFCBBB /* UIAlertController+Extensions.swift in Sources */,
 				CD98D27B290A8BC7004FA47C /* CardsPair.swift in Sources */,
-				CD88AFAD28D496A800EFCBBB /* MainMenuViewDelegate.swift in Sources */,
 				CD55640A2906635E00945A87 /* GameCardView.swift in Sources */,
 				CD88B00528DD9C1F00EFCBBB /* NewGameViewModel.swift in Sources */,
-				CD98D284290AB074004FA47C /* LoginViewControllerDelegate.swift in Sources */,
 				CD88B00A28DDA73700EFCBBB /* GameViewController.swift in Sources */,
 				CD88AF5D28D2F0B200EFCBBB /* AppDelegate.swift in Sources */,
 				CD98D288290ABD70004FA47C /* GameViewControllerDelegate.swift in Sources */,
@@ -875,6 +882,7 @@
 				CDA1CE48291009CA0032A5E8 /* NewGameTableViewLayout.swift in Sources */,
 				CDA1CE3A290FE9E60032A5E8 /* ThemeTableCellModel.swift in Sources */,
 				CD88B01728E42B5900EFCBBB /* GameCard.swift in Sources */,
+				CD5BCEF22915285C0004E690 /* MainCoordinator.swift in Sources */,
 				CD88AF9628D4510300EFCBBB /* FileManager+Extension.swift in Sources */,
 				CD88AFD528D9950700EFCBBB /* UIView+Extensions.swift in Sources */,
 				CD88AFD128D9858000EFCBBB /* StatCellTopSubview.swift in Sources */,
@@ -882,6 +890,7 @@
 				CD88AF5F28D2F0B200EFCBBB /* SceneDelegate.swift in Sources */,
 				CD55641A290679E000945A87 /* GameCardViewModel.swift in Sources */,
 				CD88B02628F6984100EFCBBB /* Stopwatch.swift in Sources */,
+				CD5BCEFD2918D92A0004E690 /* LoginViewModelDelegate.swift in Sources */,
 				CD98D279290A79FE004FA47C /* GameCardContext.swift in Sources */,
 				CD88AFDA28DADE6600EFCBBB /* StatsContent.swift in Sources */,
 				CD88AFC228D8744200EFCBBB /* SettingsViewModelDelegate.swift in Sources */,
@@ -893,11 +902,11 @@
 				CD88AFA928D4920300EFCBBB /* ThemeCell.swift in Sources */,
 				CD88AFA628D490DC00EFCBBB /* UITableViewCell+Extension.swift in Sources */,
 				CD88AFED28DC44DC00EFCBBB /* StatCellBottomViewModelDelegate.swift in Sources */,
-				CD88AFC528D8893800EFCBBB /* SettingsViewControllerDelegate.swift in Sources */,
 				CD88AFFF28DD877A00EFCBBB /* TimesSubviewCellViewModel.swift in Sources */,
 				CD88AF9128D3254500EFCBBB /* LoginView.swift in Sources */,
 				CD88AFB328D83E0700EFCBBB /* AppTheme.swift in Sources */,
 				CDA1CE42290FF09F0032A5E8 /* GameOption.swift in Sources */,
+				CD5BCEF8291536D50004E690 /* MainMenuViewModelDelegate.swift in Sources */,
 				CD88AFFA28DC71D500EFCBBB /* BestTime.swift in Sources */,
 				CD88B01D28F5402900EFCBBB /* RealmDataService.swift in Sources */,
 				CD98D280290A991F004FA47C /* TurnsCountdown.swift in Sources */,
@@ -908,6 +917,7 @@
 				CD55641129066F6500945A87 /* GridLayout.swift in Sources */,
 				CD98D286290ABB89004FA47C /* NewGameViewControllerDelegate.swift in Sources */,
 				CD88AFC728D9781200EFCBBB /* StatsViewController.swift in Sources */,
+				CD5BCEF0291527F90004E690 /* Coordinator.swift in Sources */,
 				CD88AFDD28DAEEB600EFCBBB /* Statistics.swift in Sources */,
 				CD88B00828DD9D1200EFCBBB /* NewGameCell.swift in Sources */,
 				CD556415290674AF00945A87 /* CardsColumn.swift in Sources */,
@@ -915,10 +925,8 @@
 				CDA1CE3D290FEBA00032A5E8 /* GameOptionCellModel.swift in Sources */,
 				CDA1CE33290FE5610032A5E8 /* SettingsTableViewDataSource.swift in Sources */,
 				CD88AFB528D84D9C00EFCBBB /* GameOptionCell.swift in Sources */,
-				CD88B02F28F9888500EFCBBB /* MainMenuViewControllerDelegate.swift in Sources */,
 				CD88B02428F5500D00EFCBBB /* EndGame.swift in Sources */,
 				CD55640F29066EFA00945A87 /* GridLayoutView.swift in Sources */,
-				CD88AF9A28D4677F00EFCBBB /* LoginViewDelegate.swift in Sources */,
 				CD88AFA428D4815000EFCBBB /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

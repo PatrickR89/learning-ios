@@ -22,15 +22,24 @@ class LoginViewModel {
         }
     }
 
-    @Published private(set) var viewCenterYConstraint: Double = 0 {
-        didSet {
-            print(viewCenterYConstraint)
-        }
-    }
+    @Published private(set) var viewCenterYConstraint: Double = 0
 
     private var password: String?
 
     @Published private(set) var loginSuccess: Bool?
+
+    weak var delegate: LoginViewModelDelegate?
+    weak var actions: LoginViewModelActions?
+
+    private var isLoggedIn: AnyCancellable?
+
+    init() {
+        setupBindings()
+    }
+
+    deinit {
+        isLoggedIn?.cancel()
+    }
 }
 
 extension LoginViewModel {
@@ -60,10 +69,6 @@ extension LoginViewModel {
         UserContainer.shared.setUserId(newUser.id)
     }
 
-    func sendUser() -> User {
-        return user
-    }
-
     func findUserByName(_ username: String) {
         let result = RealmDataService.shared.findUserByName(username)
 
@@ -88,5 +93,20 @@ extension LoginViewModel {
     func userDeleted() {
         self.user = User(id: UUID(), name: "", password: "")
         UserContainer.shared.setUserId(nil)
+    }
+
+    func setupBindings() {
+
+        isLoggedIn = self.$loginSuccess
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] loginStatus in
+                guard let self = self,
+                      let loginStatus = loginStatus  else {return}
+                if !loginStatus {
+                    self.delegate?.viewModelDidFailLogin(self)
+                } else {
+                    self.actions?.viewModel(self, didLogUser: self.user)
+                }
+            })
     }
 }

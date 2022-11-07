@@ -8,13 +8,14 @@
 import Foundation
 
 class NewGameViewModel {
+    weak var delegate: NewGameViewModelDelegate?
     private var levels: [Level] = [.veryEasy, .easy, .mediumHard, .hard, .veryHard, .emotionalDamage]
 
-    func loadLevel(at index: Int) -> Level {
-        return levels[index]
+    func loadLevel(at index: Int) {
+        delegate?.newGameViewModel(self, didStartNewLevel: levels[index])
     }
 
-    func countLevels() -> Int {
-        return levels.count
+    func requestDismiss() {
+        delegate?.newGameViewModelDidRequestDismiss(self)
     }
 }

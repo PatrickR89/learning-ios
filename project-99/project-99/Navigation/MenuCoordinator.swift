@@ -50,8 +50,9 @@ extension MenuCoordinator: MainMenuViewModelDelegate {
     }
 
     func viewModelDidOpenNewGame(_ viewModel: MainMenuViewModel) {
-        let viewController = NewGameViewController()
-        viewController.delegate = self
+        let gameViewModel = NewGameViewModel()
+        gameViewModel.delegate = self
+        let viewController = NewGameViewController(with: gameViewModel)
         navController.pushViewController(viewController, animated: true)
     }
 
@@ -77,19 +78,18 @@ extension MenuCoordinator: SettingsViewModelActions {
     }
 }
 
-extension MenuCoordinator: NewGameViewControllerDelegate {
-    func newGameViewController(
-        _ viewController: NewGameViewController,
-        didStartNewGameWithViewModel viewModel: GameVCViewModel,
-        and stopwatch: Stopwatch) {
-
-            let viewController = GameViewController(with: viewModel, and: stopwatch)
-            viewController.delegate = self
-            navController.pushViewController(viewController, animated: true)
-        }
-
-    func newGameViewControllerDidRequestDismiss(_ viewController: NewGameViewController) {
+extension MenuCoordinator: NewGameViewModelDelegate {
+    func newGameViewModelDidRequestDismiss(_ viewModel: NewGameViewModel) {
         navController.popViewController(animated: true)
+    }
+
+    func newGameViewModel(_ viewModel: NewGameViewModel, didStartNewLevel level: Level) {
+        let stopwatch = StopwatchTimer()
+        let viewModel = GameVCViewModel(for: level, with: stopwatch)
+
+        let viewController = GameViewController(with: viewModel, and: stopwatch)
+        viewController.delegate = self
+        navController.pushViewController(viewController, animated: true)
     }
 }
 

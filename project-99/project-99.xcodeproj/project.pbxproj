@@ -28,6 +28,8 @@
 		CD5BCEFB291546950004E690 /* SettingsViewModelActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5BCEFA291546950004E690 /* SettingsViewModelActions.swift */; };
 		CD5BCEFD2918D92A0004E690 /* LoginViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5BCEFC2918D92A0004E690 /* LoginViewModelDelegate.swift */; };
 		CD5BCEFF2918D9B30004E690 /* LoginViewModelActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5BCEFE2918D9B30004E690 /* LoginViewModelActions.swift */; };
+		CD5BCF012918F16E0004E690 /* StopwatchContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5BCF002918F16E0004E690 /* StopwatchContainer.swift */; };
+		CD5BCF052918F4450004E690 /* NewGameViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5BCF042918F4450004E690 /* NewGameViewModelDelegate.swift */; };
 		CD88AF5D28D2F0B200EFCBBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF5C28D2F0B200EFCBBB /* AppDelegate.swift */; };
 		CD88AF5F28D2F0B200EFCBBB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF5E28D2F0B200EFCBBB /* SceneDelegate.swift */; };
 		CD88AF6128D2F0B200EFCBBB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88AF6028D2F0B200EFCBBB /* LoginViewController.swift */; };
@@ -84,13 +86,12 @@
 		CD88B01728E42B5900EFCBBB /* GameCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B01628E42B5900EFCBBB /* GameCard.swift */; };
 		CD88B01D28F5402900EFCBBB /* RealmDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B01C28F5402900EFCBBB /* RealmDataService.swift */; };
 		CD88B02428F5500D00EFCBBB /* EndGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B02328F5500D00EFCBBB /* EndGame.swift */; };
-		CD88B02628F6984100EFCBBB /* Stopwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B02528F6984100EFCBBB /* Stopwatch.swift */; };
+		CD88B02628F6984100EFCBBB /* StopwatchTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B02528F6984100EFCBBB /* StopwatchTimer.swift */; };
 		CD88B02828F9269200EFCBBB /* KeyboardLayoutObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88B02728F9269200EFCBBB /* KeyboardLayoutObserver.swift */; };
 		CD98D279290A79FE004FA47C /* GameCardContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98D278290A79FE004FA47C /* GameCardContext.swift */; };
 		CD98D27B290A8BC7004FA47C /* CardsPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98D27A290A8BC7004FA47C /* CardsPair.swift */; };
 		CD98D27E290A9098004FA47C /* GamePlayViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98D27D290A9098004FA47C /* GamePlayViewModelDelegate.swift */; };
 		CD98D280290A991F004FA47C /* TurnsCountdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98D27F290A991F004FA47C /* TurnsCountdown.swift */; };
-		CD98D286290ABB89004FA47C /* NewGameViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98D285290ABB89004FA47C /* NewGameViewControllerDelegate.swift */; };
 		CD98D288290ABD70004FA47C /* GameViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98D287290ABD70004FA47C /* GameViewControllerDelegate.swift */; };
 		CD9E7CCE2913AD7B00BF24D1 /* StatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9E7CCD2913AD7B00BF24D1 /* StatCell.swift */; };
 		CD9E7CD02913B94100BF24D1 /* StatCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9E7CCF2913B94100BF24D1 /* StatCellModel.swift */; };
@@ -138,6 +139,8 @@
 		CD5BCEFA291546950004E690 /* SettingsViewModelActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelActions.swift; sourceTree = "<group>"; };
 		CD5BCEFC2918D92A0004E690 /* LoginViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelDelegate.swift; sourceTree = "<group>"; };
 		CD5BCEFE2918D9B30004E690 /* LoginViewModelActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelActions.swift; sourceTree = "<group>"; };
+		CD5BCF002918F16E0004E690 /* StopwatchContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchContainer.swift; sourceTree = "<group>"; };
+		CD5BCF042918F4450004E690 /* NewGameViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameViewModelDelegate.swift; sourceTree = "<group>"; };
 		CD88AF5928D2F0B200EFCBBB /* project-99.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "project-99.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD88AF5C28D2F0B200EFCBBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD88AF5E28D2F0B200EFCBBB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -196,13 +199,12 @@
 		CD88B01628E42B5900EFCBBB /* GameCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCard.swift; sourceTree = "<group>"; };
 		CD88B01C28F5402900EFCBBB /* RealmDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataService.swift; sourceTree = "<group>"; };
 		CD88B02328F5500D00EFCBBB /* EndGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndGame.swift; sourceTree = "<group>"; };
-		CD88B02528F6984100EFCBBB /* Stopwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stopwatch.swift; sourceTree = "<group>"; };
+		CD88B02528F6984100EFCBBB /* StopwatchTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchTimer.swift; sourceTree = "<group>"; };
 		CD88B02728F9269200EFCBBB /* KeyboardLayoutObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutObserver.swift; sourceTree = "<group>"; };
 		CD98D278290A79FE004FA47C /* GameCardContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCardContext.swift; sourceTree = "<group>"; };
 		CD98D27A290A8BC7004FA47C /* CardsPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsPair.swift; sourceTree = "<group>"; };
 		CD98D27D290A9098004FA47C /* GamePlayViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayViewModelDelegate.swift; sourceTree = "<group>"; };
 		CD98D27F290A991F004FA47C /* TurnsCountdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnsCountdown.swift; sourceTree = "<group>"; };
-		CD98D285290ABB89004FA47C /* NewGameViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameViewControllerDelegate.swift; sourceTree = "<group>"; };
 		CD98D287290ABD70004FA47C /* GameViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewControllerDelegate.swift; sourceTree = "<group>"; };
 		CD9E7CCD2913AD7B00BF24D1 /* StatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatCell.swift; sourceTree = "<group>"; };
 		CD9E7CCF2913B94100BF24D1 /* StatCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatCellModel.swift; sourceTree = "<group>"; };
@@ -409,9 +411,10 @@
 		CD88AF8928D316C000EFCBBB /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				CD88B02528F6984100EFCBBB /* Stopwatch.swift */,
+				CD88B02528F6984100EFCBBB /* StopwatchTimer.swift */,
 				CD88B02728F9269200EFCBBB /* KeyboardLayoutObserver.swift */,
 				CD5563F629029BC900945A87 /* FetchSymbols.swift */,
+				CD5BCF002918F16E0004E690 /* StopwatchContainer.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 				CD88AFEE28DC49E400EFCBBB /* StatsViewModelDelegate.swift */,
 				CD5BCEFC2918D92A0004E690 /* LoginViewModelDelegate.swift */,
 				CD5BCEFE2918D9B30004E690 /* LoginViewModelActions.swift */,
+				CD5BCF042918F4450004E690 /* NewGameViewModelDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -466,7 +470,6 @@
 		CD88AFC328D8892100EFCBBB /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
-				CD98D285290ABB89004FA47C /* NewGameViewControllerDelegate.swift */,
 				CD98D287290ABD70004FA47C /* GameViewControllerDelegate.swift */,
 			);
 			path = Delegates;
@@ -889,7 +892,7 @@
 				CD88AF7828D307BA00EFCBBB /* UserSettings.swift in Sources */,
 				CD88AF5F28D2F0B200EFCBBB /* SceneDelegate.swift in Sources */,
 				CD55641A290679E000945A87 /* GameCardViewModel.swift in Sources */,
-				CD88B02628F6984100EFCBBB /* Stopwatch.swift in Sources */,
+				CD88B02628F6984100EFCBBB /* StopwatchTimer.swift in Sources */,
 				CD5BCEFD2918D92A0004E690 /* LoginViewModelDelegate.swift in Sources */,
 				CD98D279290A79FE004FA47C /* GameCardContext.swift in Sources */,
 				CD88AFDA28DADE6600EFCBBB /* StatsContent.swift in Sources */,
@@ -911,11 +914,11 @@
 				CD88B01D28F5402900EFCBBB /* RealmDataService.swift in Sources */,
 				CD98D280290A991F004FA47C /* TurnsCountdown.swift in Sources */,
 				CD5564132906739700945A87 /* GamePlayViewModel.swift in Sources */,
+				CD5BCF052918F4450004E690 /* NewGameViewModelDelegate.swift in Sources */,
 				CD88B00C28DDA74C00EFCBBB /* GameVCViewModel.swift in Sources */,
 				CD88AF9428D450D300EFCBBB /* RealmDataProvider.swift in Sources */,
 				CD88AFF628DC601500EFCBBB /* LabelLayoutView.swift in Sources */,
 				CD55641129066F6500945A87 /* GridLayout.swift in Sources */,
-				CD98D286290ABB89004FA47C /* NewGameViewControllerDelegate.swift in Sources */,
 				CD88AFC728D9781200EFCBBB /* StatsViewController.swift in Sources */,
 				CD5BCEF0291527F90004E690 /* Coordinator.swift in Sources */,
 				CD88AFDD28DAEEB600EFCBBB /* Statistics.swift in Sources */,
@@ -925,6 +928,7 @@
 				CDA1CE3D290FEBA00032A5E8 /* GameOptionCellModel.swift in Sources */,
 				CDA1CE33290FE5610032A5E8 /* SettingsTableViewDataSource.swift in Sources */,
 				CD88AFB528D84D9C00EFCBBB /* GameOptionCell.swift in Sources */,
+				CD5BCF012918F16E0004E690 /* StopwatchContainer.swift in Sources */,
 				CD88B02428F5500D00EFCBBB /* EndGame.swift in Sources */,
 				CD55640F29066EFA00945A87 /* GridLayoutView.swift in Sources */,
 				CD88AFA428D4815000EFCBBB /* SettingsViewController.swift in Sources */,

@@ -14,7 +14,7 @@ class GameVCViewModel {
 
     @Published private(set) var isGameOver: EndGame = .inGame
 
-    init(for level: Level, with stopwatch: Stopwatch) {
+    init(for level: Level, with stopwatch: StopwatchTimer) {
         self.game = level
         self.playGameViewModel = GamePlayViewModel(for: level, with: stopwatch)
         self.playGameViewModel.delegate = self

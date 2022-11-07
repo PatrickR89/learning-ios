@@ -9,7 +9,7 @@ import UIKit
 
 class GamePlayViewModel {
 
-    private var stopwatch: Stopwatch
+    private var stopwatch: StopwatchTimer
     private(set) var gameLevel: Level
     private var currentSymbols = [String]() {
         didSet {
@@ -35,7 +35,7 @@ class GamePlayViewModel {
 
     weak var delegate: GamePlayViewModelDelegate?
 
-    init(for level: Level, with stopwatch: Stopwatch) {
+    init(for level: Level, with stopwatch: StopwatchTimer) {
         self.gameLevel = level
         self.stopwatch = stopwatch
         setupSymbols(gameDifficulty: level)

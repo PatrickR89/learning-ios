@@ -12,11 +12,11 @@ class GameViewController: UIViewController {
 
     private let viewModel: GameVCViewModel
     private let gameView: GamePlayView?
-    private let stopwatch: Stopwatch
+    private let stopwatch: StopwatchTimer
     private var isGameStopped: AnyCancellable?
     weak var delegate: GameViewControllerDelegate?
 
-    init(with viewModel: GameVCViewModel, and stopwatch: Stopwatch) {
+    init(with viewModel: GameVCViewModel, and stopwatch: StopwatchTimer) {
         self.stopwatch = stopwatch
         self.viewModel = viewModel
         self.gameView = GamePlayView(with: viewModel.provideGameViewModel(), and: stopwatch)

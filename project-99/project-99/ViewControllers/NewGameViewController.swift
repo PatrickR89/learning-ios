@@ -9,7 +9,7 @@ import UIKit
 
 class NewGameViewController: UIViewController {
 
-    private let viewModel = NewGameViewModel()
+    private let viewModel: NewGameViewModel
     private let tableView = UITableView()
     lazy var tableViewDataSource: UITableViewDiffableDataSource<NewGameTableViewSections, NewGameTableViewItems> = {
         let tableViewDataSource =
@@ -27,9 +27,8 @@ class NewGameViewController: UIViewController {
         return tableViewDataSource
     }()
 
-    weak var delegate: NewGameViewControllerDelegate?
-
-    init() {
+    init(with viewModel: NewGameViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
 
         use(AppTheme.self) {
@@ -57,7 +56,7 @@ class NewGameViewController: UIViewController {
     }
 
     @objc private func dismissSelf() {
-        delegate?.newGameViewControllerDidRequestDismiss(self)
+        viewModel.requestDismiss()
     }
 
     private func setupUI() {
@@ -89,11 +88,7 @@ class NewGameViewController: UIViewController {
 
 extension NewGameViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        let stopwatch = Stopwatch()
-        let gameViewModel = GameVCViewModel(for: viewModel.loadLevel(at: indexPath.row), with: stopwatch)
-
-        delegate?.newGameViewController(self, didStartNewGameWithViewModel: gameViewModel, and: stopwatch)
+        viewModel.loadLevel(at: indexPath.row)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 

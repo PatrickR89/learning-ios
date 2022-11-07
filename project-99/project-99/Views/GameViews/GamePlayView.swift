@@ -11,7 +11,7 @@ import Combine
 class GamePlayView: UIView {
 
     let viewModel: GamePlayViewModel
-    let stopwatch: Stopwatch
+    let stopwatch: StopwatchTimer
     var cancellables = [AnyCancellable]()
 
     let remainingChancesLabel = UILabel()
@@ -19,7 +19,7 @@ class GamePlayView: UIView {
     let timerCountLabel = UILabel()
     let gridView = GridLayoutView()
 
-    init(with viewModel: GamePlayViewModel, and stopwatch: Stopwatch) {
+    init(with viewModel: GamePlayViewModel, and stopwatch: StopwatchTimer) {
         self.viewModel = viewModel
         self.stopwatch = stopwatch
 

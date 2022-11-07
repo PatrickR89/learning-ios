@@ -12,6 +12,7 @@ class MainMenuViewController: UIViewController {
 
     private let viewModel: MainMenuViewModel
     private(set) var menuView: MainMenuView
+    // coordinator provided only for MainCoordinator reference to remove MenuCoordinator on MainMenuVC lifecycle end
     weak var coordinator: MenuCoordinator?
 
     init(with viewModel: MainMenuViewModel) {

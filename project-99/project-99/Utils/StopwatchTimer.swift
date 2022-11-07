@@ -1,5 +1,5 @@
 //
-//  Stopwatch.swift
+//  StopwatchTimer.swift
 //  project-99
 //
 //  Created by Patrick on 12.10.2022..
@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class Stopwatch {
+class StopwatchTimer {
     private var startTime: Date?
     private var timer: Cancellable?
 

@@ -67,8 +67,10 @@ private extension LoginView {
     @objc func createUser() {
         self.nameTextField.endEditing(true)
         self.passwordTextField.endEditing(true)
-        viewModel.createNewUser()
-        resetInput()
+        let result = viewModel.createNewUser()
+        if result {
+            resetInput()
+        }
     }
 
     @objc func login() {
@@ -101,6 +103,11 @@ private extension LoginView {
         warningLabel.text = "! Incorrect user name and/or password"
         warningLabel.isHidden = false
     }
+
+    func createAccountFailed() {
+        warningLabel.text = "! Account already exists"
+        warningLabel.isHidden = false
+    }
 }
 
 extension LoginView {
@@ -123,6 +130,10 @@ extension LoginView: UITextFieldDelegate {
 }
 
 extension LoginView: LoginViewModelDelegate {
+    func viewModelDidFailAccountCreation(_ viewModel: LoginViewModel) {
+        createAccountFailed()
+    }
+
     func viewModelDidFailLogin(_ viewModel: LoginViewModel) {
         loginFailed()
     }

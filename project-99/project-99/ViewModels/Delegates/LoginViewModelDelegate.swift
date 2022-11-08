@@ -9,4 +9,5 @@ import Foundation
 
 protocol LoginViewModelDelegate: AnyObject {
     func viewModelDidFailLogin(_ viewModel: LoginViewModel)
+    func viewModelDidFailAccountCreation(_ viewModel: LoginViewModel)
 }

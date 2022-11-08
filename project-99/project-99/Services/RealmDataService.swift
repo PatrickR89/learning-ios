@@ -42,7 +42,7 @@ class RealmDataService {
 
     // MARK: Create new user
 
-    func saveNewUser(_ newUser: User) {
+    func saveNewUser(_ newUser: User) -> Bool {
 
         let newSettings = UserSettings(
             userId: newUser.id,
@@ -67,6 +67,11 @@ class RealmDataService {
             veryHard: 0.0,
             emotionalDamage: 0.0)
 
+        let results = realm.objects(User.self)
+        if results.contains(where: { $0.name == newUser.name}) {
+            return false
+        }
+
         do {
             try realm.write {
                 realm.add(newUser)
@@ -74,9 +79,11 @@ class RealmDataService {
                 realm.add(newStats)
                 realm.add(initialTimes)
             }
+
         } catch {
             fatalError("App crashed trying to save new user")
         }
+        return true
     }
 
     // MARK: User

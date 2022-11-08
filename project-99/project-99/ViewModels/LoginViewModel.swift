@@ -56,17 +56,23 @@ extension LoginViewModel {
         self.viewCenterYConstraint = value
     }
 
-    func createNewUser() {
+    func createNewUser() -> Bool {
         guard let username = username,
-              let password = password else {return}
-        if username == "" || password == "" {return}
+              let password = password else {return false}
+        if username == "" || password == "" {return false}
         let newUser = User(id: UUID(), name: username, password: password)
 
-        RealmDataService.shared.saveNewUser(newUser)
+        let response = RealmDataService.shared.saveNewUser(newUser)
 
-        self.loginSuccess = true
-        self.user = newUser
-        UserContainer.shared.setUserId(newUser.id)
+        if response {
+            self.loginSuccess = true
+            self.user = newUser
+            UserContainer.shared.setUserId(newUser.id)
+            return true
+        } else {
+            delegate?.viewModelDidFailAccountCreation(self)
+            return false
+        }
     }
 
     func findUserByName(_ username: String) {

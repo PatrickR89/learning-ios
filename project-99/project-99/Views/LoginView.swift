@@ -54,6 +54,7 @@ private extension LoginView {
         warningLabel.textColor = .red
         warningLabel.isHidden = true
         warningLabel.text = ""
+        warningLabel.textAlignment = .center
 
         warningStackView.arrangeColumn([warningLabel], withSpacing: 20)
         textFieldsStackView.arrangeColumn([nameTextField, passwordTextField], withSpacing: 20)

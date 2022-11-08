@@ -42,25 +42,14 @@ class LoginViewModel {
     }
 }
 
-extension LoginViewModel {
-
-    func usernameChanged(_ username: String) {
-        self.username = username
-    }
-
-    func passwordChanged(_ password: String) {
-        self.password = password
-    }
-
-    func changeYConstraint(with value: Double) {
-        self.viewCenterYConstraint = value
-    }
-
+extension LoginViewModel: PasswordHash {
     func createNewUser() -> Bool {
         guard let username = username,
               let password = password else {return false}
         if username == "" || password == "" {return false}
-        let newUser = User(id: UUID(), name: username, password: password)
+        let newId = UUID()
+        let newPassword = hashPassword(password: password, salt: newId)
+        let newUser = User(id: newId, name: username, password: newPassword)
 
         let response = RealmDataService.shared.saveNewUser(newUser)
 
@@ -75,24 +64,40 @@ extension LoginViewModel {
         }
     }
 
-    func findUserByName(_ username: String) {
-        let result = RealmDataService.shared.findUserByName(username)
-
-        if result.count > 0 {
-            self.user = result[0]
-        }
-    }
-
     func login() {
         guard let username = username,
               let password = password else {return }
-        if username == user.name && password == user.password {
+        let hashedPassword = hashPassword(password: password, salt: user.id)
+        if username == user.name && hashedPassword == user.password {
             self.loginSuccess = true
             UserContainer.shared.setUserId(user.id)
             self.username = ""
             self.password = ""
         } else {
             self.loginSuccess = false
+        }
+    }
+}
+
+extension LoginViewModel {
+
+    func usernameChanged(_ username: String) {
+        self.username = username
+    }
+
+    func passwordChanged(_ password: String) {
+        self.password = password
+    }
+
+    func changeYConstraint(with value: Double) {
+        self.viewCenterYConstraint = value
+    }
+
+    func findUserByName(_ username: String) {
+        let result = RealmDataService.shared.findUserByName(username)
+
+        if result.count > 0 {
+            self.user = result[0]
         }
     }
 

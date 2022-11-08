@@ -131,14 +131,6 @@ extension SettingsViewModel {
         action?.viewModelDidRecieveAccountDeletion(self)
     }
 
-    // MARK: Account verification
-
-    func verifyPassword(_ password: String, for change: AccountOption) {
-
-        let passwordCheck = password == user.password
-        delegate?.settingsViewModel(self, didVerifyPasswordWithResult: passwordCheck, for: change)
-    }
-
     // MARK: AlertControllers
 
     func addPasswordVerificationAlertController(
@@ -162,4 +154,15 @@ extension SettingsViewModel {
                 for: change)
             return alertController
         }
+}
+
+extension SettingsViewModel: PasswordHash {
+    // MARK: Account verification
+
+    func verifyPassword(_ password: String, for change: AccountOption) {
+
+        let hashedInputPassword = hashPassword(password: password, salt: user.id)
+        let passwordCheck = hashedInputPassword == user.password
+        delegate?.settingsViewModel(self, didVerifyPasswordWithResult: passwordCheck, for: change)
+    }
 }

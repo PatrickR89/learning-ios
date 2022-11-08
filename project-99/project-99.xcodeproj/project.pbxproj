@@ -104,6 +104,7 @@
 		CDA1CE46291007DB0032A5E8 /* NewGameCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1CE45291007DB0032A5E8 /* NewGameCellModel.swift */; };
 		CDA1CE48291009CA0032A5E8 /* NewGameTableViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1CE47291009CA0032A5E8 /* NewGameTableViewLayout.swift */; };
 		CDA2CEF02919056700069E88 /* GameVCViewModelActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA2CEEF2919056700069E88 /* GameVCViewModelActions.swift */; };
+		CDA2CEF5291A3B2800069E88 /* PasswordHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA2CEF4291A3B2800069E88 /* PasswordHash.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -217,6 +218,7 @@
 		CDA1CE45291007DB0032A5E8 /* NewGameCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameCellModel.swift; sourceTree = "<group>"; };
 		CDA1CE47291009CA0032A5E8 /* NewGameTableViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameTableViewLayout.swift; sourceTree = "<group>"; };
 		CDA2CEEF2919056700069E88 /* GameVCViewModelActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVCViewModelActions.swift; sourceTree = "<group>"; };
+		CDA2CEF4291A3B2800069E88 /* PasswordHash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordHash.swift; sourceTree = "<group>"; };
 		E9ED53374000A43727DB32F3 /* Pods-project-99.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-99.release.xcconfig"; path = "Target Support Files/Pods-project-99/Pods-project-99.release.xcconfig"; sourceTree = "<group>"; };
 		EE006DE768882589EA85F5B5 /* Pods-project-99.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-99.debug.xcconfig"; path = "Target Support Files/Pods-project-99/Pods-project-99.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -422,6 +424,7 @@
 			children = (
 				CD88AF9328D450D300EFCBBB /* RealmDataProvider.swift */,
 				CD88B01C28F5402900EFCBBB /* RealmDataService.swift */,
+				CDA2CEF4291A3B2800069E88 /* PasswordHash.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -917,6 +920,7 @@
 				CD88AF9828D466E500EFCBBB /* MainMenuViewController.swift in Sources */,
 				CD9E7CCE2913AD7B00BF24D1 /* StatCell.swift in Sources */,
 				CD88AFE228DAFC6D00EFCBBB /* StatCellBottomViewModel.swift in Sources */,
+				CDA2CEF5291A3B2800069E88 /* PasswordHash.swift in Sources */,
 				CD88AFA928D4920300EFCBBB /* ThemeCell.swift in Sources */,
 				CD88AFA628D490DC00EFCBBB /* UITableViewCell+Extension.swift in Sources */,
 				CD88AFED28DC44DC00EFCBBB /* StatCellBottomViewModelDelegate.swift in Sources */,

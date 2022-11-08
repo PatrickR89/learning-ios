@@ -112,22 +112,6 @@ class RealmDataService {
 
     }
 
-    func changePassword(_ newPassword: String) {
-        guard let userId = userId,
-              let user = realm.object(ofType: User.self, forPrimaryKey: userId) else {
-            return
-        }
-
-        do {
-            try realm.write {
-                user.password = newPassword
-            }
-        } catch {
-            fatalError("Game crashed while updating password")
-        }
-
-    }
-
     func deleteAccount() {
         guard let userId = userId else {
             return
@@ -349,5 +333,24 @@ class RealmDataService {
         }
 
         return result.theme
+    }
+}
+
+extension RealmDataService: PasswordHash {
+
+    func changePassword(_ newPassword: String) {
+        guard let userId = userId,
+              let user = realm.object(ofType: User.self, forPrimaryKey: userId) else {
+            return
+        }
+        let hashedPassword = hashPassword(password: newPassword, salt: userId)
+        do {
+            try realm.write {
+                user.password = hashedPassword
+            }
+        } catch {
+            fatalError("Game crashed while updating password")
+        }
+
     }
 }

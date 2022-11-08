@@ -11,7 +11,6 @@ class StatsViewController: UIViewController {
 
     private let viewModel: StatsViewModel
     private let tableView = UITableView()
-    private let content: [StatsContent] = [.games, .pairs, .gameTimes]
 
     lazy var tableViewDataSource: UITableViewDiffableDataSource<
         StatsTableViewLayoutSections, StatsTableViewLayoutItems

@@ -12,5 +12,7 @@ enum StatsTableViewLayoutSections: Hashable {
 }
 
 enum StatsTableViewLayoutItems: Hashable {
-    case item(StatCellModel)
+    case games(StatCellModel)
+    case pairs(StatCellModel)
+    case gameTimes(StatCellModel)
 }

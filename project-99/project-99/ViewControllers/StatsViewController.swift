@@ -21,11 +21,19 @@ class StatsViewController: UIViewController {
         >(tableView: tableView) { [weak self] tableView, indexPath, itemIdentifier in
             let cell = StatCell.dequeue(in: tableView, for: indexPath)
 
-            switch itemIdentifier {
-            case .item(let model):
+            func modifyCell(with model: StatCellModel) {
                 cell.updateCellData(model)
                 cell.changeBottomState(with: self?.viewModel.isCellBottomHidden[indexPath.row] ?? true)
                 cell.selectionStyle = .none
+            }
+
+            switch itemIdentifier {
+            case .games(let model):
+                modifyCell(with: model)
+            case .pairs(let model):
+                modifyCell(with: model)
+            case .gameTimes(let model):
+                modifyCell(with: model)
             }
 
             return cell
@@ -84,9 +92,22 @@ class StatsViewController: UIViewController {
         var content = [StatsTableViewLayoutItems]()
 
         for (index, value) in StatsContent.allCases.enumerated() {
-            content.append(StatsTableViewLayoutItems.item(
-                StatCellModel(content: value, isExtended: viewModel.isCellBottomHidden[index])))
+            if value == .games {
+                content.append(StatsTableViewLayoutItems.games(
+                    StatCellModel(content: value, isExtended: viewModel.isCellBottomHidden[index])))
+            }
+
+            if value == .pairs {
+                content.append(StatsTableViewLayoutItems.pairs(
+                    StatCellModel(content: value, isExtended: viewModel.isCellBottomHidden[index])))
+            }
+
+            if value == .gameTimes {
+                content.append(StatsTableViewLayoutItems.gameTimes(
+                    StatCellModel(content: value, isExtended: viewModel.isCellBottomHidden[index])))
+            }
         }
+
         var snapshot = NSDiffableDataSourceSnapshot<StatsTableViewLayoutSections, StatsTableViewLayoutItems>()
         snapshot.appendSections([.main])
         snapshot.appendItems(content, toSection: .main)
@@ -106,13 +127,14 @@ extension StatsViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        // add identifier, for height ref, and to remove content array from VC
+        let item = tableViewDataSource.itemIdentifier(for: indexPath)
         if viewModel.isCellBottomHidden[indexPath.row] {
             return 40
         } else {
-            if content[indexPath.row] == .gameTimes {
+            switch item {
+            case .gameTimes:
                 return 350
-            } else {
+            default:
                 return 180
             }
         }

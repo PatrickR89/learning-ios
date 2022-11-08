@@ -20,7 +20,7 @@ class StatsViewController: UIViewController {
         >(tableView: tableView) { [weak self] tableView, indexPath, itemIdentifier in
             let cell = StatCell.dequeue(in: tableView, for: indexPath)
 
-            func modifyCell(with model: StatCellModel) {
+            func updateCell(with model: StatCellModel) {
                 cell.updateCellData(model)
                 cell.changeBottomState(with: self?.viewModel.isCellBottomHidden[indexPath.row] ?? true)
                 cell.selectionStyle = .none
@@ -28,11 +28,11 @@ class StatsViewController: UIViewController {
 
             switch itemIdentifier {
             case .games(let model):
-                modifyCell(with: model)
+                updateCell(with: model)
             case .pairs(let model):
-                modifyCell(with: model)
+                updateCell(with: model)
             case .gameTimes(let model):
-                modifyCell(with: model)
+                updateCell(with: model)
             }
 
             return cell

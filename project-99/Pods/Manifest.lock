@@ -1,4 +1,5 @@
 PODS:
+  - CryptoSwift (1.6.0)
   - Realm (10.28.7):
     - Realm/Headers (= 10.28.7)
   - Realm/Headers (10.28.7)
@@ -7,20 +8,23 @@ PODS:
   - Themes (2.0.0)
 
 DEPENDENCIES:
+  - CryptoSwift
   - RealmSwift
   - Themes
 
 SPEC REPOS:
   trunk:
+    - CryptoSwift
     - Realm
     - RealmSwift
     - Themes
 
 SPEC CHECKSUMS:
+  CryptoSwift: 562f8eceb40e80796fffc668b0cad9313284cfa6
   Realm: d1d5ad078b9c1d22f99f7f7f2e692b548b518f24
   RealmSwift: 7c38e0acca7d3df9cc60d79c073ef68245351d0e
   Themes: d3810257315e54a035691c204aa40a92f2f1085b
 
-PODFILE CHECKSUM: 93fab0241cfcea4eb52418b031c8a7a55c89051e
+PODFILE CHECKSUM: dafb9d79c32b17f73901995738e520fbf4291f7f
 
 COCOAPODS: 1.11.3

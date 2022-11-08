@@ -20,9 +20,11 @@ class ThemeContainer {
     func bindUser() {
         cancellable = UserContainer.shared.$userId
             .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] _ in
-                let theme = RealmDataService.shared.loadTheme()
-                self?.changeTheme(to: theme)
+            .sink(receiveValue: { [weak self] userId in
+                if userId != nil {
+                    let theme = RealmDataService.shared.loadTheme()
+                    self?.changeTheme(to: theme)
+                }
             })
     }
 

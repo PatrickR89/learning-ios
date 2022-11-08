@@ -400,10 +400,9 @@
 		CD88AF7928D308DD00EFCBBB /* Enums */ = {
 			isa = PBXGroup;
 			children = (
+				CDA2CEF329194F9F00069E88 /* Stats */,
+				CDA2CEF229194F9900069E88 /* Game */,
 				CDA1CE432910040D0032A5E8 /* Settings */,
-				CD88AF8228D30F9600EFCBBB /* Levels.swift */,
-				CD88AFD928DADE6600EFCBBB /* StatsContent.swift */,
-				CD88B02328F5500D00EFCBBB /* EndGame.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -658,6 +657,23 @@
 				CD5BCEF7291536D50004E690 /* MainMenuViewModelActions.swift */,
 			);
 			path = NavigationActions;
+			sourceTree = "<group>";
+		};
+		CDA2CEF229194F9900069E88 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				CD88B02328F5500D00EFCBBB /* EndGame.swift */,
+				CD88AF8228D30F9600EFCBBB /* Levels.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		CDA2CEF329194F9F00069E88 /* Stats */ = {
+			isa = PBXGroup;
+			children = (
+				CD88AFD928DADE6600EFCBBB /* StatsContent.swift */,
+			);
+			path = Stats;
 			sourceTree = "<group>";
 		};
 		EB75619A2A5DAE8CA72D994E /* Frameworks */ = {

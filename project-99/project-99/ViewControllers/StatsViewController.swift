@@ -106,6 +106,7 @@ extension StatsViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        // add identifier, for height ref, and to remove content array from VC
         if viewModel.isCellBottomHidden[indexPath.row] {
             return 40
         } else {

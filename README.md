@@ -15,3 +15,5 @@ challenge-d90 / Meme Editor - usage of Realm DB, app framework and extension: ht
 challenge-d99 / Memory Game - usage of Combine, Realm, CryptoSwift, Coordinator pattern and more... :https://github.com/PatrickR89/learning-ios/tree/challenge-d99-memory-game/project-99
 
 Last two branches are not merged to main, due to their merge delay on Bitbucket.
+
+One more important note: For all projects in this repository SwiftLint is used for help to write cleaner and more readable code.
